@@ -1,0 +1,23 @@
+
+<!-- PLAN: {{ myPlan | json}} -->
+<!-- <br>s -->
+<!-- TrackingComponent:
+<br>
+ACTIVE_RECORD: {{ activeRecord | json }}
+<br> 
+ACTIVE_DATE: {{ activeDate }} -->
+
+<app-records 
+    [records]="history.records"
+    (setNewActiveRecord)="setActiveRecord($event)"
+    (setNewActiveDate)="setActiveDate($event)"
+    (newActiveId)="setActiveId($event)"
+>
+</app-records>
+
+<app-record-detail 
+    [record]="activeRecord"
+    [myPlan]="myPlan"
+    [activeDate]="activeDate"
+>
+</app-record-detail>

@@ -1,0 +1,31 @@
+<mat-card
+  class="available-marker-card marker-card"
+  fxLayout="column"
+  fxLayoutAlign="space-between"
+  *ngIf="!isInPlan"
+>
+  <mat-card-title fxLayoutAlign="center">{{ marker.name }}</mat-card-title>
+  
+  <mat-icon class="marker-icon">
+    {{ marker.iconName }}
+  </mat-icon>
+
+  <mat-card-actions 
+    fxLayoutAlign="center center"
+    fxLayout="column"  
+    fxLayoutGap="20px"
+  >
+    <div class="action-container">
+      <button 
+      class="edit-marker-button add-marker"
+        [disabled]="isInPlan" 
+        type="button"
+        mat-raised-button
+        (click)="addMarkerToPlan(marker)"
+      >
+        Add to My Plan
+      </button>
+    </div>
+  </mat-card-actions>
+  <mat-progress-bar *ngIf="isLoading === true" mode="indeterminate"></mat-progress-bar>
+</mat-card>

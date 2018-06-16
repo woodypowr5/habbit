@@ -1,0 +1,23 @@
+
+.available-marker-card{
+    height: 300px;
+    margin-bottom: 20px;
+}
+.edit-marker-button{
+    width: 100%;
+}
+.marker-icon{
+   height: 50px;
+   width: 50px;
+   font-size: 50px;
+   margin: 0 auto;
+} 
+.mat-card-actions{
+    margin-left: 0px;
+}
+mat-card-title{
+    height: 60px;
+}
+.available-marker-card{
+    justify-content: space-between;
+}

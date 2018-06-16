@@ -1,0 +1,21 @@
+<mat-tab-group>
+  <mat-tab label="My Plan">
+    <app-current-plan 
+      [availableMarkers]="availableMarkers"
+      [myPlan]="myPlan"
+    > 
+    </app-current-plan>
+  </mat-tab>
+  <mat-tab label="Edit">
+    <app-edit-plan 
+      [availableMarkers]="availableMarkers"
+      [myPlan]="myPlan"
+      (markerAddedToPlanParent)="addMarkerToPlan($event)"
+      (markerRemovedFromPlanParent)="removeMarkerFromPlan($event)"
+    >
+    </app-edit-plan>
+  </mat-tab>
+  <mat-tab label="Share">
+
+  </mat-tab>
+</mat-tab-group>

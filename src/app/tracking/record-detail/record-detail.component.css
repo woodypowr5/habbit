@@ -1,0 +1,10 @@
+mat-card{
+    margin-top: 20px;
+}
+h1{
+    width: 100%;
+    text-align: center;
+}
+app-record-entry, app-no-record{
+    min-height: 400px;
+}

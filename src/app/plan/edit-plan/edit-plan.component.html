@@ -1,0 +1,49 @@
+
+<section 
+  class="edit-plan" 
+  fxLayout="column"
+>  
+  <h1 class="header">Your Activities</h1>
+  <mat-card
+    class="active-markers" 
+    fxLayout 
+    fxLayoutAlign="start"
+    fxLayoutGap="20px" 
+  >
+    <app-active-marker-card
+      [marker]="marker"
+      [myPlan]="myPlan"
+      [isInPlan]="isInPlan(marker)"
+      (markerAddedToPlan)="addMarkerToPlan($event)"
+      (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
+      *ngFor="let marker of (myPlan !== null ? myPlan.markers: [])" 
+    >
+  
+    </app-active-marker-card>
+  </mat-card>
+
+  <mat-divider class="edit-plan-divider"> 
+      <h1 class="header">Add or Remove Activities</h1>
+  </mat-divider>
+ 
+  <mat-card
+    class="add-remove-markers" 
+    fxLayout 
+    fxLayoutAlign=""
+    fxLayoutGap="20px" 
+  >
+    <app-edit-marker-card
+      [marker]="marker"
+      [myPlan]="myPlan"
+      [isInPlan]="isInPlan(marker)"
+      (markerAddedToPlan)="addMarkerToPlan($event)"
+      (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
+      *ngFor="let marker of inactiveMarkers" 
+      fxFlex="200px" 
+      fxFlex.xs="100%"
+    >
+  
+    </app-edit-marker-card>
+  </mat-card>
+</section>
+  

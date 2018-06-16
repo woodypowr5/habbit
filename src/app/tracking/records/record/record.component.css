@@ -1,0 +1,111 @@
+
+.day{
+    margin: 4px;
+}
+.day:hover{
+    cursor: pointer;
+}
+h3{
+    text-align: center;
+}
+
+.record-exists{
+    background-image: url('/assets/images/greenCheckmark.png');
+    background-size: 100px 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.no-record{
+    text-align: center;
+}
+
+.today{
+    border: 3px solid #DEDEDE; 
+}
+
+.prev-day h3, .next-day h3{
+    color: #666;
+    font-size: 1.0em;
+}
+
+.prev-day, .next-day{
+    border: 2px solid #DDD;
+}
+
+.prev-day:hover, .next-day:hover{
+    border: 2px solid #CDCDCD;
+}
+
+
+.prev-prev-day, .next-next-day{
+    border: 1px solid #EFEFEF; 
+}
+.prev-prev-day:hover, .next-next-day:hover{
+    border: 1px solid #CDCDCD; 
+}
+.prev-prev-day h3, .next-next-day h3{
+    color: #999;
+    font-size: 0.95em;
+}
+
+.prev-prev-prev-day, .next-next-next-day{
+    border: 1px solid #EFEFEF; 
+}
+.prev-prev-prev-day:hover, .next-next-next-day:hover{
+    border: 1px solid #EEE; 
+}
+.prev-prev-prev-day h3, .next-next-next-day h3{
+    color: #BBB;
+    font-size: 0.80em;
+}
+
+.prev-day, .next-day{
+    top: 10px;
+}
+.prev-prev-day, .next-next-day{
+    top: 20px;
+} 
+.prev-prev-prev-day, .next-next-next-day{
+    top: 30px;
+}
+
+.record{
+    height: 200px;
+}
+.prev-day .record, .next-day .record{
+    height: 180px;
+}
+.prev-prev-day .record, .next-next-day .record{
+    height: 160px;
+}
+.prev-prev-prev-day .record, .next-next-next-day .record{
+    height: 140px;
+}
+
+@media (max-width: 800px) {
+    .record{
+        height: 120px;
+    }
+    .prev-day .record, .next-day .record{
+        height: 110px;
+    }
+    .prev-prev-day .record, .next-next-day .record{
+        height: 100px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .record{
+        height: 120px;
+    }
+    .prev-day .record, .next-day .record{
+        height: 110px;
+    }
+    .prev-prev-day .record, .next-next-day .record{
+        height: 100px;
+    }
+    .prev-prev-prev-day .record, .next-next-next-day .record{
+        height: 90px;
+    }
+}

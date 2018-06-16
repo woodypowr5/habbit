@@ -1,0 +1,16 @@
+.header{
+    margin-left: 20px;
+    font-size: 30px;
+}
+.edit-plan-divider{
+    padding-top: 10px;
+}
+.add-remove-markers{
+    flex-wrap: wrap;
+}
+.active-markers{
+    flex-wrap: wrap;
+}
+.action-container{
+    width: 100%;
+}

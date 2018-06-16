@@ -1,0 +1,11 @@
+<mat-radio-group>
+  <mat-radio-button value="marker.value1Name">{{ marker.value1Name }}</mat-radio-button>
+  <mat-radio-button value="marker.value2Name">{{ marker.value2Name }}</mat-radio-button>
+</mat-radio-group>
+
+<button 
+  mat-raised-button
+  (click)="save(currentValue)"
+>
+  Save
+</button>

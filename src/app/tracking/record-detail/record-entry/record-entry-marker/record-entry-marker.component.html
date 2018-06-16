@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title></mat-card-title>
+
+  <app-entry-form-boolean 
+    *ngIf="marker.dataType === 'boolean'"
+    [marker]="marker"
+  >
+  </app-entry-form-boolean>
+
+  <app-entry-form-enumerated 
+    *ngIf="marker.dataType === 'enumerated'"
+    [marker]="marker"
+  >
+  </app-entry-form-enumerated>
+
+  <app-entry-form-range 
+    *ngIf="marker.dataType === 'range'"
+    [marker] = "marker"
+    [initialValue] = "measurementPercentValue"
+    (saveMeasurement)="saveNewMeasurement($event)"
+  >
+  </app-entry-form-range>
+</mat-card>

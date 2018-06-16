@@ -1,0 +1,19 @@
+<mat-card
+  class="current-plan"  
+  
+>
+  <mat-list 
+    role="list"
+    fxLayout="column"
+    fxFlex="600px"
+    *ngIf="myPlan"
+  >
+  {{myPlan.name}}
+    <mat-list-item 
+      role="listitem"
+      *ngFor="let marker of myPlan.markers"
+    >
+    {{ marker.name }}
+    </mat-list-item>
+  </mat-list>
+</mat-card>

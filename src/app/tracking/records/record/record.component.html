@@ -1,0 +1,33 @@
+<mat-card
+  class="day"
+  fxLayout="column"
+  fxLayoutAlign="space-between"
+  (click)="setActiveDate(record, index, date)"
+  [ngClass]=
+  "{'today' : index === 3, 
+  'prev-day' : index === 2,
+  'prev-prev-day' : index === 1,
+  'prev-prev-prev-day' : index === 0,
+  'next-day' : index === 4,
+  'next-next-day' : index === 5,
+  'next-next-next-day': index === 6}"
+> 
+  <h3>{{ date }}</h3>
+  <mat-card
+    *ngIf="recordExistsForDay(); else no_record"
+    class="record record-exists"
+    fxLayout
+    fxLayoutAlign="space-around"
+  >
+  </mat-card>
+  <ng-template #no_record>
+  <mat-card 
+    fxLayout
+    fxLayoutAlign="space-around"
+    fxLayout="column"
+    class="record no-record"
+  >
+    No Entry
+  </mat-card>
+  </ng-template>
+</mat-card> 

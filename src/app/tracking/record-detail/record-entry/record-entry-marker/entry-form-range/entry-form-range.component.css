@@ -1,0 +1,20 @@
+mat-slider{
+    width: 100% !important; /* to override material design styles */
+    max-width: 500px !important;
+    position: relative;
+}
+.slider-labels{
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+.slider-label{
+    position: absolute;
+    top: -5px;
+}
+.slider-label.min{
+    left: 0px;
+}
+.slider-label.max{
+    right: 0px;
+}
