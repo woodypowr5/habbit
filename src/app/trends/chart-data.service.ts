@@ -1,3 +1,4 @@
+import { Marker } from './../../../../ngrx-06-bugfix/src/app/shared/types/marker.model';
 import { DateService } from './../shared/date.service';
 import { Datapoint } from './../shared/types/datapoint.model';
 import { Measurement } from './../shared/types/measurement.model';
@@ -58,6 +59,16 @@ export class ChartDataService {
       series.series = seriesLookup[series.name];
     });
     return seriesData;
+  }
+
+  filterSeriesData(includeMarkers: string[], seriesData: any): any[] {
+    const filteredSeriesData: any[] = [];
+    includeMarkers.map(markerName => {
+      filteredSeriesData.push (seriesData.filter(series => {
+        return series.name === markerName;
+      })[0]);
+    });
+    return filteredSeriesData;
   }
 }
 

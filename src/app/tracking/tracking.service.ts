@@ -23,7 +23,9 @@ export class TrackingService {
   constructor(
     private db: AngularFirestore,
     private dateService: DateService
-  ) {}
+  ) {
+    db.firestore.settings({ timestampsInSnapshots: false });
+  }
 
   fetchHistoryByUserId(userId: string): void {
     this.userId = userId;
@@ -49,7 +51,6 @@ export class TrackingService {
           this.history = {
             records: historyData
           };
-          console.log(this.history);
           this.historyChanged.next(this.history);
         },
         error => {}
