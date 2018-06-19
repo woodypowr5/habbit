@@ -9,3 +9,6 @@ html, body {
 body {
   margin: 0;
 }
+.line{
+  stroke-width: 3px !important;
+}

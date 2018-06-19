@@ -65,18 +65,24 @@ export class ChartDataService {
   }
 
   filterDataBySeries(includeMarkers: string[], seriesData: any): any[] {
-    // console.log(includeMarkers);
     const filteredSeriesData: any[] = [];
     includeMarkers.map(markerName => {
       filteredSeriesData.push (seriesData.filter(series => {
         return series.name === markerName;
       })[0]);
     });
-    // console.log(filteredSeriesData);
     return filteredSeriesData;
   }
 
   computeMovingAverage(rawData: any) {
+    const seriesData: any = [];
+    rawData.map(series => {
+      seriesData.push({
+        name:  series.name,
+        series: this.computeSeriesMovingAverage(series.series, 3)
+      });
+    });
+    return seriesData;
   }
 
   computeGlobalAverage(rawData: any) {
@@ -86,18 +92,36 @@ export class ChartDataService {
         name:  series.name,
         series: this.computeSeriesGlobalAverage(series.series)
       });
-      // seriesData.push({
-      //   name: series.name,
-      //   series: series.series
-      // });
     });
     return seriesData;
   }
 
-  computeSeriesGlobalAverage(seriesData): any {
+  computeSeriesMovingAverage(seriesData: any, relevantPeriod: number): any {
     seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
-    // console.log("ORIGINAL SERIES DATA: ");
-    // console.log(seriesData);
+    const newSeriesData = [];
+    seriesData.map(((dataPoint, index) => {
+      let relevantSeries;
+      if (index - relevantPeriod >= 0) {
+        relevantSeries = seriesData.slice(index - relevantPeriod, index);
+      } else {
+        relevantSeries = seriesData.slice(0, index);
+      }
+      const relevantValues = [];
+      relevantSeries.map(relevantDataPoint => {
+        relevantValues.push(relevantDataPoint.value);
+      });
+      if (relevantValues.length > 0) {
+        newSeriesData.push({
+          name: dataPoint.name,
+          value: jStat.mean(relevantValues)
+        });
+      }
+    }));
+    return newSeriesData;
+  }
+
+  computeSeriesGlobalAverage(seriesData: any): any {
+    seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
     const newSeriesData = [];
     seriesData.map(((dataPoint, index) => {
       const relevantSeries = seriesData.slice(0, index);
@@ -112,13 +136,7 @@ export class ChartDataService {
         });
       }
     }));
-    // console.log("AVERAGES: ");
-    // console.log(newSeriesData);
     return newSeriesData;
-  }
-
-  computeSeriesMovingAverage() {
-
   }
 }
 

@@ -9,8 +9,6 @@ export class DataSortingService {
 
   sortObjectsByKey(objects: any[], key: string): any[] {
     function compare(a, b) {
-      // const genreA = a.genre.toUpperCase();
-      // const genreB = b.genre.toUpperCase();
       const genreA = a[key];
       const genreB = b[key];
       let comparison = 0;
