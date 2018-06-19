@@ -1,3 +1,4 @@
+import { DataSortingService } from './../shared/data-sorting-service';
 import { Marker } from './../../../../ngrx-06-bugfix/src/app/shared/types/marker.model';
 import { DateService } from './../shared/date.service';
 import { Datapoint } from './../shared/types/datapoint.model';
@@ -12,7 +13,7 @@ import * as jStat from 'jStat';
 @Injectable()
 export class ChartDataService {
 
-  constructor(private dateService: DateService) { }
+  constructor(private dateService: DateService, private dataSortingService: DataSortingService) { }
 
   formatToDatapoints(records: Record[], includeMarkers: [string, string], dateRange: [Date, Date]): Datapoint[] {
     const datapoints: Datapoint[] = [];
@@ -64,13 +65,14 @@ export class ChartDataService {
   }
 
   filterDataBySeries(includeMarkers: string[], seriesData: any): any[] {
-    console.log(includeMarkers);
+    // console.log(includeMarkers);
     const filteredSeriesData: any[] = [];
     includeMarkers.map(markerName => {
       filteredSeriesData.push (seriesData.filter(series => {
         return series.name === markerName;
       })[0]);
     });
+    // console.log(filteredSeriesData);
     return filteredSeriesData;
   }
 
@@ -93,6 +95,9 @@ export class ChartDataService {
   }
 
   computeSeriesGlobalAverage(seriesData): any {
+    seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
+    // console.log("ORIGINAL SERIES DATA: ");
+    // console.log(seriesData);
     const newSeriesData = [];
     seriesData.map(((dataPoint, index) => {
       const relevantSeries = seriesData.slice(0, index);
@@ -107,6 +112,8 @@ export class ChartDataService {
         });
       }
     }));
+    // console.log("AVERAGES: ");
+    // console.log(newSeriesData);
     return newSeriesData;
   }
 

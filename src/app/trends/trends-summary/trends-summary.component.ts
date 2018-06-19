@@ -31,11 +31,14 @@ export class TrendsSummaryComponent implements OnInit {
   showLegend = true;
   showXAxisLabel = true;
   xAxisLabel = 'Date';
+  yScaleMin = 1;
+  yScaleMax = 5;
   showYAxisLabel = true;
   // yAxisLabel = 'Color Value';
   timeline = true;
   colorScheme = Constants.chartColorScheme;
   autoScale = true;
+  curve = Constants.chartCurveFunctions.summary.raw;
 
   constructor(private chartDataService: ChartDataService) {}
 
@@ -48,11 +51,13 @@ export class TrendsSummaryComponent implements OnInit {
 
   seriesVisibilityChanged(event): void {
     this.visibleSeries = event.value;
+    this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
   }
 
   trendTypeChanged(event): void {
     this.selectedTrendType = event.value;
+    this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
   }
 }

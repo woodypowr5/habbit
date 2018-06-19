@@ -6,6 +6,8 @@
             [gradient]="gradient"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
+            [yScaleMin]="yScaleMin"
+            [yScaleMax]="yScaleMax"
             [legend]="showLegend"
             [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel"
@@ -13,6 +15,7 @@
             [yAxisLabel]="yAxisLabel"
             [autoScale]="autoScale"
             [timeline]="timeline"
+            [curve]="curve"
             (select)="onSelect($event)">
         </ngx-charts-line-chart>
     </div>
