@@ -15,8 +15,14 @@ import { BrowserModule } from '@angular/platform-browser';
 export class TrendsSummaryComponent implements OnInit {
   @Input() records: Record[];
   @Input() plan: Plan;
-  private seriesData: any[];
+  private seriesData: any = {
+    raw: [],
+    movingAverage: [],
+    globalAverage: []
+  };
   private filteredSeriesData: any[] = [];
+  private selectedTrendType = 'raw';
+  private visibleSeries: string[] = [];
 
   // chart config
   showXAxis = true;
@@ -34,15 +40,19 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    this.seriesData = this.chartDataService.createSeriesData(this.records, this.plan);
-    this.filteredSeriesData = this.chartDataService.filterSeriesData([this.plan.markers[0].name], this.seriesData);
+    this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
+    this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
+    this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
+    this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0].name], this.seriesData.raw);
   }
 
   seriesVisibilityChanged(event): void {
-    this.filteredSeriesData = this.chartDataService.filterSeriesData(event.value, this.seriesData);
+    this.visibleSeries = event.value;
+    this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
   }
 
   trendTypeChanged(event): void {
-    console.log(event);
+    this.selectedTrendType = event.value;
+    this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
   }
 }

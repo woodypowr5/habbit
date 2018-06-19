@@ -6,6 +6,8 @@ import { Record } from './../shared/types/record.model';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Plan } from '../plan/plan.model';
+import { raw } from 'body-parser';
+import * as jStat from 'jStat';
 
 @Injectable()
 export class ChartDataService {
@@ -35,9 +37,9 @@ export class ChartDataService {
     return null;
   }
 
-  createSeriesData(records: Record[], plan: Plan): any {
-    const seriesLookup = {};
-    const seriesData = [];
+  computeRawData(records: Record[], plan: Plan): any {
+    const seriesLookup: any = {};
+    const seriesData: any = [];
     plan.markers.map( marker => {
       seriesLookup[marker.name] = [];
       seriesData.push({
@@ -61,7 +63,8 @@ export class ChartDataService {
     return seriesData;
   }
 
-  filterSeriesData(includeMarkers: string[], seriesData: any): any[] {
+  filterDataBySeries(includeMarkers: string[], seriesData: any): any[] {
+    console.log(includeMarkers);
     const filteredSeriesData: any[] = [];
     includeMarkers.map(markerName => {
       filteredSeriesData.push (seriesData.filter(series => {
@@ -69,6 +72,46 @@ export class ChartDataService {
       })[0]);
     });
     return filteredSeriesData;
+  }
+
+  computeMovingAverage(rawData: any) {
+  }
+
+  computeGlobalAverage(rawData: any) {
+    const seriesData: any = [];
+    rawData.map(series => {
+      seriesData.push({
+        name:  series.name,
+        series: this.computeSeriesGlobalAverage(series.series)
+      });
+      // seriesData.push({
+      //   name: series.name,
+      //   series: series.series
+      // });
+    });
+    return seriesData;
+  }
+
+  computeSeriesGlobalAverage(seriesData): any {
+    const newSeriesData = [];
+    seriesData.map(((dataPoint, index) => {
+      const relevantSeries = seriesData.slice(0, index);
+      const relevantValues = [];
+      relevantSeries.map(relevantDataPoint => {
+        relevantValues.push(relevantDataPoint.value);
+      });
+      if (relevantValues.length > 0) {
+        newSeriesData.push({
+          name: dataPoint.name,
+          value: jStat.mean(relevantValues)
+        });
+      }
+    }));
+    return newSeriesData;
+  }
+
+  computeSeriesMovingAverage() {
+
   }
 }
 
