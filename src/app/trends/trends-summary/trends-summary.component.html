@@ -45,6 +45,10 @@
     
         >
             <mat-button-toggle value="raw">Raw Measurements</mat-button-toggle>
+            <app-tooltip 
+                [displayText]="tooltipText.trendTypeButtons.rawMeasurements"
+                [id]="tooltipRawMeasurements"
+            ></app-tooltip>
             <mat-button-toggle value="movingAverage">Moving Average</mat-button-toggle>
             <mat-button-toggle value="globalAverage">Global Average</mat-button-toggle>
         </mat-button-toggle-group>

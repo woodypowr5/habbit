@@ -27,13 +27,13 @@ export class RecordEntryMarkerComponent implements OnInit {
   }
 
   saveNewMeasurement(measurement: Measurement): void {
-    if (measurement.value !== undefined) {
+    if (measurement.value !== undefined && this.marker.dataType === 'range') {
       measurement.value = this.calculationService.translatePercentageToValue(
         this.marker.min,
         this.marker.max,
         measurement.value
       );
-    } else {
+    } else if (measurement.value === undefined) {
       measurement.value = undefined;
     }
     this.saveMeasurement.emit(measurement);

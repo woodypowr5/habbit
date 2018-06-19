@@ -19,6 +19,7 @@ import { RecordEntryMarkerComponent } from './record-detail/record-entry/record-
 import { EntryFormRangeComponent } from './record-detail/record-entry/record-entry-marker/entry-form-range/entry-form-range.component';
 import { EntryFormEnumeratedComponent } from './record-detail/record-entry/record-entry-marker/entry-form-enumerated/entry-form-enumerated.component';
 import { EntryFormBooleanComponent } from './record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
+import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EntryFormBooleanComponent } from './record-detail/record-entry/record-e
     RecordEntryMarkerComponent,
     EntryFormRangeComponent,
     EntryFormEnumeratedComponent,
-    EntryFormBooleanComponent
+    EntryFormBooleanComponent,
+    TooltipComponent
   ],
   imports: [
     SharedModule,

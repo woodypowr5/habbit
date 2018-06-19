@@ -33,7 +33,7 @@ import { RecordsComponent } from './tracking/records/records.component';
     AppComponent,
     WelcomeComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
   ],
   imports: [
     BrowserModule,

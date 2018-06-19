@@ -10,13 +10,15 @@ import { TrendsSummaryComponent } from './trends-summary/trends-summary.componen
 import { TrendsDailyComponent } from './trends-daily/trends-daily.component';
 import { TrendsLinkedComponent } from './trends-linked/trends-linked.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
 
 @NgModule({
     declarations: [
         TrendsComponent,
         TrendsSummaryComponent,
         TrendsDailyComponent,
-        TrendsLinkedComponent
+        TrendsLinkedComponent,
+        TooltipComponent
     ],
     imports: [
         SharedModule,

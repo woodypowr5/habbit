@@ -6,18 +6,21 @@
             <mat-expansion-panel-header
             >
                 <mat-panel-title>
-                {{ marker.name }}
+                    {{ marker.name }}
                 </mat-panel-title>
+
                 <mat-panel-description 
                     *ngIf = "measurements[i] && marker.dataType === 'range'"
                 >
-                {{ measurements[i].value }} / {{ marker.max }}
+                    {{ measurements[i].value }} / {{ marker.max }}
                 </mat-panel-description>
+
                 <mat-panel-description 
                     *ngIf = "measurements[i] && marker.dataType === 'boolean'"
                 >
-                {{ measurements[i].value }} / {{ marker.max }}
+                    {{ measurements[i].value }}
                 </mat-panel-description>
+                
             </mat-expansion-panel-header>
             <app-record-entry-marker
                 [marker]="marker"
