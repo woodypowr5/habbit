@@ -34,8 +34,7 @@ import { TooltipComponent } from '../shared/components/tooltip/tooltip.component
     RecordEntryMarkerComponent,
     EntryFormRangeComponent,
     EntryFormEnumeratedComponent,
-    EntryFormBooleanComponent,
-    TooltipComponent
+    EntryFormBooleanComponent
   ],
   imports: [
     SharedModule,

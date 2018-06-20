@@ -1,0 +1,9 @@
+img{
+    width: 12px;
+    position: absolute;
+    top: -16px;
+    right: 0px;
+}
+::ng-deep .mat-tooltip {
+    font-size: 0.9em;
+}

@@ -45,7 +45,7 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    console.log(this.TooltipText);
+    console.log(this.tooltipText);
     this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
     this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
     this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);

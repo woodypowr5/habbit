@@ -17,8 +17,7 @@ import { TooltipComponent } from '../shared/components/tooltip/tooltip.component
         TrendsComponent,
         TrendsSummaryComponent,
         TrendsDailyComponent,
-        TrendsLinkedComponent,
-        TooltipComponent
+        TrendsLinkedComponent
     ],
     imports: [
         SharedModule,

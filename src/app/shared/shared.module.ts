@@ -15,6 +15,9 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
     MaterialModule,
     FlexLayoutModule
   ],
+  declarations: [
+    TooltipComponent
+  ],
   providers: [
     DateService
   ],
@@ -22,7 +25,8 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
     CommonModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TooltipComponent
   ]
 })
 export class SharedModule {}

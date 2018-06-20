@@ -3,8 +3,8 @@ import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/ma
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1000,
-  hideDelay: 1000,
-  touchendHideDelay: 1000,
+  hideDelay: 400,
+  touchendHideDelay: 200,
 };
 
 @Component({

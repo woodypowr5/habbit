@@ -9,4 +9,6 @@
 .series-visibility, .trend-type{
     width: 50%;
 }
-
+.mat-button-toggle-group{
+    overflow: visible;
+}
