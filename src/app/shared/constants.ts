@@ -15,5 +15,6 @@ export const Constants = {
             movingAverage: shape.curveCatmullRom.alpha(1),
             globalAverage: shape.curveCatmullRom.alpha(1)
         }
-    }
+    },
+    tooltipTypes: ['description', 'details']
 };

@@ -1,8 +1,17 @@
 <img 
-    mat-raised-button
-    matTooltip="{{ displayText }}"
-    matTooltipPosition="above"
-    aria-tooltip="Hint"
-    src="assets/images/info.svg"
+  *ngIf="iconCategory === 'details'"
+  mat-raised-button
+  matTooltip="{{ displayText }}"
+  matTooltipPosition="above"
+  aria-tooltip="Hint"
+  src="assets/images/details.svg"
 />
  
+<img 
+  *ngIf="iconCategory === 'description'"
+  mat-raised-button
+  matTooltip="{{ displayText }}"
+  matTooltipPosition="above"
+  aria-tooltip="Hint"
+  src="assets/images/description.svg"
+/>

@@ -25,6 +25,7 @@ export class TrendsSummaryComponent implements OnInit {
   private selectedTrendType = 'raw';
   private visibleSeries: string[] = [];
   private tooltipText = TooltipText.trends.summary;
+  private displayText: any;
 
   // chart config
   showXAxis = true;
@@ -45,7 +46,6 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    console.log(this.tooltipText);
     this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
     this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
     this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
@@ -62,5 +62,13 @@ export class TrendsSummaryComponent implements OnInit {
     this.selectedTrendType = event.value;
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
+  }
+
+  computeDisplayText() {
+    console.log("computing");
+  }
+
+  formatMarkerName(name) {
+    console.log(name)
   }
 }

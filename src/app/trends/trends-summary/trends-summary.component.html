@@ -28,13 +28,20 @@
     fxLayoutGap="20px"
     >
     <mat-card class="series-visibility">
+
         <mat-card-title>Visible Data:</mat-card-title>
         <mat-button-toggle-group 
             value="{{[plan.markers[0].name]}}"  
             multiple 
             (change)="seriesVisibilityChanged($event)"
         >
-            <mat-button-toggle value="{{marker.name}}" *ngFor="let marker of plan.markers">{{ marker.name }}</mat-button-toggle>
+            <mat-button-toggle 
+                value="{{marker.name}}" 
+                *ngFor="let marker of plan.markers"
+            >
+                {{ marker.name }}
+            </mat-button-toggle>
+
         </mat-button-toggle-group>
     </mat-card> 
     <mat-card class="trend-type">
@@ -48,6 +55,7 @@
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.rawMeasurements"
                     [id]="tooltipRawMeasurements"
+                    [type]="'description'"
                 ></app-tooltip>
             </mat-button-toggle>
             
@@ -56,6 +64,7 @@
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.movingAverage"
                     [id]="tooltipMovingAverage"
+                    [type]="'description'"
                 ></app-tooltip>
             </mat-button-toggle>
             
@@ -64,6 +73,7 @@
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.globalAverage"
                     [id]="tooltipGlobalAverage"
+                    [type]="'description'"
                 ></app-tooltip>
             </mat-button-toggle>
 

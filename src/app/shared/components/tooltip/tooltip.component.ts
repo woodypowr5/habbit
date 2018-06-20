@@ -1,10 +1,11 @@
+import { Constants } from './../../constants';
 import { Component, OnInit, Input } from '@angular/core';
 import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1000,
-  hideDelay: 400,
-  touchendHideDelay: 200,
+  hideDelay: 200,
+  touchendHideDelay: 100,
 };
 
 @Component({
@@ -16,12 +17,18 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   ],
 })
 export class TooltipComponent implements OnInit {
-  @Input() displayText;
-  @Input() id;
+  @Input() displayText: string;
+  @Input() id: string;
+  @Input() type: string;
+  private iconCategory = 'description';
+  private allTypes = Constants.tooltipTypes;
 
   constructor() { }
 
   ngOnInit() {
+    if (this.type.length > 0) {
+      this.iconCategory = this.type;
+    }
   }
 
 }
