@@ -9,7 +9,7 @@
       <img src="assets/images/Untitled.png" alt="">
     </a>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+  <div class="navlinks-container" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li *ngIf="!(isAuth$ | async)">
         <a routerLink="/signup">Signup</a>
@@ -18,13 +18,13 @@
         <a routerLink="/login">Login</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a routerLink="/plan">My Plan</a>
+        <a routerLink="/plan">Plan</a>
       </li>
       <li *ngIf="isAuth$ | async">
         <a routerLink="/tracking">Today</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a routerLink="/trends">My Trends</a>
+        <a routerLink="/trends">Trends</a>
       </li>
       <li *ngIf="isAuth$ | async">
         <a style="cursor: pointer" (click)="onLogout()">Logout</a>
