@@ -1,4 +1,6 @@
-
+mat-card {
+    padding: 12px;
+}
 .day{
     margin: 4px;
 }
@@ -10,7 +12,7 @@ h3{
 }
 
 .record-exists{
-    background-image: url('/assets/images/greenCheckmark.png');
+    background-image: url('/assets/images/check.svg');
     background-size: 100px 100px;
     background-position: center center;
     background-repeat: no-repeat;
@@ -76,11 +78,23 @@ h3{
 .prev-day .record, .next-day .record{
     height: 180px;
 }
+.prev-day .record, .next-day .record{
+    background-size: 85px 85px;  
+    opacity: 0.85;
+}
 .prev-prev-day .record, .next-next-day .record{
     height: 160px;
 }
+.prev-prev-day .record, .next-next-day .record{
+    background-size: 73px 73px;  
+    opacity: 0.7;
+}
 .prev-prev-prev-day .record, .next-next-next-day .record{
     height: 140px;
+}
+.prev-prev-prev-day .record, .next-next-next-day .record{
+    background-size: 60px 60px; 
+    opacity: 0.55; 
 }
 
 @media (max-width: 800px) {
@@ -107,5 +121,8 @@ h3{
     }
     .prev-prev-prev-day .record, .next-next-next-day .record{
         height: 90px;
+    }
+    .record-exists{
+        background-size: 70px 70px;  
     }
 }

@@ -1,3 +1,9 @@
+@media (min-width: 1400px) {
+    mat-expansion-panel{
+        width: 70%;
+        margin-left: 15%;
+    }
+}
 mat-expansion-panel-header{
     height: 80px !important;
 }
@@ -9,5 +15,5 @@ mat-panel-description{
 }
 mat-card{
     min-height: 300px;
-    background-color: #FFECD4;
+    /* background-color: #FFECD4; */
 }
