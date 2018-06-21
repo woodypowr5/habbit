@@ -7,7 +7,7 @@ export const Constants = {
     },
     numVisibleDailyRecords: 7,
     chartColorScheme: {
-        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+        domain: ['#5AA454', '#0097A7', '#9E9D24', '#757575', '#1976D2', '#01579B', '#212121']
     },
     chartCurveFunctions: {
         summary: {
