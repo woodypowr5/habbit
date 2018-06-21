@@ -37,7 +37,7 @@ export class TrendsSummaryComponent implements OnInit {
   yScaleMin = 1;
   yScaleMax = 5;
   showYAxisLabel = true;
-  // yAxisLabel = 'Color Value';
+  yAxisLabel = 'Logged Value';
   timeline = true;
   colorScheme = Constants.chartColorScheme;
   autoScale = true;
@@ -46,6 +46,7 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
+    this.visibleSeries = [this.plan.markers[0].name];
     this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
     this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
     this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
@@ -53,22 +54,12 @@ export class TrendsSummaryComponent implements OnInit {
   }
 
   seriesVisibilityChanged(event): void {
-    this.visibleSeries = event.value;
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
   }
 
   trendTypeChanged(event): void {
-    this.selectedTrendType = event.value;
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
-  }
-
-  computeDisplayText() {
-    console.log("computing");
-  }
-
-  formatMarkerName(name) {
-    console.log(name)
   }
 }
