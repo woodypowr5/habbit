@@ -15,15 +15,27 @@ export class ChartDataService {
 
   constructor(private dateService: DateService, private dataSortingService: DataSortingService) { }
 
-  formatToDatapoints(records: Record[], includeMarkers: [string, string], dateRange: [Date, Date]): Datapoint[] {
+  formatToDatapoints(records: Record[], includeMarkers: [string, string]): any {
     const datapoints: Datapoint[] = [];
     records.map(record => {
       const newDatapoint: Datapoint = {
+        name: record.date,
         x: this.getMeasurementValueFromRecord(record, includeMarkers[0]),
-        y: this.getMeasurementValueFromRecord(record, includeMarkers[1])
+        y: this.getMeasurementValueFromRecord(record, includeMarkers[1]),
+        r: 1
       };
       if (newDatapoint.x !== null && newDatapoint.y !== null) {
-        datapoints.push(newDatapoint);
+        let foundDuplicate = false;
+        for (let i = 0; i < datapoints.length; i++) {
+          if (datapoints[i].x === newDatapoint.x && datapoints[i].y === newDatapoint.y) {
+            datapoints[i].r++;
+            foundDuplicate = true;
+            break;
+          }
+        }
+        if (foundDuplicate === false) {
+          datapoints.push(newDatapoint);
+        }
       }
     });
     return datapoints;
@@ -138,5 +150,37 @@ export class ChartDataService {
     }));
     return newSeriesData;
   }
+
+  computeScatterSeries(records: Record[], includeMarkers: [string, string]) {
+    const datapoints: Datapoint[] = this.formatToDatapoints(records, includeMarkers);
+    return [{
+      name: 'stuff',
+      series: datapoints
+    }];
+  }
 }
+
+
+
+// "name": "Germany",
+//     "series": [
+//       {
+//         "name": "2010",
+//         "x": "2010-01-01T08:00:00.000Z",
+//         "y": 80.3,
+//         "r": 80.4
+//       },
+//       {
+//         "name": "2000",
+//         "x": "2000-01-01T08:00:00.000Z",
+//         "y": 80.3,
+//         "r": 78
+//       },
+//       {
+//         "name": "1990",
+//         "x": "1990-01-01T08:00:00.000Z",
+//         "y": 75.4,
+//         "r": 79
+//       }
+//     ]
 
