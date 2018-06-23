@@ -31,13 +31,10 @@ export class TrendsLinkedComponent implements OnInit {
   showYAxis = true;
   showLegend = true;
   showXAxisLabel = true;
-  yScaleMin = 1000;
-  yScaleMax = 5000;
-  xScaleMin = 1000;
-  xScaleMax = 5000;
   showYAxisLabel = true;
   colorScheme = Constants.chartColorScheme;
   autoScale = true;
+  showGridLines = true;
 
   constructor(private chartDataService: ChartDataService) {}
 
@@ -53,10 +50,7 @@ export class TrendsLinkedComponent implements OnInit {
   }
 
   seriesVisibilityChanged(event): void {
-    if (event.value.length > 2) {
-      event.value.shift();
-    }
-    this.visibleSeries = event.value;
+    console.log(event)
     this.seriesData.simpleComparison = this.chartDataService.computeScatterSeries(
       this.records,
       [this.visibleSeries[0], this.visibleSeries[1]]
@@ -65,5 +59,22 @@ export class TrendsLinkedComponent implements OnInit {
   }
 
   trendTypeChanged(event): void {
+
   }
+
+  // isDisabled(whichSeries: number, markerName: string) {
+  //   console.log(whichSeries);
+  //   console.log(this.visibleSeries);
+  //   console.log(markerName);
+  //   if (whichSeries === 0 && this.visibleSeries[1] === markerName) {
+  //     console.log("Here")
+  //     return 1;
+  //   }
+  //   if (whichSeries === 1 && this.visibleSeries[0] === markerName) {
+  //     console.log("Here")
+  //     return 1;
+  //   }
+  //   console.log("not here")
+  //   return 0;
+  // }
 }

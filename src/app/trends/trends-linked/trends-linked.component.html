@@ -11,6 +11,7 @@
       [xAxisLabel]="xAxisLabel"
       [yAxisLabel]="yAxisLabel"
       [autoScale]="autoScale"
+      [showGridLines] = "showGridLines"
       (select)="onSelect($event)">
       </ngx-charts-bubble-chart>
   </div>
@@ -23,55 +24,68 @@
   fxLayoutGap="20px"
   >
   <mat-card class="series-visibility">
+    <mat-card-title>Compare: </mat-card-title> 
 
-      <mat-card-title>Visible Data:</mat-card-title>
-      <mat-button-toggle-group 
-          [(ngModel)]="visibleSeries"
-          multiple 
-          (change)="seriesVisibilityChanged($event)"
-      >
-          <mat-button-toggle 
-              value="{{marker.name}}" 
-              *ngFor="let marker of plan.markers"
-          >
-              {{ marker.name }}
-          </mat-button-toggle>
+        <mat-select 
+            [(ngModel)]="visibleSeries[0]"
+            (selectionChange)="seriesVisibilityChanged($event)"
+        >
+            <mat-option 
+                *ngFor="let marker of plan.markers"    
+                value="{{ marker.name }}"
+            >
+                {{ marker.name }}
+            </mat-option>
+        </mat-select>
 
-      </mat-button-toggle-group>
-  </mat-card> 
-  <mat-card class="trend-type">
-      <mat-card-title>Trend Type:</mat-card-title>
-      <mat-button-toggle-group 
-          [(ngModel)]="selectedTrendType"
-          value="raw" 
-          (change)="trendTypeChanged($event)"
-      >
-          <mat-button-toggle value="simpleComparison">
-              Simple Comparison
-              <app-tooltip 
-                  [displayText]="tooltipText.chartTypeButtons.simpleComparison"
-                  [id]="tooltipSimpleComparison"
-                  [type]="'description'"
-              ></app-tooltip>
-          </mat-button-toggle>
-          
-          <mat-button-toggle value="correlationProfile">
-              Correlation Profile
-              <app-tooltip 
-                  [displayText]="tooltipText.chartTypeButtons.correlationProfile"
-                  [id]="tooltipCorrelationProfile"
-                  [type]="'description'"
-              ></app-tooltip>
-          </mat-button-toggle>
-          
-          <mat-button-toggle value="bayesianAnalysis">
-              Bayesian Anaylsis
-              <app-tooltip 
-                  [displayText]="tooltipText.chartTypeButtons.bayesianAnalysis"
-                  [id]="tooltipBayesianAnalysis"
-                  [type]="'description'"
-              ></app-tooltip>
-          </mat-button-toggle>
+        With
+
+        <mat-select 
+            [(ngModel)]="visibleSeries[1]"
+            (selectionChange)="seriesVisibilityChanged($event)"
+        >
+            <mat-option 
+                *ngFor="let marker of plan.markers" 
+                value="{{ marker.name }}"
+            >
+                {{ marker.name }}
+            </mat-option>
+        </mat-select>
+
+    </mat-card> 
+    <mat-card class="trend-type">
+        <mat-card-title>Trend Type:</mat-card-title>
+        <mat-button-toggle-group 
+            [(ngModel)]="selectedTrendType"
+            value="raw" 
+            (change)="trendTypeChanged($event)"
+        >
+            <mat-button-toggle value="simpleComparison">
+                Simple Comparison
+                <app-tooltip 
+                    [displayText]="tooltipText.chartTypeButtons.simpleComparison"
+                    [id]="tooltipSimpleComparison"
+                    [type]="'description'"
+                ></app-tooltip>
+            </mat-button-toggle>
+            
+            <mat-button-toggle value="correlationProfile">
+                Correlation Profile
+                <app-tooltip 
+                    [displayText]="tooltipText.chartTypeButtons.correlationProfile"
+                    [id]="tooltipCorrelationProfile"
+                    [type]="'description'"
+                ></app-tooltip>
+            </mat-button-toggle>
+            
+            <mat-button-toggle value="bayesianAnalysis">
+                Bayesian Anaylsis
+                <app-tooltip 
+                    [displayText]="tooltipText.chartTypeButtons.bayesianAnalysis"
+                    [id]="tooltipBayesianAnalysis"
+                    [type]="'description'"
+                ></app-tooltip>
+            </mat-button-toggle>
 
       </mat-button-toggle-group>
   </mat-card> 

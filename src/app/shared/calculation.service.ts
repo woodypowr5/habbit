@@ -22,6 +22,7 @@ export class CalculationService {
     }
 
     translatePercentageToValue(min: number, max: number, percentage: number): number {
+        console.log((percentage * (max - min) / 100) + min)
         return (percentage * (max - min) / 100) + min;
     }
 
