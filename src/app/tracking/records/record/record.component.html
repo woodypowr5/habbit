@@ -14,20 +14,26 @@
 > 
   <h3>{{ date }}</h3>
   <mat-card
-    *ngIf="recordExistsForDay(); else no_record"
     class="record record-exists"
     fxLayout
     fxLayoutAlign="space-around"
   >
-  </mat-card>
-  <ng-template #no_record>
-  <mat-card 
+    <div class="record-checked-wrapper" fxLayou fxFlexAlign="center">
+      <div class="record-checked"
+      *ngIf="recordExistsForDay()">
+
+      </div>
+    </div>
+
+</mat-card>
+  <!-- <ng-template #no_record> -->
+  <!-- <mat-card 
     fxLayout
     fxLayoutAlign="space-around"
     fxLayout="column"
     class="record no-record"
-  >
+  > 
     No Entry
   </mat-card>
-  </ng-template>
+  </ng-template> -->
 </mat-card> 
