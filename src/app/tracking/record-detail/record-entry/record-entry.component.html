@@ -1,5 +1,8 @@
-<mat-card>
-    <mat-accordion>
+<mat-card
+    fxLayout    
+    fxLayoutGap="50px"
+>
+    <mat-accordion class="record-details-markers" >
         <mat-expansion-panel 
             *ngFor="let marker of myPlan.markers; let i = index"
         > 
@@ -30,4 +33,10 @@
             </app-record-entry-marker>
         </mat-expansion-panel>
     </mat-accordion>
+    
+    <app-record-marker-details>
+    </app-record-marker-details>
 </mat-card>
+
+
+  
