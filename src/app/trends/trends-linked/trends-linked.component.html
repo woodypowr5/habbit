@@ -17,41 +17,50 @@
   </div>
 </mat-card>    
 
-<mat-card 
+<mat-card
   class="chart-controls-container"
   fxLayout
   fxLayoutAlign="space-between"
   fxLayoutGap="20px"
   >
-  <mat-card class="series-visibility">
-    <mat-card-title>Compare: </mat-card-title> 
-
-        <mat-select 
-            [(ngModel)]="visibleSeries[0]"
-            (selectionChange)="seriesVisibilityChanged($event)"
+    <mat-card 
+        class="series-visibility"
+    >
+        <mat-card-title>Compare: </mat-card-title> 
+        <div 
+            class="select-series-container"
+            fxLayout
+            fxLayoutGap="40px"
         >
-            <mat-option 
-                *ngFor="let marker of plan.markers"    
-                value="{{ marker.name }}"
+            
+            <mat-select 
+                [(ngModel)]="visibleSeries[0]"
+                (selectionChange)="seriesVisibilityChanged($event)"
             >
-                {{ marker.name }}
-            </mat-option>
-        </mat-select>
-
-        With
-
-        <mat-select 
-            [(ngModel)]="visibleSeries[1]"
-            (selectionChange)="seriesVisibilityChanged($event)"
-        >
-            <mat-option 
-                *ngFor="let marker of plan.markers" 
-                value="{{ marker.name }}"
+                <mat-option 
+                    *ngFor="let marker of plan.markers"    
+                    value="{{ marker.name }}"
+                >
+                    {{ marker.name }}
+                </mat-option>
+            </mat-select>
+    
+            <span class="select-series-spacer">   
+                - with -
+            </span>    
+    
+            <mat-select 
+                [(ngModel)]="visibleSeries[1]"
+                (selectionChange)="seriesVisibilityChanged($event)"
             >
-                {{ marker.name }}
-            </mat-option>
-        </mat-select>
-
+                <mat-option 
+                    *ngFor="let marker of plan.markers" 
+                    value="{{ marker.name }}"
+                >
+                    {{ marker.name }}
+                </mat-option>
+            </mat-select>
+        </div>
     </mat-card> 
     <mat-card class="trend-type">
         <mat-card-title>Trend Type:</mat-card-title>

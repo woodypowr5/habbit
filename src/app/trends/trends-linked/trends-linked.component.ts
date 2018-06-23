@@ -50,7 +50,6 @@ export class TrendsLinkedComponent implements OnInit {
   }
 
   seriesVisibilityChanged(event): void {
-    console.log(event)
     this.seriesData.simpleComparison = this.chartDataService.computeScatterSeries(
       this.records,
       [this.visibleSeries[0], this.visibleSeries[1]]
