@@ -1,3 +1,4 @@
+import { History } from './../../../../../ngrx-06-bugfix/src/app/shared/types/history.model';
 import { Measurement } from './../../shared/types/measurement.model';
 import { Record } from './../../shared/types/record.model';
 import { TrackingService } from './../tracking.service';
@@ -16,6 +17,7 @@ export class RecordDetailComponent implements OnInit {
   @Input() record: Record = new EmptyRecord;
   @Input() myPlan: Plan = new EmptyPlan;
   @Input() activeDate: Date;
+  @Input() history: History;
   private recordEntryActive = false;
 
   constructor(private dateService: DateService, private trackingService: TrackingService) { }

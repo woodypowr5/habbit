@@ -1,3 +1,4 @@
+import { MarkerDetailService } from './shared/markerDetail.service';
 import { CalculationService } from './shared/calculation.service';
 import { ChartDataService } from './trends/chart-data.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,7 +54,7 @@ import { RecordsComponent } from './tracking/records/records.component';
     MarkerService,
     PlanService,
     ChartDataService,
-    // AngularFireDatabaseProvider,
+    MarkerDetailService,
     CalculationService,
     UIService],
   bootstrap: [AppComponent]

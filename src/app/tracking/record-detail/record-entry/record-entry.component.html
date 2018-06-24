@@ -5,6 +5,7 @@
     <mat-accordion class="record-details-markers" >
         <mat-expansion-panel 
             *ngFor="let marker of myPlan.markers; let i = index"
+            (click)="setActiveMarker(marker)"
         > 
             <mat-expansion-panel-header
             >
@@ -34,7 +35,10 @@
         </mat-expansion-panel>
     </mat-accordion>
     
-    <app-record-marker-details>
+    <app-record-marker-details
+        [history]="history"
+        [activeMarker]="activeMarker"    
+    >
     </app-record-marker-details>
 </mat-card>
 

@@ -14,3 +14,6 @@ mat-card{
     min-height: 300px;
     padding: 50px;
 }
+app-record-marker-details{
+    flex-grow: 2;
+}

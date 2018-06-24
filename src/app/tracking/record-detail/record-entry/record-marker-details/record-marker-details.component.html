@@ -1,5 +1,33 @@
-<mat-card>
+<mat-card class="marker-details"
+  fxLayout="column"
+  fxLayoutGap="20px"
+>
   <mat-card-title>
-    Marker Details
+    Details: {{ activeMarker.name }}
   </mat-card-title>
+
+  <mat-card class="marker-details-measurements-taken">
+    <mat-card-title class="subtitle">
+      Days with Entries
+    </mat-card-title>
+    {{ markerDetailService.computeDaysWithMeasurements() }} / {{ markerDetailService.computeDaysInHistory(history) }} days have entries
+  </mat-card>
+
+  <mat-card class="marker-details-summary-details">
+    <mat-card-title class="subtitle">
+      Entry Stats
+    </mat-card-title>
+    Average entry: {{ markerDetailService.computeAverageEntryValue() }}
+    <br>
+    Longest entry streak: {{ markerDetailService.computeLongestEntryStreak() }}
+    <br>
+    Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
+  </mat-card>
+
+  <mat-card class="marker-detail-goals">
+    <mat-card-title class="subtitle">
+      Goal Progress
+    </mat-card-title>
+  </mat-card>
+
 </mat-card>

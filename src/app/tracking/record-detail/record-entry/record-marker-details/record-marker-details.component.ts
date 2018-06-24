@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { MarkerDetailService } from './../../../../shared/markerDetail.service';
+import { Marker } from './../../../../shared/types/marker.model';
+import { History } from './../../../../shared/types/history.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-record-marker-details',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./record-marker-details.component.css']
 })
 export class RecordMarkerDetailsComponent implements OnInit {
+  @Input() history: History;
+  @Input() activeMarker: Marker;
+  private daysWithMeasurements: number;
+  private daysInHistory: number;
+  private averageEntryValue: number;
+  private entryStreak: number;
+  private standardDeviation: number;
+  private range: number;
 
-  constructor() { }
+  constructor(private markerDetailService: MarkerDetailService) { }
 
   ngOnInit() {
-  }
 
+  }
 }
