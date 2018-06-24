@@ -40,6 +40,7 @@
                 <mat-option 
                     *ngFor="let marker of plan.markers"    
                     value="{{ marker.name }}"
+                    [disabled]="isDisabled(0, marker.name)"
                 >
                     {{ marker.name }}
                 </mat-option>
@@ -56,6 +57,7 @@
                 <mat-option 
                     *ngFor="let marker of plan.markers" 
                     value="{{ marker.name }}"
+                    [disabled]="isDisabled(1, marker.name)"
                 >
                     {{ marker.name }}
                 </mat-option>

@@ -1,5 +1,5 @@
 import { DataSortingService } from './../shared/data-sorting-service';
-import { Marker } from './../../../../ngrx-06-bugfix/src/app/shared/types/marker.model';
+import { Marker } from './../../../src/app/shared/types/marker.model';
 import { DateService } from './../shared/date.service';
 import { Datapoint } from './../shared/types/datapoint.model';
 import { Measurement } from './../shared/types/measurement.model';

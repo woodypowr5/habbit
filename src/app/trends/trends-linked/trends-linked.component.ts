@@ -61,19 +61,13 @@ export class TrendsLinkedComponent implements OnInit {
 
   }
 
-  // isDisabled(whichSeries: number, markerName: string) {
-  //   console.log(whichSeries);
-  //   console.log(this.visibleSeries);
-  //   console.log(markerName);
-  //   if (whichSeries === 0 && this.visibleSeries[1] === markerName) {
-  //     console.log("Here")
-  //     return 1;
-  //   }
-  //   if (whichSeries === 1 && this.visibleSeries[0] === markerName) {
-  //     console.log("Here")
-  //     return 1;
-  //   }
-  //   console.log("not here")
-  //   return 0;
-  // }
+  isDisabled(whichSeries: number, markerName: string) {
+    if (whichSeries === 0 && this.visibleSeries[1] === markerName) {
+      return true;
+    }
+    if (whichSeries === 1 && this.visibleSeries[0] === markerName) {
+      return true;
+    }
+    return false;
+  }
 }
