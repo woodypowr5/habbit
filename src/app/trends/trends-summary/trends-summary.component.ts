@@ -1,3 +1,4 @@
+import { Marker } from './../../../../../ngrx-06-bugfix/src/app/shared/types/marker.model';
 import { TooltipText } from './../../shared/components/tooltip/tooltipText';
 import { Constants } from './../../shared/constants';
 import { Plan } from './../../plan/plan.model';
@@ -21,10 +22,10 @@ export class TrendsSummaryComponent implements OnInit {
     movingAverage: [],
     globalAverage: []
   };
-  private chartType = 'heatmap';
+  private chartType = 'line';
   private filteredSeriesData: any[] = [];
   private selectedTrendType = 'raw';
-  private visibleSeries: string[] = [];
+  private visibleSeries: Marker[] = [];
   private tooltipText = TooltipText.trends.summary;
   private displayText: any;
 
@@ -47,11 +48,11 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    this.visibleSeries = [this.plan.markers[0].name];
+    this.visibleSeries = [this.plan.markers[0]];
     this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
     this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
     this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
-    this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0].name], this.seriesData.raw);
+    this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
   }
 
   seriesVisibilityChanged(event): void {
