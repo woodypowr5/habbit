@@ -21,6 +21,7 @@ export class TrendsSummaryComponent implements OnInit {
     movingAverage: [],
     globalAverage: []
   };
+  private chartType = 'heatmap';
   private filteredSeriesData: any[] = [];
   private selectedTrendType = 'raw';
   private visibleSeries: string[] = [];

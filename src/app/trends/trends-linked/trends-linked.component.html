@@ -1,20 +1,20 @@
 <mat-card class="chart-parent-container">
-  <div class="chart-container">
+  <!-- <div class="chart-container"> -->
       <ngx-charts-bubble-chart
-      [scheme]="colorScheme"
-      [results]="filteredSeriesData"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [legend]="showLegend"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel"
-      [autoScale]="autoScale"
-      [showGridLines] = "showGridLines"
-      (select)="onSelect($event)">
+        [scheme]="colorScheme"
+        [results]="filteredSeriesData"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [autoScale]="autoScale"
+        [showGridLines] = "showGridLines"
+        (select)="onSelect($event)">
       </ngx-charts-bubble-chart>
-  </div>
+  <!-- </div> -->
 </mat-card>    
 
 <mat-card

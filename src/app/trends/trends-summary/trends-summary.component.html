@@ -1,4 +1,4 @@
-<mat-card class="chart-parent-container">
+<mat-card class="chart-parent-container" *ngIf="chartType === 'line'">
     <div class="chart-container">
         <ngx-charts-line-chart
             [scheme]="colorScheme"
@@ -20,6 +20,24 @@
         </ngx-charts-line-chart>
     </div>
 </mat-card>    
+
+<mat-card class="chart-parent-container" *ngIf="chartType === 'heatmap'">
+    <div class="chart-container">
+        <ngx-charts-heat-map
+            [scheme]="colorScheme"
+            [results]="filteredSeriesData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+        </ngx-charts-heat-map>
+    </div>
+</mat-card>   
 
 <mat-card 
     class="chart-controls-container"

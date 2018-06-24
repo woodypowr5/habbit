@@ -47,9 +47,10 @@ export class TrendsLinkedComponent implements OnInit {
       );
     }
     this.filteredSeriesData = this.seriesData[this.selectedTrendType];
+    this.seriesVisibilityChanged();
   }
 
-  seriesVisibilityChanged(event): void {
+  seriesVisibilityChanged(): void {
     this.seriesData.simpleComparison = this.chartDataService.computeScatterSeries(
       this.records,
       [this.visibleSeries[0], this.visibleSeries[1]]
