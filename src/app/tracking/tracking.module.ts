@@ -21,6 +21,7 @@ import { EntryFormEnumeratedComponent } from './record-detail/record-entry/recor
 import { EntryFormBooleanComponent } from './record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
 import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
 import { RecordMarkerDetailsComponent } from './record-detail/record-entry/record-marker-details/record-marker-details.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RecordMarkerDetailsComponent } from './record-detail/record-entry/recor
   ],
   imports: [
     SharedModule,
-    TrackingRoutingModule
+    TrackingRoutingModule,
+    NgxChartsModule,
   ],
   providers: [
     AdjustedDatePipe,

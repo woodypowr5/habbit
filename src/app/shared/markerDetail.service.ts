@@ -13,12 +13,18 @@ export class MarkerDetailService {
         return this.dateService.daysElapsedBetweenDates(dateSortedRecords[0].date, dateSortedRecords[dateSortedRecords.length - 1].date);
     }
 
-    computeMeasurementRange(): number {
-        return 2;
+    computeDaysWithMeasurements(markerName: string, history: History): number {
+        let count = 0;
+        history.records.map(record => {
+            if (record.measurements.filter(measurement => measurement.markerName === markerName).length > 0) {
+                count++;
+            }
+        });
+        return count;
     }
 
-    computeDaysWithMeasurements(): number {
-        return 3;
+    computeMeasurementRange(): number {
+        return 2;
     }
 
     computeAverageEntryValue(): number {

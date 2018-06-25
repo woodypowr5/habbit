@@ -1,3 +1,7 @@
 .record-entry-marker-details{
     min-height: 500px;
 }
+.marker-graph-wrapper{
+    width: 150px;
+    height: 150px;
+}

@@ -6,11 +6,20 @@
     Details: {{ activeMarker.name }}
   </mat-card-title>
 
-  <mat-card class="marker-details-measurements-taken">
+  <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
       Days with Entries
     </mat-card-title>
-    {{ markerDetailService.computeDaysWithMeasurements() }} / {{ markerDetailService.computeDaysInHistory(history) }} days have entries
+    {{ daysWithMeasurements }} / {{ daysInHistory }} of your days have entries for {{ activeMarker.name }}
+    <div class="marker-graph-wrapper">
+      <ngx-charts-pie-chart
+        [scheme]="chartOptions.daysWithMeasurements.scheme"
+        [results]="results.daysWithMeasurements"
+        [doughnut]="chartOptions.daysWithMeasurements.doughnut"
+        [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
+        (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+  </div>
   </mat-card>
 
   <mat-card class="marker-details-summary-details">
