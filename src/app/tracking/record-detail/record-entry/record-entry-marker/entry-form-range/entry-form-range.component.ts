@@ -18,7 +18,6 @@ export class EntryFormRangeComponent implements OnInit {
 
   ngOnInit() {
     this.sliderValue = this.initialValue;
-    console.log(this.getStepPercentage(1, 5, 0.5));
   }
 
   getStepPercentage(min: number, max: number, step: number): number {

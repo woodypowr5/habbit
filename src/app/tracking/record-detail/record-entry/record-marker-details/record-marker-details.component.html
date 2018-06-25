@@ -3,40 +3,60 @@
   fxLayoutGap="20px"
 >
   <mat-card-title>
-    Details: {{ activeMarker.name }}
+    Details: {{ marker.name }}
   </mat-card-title>
 
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
-      Days with Entries
+      Entries
     </mat-card-title>
-    {{ daysWithMeasurements }} / {{ daysInHistory }} of your days have entries for {{ activeMarker.name }}
-    <div class="marker-graph-wrapper">
-      <ngx-charts-pie-chart
-        [scheme]="chartOptions.daysWithMeasurements.scheme"
-        [results]="results.daysWithMeasurements"
-        [doughnut]="chartOptions.daysWithMeasurements.doughnut"
-        [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
-        (select)="onSelect($event)">
-    </ngx-charts-pie-chart>
-  </div>
+
+    <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="space-between">
+      <div class="marker-graph-wrapper">
+        {{ daysWithMeasurements }} / {{ daysInHistory }} days
+        <ngx-charts-pie-chart
+          [scheme]="chartOptions.daysWithMeasurements.scheme"
+          [results]="results.daysWithMeasurements"
+          [doughnut]="chartOptions.daysWithMeasurements.doughnut"
+          [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+      </div>
+
+      <div class="marker-graph-wrapper">
+        {{ daysWithMeasurements }} / {{ daysInHistory }} days
+        <ngx-charts-gauge
+          [scheme]="chartOptions.longestStreak.scheme"
+          [results]="results.longestStreak"
+          [min]="chartOptions.longestStreak.min"
+          [max]="chartOptions.longestStreak.max"
+          [units]="chartOptions.longestStreak.units"
+          [angleSpan]="chartOptions.longestStreak.angleSpan"
+          [startAngle]="chartOptions.longestStreak.startAngle"
+          (select)="onSelect($event)">
+      </ngx-charts-gauge>
+      </div>
+    </div>
+    
   </mat-card>
 
   <mat-card class="marker-details-summary-details">
     <mat-card-title class="subtitle">
-      Entry Stats
+      Progress
     </mat-card-title>
-    Average entry: {{ markerDetailService.computeAverageEntryValue() }}
+    Average entry: {{ averageEntryValue }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
     <br>
-    Longest entry streak: {{ markerDetailService.computeLongestEntryStreak() }}
+    Longest streak: {{ longestStreak }}
+    <br>
+    Current streak: {{ currentStreak }}
     <br>
     Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
   </mat-card>
 
-  <mat-card class="marker-detail-goals">
+  <!-- <mat-card class="marker-detail-goals">
     <mat-card-title class="subtitle">
       Goal Progress
     </mat-card-title>
-  </mat-card>
+  </mat-card> -->
 
 </mat-card>

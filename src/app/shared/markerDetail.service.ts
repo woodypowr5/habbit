@@ -27,12 +27,54 @@ export class MarkerDetailService {
         return 2;
     }
 
-    computeAverageEntryValue(): number {
-        return 4;
+    computeAverageEntryValue(markerName: string, history: History): number {
+        let count = 0;
+        let sum = 0;
+        history.records.map(record => {
+            record.measurements.map(measurement => {
+                if (measurement.markerName === markerName) {
+                    sum += measurement.value;
+                    count++;
+                }
+            });
+        });
+        return sum / count;
     }
 
-    computeLongestEntryStreak(): number {
-        return 5;
+    computeLongestStreak(markerName: string, history: History): number {
+        const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
+        // let streak = 0;
+        // history.records.map(record => {
+        //     record.measurements.map(measurement => {
+        //         if (measurement.markerName === markerName) {
+        //             streak++;
+        //         } else {
+        //             streak = 0;
+        //         }
+        //     });
+        // });
+        // return streak;
+    }
+
+    computeCurrentStreak(markerName: string, history: History): number {
+        const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
+        const today = new Date();
+        let streakActive = false;
+        let streak = 0;
+
+        history.records.map(record => {
+            if (this.dateService.isSameDate(record.date, today)) {
+                if (streakActive === false) {
+                    streakActive = true;
+                }
+                streak++;
+            } else {
+                if (streakActive === true) {
+                    return streak;
+                }
+            }
+        });
+        return 0;
     }
 
     computeStandardDeviation(): number {

@@ -27,12 +27,14 @@ export class TrackingComponent implements OnInit, OnDestroy {
   private myPlan: Plan;
   private planSubscription: Subscription;
   private activeDate;
+  private activeId: number = null;
+
   constructor(
     private trackingService: TrackingService,
     private planService: PlanService,
     private dateService: DateService) {
   }
-  private activeId: number = null;
+
 
   ngOnInit() {
     this.historySubscription = this.trackingService.historyChanged.subscribe(history => {

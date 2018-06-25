@@ -7,7 +7,13 @@ export const Constants = {
     },
     numVisibleDailyRecords: 7,
     chartColorScheme: {
-        pieDoughnut: {
+        daysWithMeasurements: {
+            domain: ['#89BF29', '#CCC']
+        },
+        longestStreak:  {
+            domain: ['#89BF29', '#CCC']
+        },
+        trendsLineGraph: {
             domain: ['#89BF29', '#CCC']
         },
         domain: ['#5AA454', '#0097A7', '#9E9D24', '#757575', '#1976D2', '#01579B', '#212121']
