@@ -41,7 +41,7 @@ export class MarkerDetailService {
         return sum / count;
     }
 
-    computeLongestStreak(markerName: string, history: History): number {
+    computeLongestStreak(markerName: string, history: History, modifier: string): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
         let streak = 0;
         let longestStreak = 0;
@@ -53,7 +53,6 @@ export class MarkerDetailService {
                 }
             });
             if (found === true as boolean)  {
-
                 streak++;
                 if (streak > longestStreak) {
                     longestStreak = streak;
@@ -62,7 +61,7 @@ export class MarkerDetailService {
                 streak = 0;
             }
             if(index + 1 < dateSortedRecords.length) {
-                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, 1)) {
+                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, 1))) {
                     streak = 0;
                 }
             }
@@ -71,24 +70,28 @@ export class MarkerDetailService {
     }
 
     computeCurrentStreak(markerName: string, history: History): number {
-        const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
-        const today = new Date();
-        let streakActive = false;
+        const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
-
-        history.records.map(record => {
-            if (this.dateService.isSameDate(record.date, today)) {
-                if (streakActive === false) {
-                    streakActive = true;
+        dateSortedRecords.map((record, index) => {
+            let found: boolean = false;
+            record.measurements.map(measurement => {
+                if (measurement.markerName === markerName) {
+                    console.log("here")
+                    found = true;
+                    streak++;
                 }
-                streak++;
-            } else {
-                if (streakActive === true) {
+            });
+            console.log(found)
+            if (found === false as boolean)  {
+                return streak;
+            }
+            if(index + 1 < dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, -1))) {
                     return streak;
                 }
             }
         });
-        return 0;
+        return streak;
     }
 
     computeStandardDeviation(): number {
