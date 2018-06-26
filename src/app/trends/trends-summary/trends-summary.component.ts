@@ -1,4 +1,4 @@
-import { Marker } from './../../../../../ngrx-06-bugfix/src/app/shared/types/marker.model';
+import { Marker } from './../../shared/types/marker.model';
 import { TooltipText } from './../../shared/components/tooltip/tooltipText';
 import { Constants } from './../../shared/constants';
 import { Plan } from './../../plan/plan.model';

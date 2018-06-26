@@ -1,4 +1,4 @@
-import { History } from './../../../../../ngrx-06-bugfix/src/app/shared/types/history.model';
+import { History } from './../../shared/types/history.model';
 import { Measurement } from './../../shared/types/measurement.model';
 import { Record } from './../../shared/types/record.model';
 import { TrackingService } from './../tracking.service';

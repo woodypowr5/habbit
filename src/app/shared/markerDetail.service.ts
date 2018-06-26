@@ -43,17 +43,31 @@ export class MarkerDetailService {
 
     computeLongestStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
-        // let streak = 0;
-        // history.records.map(record => {
-        //     record.measurements.map(measurement => {
-        //         if (measurement.markerName === markerName) {
-        //             streak++;
-        //         } else {
-        //             streak = 0;
-        //         }
-        //     });
-        // });
-        // return streak;
+        let streak = 0;
+        let longestStreak = 0;
+        dateSortedRecords.map((record, index) => {
+            let found: boolean = false;
+            record.measurements.map(measurement => {
+                if (measurement.markerName === markerName) {
+                    found = true;
+                }
+            });
+            if (found === true as boolean)  {
+
+                streak++;
+                if (streak > longestStreak) {
+                    longestStreak = streak;
+                }
+            } else {
+                streak = 0;
+            }
+            if(index + 1 < dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, 1)) {
+                    streak = 0;
+                }
+            }
+        });
+        return longestStreak;
     }
 
     computeCurrentStreak(markerName: string, history: History): number {
