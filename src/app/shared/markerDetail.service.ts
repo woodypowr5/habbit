@@ -41,12 +41,12 @@ export class MarkerDetailService {
         return sum / count;
     }
 
-    computeLongestStreak(markerName: string, history: History, modifier: string): number {
+    computeLongestStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
         let streak = 0;
         let longestStreak = 0;
         dateSortedRecords.map((record, index) => {
-            let found: boolean = false;
+            let found = false;
             record.measurements.map(measurement => {
                 if (measurement.markerName === markerName) {
                     found = true;
@@ -60,8 +60,8 @@ export class MarkerDetailService {
             } else {
                 streak = 0;
             }
-            if(index + 1 < dateSortedRecords.length) {
-                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, 1))) {
+            if (index + 1 < dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[index + 1].date, this.dateService.getRelativeDay(record.date, 1))) {
                     streak = 0;
                 }
             }
@@ -72,29 +72,28 @@ export class MarkerDetailService {
     computeCurrentStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
-        dateSortedRecords.map((record, index) => {
-            let found: boolean = false;
+        for (let i = 0; i < dateSortedRecords.length; i++) {
+            let record = dateSortedRecords[i];
+            let found = false;
             record.measurements.map(measurement => {
                 if (measurement.markerName === markerName) {
-                    console.log("here")
                     found = true;
                     streak++;
                 }
             });
-            console.log(found)
             if (found === false as boolean)  {
                 return streak;
             }
-            if(index + 1 < dateSortedRecords.length) {
-                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, -1))) {
+            if (i + 1 <= dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[i + 1].date, this.dateService.getRelativeDay(record.date, -1))) {
                     return streak;
                 }
             }
-        });
+        }
         return streak;
     }
 
     computeStandardDeviation(): number {
-        return 6;
+        return 7;
     }
 }

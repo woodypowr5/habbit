@@ -19,15 +19,10 @@ export class DateService {
   }
 
   getRelativeDay(date: Date, offset: number) {
-    console.log("NEXT:");
-    console.log(date)
-    console.log(offset)
-    if(offset > 0) {
-      return moment(date).add(offset,'d').toDate();
+    if (offset > 0) {
+      return moment(date).add(offset, 'd').toDate();
     } else {
-      console.log( moment(date).subtract(offset * -1,'d').toDate())
-      return moment(date).subtract(offset * -1,'d').toDate();
+      return moment(date).subtract(offset * -1, 'd').toDate();
     }
- 
   }
 }
