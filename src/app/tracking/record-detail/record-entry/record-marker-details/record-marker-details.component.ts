@@ -5,6 +5,7 @@ import { History } from './../../../../shared/types/history.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { TrackingService } from '../../../tracking.service';
+import { TooltipText } from '../../../../shared/components/tooltip/tooltipText';
 
 @Component({
   selector: 'app-record-marker-details',
@@ -23,6 +24,7 @@ export class RecordMarkerDetailsComponent implements OnInit {
   private longestStreak = 0;
   private standardDeviation: number;
   private range: number;
+  private tooltipText = TooltipText.tracking.markerDetails;
   private results: any = {
     daysWithMeasurements: [],
     streaks: {
@@ -75,7 +77,7 @@ export class RecordMarkerDetailsComponent implements OnInit {
     if (this.longestStreak) {
       daysToGo = value - value + this.longestStreak - this.currentStreak;
     } else {
-      return "";
+      return '';
     }
     if (daysToGo < 1) {
       return 'Great Job!';
@@ -93,7 +95,6 @@ export class RecordMarkerDetailsComponent implements OnInit {
       this.averageEntryValue = this.markerDetailService.computeAverageEntryValue(this.marker.name, this.history);
       this.longestStreak = this.markerDetailService.computeLongestStreak(this.marker.name, this.history);
       this.currentStreak = this.markerDetailService.computeCurrentStreak(this.marker.name, this.history);
-      
     }
     this.results.daysWithMeasurements = [
       {

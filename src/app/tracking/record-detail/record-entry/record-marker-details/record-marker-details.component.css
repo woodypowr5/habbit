@@ -1,3 +1,6 @@
+.marker-details>mat-card-title{
+    text-align: center;
+}
 .record-entry-marker-details{
     min-height: 500px;
 }
@@ -6,7 +9,10 @@
     height: 80%;    
 }
 .marker-graph-wrapper:first-child{
-    /* border-right: 1px dashed #999; */
+    border-right: 1px dashed #BBB;
+}
+.marker-graph-wrapper:last-child{
+    margin-left: 15px;
 }
 ngx-charts-pie-chart, ngx-charts-gauge{
     margin: 0 auto;
@@ -17,12 +23,13 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 }
 .marker-details-measurements-taken{
     height: 300px;
-   
+   padding-left: 15px;
 }
 .marker-detail-text{
     height: 50px;
     margin-left: 20px;
 }
-.marker-detail-text.streaks{
-   
+.subtitle {
+    position: relative;
+    margin-left: 17px;
 }

@@ -5,9 +5,6 @@ export const TooltipText = {
     plan: {
 
     },
-    tracking: {
-
-    },
     trends: {
         summary: {
             trendTypeButtons: {
@@ -30,8 +27,17 @@ export const TooltipText = {
                     + 'on in your daily life ',
                 bayesianAnalysis: 'Investigate how the outcome of certain activites has affected the probability '
                     + 'of the outcomes of other activites throughout your history. This can be useful in predicting '
-                    + 'a causal relationship betweeen activities.'
+                    + 'a causal relationship betweeen activities'
             }
+        }
+    },
+    tracking: {
+        markerDetails: {
+            entries: 'These are the scores that describes how often you create entries while using Habbit. Trying to beat'
+                    + ' your longest streak to a great way to improve your scores. It\'s important to note that'
+                    + ' the higher your scores here, the more accurate your other results will be!',
+            performance: 'This shows statistics about how you\'ve scored your own daily entries in this activity.'
+                    + ' Use this data to see how you\'ve improved towards your goals, or to just see if you\re imrpoving'
         }
     }
 };

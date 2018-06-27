@@ -9,12 +9,19 @@
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
       Entries
+      <app-tooltip 
+          [displayText]="tooltipText.entries"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
     </mat-card-title>
 
     <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="flex-start">
       <div class="marker-graph-wrapper">
         <div class="marker-detail-text entries">
-            {{ daysWithMeasurements }} / {{ daysInHistory }} days
+            You've made entries
+            <br>
+            for {{ daysWithMeasurements }} / {{ daysInHistory }} days
         </div>
         
         <ngx-charts-pie-chart
@@ -54,13 +61,14 @@
 
   <mat-card class="marker-details-summary-details">
     <mat-card-title class="subtitle">
-      Progress
+      Performance
+      <app-tooltip 
+          [displayText]="tooltipText.performance"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
     </mat-card-title>
     Average entry: {{ averageEntryValue }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
-    <br>
-    Longest streak: {{ longestStreak }}
-    <br>
-    Current streak: {{ currentStreak }}
     <br>
     Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
   </mat-card>
