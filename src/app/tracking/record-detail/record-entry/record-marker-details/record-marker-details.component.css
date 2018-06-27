@@ -2,6 +2,27 @@
     min-height: 500px;
 }
 .marker-graph-wrapper{
-    width: 150px;
-    height: 150px;
+    width: 50%;
+    height: 80%;    
+}
+.marker-graph-wrapper:first-child{
+    /* border-right: 1px dashed #999; */
+}
+ngx-charts-pie-chart, ngx-charts-gauge{
+    margin: 0 auto;
+    width: 100%;
+}
+.ngx-charts{
+    width: 100px;
+}
+.marker-details-measurements-taken{
+    height: 300px;
+   
+}
+.marker-detail-text{
+    height: 50px;
+    margin-left: 20px;
+}
+.marker-detail-text.streaks{
+   
 }

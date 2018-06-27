@@ -10,8 +10,8 @@ export const Constants = {
         daysWithMeasurements: {
             domain: ['#89BF29', '#CCC']
         },
-        longestStreak:  {
-            domain: ['#89BF29', '#CCC']
+        streaks:  {
+            domain: ['#FFC30D', '#89BF29']
         },
         trendsLineGraph: {
             domain: ['#89BF29', '#CCC']

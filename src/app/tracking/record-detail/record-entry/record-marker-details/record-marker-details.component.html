@@ -11,11 +11,15 @@
       Entries
     </mat-card-title>
 
-    <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="space-between">
+    <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="flex-start">
       <div class="marker-graph-wrapper">
-        {{ daysWithMeasurements }} / {{ daysInHistory }} days
+        <div class="marker-detail-text entries">
+            {{ daysWithMeasurements }} / {{ daysInHistory }} days
+        </div>
+        
         <ngx-charts-pie-chart
           [scheme]="chartOptions.daysWithMeasurements.scheme"
+          [view]="chartOptions.streaks.viewDoughnut"
           [results]="results.daysWithMeasurements"
           [doughnut]="chartOptions.daysWithMeasurements.doughnut"
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
@@ -24,15 +28,23 @@
       </div>
 
       <div class="marker-graph-wrapper">
-        {{ daysWithMeasurements }} / {{ daysInHistory }} days
+          <div class="marker-detail-text streaks">
+              Current Streak: {{ currentStreak }} days
+              <br>
+              Longest Streak: {{ longestStreak }} days
+          </div>
         <ngx-charts-gauge
-          [scheme]="chartOptions.longestStreak.scheme"
+          [scheme]="chartOptions.streaks.scheme"
+          [valueFormatting]="chartOptions.streaks.valueFormatting"
+          [view]="chartOptions.streaks.viewGauge"
           [results]="results.streaks"
-          [min]="chartOptions.longestStreak.min"
-          [max]="chartOptions.longestStreak.max"
-          [units]="chartOptions.longestStreak.units"
-          [angleSpan]="chartOptions.longestStreak.angleSpan"
-          [startAngle]="chartOptions.longestStreak.startAngle"
+          [min]="chartOptions.streaks.min"
+          [max]="chartOptions.streaks.max"
+          [units]="chartOptions.streaks.units"
+          [angleSpan]="chartOptions.streaks.angleSpan"
+          [startAngle]="chartOptions.streaks.startAngle"
+          [showAxis]="showAxis"
+          [legend]="chartOptions.streaks.legend"
           (select)="onSelect($event)">
       </ngx-charts-gauge>
       </div>
