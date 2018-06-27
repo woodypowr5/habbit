@@ -24,7 +24,11 @@ export class RecordMarkerDetailsComponent implements OnInit {
   private standardDeviation: number;
   private range: number;
   private results: any = {
-    daysWithMeasurements: []
+    daysWithMeasurements: [],
+    streaks: {
+      currentStreak: 0,
+      longestStreak: 0
+    }
   };
 
   private chartOptions: any = {
@@ -78,6 +82,16 @@ export class RecordMarkerDetailsComponent implements OnInit {
       {
         'name': 'No Entry',
         'value': this.daysInHistory - this.daysWithMeasurements
+      }
+    ];
+    this.results.streaks = [
+      {
+        'name': 'Entry',
+        'value': this.currentStreak
+      },
+      {
+        'name': 'No Entry',
+        'value': this.longestStreak
       }
     ];
   }

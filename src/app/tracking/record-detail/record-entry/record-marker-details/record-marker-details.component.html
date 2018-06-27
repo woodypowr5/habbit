@@ -14,20 +14,20 @@
     <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="space-between">
       <div class="marker-graph-wrapper">
         {{ daysWithMeasurements }} / {{ daysInHistory }} days
-        <!-- <ngx-charts-pie-chart
+        <ngx-charts-pie-chart
           [scheme]="chartOptions.daysWithMeasurements.scheme"
           [results]="results.daysWithMeasurements"
           [doughnut]="chartOptions.daysWithMeasurements.doughnut"
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
-        </ngx-charts-pie-chart> -->
+        </ngx-charts-pie-chart>
       </div>
 
       <div class="marker-graph-wrapper">
         {{ daysWithMeasurements }} / {{ daysInHistory }} days
         <ngx-charts-gauge
           [scheme]="chartOptions.longestStreak.scheme"
-          [results]="results.longestStreak"
+          [results]="results.streaks"
           [min]="chartOptions.longestStreak.min"
           [max]="chartOptions.longestStreak.max"
           [units]="chartOptions.longestStreak.units"
