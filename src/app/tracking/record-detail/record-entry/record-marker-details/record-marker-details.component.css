@@ -6,10 +6,11 @@
 }
 .marker-graph-wrapper{
     width: 50%;
-    height: 80%;    
+    height: 80%;   
+    border-left: 1px dashed #BBB; 
 }
 .marker-graph-wrapper:first-child{
-    border-right: 1px dashed #BBB;
+    
 }
 .marker-graph-wrapper:last-child{
     margin-left: 15px;
@@ -23,7 +24,7 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 }
 .marker-details-measurements-taken{
     height: 300px;
-   padding-left: 15px;
+   /* padding-left: 15px; */
 }
 .marker-detail-text{
     height: 50px;
