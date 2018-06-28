@@ -1,9 +1,9 @@
 import { History } from './../../shared/types/history.model';
 import { Measurement } from './../../shared/types/measurement.model';
 import { Record } from './../../shared/types/record.model';
-import { TrackingService } from './../tracking.service';
+import { TrackingService } from '../../shared/services/tracking.service';
 import { EmptyPlan } from './../../plan/emptyPlan.class';
-import { DateService } from './../../shared/date.service';
+import { DateService } from '../../shared/services/date.service';
 import { Plan } from './../../plan/plan.model';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { EmptyRecord } from '../emptyRecord.class';

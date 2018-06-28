@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
-import { TrackingService } from '../tracking/tracking.service';
+import { TrackingService } from '../shared/services/tracking.service';
 import { PlanService } from './../plan/plan.service';
 import { UIService } from '../shared/ui.service';
 import * as fromRoot from '../app.reducer';

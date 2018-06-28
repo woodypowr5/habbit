@@ -3,7 +3,7 @@ import { Constants } from './../../shared/constants';
 import { Plan } from './../../plan/plan.model';
 import { Datapoint } from './../../shared/types/datapoint.model';
 import { Record } from './../../shared/types/record.model';
-import { ChartDataService } from './../chart-data.service';
+import { ChartDataService } from '../../shared/services/chart-data.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserModule } from '@angular/platform-browser';

@@ -4,7 +4,7 @@ import { Marker } from './../../../../shared/types/marker.model';
 import { History } from './../../../../shared/types/history.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { TrackingService } from '../../../tracking.service';
+import { TrackingService } from '../../../../shared/services/tracking.service';
 import { TooltipText } from '../../../../shared/components/tooltip/tooltipText';
 
 @Component({

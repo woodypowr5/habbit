@@ -1,7 +1,7 @@
 import { MarkerService } from './shared/services/marker.service';
 import { MarkerDetailService } from './shared/services/markerDetail.service';
-import { CalculationService } from './shared/calculation.service';
-import { ChartDataService } from './trends/chart-data.service';
+import { CalculationService } from './shared/services/calculation.service';
+import { ChartDataService } from './shared/services/chart-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 import { AuthService } from './auth/auth.service';
-import { TrackingService } from './tracking/tracking.service';
+import { TrackingService } from './shared/services/tracking.service';
 import { PlanService } from './plan/plan.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';

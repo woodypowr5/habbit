@@ -1,12 +1,12 @@
 import { Record } from './../shared/types/record.model';
 import { History } from './../shared/types/history.model';
-import { DateService } from './../shared/date.service';
+import { DateService } from '../shared/services/date.service';
 import { EmptyRecord } from './emptyRecord.class';
 import { RecordsComponent } from './records/records.component';
 import { PlanService } from './../plan/plan.service';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { TrackingService } from './tracking.service';
+import { TrackingService } from '../shared/services/tracking.service';
 import * as moment from 'moment';
 import { Plan } from '../plan/plan.model';
 

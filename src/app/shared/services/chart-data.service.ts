@@ -1,12 +1,12 @@
-import { DataSortingService } from './../shared/data-sorting-service';
-import { Marker } from './../../../src/app/shared/types/marker.model';
-import { DateService } from './../shared/date.service';
-import { Datapoint } from './../shared/types/datapoint.model';
-import { Measurement } from './../shared/types/measurement.model';
-import { Record } from './../shared/types/record.model';
+import { Plan } from './../../plan/plan.model';
+import { DataSortingService } from './data-sorting-service';
+import { Marker } from '../types/marker.model';
+import { DateService } from '../services/date.service';
+import { Datapoint } from '../types/datapoint.model';
+import { Measurement } from '../types/measurement.model';
+import { Record } from '../types/record.model';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Plan } from '../plan/plan.model';
 import { raw } from 'body-parser';
 import * as jStat from 'jStat';
 
