@@ -4,11 +4,31 @@
 mat-expansion-panel-header{
     height: 80px !important;
 }
+.mat-expansion-panel.mat-expanded{
+    background-color: #F6F6F6;
+}
 mat-panel-title{
+    color: #444;
+    height: 57px;
+    bottom: 14px;
     font-size: 24px;
+    position: relative;
+    width: 300px;
+    flex-grow: 0;
+    line-height: 88px;
+}
+.spacer{
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    height: 80px;
+    width: 3px;
+    border-right: 2px dashed #AAA;
 }
 mat-panel-description{
     font-size: 24px;
+    padding-left: 30px;
+    padding-top: 11px;
 }
 mat-card{
     min-height: 300px;

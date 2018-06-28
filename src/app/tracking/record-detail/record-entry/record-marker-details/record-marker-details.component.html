@@ -3,7 +3,7 @@
   fxLayoutGap="20px"
 >
   <mat-card-title>
-    Details: {{ marker.name }}
+    <!-- Details: {{ marker.name }} -->
   </mat-card-title>
 
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
@@ -40,7 +40,15 @@
               <br>
               Longest Streak: {{ longestStreak }} days
           </div>
-        <ngx-charts-gauge
+        <ngx-charts-pie-chart
+          [scheme]="chartOptions.streaks.scheme"
+          [view]="chartOptions.streaks.viewDoughnut"
+          [results]="results.streaks"
+          [doughnut]="chartOptions.daysWithMeasurements.doughnut"
+          [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>
+        <!-- <ngx-charts-gauge
           [scheme]="chartOptions.streaks.scheme"
           [valueFormatting]="chartOptions.streaks.valueFormatting"
           [view]="chartOptions.streaks.viewGauge"
@@ -53,7 +61,7 @@
           [showAxis]="showAxis"
           [legend]="chartOptions.streaks.legend"
           (select)="onSelect($event)">
-      </ngx-charts-gauge>
+      </ngx-charts-gauge> -->
       </div>
     </div>
     

@@ -112,8 +112,8 @@ export class RecordMarkerDetailsComponent implements OnInit {
         'value': this.currentStreak
       },
       {
-        'name': 'Longest Streak',
-        'value': this.longestStreak
+        'name': 'Days Left',
+        'value': this.longestStreak - this.currentStreak;
       }
     ];
     this.chartOptions.streaks.valueFormatting = this.formatValue;
