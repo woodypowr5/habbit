@@ -1,5 +1,5 @@
 import { Constants } from './../../../../shared/constants';
-import { MarkerDetailService } from './../../../../shared/markerDetail.service';
+import { MarkerDetailService } from './../../../../shared/services/markerDetail.service';
 import { Marker } from './../../../../shared/types/marker.model';
 import { History } from './../../../../shared/types/history.model';
 import { Component, OnInit, Input } from '@angular/core';
@@ -108,11 +108,11 @@ export class RecordMarkerDetailsComponent implements OnInit {
     ];
     this.results.streaks = [
       {
-        'name': 'Entry',
+        'name': 'Current Streak',
         'value': this.currentStreak
       },
       {
-        'name': 'No Entry',
+        'name': 'Longest Streak',
         'value': this.longestStreak
       }
     ];

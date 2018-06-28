@@ -1,4 +1,5 @@
-import { MarkerDetailService } from './shared/markerDetail.service';
+import { MarkerService } from './shared/services/marker.service';
+import { MarkerDetailService } from './shared/services/markerDetail.service';
 import { CalculationService } from './shared/calculation.service';
 import { ChartDataService } from './trends/chart-data.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,6 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 
 import { AuthService } from './auth/auth.service';
 import { TrackingService } from './tracking/tracking.service';
-import { MarkerService } from './shared/marker.service';
 import { PlanService } from './plan/plan.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';

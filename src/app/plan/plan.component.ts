@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 import { Subscriber, Subscription } from 'rxjs';
-import { MarkerService } from '../shared/marker.service';
+import { MarkerService } from '../shared/services/marker.service';
 import { PlanService } from './plan.service';
 import { Plan } from './plan.model';
 
