@@ -1,4 +1,5 @@
 import { Constants } from './../../../../shared/constants';
+import { ChartOptions } from './../../../../shared/data/chartOptions';
 import { MarkerDetailService } from './../../../../shared/services/markerDetail.service';
 import { Marker } from './../../../../shared/types/marker.model';
 import { History } from './../../../../shared/types/history.model';
@@ -25,6 +26,7 @@ export class RecordMarkerDetailsComponent implements OnInit {
   private standardDeviation: number;
   private range: number;
   private tooltipText = TooltipText.tracking.markerDetails;
+  private chartOptions = ChartOptions;
   private results: any = {
     daysWithMeasurements: [],
     streaks: {
@@ -33,33 +35,9 @@ export class RecordMarkerDetailsComponent implements OnInit {
     }
   };
 
-  private chartOptions: any = {
-    daysWithMeasurements: {
-      scheme: Constants.chartColorScheme.daysWithMeasurements,
-      showXAxis: false,
-      showYAxis: false,
-      gradient: false,
-      showLegend: false,
-      showXAxisLabel: false,
-      showYAxisLabel: false,
-      doughnut: true,
-      arcWidth: 0.25
-    },
-    streaks: {
-      scheme: Constants.chartColorScheme.streaks,
-      min: 0,
-      max: null,
-      units: null,
-      angleSpan: 240,
-      startAngle: -120,
-      showAxis: false,
-      legend: false,
-      viewDoughnut: [160, 160],
-      viewGauge: [180, 180]
-    }
-  };
-
-  constructor(private trackingService: TrackingService, private markerDetailService: MarkerDetailService) { }
+  constructor(
+    private trackingService: TrackingService, 
+    private markerDetailService: MarkerDetailService) { }
 
   ngOnInit() {
     this.activeMarker.subscribe( marker => {

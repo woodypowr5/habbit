@@ -44,20 +44,6 @@
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
         </ngx-charts-pie-chart>
-        <!-- <ngx-charts-gauge
-          [scheme]="chartOptions.streaks.scheme"
-          [valueFormatting]="chartOptions.streaks.valueFormatting"
-          [view]="chartOptions.streaks.viewGauge"
-          [results]="results.streaks"
-          [min]="chartOptions.streaks.min"
-          [max]="chartOptions.streaks.max"
-          [units]="chartOptions.streaks.units"
-          [angleSpan]="chartOptions.streaks.angleSpan"
-          [startAngle]="chartOptions.streaks.startAngle"
-          [showAxis]="showAxis"
-          [legend]="chartOptions.streaks.legend"
-          (select)="onSelect($event)">
-      </ngx-charts-gauge> -->
       </div>
     </div>
     
@@ -76,11 +62,4 @@
     <br>
     Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
   </mat-card>
-
-  <!-- <mat-card class="marker-detail-goals">
-    <mat-card-title class="subtitle">
-      Goal Progress
-    </mat-card-title>
-  </mat-card> -->
-
 </div>
