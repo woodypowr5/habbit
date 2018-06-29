@@ -10,7 +10,12 @@ export class MarkerDetailService {
 
     computeDaysInHistory(history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
-        return this.dateService.daysElapsedBetweenDates(dateSortedRecords[0].date, dateSortedRecords[dateSortedRecords.length - 1].date);
+        if (dateSortedRecords.length > 0) {
+            return this.dateService.daysElapsedBetweenDates(
+                dateSortedRecords[0].date,
+                dateSortedRecords[dateSortedRecords.length - 1].date
+            );
+        }
     }
 
     computeDaysWithMeasurements(markerName: string, history: History): number {
@@ -70,6 +75,7 @@ export class MarkerDetailService {
     }
 
     computeCurrentStreak(markerName: string, history: History): number {
+        console.log(history)
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {
@@ -84,7 +90,9 @@ export class MarkerDetailService {
             if (found === false as boolean)  {
                 return streak;
             }
-            if (i + 1 <= dateSortedRecords.length) {
+            
+            if (i + 2 <= dateSortedRecords.length) {
+                console.log(dateSortedRecords[i + 1]);
                 if (!this.dateService.isSameDate(dateSortedRecords[i + 1].date, this.dateService.getRelativeDay(record.date, -1))) {
                     return streak;
                 }

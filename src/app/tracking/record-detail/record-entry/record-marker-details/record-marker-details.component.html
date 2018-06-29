@@ -1,14 +1,10 @@
-<mat-card class="marker-details"
+<div class="marker-details"
   fxLayout="column"
   fxLayoutGap="20px"
 >
-  <mat-card-title>
-    <!-- Details: {{ marker.name }} -->
-  </mat-card-title>
-
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
-      Entries
+      Entries <span class="subtitle-subtext"> for {{ marker.name }}</span>
       <app-tooltip 
           [displayText]="tooltipText.entries"
           [id]="tooltipMovingAverage"
@@ -87,4 +83,4 @@
     </mat-card-title>
   </mat-card> -->
 
-</mat-card>
+</div>
