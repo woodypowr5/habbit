@@ -24,5 +24,21 @@ export const ChartOptions = {
         viewDoughnut: [160, 160],
         viewGauge: [180, 180],
         valueFormatting: null
+    },
+    performance: {
+        showXAxis: true,
+        showYAxis: true,
+        gradient: false,
+        showLegend: true,
+        showXAxisLabel: true,
+        xAxisLabel: 'Logged Entry',
+        yScaleMin: 0,
+        yScaleMax: 1,
+        showYAxisLabel: true,
+        yAxisLabel: 'Probability (%)',
+        timeline: false,
+        colorScheme: Constants.chartColorScheme,
+        autoScale: true,
+        curve: Constants.chartCurveFunctions.markerDetails
     }
 };

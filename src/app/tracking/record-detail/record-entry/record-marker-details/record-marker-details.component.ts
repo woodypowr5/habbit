@@ -1,3 +1,4 @@
+import { ChartDataService } from './../../../../shared/services/chart-data.service';
 import { Constants } from './../../../../shared/constants';
 import { ChartOptions } from './../../../../shared/data/chartOptions';
 import { MarkerDetailService } from './../../../../shared/services/markerDetail.service';
@@ -32,12 +33,15 @@ export class RecordMarkerDetailsComponent implements OnInit {
     streaks: {
       currentStreak: 0,
       longestStreak: 0
-    }
+    },
+    performance: null
   };
 
   constructor(
-    private trackingService: TrackingService, 
-    private markerDetailService: MarkerDetailService) { }
+    private trackingService: TrackingService,
+    private markerDetailService: MarkerDetailService,
+    private chartDataService: ChartDataService
+  ) { }
 
   ngOnInit() {
     this.activeMarker.subscribe( marker => {
@@ -73,6 +77,8 @@ export class RecordMarkerDetailsComponent implements OnInit {
       this.averageEntryValue = this.markerDetailService.computeAverageEntryValue(this.marker.name, this.history);
       this.longestStreak = this.markerDetailService.computeLongestStreak(this.marker.name, this.history);
       this.currentStreak = this.markerDetailService.computeCurrentStreak(this.marker.name, this.history);
+      this.results.performance = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
+      // this.standardDeviation = this.chartDataService.computeStandardDev();
     }
     this.results.daysWithMeasurements = [
       {

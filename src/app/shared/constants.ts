@@ -24,7 +24,8 @@ export const Constants = {
             raw: shape.curveCardinal.tension(1),
             movingAverage: shape.curveCatmullRom.alpha(1),
             globalAverage: shape.curveCatmullRom.alpha(1)
-        }
+        },
+        markerDetails: shape.curveCatmullRom.alpha(1)
     },
     tooltipTypes: ['description', 'details']
 };

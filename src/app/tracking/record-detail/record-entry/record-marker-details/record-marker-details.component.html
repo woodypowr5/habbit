@@ -60,6 +60,25 @@
     </mat-card-title>
     Average entry: {{ averageEntryValue }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
     <br>
-    Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
+    Variablity (std. deviation): {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
+    <div class="pdf-graph-wrapper">
+      <ngx-charts-line-chart
+        [scheme]="chartOptions.performance.colorScheme"
+        [results]="results.performance"
+        [gradient]="chartOptions.performance.gradient"
+        [xAxis]="chartOptions.performance.showXAxis"
+        [yAxis]="chartOptions.performance.showYAxis"
+        [yScaleMin]="chartOptions.performance.yScaleMin"
+        [legend]="chartOptions.performance.showLegend"
+        [showXAxisLabel]="chartOptions.performance.showXAxisLabel"
+        [showYAxisLabel]="chartOptions.performance.showYAxisLabel"
+        [xAxisLabel]="chartOptions.performance.xAxisLabel"
+        [yAxisLabel]="chartOptions.performance.yAxisLabel"
+        [autoScale]="chartOptions.performance.autoScale"
+        [timeline]="chartOptions.performance.timeline"
+        [curve]="chartOptions.performance.curve"
+        (select)="onSelect($event)">
+      </ngx-charts-line-chart>
+  </div>
   </mat-card>
 </div>
