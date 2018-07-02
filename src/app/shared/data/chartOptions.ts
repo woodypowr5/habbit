@@ -1,4 +1,4 @@
-import { Constants } from './../constants';
+import { Constants } from '../data/constants';
 
 export const ChartOptions = {
     daysWithMeasurements: {

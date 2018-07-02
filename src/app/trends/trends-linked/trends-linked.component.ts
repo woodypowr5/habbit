@@ -1,5 +1,5 @@
-import { TooltipText } from './../../shared/components/tooltip/tooltipText';
-import { Constants } from './../../shared/constants';
+import { TooltipText } from './../../shared/data/tooltipText';
+import { Constants } from '../../shared/data/constants';
 import { Plan } from './../../plan/plan.model';
 import { Datapoint } from './../../shared/types/datapoint.model';
 import { Record } from './../../shared/types/record.model';

@@ -4,7 +4,7 @@ import { DateService } from '../../shared/services/date.service';
 import { EmptyRecord } from './../emptyRecord.class';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
-import { Constants } from '../../shared/constants';
+import { Constants } from '../../shared/data/constants';
 
 @Component({
   selector: 'app-records',

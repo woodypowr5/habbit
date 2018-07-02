@@ -1,4 +1,4 @@
-import { Constants } from './../../constants';
+import { Constants } from '../../data/constants';
 import { Component, OnInit, Input } from '@angular/core';
 import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material';
 

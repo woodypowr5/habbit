@@ -1,5 +1,5 @@
 import { ChartDataService } from './../../../../shared/services/chart-data.service';
-import { Constants } from './../../../../shared/constants';
+import { Constants } from '../../../../shared/data/constants';
 import { ChartOptions } from './../../../../shared/data/chartOptions';
 import { MarkerDetailService } from './../../../../shared/services/markerDetail.service';
 import { Marker } from './../../../../shared/types/marker.model';
@@ -7,7 +7,7 @@ import { History } from './../../../../shared/types/history.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { TrackingService } from '../../../../shared/services/tracking.service';
-import { TooltipText } from '../../../../shared/components/tooltip/tooltipText';
+import { TooltipText } from '../../../../shared/data/tooltipText';
 
 @Component({
   selector: 'app-record-marker-details',

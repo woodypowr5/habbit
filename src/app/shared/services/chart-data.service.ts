@@ -81,7 +81,6 @@ export class ChartDataService {
   filterDataBySeries(includeMarkers: Marker[], seriesData: any): any[] {
     const filteredSeriesData: any[] = [];
     includeMarkers.map(marker => {
-      console.log(marker)
       filteredSeriesData.push (seriesData.filter(series => {
         return series.name === marker.name;
       })[0]);
