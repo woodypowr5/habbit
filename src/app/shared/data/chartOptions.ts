@@ -40,5 +40,23 @@ export const ChartOptions = {
         colorScheme: Constants.chartColorScheme,
         autoScale: true,
         curve: Constants.chartCurveFunctions.markerDetails
+    },
+    trends: {
+        linked: {
+            showXAxis: true,
+            showYAxis: true,
+            showLegend: true,
+            showXAxisLabel: true,
+            showYAxisLabel: true,
+            colorScheme: Constants.chartColorScheme,
+            autoScale: false,
+            showGridLines: true,
+            xScaleMin: 0,
+            xScaleMax: 5,
+            yScaleMin: 0,
+            yScaleMax: 5,
+            minRadius: 6,
+            maxRadius: 10
+        }
     }
 };

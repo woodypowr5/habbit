@@ -1,17 +1,23 @@
 <mat-card class="chart-parent-container">
   <!-- <div class="chart-container"> -->
       <ngx-charts-bubble-chart
-        [scheme]="colorScheme"
         [results]="filteredSeriesData"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        [autoScale]="autoScale"
-        [showGridLines] = "showGridLines"
+        [scheme]="chartOptions.colorScheme"
+        [xAxis]="chartOptions.showXAxis"
+        [yAxis]="chartOptions.showYAxis"
+        [legend]="chartOptions.showLegend"
+        [showXAxisLabel]="chartOptions.showXAxisLabel"
+        [showYAxisLabel]="chartOptions.showYAxisLabel"
+        [xAxisLabel]="chartOptions.xAxisLabel"
+        [yAxisLabel]="chartOptions.yAxisLabel"
+        [xScaleMin]="chartOptions.xScaleMin"
+        [xScaleMax]="chartOptions.xScaleMax"
+        [yScaleMin]="chartOptions.yScaleMin"
+        [yScaleMax]="chartOptions.yScaleMax"
+        [autoScale]="chartOptions.autoScale"
+        [minRadius]="chartOptions.minRadius"
+        [maxRadius]="chartOptions.maxRadius"
+        [showGridLines] = "chartOptions.showGridLines"
         (select)="onSelect($event)">
       </ngx-charts-bubble-chart>
   <!-- </div> -->
