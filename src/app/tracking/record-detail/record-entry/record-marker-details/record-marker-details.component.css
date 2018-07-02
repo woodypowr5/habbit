@@ -47,3 +47,20 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 .marker-detail-wrapper{
     margin-bottom: 20px;
 }
+.std-deviation{
+    position: relative;
+    width: 250px;
+}
+.std-deviation .tooltip-container{
+    top: 20px;
+    right: -20px;
+    position: relative;
+}
+.pdf-graph-wrapper .tooltip-container{
+    position: relative;
+    top: 30px;
+    right: -10px;
+}
+.chart-legend{
+    display: none;
+}

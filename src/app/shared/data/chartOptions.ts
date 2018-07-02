@@ -29,7 +29,7 @@ export const ChartOptions = {
         showXAxis: true,
         showYAxis: true,
         gradient: false,
-        showLegend: true,
+        showLegend: false,
         showXAxisLabel: true,
         xAxisLabel: 'Logged Entry',
         yScaleMin: 0,

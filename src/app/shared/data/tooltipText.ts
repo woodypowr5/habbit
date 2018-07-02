@@ -37,7 +37,13 @@ export const TooltipText = {
                     + ' your longest streak to a great way to improve your scores. It\'s important to note that'
                     + ' the higher your scores here, the more accurate your other results will be!',
             performance: 'This shows statistics about how you\'ve scored your own daily entries in this activity.'
-                    + ' Use this data to see how you\'ve improved towards your goals, or to just see if you\re imrpoving'
+                    + ' Use this data to see how you\'ve improved towards your goals, or to just see if you\re improving',
+            stdDeviation: 'Standard deviation is a number used to tell how measurements for a group are spread out from'
+                    + ' the average (mean), or expected value. A low standard deviation means that most of the numbers'
+                    + ' are very close to the average. A high standard deviation means that the numbers are spread out.',
+            cdfGraph: 'This display shows the past likelyhood (from your history) that the entry for that day will have'
+                    + ' been a certain value. However, like the stock market, be aware that past result do not garuntee'
+                    + ' future results'
         }
     }
 };

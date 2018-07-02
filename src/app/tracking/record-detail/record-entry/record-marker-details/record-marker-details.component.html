@@ -58,9 +58,20 @@
           [type]="'description'"
       ></app-tooltip>
     </mat-card-title>
-    Average entry: {{ averageEntryValue }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
-    <br>
-    Variablity (std. deviation): {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
+    <div class="average">
+      Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
+    </div>
+   
+    <div class="std-deviation">
+      Variablity (std. deviation): {{ markerDetailService.computeStandardDeviation().toFixed(2) }} / {{ markerDetailService.computeMeasurementRange() }}
+      <span class="tooltip-container">
+        <app-tooltip 
+        [displayText]="tooltipText.stdDeviation"
+        [id]="tooltipStdDeviation"
+        [type]="'description'"
+      ></app-tooltip>
+      </span>
+    </div>
     <div class="pdf-graph-wrapper">
       <ngx-charts-line-chart
         [scheme]="chartOptions.performance.colorScheme"
@@ -79,6 +90,13 @@
         [curve]="chartOptions.performance.curve"
         (select)="onSelect($event)">
       </ngx-charts-line-chart>
-  </div>
+      <span class="tooltip-container">
+        <app-tooltip 
+          [displayText]="tooltipText.cdfGraph"
+          [id]="tooltipPdf"
+          [type]="'description'"
+        ></app-tooltip>
+    </span>
+    </div>
   </mat-card>
 </div>
