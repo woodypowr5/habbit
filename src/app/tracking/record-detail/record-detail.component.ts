@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { History } from './../../shared/types/history.model';
 import { Measurement } from './../../shared/types/measurement.model';
 import { Record } from './../../shared/types/record.model';
@@ -18,6 +19,8 @@ export class RecordDetailComponent implements OnInit {
   @Input() myPlan: Plan = new EmptyPlan;
   @Input() activeDate: Date;
   @Input() history: History;
+  @Input() activeDateChanged: Subject<void>;
+  
   private recordEntryActive = false;
 
   constructor(private dateService: DateService, private trackingService: TrackingService) { }

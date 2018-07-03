@@ -4,7 +4,7 @@ import { Plan } from './../../../plan/plan.model';
 import { map } from 'rxjs/operators';
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Marker } from '../../../shared/types/marker.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-record-entry',
@@ -16,6 +16,7 @@ export class RecordEntryComponent implements OnInit {
   @Input() myPlan: Plan;
   @Input() activeDate: Date;
   @Input() history: History;
+  @Input() activeDateChanged: Subject<void>;
   @Output() addModifyMeasurement: EventEmitter<Measurement> = new EventEmitter();
   private activeMarker: BehaviorSubject<Marker>;
 
@@ -23,10 +24,9 @@ export class RecordEntryComponent implements OnInit {
 
   ngOnInit() {
     this.activeMarker = new BehaviorSubject(this.myPlan.markers[0]);
-  }
-
-  get measurements() {
-    return this.getMeasurementsForMarkers();
+    this.activeDateChanged.subscribe((() => {
+      this.newActiveDate();
+    }));
   }
 
   getMeasurementsForMarkers(): Measurement[] {
@@ -50,7 +50,13 @@ export class RecordEntryComponent implements OnInit {
     this.activeMarker.next(marker);
   }
 
+  newActiveDate(): void {}
+
   closeExpansionPanel(panelRef): void {
     panelRef.close();
+  }
+
+  get measurements() {
+    return this.getMeasurementsForMarkers();
   }
 }

@@ -2,10 +2,12 @@
     fxLayout    
     fxLayoutGap="50px"
 >
-    <mat-accordion class="record-details-markers" >
+    <mat-accordion class="record-details-markers"
+     >
         <mat-expansion-panel #panel
             *ngFor="let marker of myPlan.markers; let i = index"
             (click)="setActiveMarker(marker)"
+            (newActiveDate)="closeExpansionPanel(panel)"   
         > 
             <mat-expansion-panel-header
             >
