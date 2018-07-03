@@ -13,7 +13,6 @@ import { TrackingRoutingModule } from './tracking-routing.module';
 import { RecordsComponent } from './records/records.component';
 import { RecordComponent } from './records/record/record.component';
 import { RecordDetailComponent } from './record-detail/record-detail.component';
-import { NoRecordComponent } from './record-detail/no-record/no-record.component';
 import { RecordEntryComponent } from './record-detail/record-entry/record-entry.component';
 import { RecordEntryMarkerComponent } from './record-detail/record-entry/record-entry-marker/record-entry-marker.component';
 import { EntryFormRangeComponent } from './record-detail/record-entry/record-entry-marker/entry-form-range/entry-form-range.component';
@@ -31,7 +30,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     RecordDetailComponent,
     AdjustedDatePipe,
     CalendarDayPipe,
-    NoRecordComponent,
     RecordEntryComponent,
     RecordEntryMarkerComponent,
     EntryFormRangeComponent,
