@@ -28,6 +28,7 @@ export class TrackingComponent implements OnInit, OnDestroy {
   private planSubscription: Subscription;
   private activeDate;
   private activeId: number = null;
+  private activeDateChanged: Observable<void>;
 
   constructor(
     private trackingService: TrackingService,
