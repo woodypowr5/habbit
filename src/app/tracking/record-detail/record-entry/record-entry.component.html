@@ -2,9 +2,9 @@
     fxLayout    
     fxLayoutGap="50px"
 >
-    <mat-accordion class="record-details-markers"
+    <mat-accordion class="record-details-markers" multi="true" #accordion="matAccordion"
      >
-        <mat-expansion-panel #panel
+        <mat-expansion-panel #panel multi="false"
             *ngFor="let marker of myPlan.markers; let i = index"
             (click)="setActiveMarker(marker)"
             (newActiveDate)="closeExpansionPanel(panel)"   
@@ -32,7 +32,7 @@
             <app-record-entry-marker
                 [marker]="marker"
                 [measurement]="measurements[i]"
-                (saveMeasurement)="addOrModifyMeasurement($event, panel)"
+                (saveMeasurement)="addOrModifyMeasurement($event)"
             >
             </app-record-entry-marker>
         </mat-expansion-panel>

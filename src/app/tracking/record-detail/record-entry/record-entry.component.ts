@@ -2,9 +2,10 @@ import { Measurement } from './../../../shared/types/measurement.model';
 import { Record } from './../../../shared/types/record.model';
 import { Plan } from './../../../plan/plan.model';
 import { map } from 'rxjs/operators';
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { Marker } from '../../../shared/types/marker.model';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { MatAccordion } from '@angular/material';
 
 @Component({
   selector: 'app-record-entry',
@@ -19,6 +20,7 @@ export class RecordEntryComponent implements OnInit {
   @Input() activeDateChanged: Subject<void>;
   @Output() addModifyMeasurement: EventEmitter<Measurement> = new EventEmitter();
   private activeMarker: BehaviorSubject<Marker>;
+  @ViewChild('accordion') accordion: MatAccordion;
 
   constructor() { }
 
@@ -43,17 +45,19 @@ export class RecordEntryComponent implements OnInit {
 
   addOrModifyMeasurement(measurement: Measurement, panel): void {
     this.addModifyMeasurement.emit(measurement);
-    this.closeExpansionPanel(panel);
+    this.closeExpansionPanel();
   }
 
   setActiveMarker(marker: Marker): void {
     this.activeMarker.next(marker);
   }
 
-  newActiveDate(): void {}
+  newActiveDate(): void {
+    this.closeExpansionPanel();
+  }
 
-  closeExpansionPanel(panelRef): void {
-    panelRef.close();
+  closeExpansionPanel(): void {
+    this.accordion.closeAll();
   }
 
   get measurements() {

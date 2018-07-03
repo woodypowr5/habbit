@@ -7,7 +7,6 @@
   <h1 class="active-date">{{ activeDate | calendarDay:activeDate }}, {{ activeDate.getFullYear() }}</h1>
   
   <app-record-entry
-    *ngIf="record.measurements.length > 0 || recordEntryActive === true"
     fxLayout="column"
     fxLayoutAlign="space-around"
     [record]="record"
@@ -19,13 +18,13 @@
     >
   </app-record-entry>
 
-  <app-no-record
+  <!-- <app-no-record
     *ngIf="record.measurements.length === 0 && recordEntryActive === false"
     fxLayout="column"
     fxLayoutAlign="flex-start"
     (createNewRecord)="setRecordEntryActive($event)"
   >
 
-  </app-no-record>
+  </app-no-record> -->
 
 </mat-card>  
