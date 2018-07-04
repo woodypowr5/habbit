@@ -81,4 +81,14 @@ export class TrackingService {
       recordRef.update(record);
   }
 
+  deleteRecord(record: Record) {
+    const newHistory = this.history;
+    const recordRef = this.db
+      .collection('histories')
+      .doc(this.userId)
+      .collection('records')
+      .doc(record.id);
+    recordRef.delete();
+  }
+
 }
