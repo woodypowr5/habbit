@@ -1,12 +1,4 @@
 
-<!-- PLAN: {{ myPlan | json}} -->
-<!-- <br>s -->
-<!-- TrackingComponent:
-<br>
-ACTIVE_RECORD: {{ activeRecord | json }}
-<br> 
-ACTIVE_DATE: {{ activeDate }} -->
-
 <app-records 
     [records]="history.records"
     (setNewActiveRecord)="setActiveRecord($event)"

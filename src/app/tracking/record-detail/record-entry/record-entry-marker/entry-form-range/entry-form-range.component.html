@@ -1,14 +1,8 @@
 <div class="slider-labels">
-  <div 
-    *ngIf="minLabel"
-    class="slider-label min"
-  >
+  <div *ngIf="minLabel" class="slider-label min">
     {{ marker.minLabel }}
   </div>
-  <div 
-    *ngIf="maxLabel"
-    class="slider-label max"
-  >  
+  <div *ngIf="maxLabel" class="slider-label max">  
     {{ marker.maxLabel }}
   </div>
 </div>  
@@ -23,17 +17,10 @@
 >
 </mat-slider>
 
-<button 
-  mat-raised-button
-  (click)="save()"
->
+<button mat-raised-button (click)="save()">
   Save
 </button>
 
-<button 
-  mat-raised-button
-  (click)="clear(slider)"
->
+<button mat-raised-button (click)="clear(slider)">
   Clear
 </button>
-  

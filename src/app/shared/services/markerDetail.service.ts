@@ -78,7 +78,7 @@ export class MarkerDetailService {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {
-            let record = dateSortedRecords[i];
+            const record = dateSortedRecords[i];
             let found = false;
             record.measurements.map(measurement => {
                 if (measurement.markerName === markerName) {

@@ -190,19 +190,8 @@ export class ChartDataService {
     return vector;
   }
 
-  // createSeriesFromVector(vector: number[]): any {
-  //   const series = [];
-  //   vector.map( element => {
-  //     series.push({
-  //       'name': element,
-  //       'value': element
-  //     });
-  //   });
-  //   return series;
-  // }
-
   computeEPDF(vector: number[], marker: Marker) {
-    let v = new jerzy.Vector(vector);
+    const v = new jerzy.Vector(vector);
     const eCDF = [];
     let prevBinProbability = 0;
     for (let i = marker.min; i <= marker.max; i = i + marker.delta) {

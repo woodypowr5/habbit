@@ -20,7 +20,7 @@ export class RecordDetailComponent implements OnInit {
   @Input() activeDate: Date;
   @Input() history: History;
   @Input() activeDateChanged: Subject<void>;
-  
+
   private recordEntryActive = false;
 
   constructor(private dateService: DateService, private trackingService: TrackingService) { }

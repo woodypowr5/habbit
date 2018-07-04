@@ -79,7 +79,6 @@ export class RecordMarkerDetailsComponent implements OnInit {
       this.currentStreak = this.markerDetailService.computeCurrentStreak(this.marker.name, this.history);
       this.results.performance = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
       // move to markerDetailService
-      console.log(this.history)
       this.standardDeviation = this.markerDetailService.computeStandardDeviation(this.marker.name, this.history, this.averageEntryValue);
     }
     this.results.daysWithMeasurements = [

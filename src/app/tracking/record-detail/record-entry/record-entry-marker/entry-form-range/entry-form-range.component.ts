@@ -36,5 +36,4 @@ export class EntryFormRangeComponent implements OnInit {
     sliderRef.writeValue(0);
     this.sliderValue = undefined;
   }
-
 }
