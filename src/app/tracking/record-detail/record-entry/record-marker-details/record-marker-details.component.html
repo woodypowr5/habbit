@@ -63,7 +63,7 @@
     </div>
    
     <div class="std-deviation">
-      Variablity (std. deviation): {{ markerDetailService.computeStandardDeviation().toFixed(2) }} / {{ markerDetailService.computeMeasurementRange() }}
+      Variablity: {{ standardDeviation.toFixed(2) }}
       <span class="tooltip-container">
         <app-tooltip 
         [displayText]="tooltipText.stdDeviation"

@@ -75,7 +75,6 @@ export class MarkerDetailService {
     }
 
     computeCurrentStreak(markerName: string, history: History): number {
-        console.log(history)
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {
@@ -90,9 +89,7 @@ export class MarkerDetailService {
             if (found === false as boolean)  {
                 return streak;
             }
-            
             if (i + 2 <= dateSortedRecords.length) {
-                console.log(dateSortedRecords[i + 1]);
                 if (!this.dateService.isSameDate(dateSortedRecords[i + 1].date, this.dateService.getRelativeDay(record.date, -1))) {
                     return streak;
                 }
@@ -101,7 +98,17 @@ export class MarkerDetailService {
         return streak;
     }
 
-    computeStandardDeviation(): number {
-        return 7;
+    computeStandardDeviation(markerName: string, history: History, averageEntryValue: number): number {
+        let deviationSum = 0;
+        let numMeasurements = 0;
+        history.records.map(record => {
+            record.measurements.map(measurement => {
+                if (measurement.markerName === markerName) {
+                    deviationSum += Math.abs((measurement.value - averageEntryValue));
+                    numMeasurements++;
+                }
+            });
+        });
+        return deviationSum / numMeasurements;
     }
 }

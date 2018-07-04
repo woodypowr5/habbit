@@ -214,7 +214,5 @@ export class ChartDataService {
     }
     return eCDF;
   }
-
-  computeStandardDev(marker: Marker, history: History) {}
 }
 
