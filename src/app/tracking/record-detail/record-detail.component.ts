@@ -61,7 +61,7 @@ export class RecordDetailComponent implements OnInit {
       }
     );
     record.measurements = newMeasurements;
-    if (record.measurements.length == 0) {
+    if (record.measurements.length === 0) {
       this.deleteRecord(record);
     } else {
       this.updateRecord(record);

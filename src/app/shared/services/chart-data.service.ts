@@ -138,7 +138,7 @@ export class ChartDataService {
     seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
     const newSeriesData = [];
     seriesData.map(((dataPoint, index) => {
-      const relevantSeries = seriesData.slice(0, index);
+      const relevantSeries = seriesData.slice(0, index + 1);
       const relevantValues = [];
       relevantSeries.map(relevantDataPoint => {
         relevantValues.push(relevantDataPoint.value);
