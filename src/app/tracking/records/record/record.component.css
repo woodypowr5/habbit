@@ -34,7 +34,9 @@ h3{
 }
 
 .today{
-    border: 3px solid #DEDEDE; 
+    border: 3px solid #CECECE; 
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 .prev-day h3, .next-day h3{
@@ -82,7 +84,7 @@ h3{
 }
 
 .prev-day, .next-day{
-    top: 10px;
+    top: 18px;
 }
 .prev-prev-day, .next-next-day{
     top: 20px;
