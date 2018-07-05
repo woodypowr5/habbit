@@ -16,6 +16,7 @@
 }
 mat-card-title{
     height: 60px;
+    font-size: 1.4em;
 }
 .available-marker-card{
     justify-content: space-between;

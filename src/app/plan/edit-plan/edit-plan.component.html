@@ -3,7 +3,8 @@
   class="edit-plan" 
   fxLayout="column"
 >  
-  <h1 class="header">Your Activities</h1>
+  <h1 class="header" *ngIf="myPlan.markers.length > 0">Here's what you're tracking right now:</h1>
+  <h1 class="header" *ngIf="myPlan.markers.length === 0">It looks like your plan is empty. Get started by adding activities to track from below!</h1>
   <mat-card
     class="active-markers" 
     fxLayout 
@@ -22,9 +23,9 @@
     </app-active-marker-card>
   </mat-card>
 
-  <mat-divider class="edit-plan-divider"> 
-      <h1 class="header">Add or Remove Activities</h1>
-  </mat-divider>
+  <!-- <mat-divider class="edit-plan-divider">  -->
+      <h1 class="header" *ngIf="myPlan.markers.length > 0">Add more activities to track. Select from the list below to add to your plan:</h1>
+  <!-- </mat-divider> -->
  
   <mat-card
     class="add-remove-markers" 
