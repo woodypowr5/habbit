@@ -2,13 +2,16 @@
     fxLayout    
     fxLayoutGap="50px"
 >
-    <mat-accordion class="record-details-markers" multi="true" #accordion="matAccordion"
-     >
-        <mat-expansion-panel #panel multi="false"
+    <mat-accordion  class="record-details-markers" multi="true" #accordion="matAccordion">
+        <mat-expansion-panel 
+            #panel 
+            multi="false"
             *ngFor="let marker of myPlan.markers; let i = index"
+            [ngClass]="{'selected' : activeMarker.value.name === marker.name}"
             (click)="setActiveMarker(marker)"
             (newActiveDate)="closeExpansionPanel(panel)"   
         > 
+            {{ activeMarker.value.name }} , {{ marker.name }}
             <mat-expansion-panel-header
             >
                 <mat-panel-title>

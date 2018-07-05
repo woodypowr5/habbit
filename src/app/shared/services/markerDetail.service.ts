@@ -76,7 +76,6 @@ export class MarkerDetailService {
 
     computeCurrentStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
-        console.log(dateSortedRecords);
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {
             const record = dateSortedRecords[i];

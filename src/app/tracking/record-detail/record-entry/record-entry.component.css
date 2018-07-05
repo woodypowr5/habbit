@@ -4,9 +4,6 @@
 mat-expansion-panel-header{
     height: 80px !important;
 }
-.mat-expansion-panel.mat-expanded{
-    background-color: #F6F6F6;
-}
 mat-panel-title{
     color: #444;
     height: 57px;
@@ -36,4 +33,7 @@ mat-card{
 }
 app-record-marker-details{
     flex-grow: 2;
+}
+.selected{
+    background-color: #F6F6F6;
 }

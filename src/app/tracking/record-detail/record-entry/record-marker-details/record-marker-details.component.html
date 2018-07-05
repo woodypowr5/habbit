@@ -49,9 +49,9 @@
     
   </mat-card>
 
-  <mat-card class="marker-details-summary-details">
+  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'range'">
     <mat-card-title class="subtitle">
-      Performance
+      Scores
       <app-tooltip 
           [displayText]="tooltipText.performance"
           [id]="tooltipMovingAverage"
@@ -99,4 +99,26 @@
     </span>
     </div>
   </mat-card>
+
+  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'boolean'">
+    <mat-card-title class="subtitle">
+      Scores
+      <app-tooltip 
+          [displayText]="tooltipText.performance"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
+    </mat-card-title>
+    
+    <div class="pdf-graph-wrapper">
+      <span class="tooltip-container">
+        <app-tooltip 
+          [displayText]="tooltipText.cdfGraph"
+          [id]="tooltipPdf"
+          [type]="'description'"
+        ></app-tooltip>
+    </span>
+    </div>
+  </mat-card>
+
 </div>
