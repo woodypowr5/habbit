@@ -10,7 +10,6 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { PlanRoutingModule } from './plan-routing.module';
-import { CurrentPlanComponent } from './current-plan/current-plan.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { EditMarkerCardComponent } from './edit-plan/edit-marker-card/edit-marker-card.component';
 import { EditPlanCurrentComponent } from './edit-plan/edit-plan-current/edit-plan-current.component';
@@ -20,7 +19,6 @@ import { ActiveMarkerSettingsComponent } from './edit-plan/active-marker-card/ac
 @NgModule({
   declarations: [
     PlanComponent,
-    CurrentPlanComponent,
     EditPlanComponent,
     EditMarkerCardComponent,
     EditPlanCurrentComponent,

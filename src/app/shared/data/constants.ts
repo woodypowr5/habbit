@@ -10,7 +10,8 @@ export const Constants = {
         daysWithMeasurements: {
             domain: ['#89BF29', '#CCC']
         },
-        longestStreak:  {
+        streaks:  {
+            // domain: ['#89BF29', '#37B7D2']
             domain: ['#89BF29', '#CCC']
         },
         trendsLineGraph: {
@@ -23,7 +24,8 @@ export const Constants = {
             raw: shape.curveCardinal.tension(1),
             movingAverage: shape.curveCatmullRom.alpha(1),
             globalAverage: shape.curveCatmullRom.alpha(1)
-        }
+        },
+        markerDetails: shape.curveCatmullRom.alpha(1)
     },
     tooltipTypes: ['description', 'details']
 };

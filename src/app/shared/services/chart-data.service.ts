@@ -1,14 +1,16 @@
-import { DataSortingService } from './../shared/data-sorting-service';
-import { Marker } from './../../../src/app/shared/types/marker.model';
-import { DateService } from './../shared/date.service';
-import { Datapoint } from './../shared/types/datapoint.model';
-import { Measurement } from './../shared/types/measurement.model';
-import { Record } from './../shared/types/record.model';
+import { History } from './../types/history.model';
+import { Plan } from './../../plan/plan.model';
+import { DataSortingService } from './data-sorting-service';
+import { Marker } from '../types/marker.model';
+import { DateService } from '../services/date.service';
+import { Datapoint } from '../types/datapoint.model';
+import { Measurement } from '../types/measurement.model';
+import { Record } from '../types/record.model';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Plan } from '../plan/plan.model';
 import { raw } from 'body-parser';
 import * as jStat from 'jStat';
+import * as jerzy from 'jerzy';
 
 @Injectable()
 export class ChartDataService {
@@ -136,7 +138,7 @@ export class ChartDataService {
     seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
     const newSeriesData = [];
     seriesData.map(((dataPoint, index) => {
-      const relevantSeries = seriesData.slice(0, index);
+      const relevantSeries = seriesData.slice(0, index + 1);
       const relevantValues = [];
       relevantSeries.map(relevantDataPoint => {
         relevantValues.push(relevantDataPoint.value);
@@ -151,36 +153,55 @@ export class ChartDataService {
     return newSeriesData;
   }
 
-  computeScatterSeries(records: Record[], includeMarkers: [string, string]) {
+  computeScatterSeries(records: Record[], includeMarkers: [string, string]): any {
     const datapoints: Datapoint[] = this.formatToDatapoints(records, includeMarkers);
     return [{
       name: 'stuff',
       series: datapoints
     }];
   }
+
+  computeProbabilityDistribution(marker: Marker, history: History): any {
+    const markerAdapter: Marker = {
+      id: '',
+      name: marker.name,
+      dataType: '',
+      isLoading: false,
+    };
+    const planAdapter: Plan = {
+      name: '',
+      markers: [
+        markerAdapter
+      ]
+    };
+    const rawData = this.computeRawData(history.records, planAdapter);
+    const vectorData = this.createVectorFromSeries(rawData[0].series);
+    return [{
+      name : 'test',
+      series: this.computeEPDF(vectorData, marker)
+    }];
+  }
+
+  createVectorFromSeries(series: any): number[] {
+    const vector = [];
+    series.map( data => {
+      vector.push(data.value);
+    });
+    return vector;
+  }
+
+  computeEPDF(vector: number[], marker: Marker) {
+    const v = new jerzy.Vector(vector);
+    const eCDF = [];
+    let prevBinProbability = 0;
+    for (let i = marker.min; i <= marker.max; i = i + marker.delta) {
+      eCDF.push({
+        name:  String(i),
+        value: v.ecdf(i) - prevBinProbability
+      });
+      prevBinProbability = v.ecdf(i);
+    }
+    return eCDF;
+  }
 }
-
-
-
-// "name": "Germany",
-//     "series": [
-//       {
-//         "name": "2010",
-//         "x": "2010-01-01T08:00:00.000Z",
-//         "y": 80.3,
-//         "r": 80.4
-//       },
-//       {
-//         "name": "2000",
-//         "x": "2000-01-01T08:00:00.000Z",
-//         "y": 80.3,
-//         "r": 78
-//       },
-//       {
-//         "name": "1990",
-//         "x": "1990-01-01T08:00:00.000Z",
-//         "y": 75.4,
-//         "r": 79
-//       }
-//     ]
 

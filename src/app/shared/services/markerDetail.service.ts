@@ -1,7 +1,7 @@
-import { History } from './types/history.model';
+import { DateService } from '../services/date.service';
+import { History } from './../types/history.model';
 import { DataSortingService } from './data-sorting-service';
 import { Injectable } from '@angular/core';
-import { DateService } from './date.service';
 
 @Injectable()
 export class MarkerDetailService {
@@ -10,7 +10,12 @@ export class MarkerDetailService {
 
     computeDaysInHistory(history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
-        return this.dateService.daysElapsedBetweenDates(dateSortedRecords[0].date, dateSortedRecords[dateSortedRecords.length - 1].date);
+        if (dateSortedRecords.length > 0) {
+            return this.dateService.daysElapsedBetweenDates(
+                dateSortedRecords[0].date,
+                dateSortedRecords[dateSortedRecords.length - 1].date
+            );
+        }
     }
 
     computeDaysWithMeasurements(markerName: string, history: History): number {
@@ -41,12 +46,12 @@ export class MarkerDetailService {
         return sum / count;
     }
 
-    computeLongestStreak(markerName: string, history: History, modifier: string): number {
+    computeLongestStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date');
         let streak = 0;
         let longestStreak = 0;
         dateSortedRecords.map((record, index) => {
-            let found: boolean = false;
+            let found = false;
             record.measurements.map(measurement => {
                 if (measurement.markerName === markerName) {
                     found = true;
@@ -60,8 +65,8 @@ export class MarkerDetailService {
             } else {
                 streak = 0;
             }
-            if(index + 1 < dateSortedRecords.length) {
-                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, 1))) {
+            if (index + 1 < dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[index + 1].date, this.dateService.getRelativeDay(record.date, 1))) {
                     streak = 0;
                 }
             }
@@ -72,29 +77,38 @@ export class MarkerDetailService {
     computeCurrentStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
         let streak = 0;
-        dateSortedRecords.map((record, index) => {
-            let found: boolean = false;
+        for (let i = 0; i < dateSortedRecords.length; i++) {
+            const record = dateSortedRecords[i];
+            let found = false;
             record.measurements.map(measurement => {
                 if (measurement.markerName === markerName) {
-                    console.log("here")
                     found = true;
                     streak++;
                 }
             });
-            console.log(found)
             if (found === false as boolean)  {
                 return streak;
             }
-            if(index + 1 < dateSortedRecords.length) {
-                if (!this.dateService.isSameDate(dateSortedRecords[index+1].date, this.dateService.getRelativeDay(record.date, -1))) {
+            if (i + 2 <= dateSortedRecords.length) {
+                if (!this.dateService.isSameDate(dateSortedRecords[i + 1].date, this.dateService.getRelativeDay(record.date, -1))) {
                     return streak;
                 }
             }
-        });
+        }
         return streak;
     }
 
-    computeStandardDeviation(): number {
-        return 6;
+    computeStandardDeviation(markerName: string, history: History, averageEntryValue: number): number {
+        let deviationSum = 0;
+        let numMeasurements = 0;
+        history.records.map(record => {
+            record.measurements.map(measurement => {
+                if (measurement.markerName === markerName) {
+                    deviationSum += Math.abs((measurement.value - averageEntryValue));
+                    numMeasurements++;
+                }
+            });
+        });
+        return deviationSum / numMeasurements;
     }
 }

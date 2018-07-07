@@ -1,9 +1,9 @@
-import { Constants } from './../../constants';
+import { Constants } from '../../data/constants';
 import { Component, OnInit, Input } from '@angular/core';
 import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
-  showDelay: 1000,
+  showDelay: 500,
   hideDelay: 200,
   touchendHideDelay: 100,
 };

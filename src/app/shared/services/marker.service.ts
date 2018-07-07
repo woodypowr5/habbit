@@ -1,4 +1,4 @@
-import { Marker } from './types/marker.model';
+import { Marker } from '../types/marker.model';
 import { Observable } from 'rxjs/observable';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';

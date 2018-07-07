@@ -1,62 +1,124 @@
-<mat-card class="marker-details"
+<div class="marker-details"
   fxLayout="column"
   fxLayoutGap="20px"
 >
-  <mat-card-title>
-    Details: {{ marker.name }}
-  </mat-card-title>
-
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
-      Entries
+      Entries <span class="subtitle-subtext"> for {{ marker.name }}</span>
+      <app-tooltip 
+          [displayText]="tooltipText.entries"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
     </mat-card-title>
 
-    <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="space-between">
+    <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="flex-start">
       <div class="marker-graph-wrapper">
-        {{ daysWithMeasurements }} / {{ daysInHistory }} days
-        <!-- <ngx-charts-pie-chart
+        <div class="marker-detail-text entries">
+            You've made entries
+            <br>
+            for {{ daysWithMeasurements }} / {{ daysInHistory }} days
+        </div>
+        
+        <ngx-charts-pie-chart
           [scheme]="chartOptions.daysWithMeasurements.scheme"
+          [view]="chartOptions.streaks.viewDoughnut"
           [results]="results.daysWithMeasurements"
           [doughnut]="chartOptions.daysWithMeasurements.doughnut"
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
-        </ngx-charts-pie-chart> -->
+        </ngx-charts-pie-chart>
       </div>
 
       <div class="marker-graph-wrapper">
-        {{ daysWithMeasurements }} / {{ daysInHistory }} days
-        <ngx-charts-gauge
-          [scheme]="chartOptions.longestStreak.scheme"
-          [results]="results.longestStreak"
-          [min]="chartOptions.longestStreak.min"
-          [max]="chartOptions.longestStreak.max"
-          [units]="chartOptions.longestStreak.units"
-          [angleSpan]="chartOptions.longestStreak.angleSpan"
-          [startAngle]="chartOptions.longestStreak.startAngle"
+          <div class="marker-detail-text streaks">
+              Current Streak: {{ currentStreak }} days
+              <br>
+              Longest Streak: {{ longestStreak }} days
+          </div>
+        <ngx-charts-pie-chart
+          [scheme]="chartOptions.streaks.scheme"
+          [view]="chartOptions.streaks.viewDoughnut"
+          [results]="results.streaks"
+          [doughnut]="chartOptions.daysWithMeasurements.doughnut"
+          [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
-      </ngx-charts-gauge>
+        </ngx-charts-pie-chart>
       </div>
     </div>
     
   </mat-card>
 
-  <mat-card class="marker-details-summary-details">
+  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'range'">
     <mat-card-title class="subtitle">
-      Progress
+      Scores
+      <app-tooltip 
+          [displayText]="tooltipText.performance"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
     </mat-card-title>
-    Average entry: {{ averageEntryValue }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
-    <br>
-    Longest streak: {{ longestStreak }}
-    <br>
-    Current streak: {{ currentStreak }}
-    <br>
-    Variablity: {{ markerDetailService.computeStandardDeviation() }} / {{ markerDetailService.computeMeasurementRange() }}
+    <div class="average">
+      Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
+    </div>
+   
+    <div class="std-deviation">
+      Variablity: {{ standardDeviation.toFixed(2) }}
+      <span class="tooltip-container">
+        <app-tooltip 
+        [displayText]="tooltipText.stdDeviation"
+        [id]="tooltipStdDeviation"
+        [type]="'description'"
+      ></app-tooltip>
+      </span>
+    </div>
+    <div class="pdf-graph-wrapper">
+      <ngx-charts-line-chart
+        [scheme]="chartOptions.performance.colorScheme"
+        [results]="results.performance"
+        [gradient]="chartOptions.performance.gradient"
+        [xAxis]="chartOptions.performance.showXAxis"
+        [yAxis]="chartOptions.performance.showYAxis"
+        [yScaleMin]="chartOptions.performance.yScaleMin"
+        [legend]="chartOptions.performance.showLegend"
+        [showXAxisLabel]="chartOptions.performance.showXAxisLabel"
+        [showYAxisLabel]="chartOptions.performance.showYAxisLabel"
+        [xAxisLabel]="chartOptions.performance.xAxisLabel"
+        [yAxisLabel]="chartOptions.performance.yAxisLabel"
+        [autoScale]="chartOptions.performance.autoScale"
+        [timeline]="chartOptions.performance.timeline"
+        [curve]="chartOptions.performance.curve"
+        (select)="onSelect($event)">
+      </ngx-charts-line-chart>
+      <span class="tooltip-container">
+        <app-tooltip 
+          [displayText]="tooltipText.cdfGraph"
+          [id]="tooltipPdf"
+          [type]="'description'"
+        ></app-tooltip>
+    </span>
+    </div>
   </mat-card>
 
-  <!-- <mat-card class="marker-detail-goals">
+  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'boolean'">
     <mat-card-title class="subtitle">
-      Goal Progress
+      Scores
+      <app-tooltip 
+          [displayText]="tooltipText.performance"
+          [id]="tooltipMovingAverage"
+          [type]="'description'"
+      ></app-tooltip>
     </mat-card-title>
-  </mat-card> -->
+    
+    <div class="pdf-graph-wrapper">
+      <span class="tooltip-container">
+        <app-tooltip 
+          [displayText]="tooltipText.cdfGraph"
+          [id]="tooltipPdf"
+          [type]="'description'"
+        ></app-tooltip>
+    </span>
+    </div>
+  </mat-card>
 
-</mat-card>
+</div>

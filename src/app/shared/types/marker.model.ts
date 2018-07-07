@@ -12,4 +12,5 @@ export class Marker {
     step?: number;
     minLabel?: string;
     maxLabel?: string;
+    delta?: number;
 }

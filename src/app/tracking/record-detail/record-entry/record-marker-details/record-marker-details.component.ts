@@ -1,10 +1,13 @@
-import { Constants } from './../../../../shared/constants';
-import { MarkerDetailService } from './../../../../shared/markerDetail.service';
+import { ChartDataService } from './../../../../shared/services/chart-data.service';
+import { Constants } from '../../../../shared/data/constants';
+import { ChartOptions } from './../../../../shared/data/chartOptions';
+import { MarkerDetailService } from './../../../../shared/services/markerDetail.service';
 import { Marker } from './../../../../shared/types/marker.model';
 import { History } from './../../../../shared/types/history.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { TrackingService } from '../../../tracking.service';
+import { TrackingService } from '../../../../shared/services/tracking.service';
+import { TooltipText } from '../../../../shared/data/tooltipText';
 
 @Component({
   selector: 'app-record-marker-details',
@@ -19,37 +22,26 @@ export class RecordMarkerDetailsComponent implements OnInit {
   private daysWithMeasurements: number;
   private daysInHistory: number;
   private averageEntryValue: number;
-  private currentStreak: number;
-  private longestStreak: number;
+  private currentStreak = 0;
+  private longestStreak = 0;
   private standardDeviation: number;
   private range: number;
+  private tooltipText = TooltipText.tracking.markerDetails;
+  private chartOptions = ChartOptions;
   private results: any = {
-    daysWithMeasurements: []
-  };
-
-  private chartOptions: any = {
-    daysWithMeasurements: {
-      scheme: Constants.chartColorScheme.daysWithMeasurements,
-      showXAxis: false,
-      showYAxis: false,
-      gradient: false,
-      showLegend: false,
-      showXAxisLabel: false,
-      showYAxisLabel: false,
-      doughnut: true,
-      arcWidth: 0.25
+    daysWithMeasurements: [],
+    streaks: {
+      currentStreak: 0,
+      longestStreak: 0
     },
-    longestStreak: {
-      scheme: Constants.chartColorScheme.longestStreak,
-      min: 0,
-      max: null,
-      units: null,
-      angleSpan: 240,
-      startAngle: -120,
-    }
+    performance: null
   };
 
-  constructor(private trackingService: TrackingService, private markerDetailService: MarkerDetailService) { }
+  constructor(
+    private trackingService: TrackingService,
+    private markerDetailService: MarkerDetailService,
+    private chartDataService: ChartDataService
+  ) { }
 
   ngOnInit() {
     this.activeMarker.subscribe( marker => {
@@ -62,6 +54,22 @@ export class RecordMarkerDetailsComponent implements OnInit {
     });
   }
 
+  formatValue(value) {
+    let daysToGo;
+    if (this.longestStreak) {
+      daysToGo = value - value + this.longestStreak - this.currentStreak;
+    } else {
+      return '';
+    }
+    if (daysToGo < 1) {
+      return 'Great Job!';
+    } else if (daysToGo === 1) {
+      return '1 day to go!';
+    } else {
+      return daysToGo + ' days to go!';
+    }
+  }
+
   calculateMarkerDetails(marker: Marker) {
     if (this.history) {
       this.daysInHistory = this.markerDetailService.computeDaysInHistory(this.history);
@@ -69,6 +77,9 @@ export class RecordMarkerDetailsComponent implements OnInit {
       this.averageEntryValue = this.markerDetailService.computeAverageEntryValue(this.marker.name, this.history);
       this.longestStreak = this.markerDetailService.computeLongestStreak(this.marker.name, this.history);
       this.currentStreak = this.markerDetailService.computeCurrentStreak(this.marker.name, this.history);
+      this.results.performance = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
+      // move to markerDetailService
+      this.standardDeviation = this.markerDetailService.computeStandardDeviation(this.marker.name, this.history, this.averageEntryValue);
     }
     this.results.daysWithMeasurements = [
       {
@@ -80,5 +91,16 @@ export class RecordMarkerDetailsComponent implements OnInit {
         'value': this.daysInHistory - this.daysWithMeasurements
       }
     ];
+    this.results.streaks = [
+      {
+        'name': 'Current Streak',
+        'value': this.currentStreak
+      },
+      {
+        'name': 'Days Left',
+        'value': this.longestStreak - this.currentStreak
+      }
+    ];
+    this.chartOptions.streaks.valueFormatting = this.formatValue;
   }
 }

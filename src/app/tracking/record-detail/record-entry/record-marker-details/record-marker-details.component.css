@@ -1,7 +1,66 @@
+.marker-details{
+    padding: 0px;
+}
+.marker-details>mat-card-title{
+    text-align: center;
+}
 .record-entry-marker-details{
     min-height: 500px;
 }
 .marker-graph-wrapper{
-    width: 150px;
-    height: 150px;
+    width: 50%;
+    height: 80%;   
+    border-left: 1px dashed #BBB; 
+}
+.pdf-graph-wrapper{
+    width: 80%;
+    height: 75%;
+}
+.marker-graph-wrapper:last-child{
+    margin-left: 15px;
+}
+ngx-charts-pie-chart, ngx-charts-gauge{
+    margin: 0 auto;
+    width: 100%;
+}
+.ngx-charts{
+    width: 100px;
+}
+.marker-details-measurements-taken{
+    height: 300px;
+}
+.marker-details-summary-details{
+    height: 300px;
+}
+.marker-detail-text{
+    height: 50px;
+    margin-left: 20px;
+}
+.subtitle {
+    position: relative;
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+.subtitle-subtext{
+    font-size: .6em;
+}
+.marker-detail-wrapper{
+    margin-bottom: 20px;
+}
+.std-deviation{
+    position: relative;
+    width: 250px;
+}
+.std-deviation .tooltip-container{
+    top: 20px;
+    right: -20px;
+    position: relative;
+}
+.pdf-graph-wrapper .tooltip-container{
+    position: relative;
+    top: 30px;
+    right: -10px;
+}
+.chart-legend{
+    display: none;
 }

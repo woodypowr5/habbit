@@ -2,7 +2,7 @@ import { PlanService } from './../plan/plan.service';
 import { Record } from './../shared/types/record.model';
 import { History } from './../shared/types/history.model';
 import { Subscription } from 'rxjs/subscription';
-import { TrackingService } from './../tracking/tracking.service';
+import { TrackingService } from '../shared/services/tracking.service';
 import { Component, OnInit } from '@angular/core';
 import { Plan } from '../plan/plan.model';
 

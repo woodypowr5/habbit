@@ -1,12 +1,14 @@
-import { TooltipText } from './../../shared/components/tooltip/tooltipText';
-import { Constants } from './../../shared/constants';
+import { Marker } from './../../shared/types/marker.model';
+import { TooltipText } from './../../shared/data/tooltipText';
+import { Constants } from '../../shared/data/constants';
 import { Plan } from './../../plan/plan.model';
 import { Datapoint } from './../../shared/types/datapoint.model';
 import { Record } from './../../shared/types/record.model';
-import { ChartDataService } from './../chart-data.service';
+import { ChartDataService } from '../../shared/services/chart-data.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserModule } from '@angular/platform-browser';
+import { ChartOptions } from '../../shared/data/chartOptions';
 
 @Component({
   selector: 'app-trends-linked',
@@ -27,14 +29,7 @@ export class TrendsLinkedComponent implements OnInit {
   private tooltipText = TooltipText.trends.links;
 
   // chart config
-  showXAxis = true;
-  showYAxis = true;
-  showLegend = true;
-  showXAxisLabel = true;
-  showYAxisLabel = true;
-  colorScheme = Constants.chartColorScheme;
-  autoScale = true;
-  showGridLines = true;
+  private chartOptions = ChartOptions.trends.linked;
 
   constructor(private chartDataService: ChartDataService) {}
 
@@ -56,6 +51,7 @@ export class TrendsLinkedComponent implements OnInit {
       [this.visibleSeries[0], this.visibleSeries[1]]
     );
     this.filteredSeriesData = this.seriesData[this.selectedTrendType];
+    this.setChartAxes(this.visibleSeries, this.plan);
   }
 
   trendTypeChanged(event): void {
@@ -70,5 +66,16 @@ export class TrendsLinkedComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  setChartAxes(visibleSeries: string[], plan: Plan): void {
+    if (visibleSeries.length > 1) {
+      const marker1: Marker = plan.markers.filter(marker => marker.name === visibleSeries[0])[0];
+      const marker2: Marker = plan.markers.filter(marker => marker.name === visibleSeries[1])[0];
+      this.chartOptions.xScaleMin = marker1.min - 1;
+      this.chartOptions.xScaleMax = marker1.max + 1;
+      this.chartOptions.yScaleMin = marker2.min - 1;
+      this.chartOptions.yScaleMax = marker2.max + 1;
+    }
   }
 }

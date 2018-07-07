@@ -2,9 +2,10 @@ import { Measurement } from './../../../shared/types/measurement.model';
 import { Record } from './../../../shared/types/record.model';
 import { Plan } from './../../../plan/plan.model';
 import { map } from 'rxjs/operators';
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { Marker } from '../../../shared/types/marker.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { MatAccordion } from '@angular/material';
 
 @Component({
   selector: 'app-record-entry',
@@ -16,20 +17,21 @@ export class RecordEntryComponent implements OnInit {
   @Input() myPlan: Plan;
   @Input() activeDate: Date;
   @Input() history: History;
+  @Input() activeDateChanged: Subject<void>;
   @Output() addModifyMeasurement: EventEmitter<Measurement> = new EventEmitter();
   private activeMarker: BehaviorSubject<Marker>;
+  @ViewChild('accordion') accordion: MatAccordion;
 
   constructor() { }
 
   ngOnInit() {
     this.activeMarker = new BehaviorSubject(this.myPlan.markers[0]);
+    this.activeDateChanged.subscribe((() => {
+      this.newActiveDate();
+    }));
   }
 
-  get measurements() {
-    return this.getMeasurementsForMarkers();
-  }
-
-  getMeasurementsForMarkers() {
+  getMeasurementsForMarkers(): Measurement[] {
     const measurements: Measurement[] = [];
     for (let i = 0; i < this.myPlan.markers.length; i++) {
       this.record.measurements.filter(currentMeasurement => {
@@ -41,11 +43,24 @@ export class RecordEntryComponent implements OnInit {
     return measurements;
   }
 
-  addOrModifyMeasurement(measurement: Measurement): void {
+  addOrModifyMeasurement(measurement: Measurement, panel): void {
     this.addModifyMeasurement.emit(measurement);
+    this.closeExpansionPanel();
   }
 
   setActiveMarker(marker: Marker): void {
     this.activeMarker.next(marker);
+  }
+
+  newActiveDate(): void {
+    this.closeExpansionPanel();
+  }
+
+  closeExpansionPanel(): void {
+    this.accordion.closeAll();
+  }
+
+  get measurements() {
+    return this.getMeasurementsForMarkers();
   }
 }

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '../material.module';
-import { DateService } from './date.service';
+import { DateService } from './services/date.service';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 
 @NgModule({
