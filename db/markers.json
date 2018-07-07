@@ -1,0 +1,145 @@
+{
+    "availableMarkers": [
+        {
+            "name": "Overall Mood",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"insert_emoticon",
+            "min": 1,
+            "max": 5,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent"
+        },
+        {
+            "name": "Diet Quality",
+            "id":    "2",
+            "dataType": "range",
+            "iconName":"local_dining",
+            "min": 1,
+            "max": 5,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent"
+        },
+        {
+            "name": "Exercise Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Hours of Sleep",
+            "id":    "4",
+            "dataType": "range",
+            "iconName":"local_hotel",
+            "min": 0,
+            "max": 12,
+            "delta": 0.5,
+            "unit": "hour"
+        },
+        {
+            "name": "Quality of Sleep",
+            "id":    "5",
+            "dataType": "range",
+            "iconName":"brightness_3",
+            "min": 1,
+            "max": 5,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent"
+        },
+        {
+            "name": "Social Interaction",
+            "id":    "6",
+            "dataType": "range",
+            "iconName":"people_outline",
+            "min": 1,
+            "max": 5,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Solitary",
+            "maxLabel": "Social Butterfly"
+        },
+        {
+            "name": "Meditate Today?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Meditation Time",
+            "id":    "8",
+            "dataType": "range",
+            "iconName":"update",
+            "min": 0,
+            "max": 60,
+            "delta": 1,
+            "unit": "minute"
+        },
+        {
+            "name": "Alcohol Today?",
+            "id":    "9",
+            "dataType": "boolean",
+            "iconName":"local_bar",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Read Today?",
+            "id":    "9",
+            "dataType": "boolean",
+            "iconName":"",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Smoke Today?",
+            "id":    "10",
+            "dataType": "boolean",
+            "iconName":"smoking_rooms",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Coffee Today?",
+            "id":    "10",
+            "dataType": "boolean",
+            "iconName":"free_breakfast",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Calories Consumed",
+            "id":    "2",
+            "dataType": "range",
+            "iconName":"restaurant",
+            "min": 0,
+            "max": 4000
+        },
+        {
+            "name": "Traveling Today?",
+            "id":    "2",
+            "dataType": "boolean",
+            "iconName": "flight",
+            "value1Name": "Yes",
+            "value2Name": "No"
+        },
+        {
+            "name": "Miles Ran",
+            "id":    "2",
+            "dataType": "range",
+            "iconName": "directions_run",
+            "min": 0,
+            "max": 10,
+            "unit": "mile"
+        }
+    ]
+}     
