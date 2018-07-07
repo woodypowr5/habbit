@@ -1,0 +1,14 @@
+{
+    "plans": { 
+        "QwpGSkfFh0W3ksPjeKieiIAJtsJ2": {
+            "name": "My Plan",
+            "markers": [
+                {
+                    "id": 1,
+                    "name": "marker name",
+                    "dataType": "numeric"
+                }
+            ]
+        } 
+    }
+}

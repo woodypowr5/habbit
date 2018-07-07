@@ -38,3 +38,4 @@ testem.log
 .DS_Store
 Thumbs.db
 src/app/shared/data-sorting-service\.spec.ts
+src/app/shared/data-sorting-service\.spec.ts

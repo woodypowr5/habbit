@@ -1,0 +1,286 @@
+{
+    "availableMarkers": [
+        {
+            "name": "Overall Mood",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"insert_emoticon",
+            "min": 1,
+            "max": 100,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Wellness"
+        },
+        {
+            "name": "Meditate Today?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Wellness"
+        },
+        {
+            "name": "Minutes of Meditation",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "minute",
+            "category": "Wellness"
+        },
+        {
+            "name": "Nap Today?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Wellness"
+        },
+        {
+            "name": "Hours of Sleep",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "hour",
+            "category": "Wellness"
+        },
+        {
+            "name": "Wake Up On Time?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Wellness"
+        },
+        {
+            "name": "Went to Bed On Time?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Wellness"
+        },
+        {
+            "name": "Well Rested?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Wellness"
+        },
+        {
+            "name": "Hydrated?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Cups of Water",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "cup",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Overeat Today?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Eat Properly Today?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Calories Consumed",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "minute",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Diet Quality",
+            "id":    "2",
+            "dataType": "range",
+            "iconName":"local_dining",
+            "min": 1,
+            "max": 100,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Within Diet Limits?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Cook at Home?",
+            "id":    "7",
+            "dataType": "boolean",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Exercise Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Hours of Exercise",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "hour",
+            "category": "Fitness"
+        },
+        {
+            "name": "Miles Ran",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "mile",
+            "category": "Fitness"
+        },
+        {
+            "name": "Miles Walked",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "mile",
+            "category": "Fitness"
+        },
+        {
+            "name": "Miles Biked or Swam",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "mile",
+            "category": "Fitness"
+        },
+        {
+            "name": "Run Today",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Walked Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Bike / Swim Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Played Sports Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Met Fitness Goals Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Fitness"
+        },
+        {
+            "name": "Overall Activity Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"insert_emoticon",
+            "min": 1,
+            "max": 100,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Fitness"
+        },
+        {
+            "name": "Paid Bills?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Money / Finance"
+        },
+        {
+            "name": "Within Daily Budget?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Money / Finance"
+        },
+        {
+            "name": "Add to Savings?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Money / Finance"
+        },
+        {
+            "name": "Money Spent",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"insert_emoticon",
+            "unit": "dollar",
+            "category": "Money / Finance"
+        }
+    ]
+}     

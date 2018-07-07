@@ -1,0 +1,22 @@
+{
+    "histories": { 
+        "records": [
+            {
+                "date": "24 May 2017",
+                "measurements": [
+                    {
+                        "markerName": "Diet Quality",
+                        "value": "Good"
+                    },
+                    {
+                        "markerName": "Overall Mood",
+                        "value": "Good"
+                    }
+                ]
+            }
+        ],
+        "userId": {
+            "value": "QwpGSkfFh0W3ksPjeKieiIAJtsJ2"
+        }
+    }
+}
