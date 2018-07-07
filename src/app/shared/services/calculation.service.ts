@@ -27,7 +27,7 @@ export class CalculationService {
 
     getDiscreteStepPercentage(min: number, max: number, step: number): number {
         if (step !== undefined) {
-          return step / (max - min) * 100;
+          return Math.round(step / (max - min) * 100);
         }
         return undefined;
       }

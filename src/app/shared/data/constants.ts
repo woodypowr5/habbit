@@ -27,5 +27,6 @@ export const Constants = {
         },
         markerDetails: shape.curveCatmullRom.alpha(1)
     },
-    tooltipTypes: ['description', 'details']
+    tooltipTypes: ['description', 'details'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 };

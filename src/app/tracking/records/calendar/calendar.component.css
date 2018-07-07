@@ -1,0 +1,20 @@
+
+button{
+    width: 200px;
+    font-size: 1.2em;
+    color: #666;
+    position: relative;
+}
+
+.arrow{
+    position: absolute;
+    font-size: 12px;
+    color: #999;
+    line-height: 38px;
+}
+.arrow.left{
+    left: 5px;
+}
+.arrow.right{
+    right: 5px;
+}

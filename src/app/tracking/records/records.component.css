@@ -10,6 +10,13 @@ mat-card{
     padding-top: 60px;
     padding-bottom: 40px;
 }
+app-calendar{
+    position: absolute;
+    top: 10px;
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+}
 
 @media (max-width: 1000px) {
     /* transition to 5 tiles */

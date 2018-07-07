@@ -1,3 +1,19 @@
-<p>
-  calendar works!
-</p>
+
+<button mat-button
+  (click)="newMonthSelected(getDateForPreviousMonth())"
+>
+<span class="arrow left">&#9664;</span> {{ previousMonth }}
+</button>  
+
+<button mat-button
+  disabled
+>
+  {{ currentMonth }}
+</button>  
+
+<button mat-button
+  (click)="newMonthSelected(getDateForNextMonth())"
+>
+  {{ nextMonth }} <span class="arrow right">&#9658;</span>
+</button>  
+ 

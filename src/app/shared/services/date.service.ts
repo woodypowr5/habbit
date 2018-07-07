@@ -1,3 +1,4 @@
+import { Constants } from './../data/constants';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { nextTick } from 'q';
@@ -24,5 +25,40 @@ export class DateService {
     } else {
       return moment(date).subtract(offset * -1, 'd').toDate();
     }
+  }
+
+  getFirstOfMonth(month: string, year: number): Date {
+    const monthNumber = Constants.months.indexOf(month);
+    const newDate = new Date;
+    newDate.setFullYear(year);
+    newDate.setMonth(monthNumber);
+    newDate.setDate(0);
+    return newDate;
+  }
+
+  getNextMonth(year: number, currentMonth: number): Date {
+    const newDate  = new Date;
+    if (currentMonth === 10) {
+      newDate.setMonth(0);
+      newDate.setFullYear(year + 1);
+    } else {
+      newDate.setMonth(currentMonth + 2);
+      newDate.setFullYear(year);
+    }
+    newDate.setDate(0);
+    return newDate;
+  }
+
+  getPreviousMonth(year: number, currentMonth: number): Date {
+    const newDate  = new Date;
+    if (currentMonth === 0) {
+      newDate.setMonth(12);
+      newDate.setFullYear(year);
+    } else {
+      newDate.setMonth(currentMonth);
+      newDate.setFullYear(year);
+    }
+    newDate.setDate(0);
+    return newDate;
   }
 }
