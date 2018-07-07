@@ -7,9 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class MarkerService {
-  availableMarkers: Marker[] = [];
-  availableMarkersChanged = new BehaviorSubject<Marker[]>(null);
+  private availableMarkers: Marker[] = [];
+  public availableMarkersChanged = new BehaviorSubject<Marker[]>(null);
   private markerSubscriptions: Subscription[] = [];
+  public markerCategoriesChanged = new BehaviorSubject<string[]>(null);
+  private markerCategoriesSubscriptions: Subscription[] = [];
 
   constructor(
     private db: AngularFirestore
@@ -29,6 +31,7 @@ export class MarkerService {
           (markers: Marker[]) => {
             this.availableMarkers = markers;
             this.availableMarkersChanged.next(this.availableMarkers);
+            this.hydrateCategories(this.availableMarkers);
           },
           error => {}
         )
@@ -37,6 +40,16 @@ export class MarkerService {
 
   cancelSubscriptions() {
     this.markerSubscriptions.forEach(sub => sub.unsubscribe());
+    this.markerCategoriesSubscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  hydrateCategories(markers: Marker[]): void {
+    const categories: string[] = [];
+    markers.map(marker => {
+      if (categories.indexOf(marker.category) === -1) {
+        categories.push(marker.category);
+      }
+    });
+    this.markerCategoriesChanged.next(categories);
+  }
 }

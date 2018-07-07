@@ -21,6 +21,7 @@ import { EntryFormBooleanComponent } from './record-detail/record-entry/record-e
 import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
 import { RecordMarkerDetailsComponent } from './record-detail/record-entry/record-marker-details/record-marker-details.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CalendarComponent } from './records/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     EntryFormRangeComponent,
     EntryFormEnumeratedComponent,
     EntryFormBooleanComponent,
-    RecordMarkerDetailsComponent
+    RecordMarkerDetailsComponent,
+    CalendarComponent
   ],
   imports: [
     SharedModule,

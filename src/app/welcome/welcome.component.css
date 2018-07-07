@@ -2,7 +2,7 @@
   text-align: center;
   width: 100%;
   height: 600px;
-  background-image: url('/assets/images/run.jpg');
+  background-image: url('/assets/images/woman.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -10,7 +10,7 @@
 .hero2 {
   text-align: center;
   width: 100%;
-  height: 400px;
+  height: 500px;
   background-image: url('/assets/images/run.jpg');
   background-repeat: no-repeat;
   background-size: cover;

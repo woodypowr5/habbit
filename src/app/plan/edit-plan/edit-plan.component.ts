@@ -1,3 +1,4 @@
+import { MarkerService } from './../../shared/services/marker.service';
 import { Marker } from './../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -11,15 +12,20 @@ import { Plan } from './../plan.model';
 export class EditPlanComponent implements OnInit, OnChanges {
   private selectedMarkers: Marker[] = [];
   private inactiveMarkers: Marker[] = [];
+  private markerCategories: string[] = [];
   @Input() availableMarkers: Marker[] = [];
   @Input() myPlan: Plan;
   @Input() markerAddedToPlan;
   @Input() markerRemovedFromPlan;
-
   @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
   @Output() markerRemovedFromPlanParent = new EventEmitter<Marker>();
 
+  constructor(private markerService: MarkerService) {}
+
   ngOnInit() {
+    this.markerService.markerCategoriesChanged.subscribe(categories => {
+      this.markerCategories = categories;
+    });
   }
 
   ngOnChanges() {
@@ -41,5 +47,9 @@ export class EditPlanComponent implements OnInit, OnChanges {
 
   removeMarkerFromPlan(marker: Marker): void {
     this.markerRemovedFromPlanParent.emit(marker);
+  }
+
+  getMarkersForCategory(inactiveMarkers: Marker[], category: string): Marker[] {
+    return inactiveMarkers.filter(marker => marker.category === category);
   }
 }

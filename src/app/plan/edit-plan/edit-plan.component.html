@@ -6,7 +6,7 @@
   <h1 class="header" *ngIf="myPlan.markers.length > 0">Here's which activities you're tracking right now:</h1>
   <h1 class="header" *ngIf="myPlan.markers.length === 0">It looks like your plan is empty. Get started by adding activities to track from below!</h1>
   <mat-card
-    class="active-markers" 
+    class="marker-container active-markers" 
     fxLayout 
     fxLayoutAlign="start"
     fxLayoutGap="20px" 
@@ -26,21 +26,31 @@
  
   <mat-card
     class="add-remove-markers" 
-    fxLayout 
-    fxLayoutAlign=""
-    fxLayoutGap="20px" 
   >
-    <app-edit-marker-card
-      [marker]="marker"
-      [myPlan]="myPlan"
-      [isInPlan]="isInPlan(marker)"
-      (markerAddedToPlan)="addMarkerToPlan($event)"
-      (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
-      *ngFor="let marker of inactiveMarkers" 
-      fxFlex="200px" 
-      fxFlex.xs="100%"
+    <div
+      *ngFor="let category of markerCategories"
+      class="marker-category"
     >
-    </app-edit-marker-card>
+      
+      <h1>{{ category }}</h1> 
+      <div 
+        class="marker-container" 
+        fxLayout 
+        fxLayoutGap="20px"
+      >
+        <app-edit-marker-card
+          [marker]="marker"
+          [myPlan]="myPlan"
+          [isInPlan]="isInPlan(marker)"
+          (markerAddedToPlan)="addMarkerToPlan($event)"
+          (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
+          *ngFor="let marker of getMarkersForCategory(inactiveMarkers, category)" 
+          fxFlex="200px" 
+          fxFlex.xs="100%"
+        >
+        </app-edit-marker-card>
+      </div>  
+    </div>  
   </mat-card>
 </section>
   

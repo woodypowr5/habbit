@@ -13,7 +13,10 @@ import { Plan } from './plan.model';
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
-  private myPlan: Plan;
+  private myPlan: Plan = {
+    name: '',
+    markers: []
+  };
   private availableMarkers: Marker[] = [];
   private availableMarkerSubscription: Subscription;
   @Input() markerAddedToPlanParent;

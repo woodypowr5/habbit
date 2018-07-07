@@ -1,3 +1,4 @@
+import { MarkerService } from './../../../shared/services/marker.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -10,7 +11,5 @@ export class EditPlanCurrentComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

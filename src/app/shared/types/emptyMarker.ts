@@ -6,4 +6,6 @@ export class EmptyMarker implements Marker {
     dataType = null;
     iconName = null;
     isLoading = false;
-} 
+    category = null;
+}
+

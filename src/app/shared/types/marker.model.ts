@@ -2,7 +2,8 @@ export class Marker {
     id: string;
     name: string;
     dataType: string;
-    iconName?: string;
+    category: string;
+    iconName: string;
     isLoading: boolean;
     min?: number;
     max?: number;

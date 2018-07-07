@@ -167,6 +167,8 @@ export class ChartDataService {
       name: marker.name,
       dataType: '',
       isLoading: false,
+      category: '',
+      iconName: ''
     };
     const planAdapter: Plan = {
       name: '',
