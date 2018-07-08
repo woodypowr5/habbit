@@ -1,7 +1,7 @@
 import { MarkerService } from './../../shared/services/marker.service';
 import { Marker } from './../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Plan } from './../plan.model';
 
 @Component({
@@ -13,6 +13,7 @@ export class EditPlanComponent implements OnInit, OnChanges {
   private selectedMarkers: Marker[] = [];
   private inactiveMarkers: Marker[] = [];
   private markerCategories: string[] = [];
+  // private categorySelectForm: FormControl;
   @Input() availableMarkers: Marker[] = [];
   @Input() myPlan: Plan;
   @Input() markerAddedToPlan;
@@ -20,17 +21,24 @@ export class EditPlanComponent implements OnInit, OnChanges {
   @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
   @Output() markerRemovedFromPlanParent = new EventEmitter<Marker>();
 
-  constructor(private markerService: MarkerService) {}
+  constructor(private markerService: MarkerService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.markerService.markerCategoriesChanged.subscribe(categories => {
       this.markerCategories = categories;
     });
+    // this.onCategorySelectFormChanges();
   }
 
   ngOnChanges() {
     this.inactiveMarkers = this.availableMarkers.filter(marker => !this.isInPlan(marker));
   }
+
+  // onCategorySelectFormChanges(): void {
+  //   this.categorySelectForm.valueChanges.subscribe(val => {
+  //     console.log(val);
+  //   });
+  // }
 
   isInPlan(marker: Marker): boolean {
     for (let index = 0; index < this.myPlan.markers.length; index++) {

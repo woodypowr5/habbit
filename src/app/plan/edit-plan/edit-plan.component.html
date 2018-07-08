@@ -27,6 +27,18 @@
   <mat-card
     class="add-remove-markers" 
   >
+    <span class="go-to-text">Go To Category</span>
+    <!-- <form > -->
+      <mat-select [(value)]="categorySelected">
+        <mat-option 
+          [value]="category"
+          *ngFor="let category of markerCategories"
+          >
+            {{ category }}
+        </mat-option>
+      </mat-select>
+    <!-- </form> -->
+
     <div
       *ngFor="let category of markerCategories"
       class="marker-category"

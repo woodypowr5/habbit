@@ -29,8 +29,19 @@
     font-family: 'Roboto Slab';
     margin-bottom: 30px;
     margin-top: 50px;
-    border-bottom: 3px solid #EEE;
+    border-bottom: 2px solid rgba(137, 191, 41, 0.5);
     line-height: 2.2em;
     font-size: 1.7em;
     color: #666;
+}
+mat-select{
+    width: 150px;
+    height: 25px;
+    margin: 30px 10px 20px 30px;
+    border: 1px solid #AAA;
+    padding: 5px;
+    padding-top: 8px;
+}
+go-to-text{
+    line-height: 30x;
 }

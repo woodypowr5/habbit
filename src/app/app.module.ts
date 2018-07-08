@@ -23,7 +23,7 @@ import { TrackingService } from './shared/services/tracking.service';
 import { PlanService } from './plan/plan.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';
-
+import { HttpModule } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
 import { reducers } from './app.reducer';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
@@ -45,6 +45,7 @@ import { RecordsComponent } from './tracking/records/records.component';
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
     AngularFirestoreModule,
+    HttpModule,
     AngularFireDatabaseModule,
     StoreModule.forRoot(reducers)
   ],

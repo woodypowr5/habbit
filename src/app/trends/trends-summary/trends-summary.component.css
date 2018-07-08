@@ -12,3 +12,6 @@
 .mat-button-toggle-group{
     overflow: visible;
 }
+.series-visibility-label{
+    margin-bottom: 20px;
+}

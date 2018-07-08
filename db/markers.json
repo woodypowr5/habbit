@@ -92,15 +92,6 @@
             "category": "Wellness"
         },
         {
-            "name": "Well Rested?",
-            "id":    "7",
-            "dataType": "boolean",
-            "iconName":"wb_sunny",
-            "value1Name": "Yes",
-            "value2Name": "No",
-            "category": "Wellness"
-        },
-        {
             "name": "Hydrated?",
             "id":    "7",
             "dataType": "boolean",
@@ -148,7 +139,7 @@
             "name": "Calories Consumed",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"fast_food",
+            "iconName":"fastfood",
             "unit": "minute",
             "category": "Health and Diet"
         },
@@ -163,15 +154,6 @@
             "unit": "",
             "minLabel": "Poor",
             "maxLabel": "Excellent",
-            "category": "Health and Diet"
-        },
-        {
-            "name": "Within Diet Limits?",
-            "id":    "7",
-            "dataType": "boolean",
-            "iconName": "restaurant_menu",
-            "value1Name": "Yes",
-            "value2Name": "No",
             "category": "Health and Diet"
         },
         {
@@ -418,7 +400,7 @@
             "name": "Spent Time With Children?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"child_Care",
+            "iconName":"child_care",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Relationships"
@@ -521,7 +503,7 @@
             "name": "Gratitude List?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"ilter_vintage",
+            "iconName":"filter_vintage",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Spirituality"

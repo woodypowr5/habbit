@@ -1,5 +1,6 @@
 import { MarkerService } from './../../../shared/services/marker.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-plan-current',

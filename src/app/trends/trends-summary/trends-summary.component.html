@@ -22,19 +22,7 @@
 
 <mat-card class="chart-parent-container" *ngIf="chartType === 'heatmap'">
     <div class="chart-container">
-        <ngx-charts-heat-map
-            [scheme]="colorScheme"
-            [results]="filteredSeriesData"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            (select)="onSelect($event)">
-        </ngx-charts-heat-map>
+        
     </div>
 </mat-card>   
 
@@ -46,7 +34,7 @@
     >
     <mat-card class="series-visibility">
 
-        <mat-card-title>Visible Data:</mat-card-title>
+        <mat-card-title class="series-visibility-label">Visible Data:</mat-card-title>
         <mat-button-toggle-group 
             [(ngModel)]="seriesState"
             multiple 
@@ -62,7 +50,7 @@
         </mat-button-toggle-group>
     </mat-card> 
     <mat-card class="trend-type">
-        <mat-card-title>Trend Type:</mat-card-title>
+        <mat-card-title class="series-visibility-label">Trend Type:</mat-card-title>
         <mat-button-toggle-group 
             [(ngModel)]="selectedTrendType"
             value="raw" 

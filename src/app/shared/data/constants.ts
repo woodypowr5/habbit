@@ -25,7 +25,7 @@ export const Constants = {
             movingAverage: shape.curveCatmullRom.alpha(1),
             globalAverage: shape.curveCatmullRom.alpha(1)
         },
-        markerDetails: shape.curveCatmullRom.alpha(0.2)
+        markerDetails: shape.curveCatmullRom.alpha(0.7)
     },
     tooltipTypes: ['description', 'details'],
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
