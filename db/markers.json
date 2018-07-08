@@ -14,6 +14,32 @@
             "category": "Wellness"
         },
         {
+            "name": "Anxiety Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"sentiment_dissatisfied",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Relaxed",
+            "maxLabel": "Anxious",
+            "category": "Wellness"
+        },
+        {
+            "name": "Depression Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"sentiment_very_dissatisfied",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Happy",
+            "maxLabel": "Depressed",
+            "category": "Wellness"
+        },
+        {
             "name": "Meditate Today?",
             "id":    "7",
             "dataType": "boolean",
@@ -26,7 +52,7 @@
             "name": "Minutes of Meditation",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"spa",
             "unit": "minute",
             "category": "Wellness"
         },
@@ -34,7 +60,7 @@
             "name": "Nap Today?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"airline_seat_individual_suite",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Wellness"
@@ -43,7 +69,7 @@
             "name": "Hours of Sleep",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"hotel",
             "unit": "hour",
             "category": "Wellness"
         },
@@ -51,7 +77,7 @@
             "name": "Wake Up On Time?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"access_alarm",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Wellness"
@@ -60,7 +86,7 @@
             "name": "Went to Bed On Time?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"brightness_3",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Wellness"
@@ -69,7 +95,7 @@
             "name": "Well Rested?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"wb_sunny",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Wellness"
@@ -78,7 +104,7 @@
             "name": "Hydrated?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"invert_colors",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Health and Diet"
@@ -87,15 +113,24 @@
             "name": "Cups of Water",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"local_drink",
             "unit": "cup",
+            "category": "Health and Diet"
+        },
+        {
+            "name": "Took Medication?",
+            "id":    "7",
+            "dataType": "local_pharmacy",
+            "iconName":"spa",
+            "value1Name": "Yes",
+            "value2Name": "No",
             "category": "Health and Diet"
         },
         {
             "name": "Overeat Today?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"local_pizza",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Health and Diet"
@@ -104,7 +139,7 @@
             "name": "Eat Properly Today?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName":"restaurant",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Health and Diet"
@@ -113,7 +148,7 @@
             "name": "Calories Consumed",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"fast_food",
             "unit": "minute",
             "category": "Health and Diet"
         },
@@ -134,7 +169,7 @@
             "name": "Within Diet Limits?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName": "restaurant_menu",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Health and Diet"
@@ -143,7 +178,7 @@
             "name": "Cook at Home?",
             "id":    "7",
             "dataType": "boolean",
-            "iconName":"spa",
+            "iconName": "local_grocery_store",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Health and Diet"
@@ -158,18 +193,10 @@
             "category": "Fitness"
         },
         {
-            "name": "Hours of Exercise",
-            "id":    "1",
-            "dataType": "scalar",
-            "iconName":"insert_emoticon",
-            "unit": "hour",
-            "category": "Fitness"
-        },
-        {
             "name": "Miles Ran",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"directions_run",
             "unit": "mile",
             "category": "Fitness"
         },
@@ -177,7 +204,7 @@
             "name": "Miles Walked",
             "id":    "1",
             "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "iconName":"directions_walk",
             "unit": "mile",
             "category": "Fitness"
         },
@@ -187,6 +214,14 @@
             "dataType": "scalar",
             "iconName":"insert_emoticon",
             "unit": "mile",
+            "category": "Fitness"
+        },
+        {
+            "name": "Hours of Exercise",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"fitness_center",
+            "unit": "hour",
             "category": "Fitness"
         },
         {
@@ -211,7 +246,7 @@
             "name": "Bike / Swim Today?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"fitness_center",
+            "iconName":"directions_bike",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Fitness"
@@ -220,7 +255,7 @@
             "name": "Played Sports Today?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"fitness_center",
+            "iconName":"pool",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Fitness"
@@ -229,7 +264,7 @@
             "name": "Met Fitness Goals Today?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"fitness_center",
+            "iconName":"accessibility_new",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Fitness"
@@ -238,7 +273,7 @@
             "name": "Overall Activity Level",
             "id":    "1",
             "dataType": "range",
-            "iconName":"insert_emoticon",
+            "iconName":"directions_walk",
             "min": 1,
             "max": 10,
             "delta": 1,
@@ -260,7 +295,7 @@
             "name": "Within Daily Budget?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"fitness_center",
+            "iconName":"local_atm",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Money / Finance"
@@ -269,7 +304,7 @@
             "name": "Add to Savings?",
             "id":    "3",
             "dataType": "boolean",
-            "iconName":"fitness_center",
+            "iconName":"money",
             "value1Name": "Yes",
             "value2Name": "No",
             "category": "Money / Finance"
@@ -277,10 +312,363 @@
         {
             "name": "Money Spent",
             "id":    "1",
-            "dataType": "scalar",
-            "iconName":"insert_emoticon",
+            "dataType": "layers",
+            "iconName":"local_atm",
             "unit": "dollar",
             "category": "Money / Finance"
+        },
+        {
+            "name": "Productivity Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"check_box",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Productivity"
+        },
+        {
+            "name": "Worked on Project?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"free_breakfast",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "Hours of Work",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"access_time",
+            "unit": "hour",
+            "category": "Productivity"
+        },
+        {
+            "name": "Practiced Instrument/SportActivity?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"queue_music",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "Chores Complete?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"how_to_reg",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "Arrived at Work On Time?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"business_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "All Work Tasks Complete?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"create",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "Yard Work Complete?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"local_florist",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Productivity"
+        },
+        {
+            "name": "Social Interaction Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"group",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Relationships"
+        },
+        {
+            "name": "Called Mom or Other Family Member?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"fitness_center",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Spent Time With Children?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"child_Care",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Called Mom or Other Family Member?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"phone",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Visited with Friends?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"people_outline",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Spent Time with Pets?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"pets",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Walked the Dog?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"pets",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Fed Pets?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"pets",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Relationships"
+        },
+        {
+            "name": "Spirituality Level",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"flare",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Went to Church/Spiritual Service?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"filter_vintage",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Affirmations?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"brightness_5",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Prayed Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"flare",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Spent Time in Nature?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"ac_unit",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Gratitude List?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"ilter_vintage",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Spirituality"
+        },
+        {
+            "name": "Quality of Sobriety",
+            "id":    "1",
+            "dataType": "range",
+            "iconName":"local_bar",
+            "min": 1,
+            "max": 10,
+            "delta": 1,
+            "unit": "",
+            "minLabel": "Poor",
+            "maxLabel": "Excellent",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Sober Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"local_bar",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Alcohol Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"local_bar",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Drugs Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"grain",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Read Daily Recovery Material?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"local_library",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Went to 12 Step or Other Meeting?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"people",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Contacted my Sponsor?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"phone_forward",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Contacted other Recovery Members?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"phone_missed",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Sobriety & Recovery"
+        },
+        {
+            "name": "Hours of TV",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"ondemand_video",
+            "unit": "minute",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Hours on Computer",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"personal_video",
+            "unit": "minute",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Hours on Social Media / Video Games",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"system_update",
+            "unit": "minute",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Spent time on Hobbies?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"free_breakfast",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Relaxation Time",
+            "id":    "1",
+            "dataType": "scalar",
+            "iconName":"airline_seat_recline_extra",
+            "unit": "minute",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Relaxed Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"airline_seat_recline_extra",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Traveling Today?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"flight",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Hobbies & Leisure"
+        },
+        {
+            "name": "Day off from Work?",
+            "id":    "3",
+            "dataType": "boolean",
+            "iconName":"drive_eta",
+            "value1Name": "Yes",
+            "value2Name": "No",
+            "category": "Hobbies & Leisure"
         }
     ]
 }     
