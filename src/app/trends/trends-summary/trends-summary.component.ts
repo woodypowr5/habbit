@@ -1,3 +1,4 @@
+import { ChartOptions } from './../../shared/data/chartOptions';
 import { Marker } from './../../shared/types/marker.model';
 import { TooltipText } from './../../shared/data/tooltipText';
 import { Constants } from '../../shared/data/constants';
@@ -30,22 +31,8 @@ export class TrendsSummaryComponent implements OnInit {
   private visibleSeries: Marker[] = [];
   private tooltipText = TooltipText.trends.summary;
   private displayText: any;
-
-  // chart config
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Date';
-  yScaleMin = 1;
-  yScaleMax = 5;
-  showYAxisLabel = true;
-  yAxisLabel = 'Logged Value';
-  timeline = true;
-  colorScheme = Constants.chartColorScheme;
-  autoScale = true;
-  curve = Constants.chartCurveFunctions.summary.raw;
+  private chartOptions = ChartOptions.trends.summary.range;
+  private curve: any = Constants.chartCurveFunctions.summary.raw;
 
   constructor(private chartDataService: ChartDataService) {}
 

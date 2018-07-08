@@ -203,6 +203,7 @@ export class ChartDataService {
       });
       prevBinProbability = v.ecdf(i);
     }
+    console.log(eCDF);
     return eCDF;
   }
 }

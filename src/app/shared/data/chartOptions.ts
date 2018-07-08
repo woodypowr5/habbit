@@ -35,7 +35,7 @@ export const ChartOptions = {
         yScaleMin: 0,
         yScaleMax: 1,
         showYAxisLabel: true,
-        yAxisLabel: 'Probability (%)',
+        yAxisLabel: 'Probability',
         timeline: false,
         colorScheme: Constants.chartColorScheme,
         autoScale: true,
@@ -52,11 +52,29 @@ export const ChartOptions = {
             autoScale: false,
             showGridLines: true,
             xScaleMin: 0,
-            xScaleMax: 5,
+            xScaleMax: 10,
             yScaleMin: 0,
-            yScaleMax: 5,
+            yScaleMax: 10,
             minRadius: 6,
             maxRadius: 10
+        },
+        summary: {
+            range: {
+                showXAxis: true,
+                showYAxis: true,
+                gradient: false,
+                showLegend: true,
+                showXAxisLabel: true,
+                xAxisLabel: 'Date',
+                yScaleMin: 0,
+                yScaleMax: 10,
+                showYAxisLabel: true,
+                yAxisLabel: 'Logged Value',
+                timeline: true,
+                colorScheme: Constants.chartColorScheme,
+                curve: Constants.chartCurveFunctions.summary.raw
+            },
+            boolean: {}
         }
     }
 };

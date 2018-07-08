@@ -1,20 +1,19 @@
 <mat-card class="chart-parent-container" *ngIf="chartType === 'line'">
     <div class="chart-container">
         <ngx-charts-line-chart
-            [scheme]="colorScheme"
+            [scheme]="chartOptions.colorScheme"
             [results]="filteredSeriesData"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [yScaleMin]="yScaleMin"
-            [yScaleMax]="yScaleMax"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [autoScale]="autoScale"
-            [timeline]="timeline"
+            [gradient]="chartOptions.gradient"
+            [xAxis]="chartOptions.showXAxis"
+            [yAxis]="chartOptions.showYAxis"
+            [yScaleMin]="chartOptions.yScaleMin"
+            [yScaleMax]="chartOptions.yScaleMax"
+            [legend]="chartOptions.showLegend"
+            [showXAxisLabel]="chartOptions.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.showYAxisLabel"
+            [xAxisLabel]="chartOptions.xAxisLabel"
+            [yAxisLabel]="chartOptions.yAxisLabel"
+            [timeline]="chartOptions.timeline"
             [curve]="curve"
             (select)="onSelect($event)">
         </ngx-charts-line-chart>
