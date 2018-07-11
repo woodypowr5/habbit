@@ -13,7 +13,7 @@ export class EditPlanComponent implements OnInit, OnChanges {
   private selectedMarkers: Marker[] = [];
   private inactiveMarkers: Marker[] = [];
   private markerCategories: string[] = [];
-  // private categorySelectForm: FormControl;
+  categorySelectForm = new FormControl();
   @Input() availableMarkers: Marker[] = [];
   @Input() myPlan: Plan;
   @Input() markerAddedToPlan;
@@ -27,18 +27,11 @@ export class EditPlanComponent implements OnInit, OnChanges {
     this.markerService.markerCategoriesChanged.subscribe(categories => {
       this.markerCategories = categories;
     });
-    // this.onCategorySelectFormChanges();
   }
 
   ngOnChanges() {
     this.inactiveMarkers = this.availableMarkers.filter(marker => !this.isInPlan(marker));
   }
-
-  // onCategorySelectFormChanges(): void {
-  //   this.categorySelectForm.valueChanges.subscribe(val => {
-  //     console.log(val);
-  //   });
-  // }
 
   isInPlan(marker: Marker): boolean {
     for (let index = 0; index < this.myPlan.markers.length; index++) {
@@ -59,5 +52,10 @@ export class EditPlanComponent implements OnInit, OnChanges {
 
   getMarkersForCategory(inactiveMarkers: Marker[], category: string): Marker[] {
     return inactiveMarkers.filter(marker => marker.category === category);
+  }
+
+  scrollTo(elementId): void {
+    const element: Element = document.getElementById(elementId);
+    element.scrollIntoView();
   }
 }
