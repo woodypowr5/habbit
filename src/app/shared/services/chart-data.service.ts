@@ -192,7 +192,7 @@ export class ChartDataService {
     return vector;
   }
 
-  computeEPDF(vector: number[], marker: Marker) {
+  computeEPDF(vector: number[], marker: Marker): any[] {
     const v = new jerzy.Vector(vector);
     const eCDF = [];
     let prevBinProbability = 0;
@@ -203,8 +203,37 @@ export class ChartDataService {
       });
       prevBinProbability = v.ecdf(i);
     }
-    console.log(eCDF);
     return eCDF;
   }
+
+  computeBooleanBarData(markerName: string, history: History): any {
+    console.log(markerName)
+    let yesMeasurements = 0;
+    let totalMeasurements = 0;
+    const seriesData: any = [];
+
+    history.records.map(record => {
+      record.measurements.map(measurement => {
+        console.log(measurement)
+        if (measurement.markerName === markerName) {
+          totalMeasurements++;
+          if (measurement.value === 'Yes') {
+            yesMeasurements++;
+          }
+        }
+      });
+    });
+    seriesData.push({
+      name: 'Yes',
+      value: yesMeasurements
+    });
+    seriesData.push({
+      name: 'No',
+      value: totalMeasurements - yesMeasurements
+    });
+    console.log(seriesData)
+    return seriesData;
+  }
+
 }
 

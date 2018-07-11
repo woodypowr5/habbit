@@ -21,9 +21,9 @@
         </div>
         
         <ngx-charts-pie-chart
+          [results]="results.daysWithMeasurements"
           [scheme]="chartOptions.daysWithMeasurements.scheme"
           [view]="chartOptions.streaks.viewDoughnut"
-          [results]="results.daysWithMeasurements"
           [doughnut]="chartOptions.daysWithMeasurements.doughnut"
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
@@ -37,9 +37,9 @@
               Longest Streak: {{ longestStreak }} days
           </div>
         <ngx-charts-pie-chart
+          [results]="results.streaks"
           [scheme]="chartOptions.streaks.scheme"
           [view]="chartOptions.streaks.viewDoughnut"
-          [results]="results.streaks"
           [doughnut]="chartOptions.daysWithMeasurements.doughnut"
           [arcWidth]="chartOptions.daysWithMeasurements.arcWidth"
           (select)="onSelect($event)">
@@ -49,7 +49,7 @@
     
   </mat-card>
 
-  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'range'">
+  <mat-card class="marker-details-summary-details">
     <mat-card-title class="subtitle">
       Scores
       <app-tooltip 
@@ -72,23 +72,24 @@
       ></app-tooltip>
       </span>
     </div>
-    <div class="pdf-graph-wrapper">
+
+    <div class="pdf-graph-wrapper"  *ngIf="marker.dataType === 'range'">
       <ngx-charts-line-chart
-        [scheme]="chartOptions.performance.colorScheme"
-        [results]="results.performance"
-        [gradient]="chartOptions.performance.gradient"
-        [xAxis]="chartOptions.performance.showXAxis"
-        [yAxis]="chartOptions.performance.showYAxis"
-        [yScaleMin]="chartOptions.performance.yScaleMin"
-        [legend]="chartOptions.performance.showLegend"
-        [showXAxisLabel]="chartOptions.performance.showXAxisLabel"
-        [showYAxisLabel]="chartOptions.performance.showYAxisLabel"
-        [xAxisLabel]="chartOptions.performance.xAxisLabel"
-        [yAxisLabel]="chartOptions.performance.yAxisLabel"
-        [autoScale]="chartOptions.performance.autoScale"
-        [timeline]="chartOptions.performance.timeline"
-        [curve]="chartOptions.performance.curve"
-        (select)="onSelect($event)">
+        [results]="results.performance.range"
+        [scheme]="chartOptions.performance.range.colorScheme"
+        [gradient]="chartOptions.performance.range.gradient"
+        [xAxis]="chartOptions.performance.range.showXAxis"
+        [yAxis]="chartOptions.performance.range.showYAxis"
+        [yScaleMin]="chartOptions.performance.range.yScaleMin"
+        [legend]="chartOptions.performance.range.showLegend"
+        [showXAxisLabel]="chartOptions.performance.range.showXAxisLabel"
+        [showYAxisLabel]="chartOptions.performance.range.showYAxisLabel"
+        [xAxisLabel]="chartOptions.performance.range.xAxisLabel"
+        [yAxisLabel]="chartOptions.performance.range.yAxisLabel"
+        [autoScale]="chartOptions.performance.range.autoScale"
+        [timeline]="chartOptions.performance.range.timeline"
+        [curve]="chartOptions.performance.range.curve"
+      >
       </ngx-charts-line-chart>
       <span class="tooltip-container">
         <app-tooltip 
@@ -96,29 +97,31 @@
           [id]="tooltipPdf"
           [type]="'description'"
         ></app-tooltip>
-    </span>
+      </span>
     </div>
-  </mat-card>
 
-  <mat-card class="marker-details-summary-details" *ngIf="marker.dataType === 'boolean'">
-    <mat-card-title class="subtitle">
-      Scores
-      <app-tooltip 
-          [displayText]="tooltipText.performance"
-          [id]="tooltipMovingAverage"
-          [type]="'description'"
-      ></app-tooltip>
-    </mat-card-title>
-    
-    <div class="pdf-graph-wrapper">
+    <div class="pdf-graph-wrapper"  *ngIf="marker.dataType === 'boolean'">
+      <ngx-charts-bar-vertical
+        [results]="results.performance.boolean"
+        [scheme]="chartOptions.performance.boolean.colorScheme"
+        [gradient]="chartOptions.performance.boolean.gradient"
+        [xAxis]="chartOptions.performance.boolean.showXAxis"
+        [yAxis]="chartOptions.performance.boolean.showYAxis"
+        [legend]="chartOptions.performance.boolean.showLegend"
+        [showXAxisLabel]="chartOptions.performance.boolean.showXAxisLabel"
+        [showYAxisLabel]="chartOptions.performance.boolean.showYAxisLabel"
+        [xAxisLabel]="chartOptions.performance.boolean.xAxisLabel"
+        [yAxisLabel]="chartOptions.performance.boolean.yAxisLabel"
+        (select)="onSelect($event)"
+      >
+      </ngx-charts-bar-vertical>
       <span class="tooltip-container">
         <app-tooltip 
           [displayText]="tooltipText.cdfGraph"
           [id]="tooltipPdf"
           [type]="'description'"
         ></app-tooltip>
-    </span>
+      </span>
     </div>
   </mat-card>
-
 </div>

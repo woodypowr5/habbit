@@ -34,7 +34,11 @@ export class RecordMarkerDetailsComponent implements OnInit {
       currentStreak: 0,
       longestStreak: 0
     },
-    performance: null
+    performance: {
+      boolean: null,
+      range: null,
+      scalar: null,
+    }
   };
 
   constructor(
@@ -77,10 +81,16 @@ export class RecordMarkerDetailsComponent implements OnInit {
       this.averageEntryValue = this.markerDetailService.computeAverageEntryValue(this.marker.name, this.history);
       this.longestStreak = this.markerDetailService.computeLongestStreak(this.marker.name, this.history);
       this.currentStreak = this.markerDetailService.computeCurrentStreak(this.marker.name, this.history);
-      this.results.performance = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
+      if (marker.dataType === 'boolean') {
+        this.results.performance.boolean = this.chartDataService.computeBooleanBarData(this.marker.name, this.history);
+      } else if (marker.dataType === 'range') {
+        this.results.performance.range = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
+      } else if (marker.dataType === 'scalar') {}
       // move to markerDetailService
       this.standardDeviation = this.markerDetailService.computeStandardDeviation(this.marker.name, this.history, this.averageEntryValue);
     }
+
+    // for chart display
     this.results.daysWithMeasurements = [
       {
         'name': 'Entry',
@@ -103,4 +113,5 @@ export class RecordMarkerDetailsComponent implements OnInit {
     ];
     this.chartOptions.streaks.valueFormatting = this.formatValue;
   }
+
 }

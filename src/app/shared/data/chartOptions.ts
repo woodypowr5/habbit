@@ -26,20 +26,33 @@ export const ChartOptions = {
         valueFormatting: null
     },
     performance: {
-        showXAxis: true,
-        showYAxis: true,
-        gradient: false,
-        showLegend: false,
-        showXAxisLabel: true,
-        xAxisLabel: 'Logged Entry',
-        yScaleMin: 0,
-        yScaleMax: 1,
-        showYAxisLabel: true,
-        yAxisLabel: 'Probability',
-        timeline: false,
-        colorScheme: Constants.chartColorScheme,
-        autoScale: true,
-        curve: Constants.chartCurveFunctions.markerDetails
+        range: {
+            showXAxis: true,
+            showYAxis: true,
+            gradient: false,
+            showLegend: false,
+            showXAxisLabel: true,
+            xAxisLabel: 'Logged Entry',
+            yScaleMin: 0,
+            yScaleMax: 1,
+            showYAxisLabel: true,
+            yAxisLabel: 'Probability',
+            timeline: false,
+            colorScheme: Constants.chartColorScheme,
+            autoScale: true,
+            curve: Constants.chartCurveFunctions.markerDetails
+        },
+        boolean: {
+            showXAxis: true,
+            showYAxis: true,
+            gradient: false,
+            showLegend: false,
+            showXAxisLabel: true,
+            xAxisLabel: 'Logged Entry',
+            showYAxisLabel: true,
+            yAxisLabel: 'Total',
+            colorScheme: Constants.chartColorScheme,
+        }
     },
     trends: {
         linked: {
@@ -74,7 +87,17 @@ export const ChartOptions = {
                 colorScheme: Constants.chartColorScheme,
                 curve: Constants.chartCurveFunctions.summary.raw
             },
-            boolean: {}
+            boolean: {
+                showXAxis: true,
+                showYAxis: true,
+                gradient: false,
+                showLegend: true,
+                showXAxisLabel: true,
+                xAxisLabel: 'Date',
+                showYAxisLabel: true,
+                yAxisLabel: 'Logged Value',
+                colorScheme: Constants.chartColorScheme,
+            }
         }
     }
 };
