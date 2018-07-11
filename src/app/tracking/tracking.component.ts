@@ -3,7 +3,7 @@ import { History } from './../shared/types/history.model';
 import { DateService } from '../shared/services/date.service';
 import { EmptyRecord } from './emptyRecord.class';
 import { RecordsComponent } from './records/records.component';
-import { PlanService } from './../plan/plan.service';
+import { PlanService } from './../shared/services/plan.service';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription, Subject } from 'rxjs';
 import { TrackingService } from '../shared/services/tracking.service';

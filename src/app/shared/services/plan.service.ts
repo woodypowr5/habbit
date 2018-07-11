@@ -1,10 +1,10 @@
-import { Marker } from './../shared/types/marker.model';
+import { Plan } from './../../plan/plan.model';
+import { Marker } from './../types/marker.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/subscription';
 import { Observable } from 'rxjs/observable';
 import { BehaviorSubject } from 'rxjs';
-import { Plan } from './plan.model';
 import 'rxjs/add/operator/map';
 
 
@@ -44,34 +44,23 @@ export class PlanService {
     );
   }
 
-  cancelSubscriptions(): void {
-    this.planSubscriptions.forEach(sub => sub.unsubscribe());
-  }
-
   addMarkerToPlan(marker: Marker): void {
-    this.modifyPlanInDatabase({
-      ...this.plan,
-      markers: [...this.plan.markers, marker]
-    });
-    this.planChanged.next(this.plan);
+    this.plan.markers.push(marker);
+    this.updatePlan();
   }
 
   removeMarkerFromPlan(marker: Marker): void {
-    this.modifyPlanInDatabase({
-      ...this.plan,
-      markers: this.plan.markers.filter(currentMarker => currentMarker.id !== marker.id )
-    });
+    this.plan.markers = this.plan.markers.filter(currentMarker => currentMarker.name !== marker.name );
+    this.updatePlan();
+  }
+
+  updatePlan() {
+    const planRef = this.db.collection('plans').doc(this.userId);
+    planRef.update(this.plan);
     this.planChanged.next(this.plan);
   }
 
-  private addDataToDatabase(newPlan: Plan): void {
-    this.db.collection('plans').add(newPlan);
-  }
-
-  private modifyPlanInDatabase(newPlan: Plan): void {
-    const planRef = this.db.collection('plans').doc(this.userId);
-    const setWithMerge = planRef.set({
-      markers: newPlan.markers
-    }, { merge: true });
+  cancelSubscriptions(): void {
+    this.planSubscriptions.forEach(sub => sub.unsubscribe());
   }
 }

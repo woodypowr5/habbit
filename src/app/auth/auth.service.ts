@@ -1,3 +1,4 @@
+import { PlanService } from './../shared/services/plan.service';
 import { UserData } from './userData.model';
 
 import { Injectable } from '@angular/core';
@@ -9,7 +10,6 @@ import { Store } from '@ngrx/store';
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { TrackingService } from '../shared/services/tracking.service';
-import { PlanService } from './../plan/plan.service';
 import { UIService } from '../shared/ui.service';
 import * as fromRoot from '../app.reducer';
 import * as UI from '../shared/ui.actions';

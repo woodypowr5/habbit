@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 import { Subscriber, Subscription } from 'rxjs';
 import { MarkerService } from '../shared/services/marker.service';
-import { PlanService } from './plan.service';
+import { PlanService } from '../shared/services/plan.service';
 import { Plan } from './plan.model';
 
 @Component({
@@ -48,12 +48,10 @@ export class PlanComponent implements OnInit {
   }
 
   addMarkerToPlan(marker): void {
-    marker.isLoading = false;
     this.planService.addMarkerToPlan(marker);
   }
 
   removeMarkerFromPlan(marker): void {
-    marker.isLoading = false;
     this.planService.removeMarkerFromPlan(marker);
   }
 

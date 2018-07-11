@@ -20,7 +20,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 
 import { AuthService } from './auth/auth.service';
 import { TrackingService } from './shared/services/tracking.service';
-import { PlanService } from './plan/plan.service';
+import { PlanService } from './shared/services/plan.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';
 import { HttpModule } from '@angular/http';

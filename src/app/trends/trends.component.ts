@@ -1,4 +1,4 @@
-import { PlanService } from './../plan/plan.service';
+import { PlanService } from './../shared/services/plan.service';
 import { Record } from './../shared/types/record.model';
 import { History } from './../shared/types/history.model';
 import { Subscription } from 'rxjs/subscription';
