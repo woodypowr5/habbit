@@ -58,11 +58,14 @@
           [type]="'description'"
       ></app-tooltip>
     </mat-card-title>
-    <div class="average">
-      Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }}</span>
+    <div class="average" *ngIf="marker.dataType === 'range'">
+      Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
+    </div>
+    <div class="average" *ngIf="marker.dataType === 'boolean'">
+      Average entry: {{ results.performance.boolean.average }} (1 = Yes, 0 = No)
     </div>
    
-    <div class="std-deviation">
+    <div class="std-deviation" >
       Variablity: {{ standardDeviation.toFixed(2) }}
       <span class="tooltip-container">
         <app-tooltip 
@@ -102,7 +105,7 @@
 
     <div class="pdf-graph-wrapper"  *ngIf="marker.dataType === 'boolean'">
       <ngx-charts-bar-vertical
-        [results]="results.performance.boolean"
+        [results]="results.performance.boolean.seriesData"
         [scheme]="chartOptions.performance.boolean.colorScheme"
         [gradient]="chartOptions.performance.boolean.gradient"
         [xAxis]="chartOptions.performance.boolean.showXAxis"

@@ -207,14 +207,18 @@ export class ChartDataService {
   }
 
   computeBooleanBarData(markerName: string, history: History): any {
-    console.log(markerName)
     let yesMeasurements = 0;
     let totalMeasurements = 0;
+    let dataObject = {
+      seriesData: [],
+      average: 0,
+      stdDeviation: 0
+    };
+
     const seriesData: any = [];
 
     history.records.map(record => {
       record.measurements.map(measurement => {
-        console.log(measurement)
         if (measurement.markerName === markerName) {
           totalMeasurements++;
           if (measurement.value === 'Yes') {
@@ -231,8 +235,10 @@ export class ChartDataService {
       name: 'No',
       value: totalMeasurements - yesMeasurements
     });
-    console.log(seriesData)
-    return seriesData;
+    dataObject.seriesData = seriesData;
+    dataObject.average = yesMeasurements / totalMeasurements;
+
+    return dataObject;
   }
 
 }
