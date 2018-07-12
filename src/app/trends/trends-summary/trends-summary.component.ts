@@ -29,6 +29,7 @@ export class TrendsSummaryComponent implements OnInit {
   private selectedTrendType = 'raw';
   private seriesState: string[] = [];
   private visibleSeries: Marker[] = [];
+  private activeDatatype = 'range';
   private tooltipText = TooltipText.trends.summary;
   private displayText: any;
   private chartOptions = ChartOptions.trends.summary.range;
@@ -47,6 +48,16 @@ export class TrendsSummaryComponent implements OnInit {
   }
 
   seriesVisibilityChanged(event): void {
+    event.value.map(markerName => {
+      this.plan.markers.map(marker => {
+        if (marker.name ===  markerName) {
+          if (marker.dataType !== this.activeDatatype) {
+            this.seriesState = [marker.name];
+            this.activeDatatype = marker.dataType;
+          }
+        }
+      });
+    });
     this.recomputeData();
   }
 
