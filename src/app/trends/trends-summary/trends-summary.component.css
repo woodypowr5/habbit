@@ -9,9 +9,23 @@
 .series-visibility, .trend-type{
     width: 50%;
 }
+.series-visibility h2, .trend-type h2{
+    font-size: 1.2em;
+    color: #888;
+}
 .mat-button-toggle-group{
     overflow: visible;
 }
 .series-visibility-label{
     margin-bottom: 20px;
+}
+.material-button{
+    user-select: none;
+    display: inline-block;
+    line-height: 36px;
+    padding: 0 16px;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
 }

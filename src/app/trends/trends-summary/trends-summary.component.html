@@ -38,14 +38,44 @@
         <mat-button-toggle-group 
             [(ngModel)]="seriesState"
             multiple 
+            fxLayout="column"
             (change)="seriesVisibilityChanged($event)"
         >
-            <mat-button-toggle 
-                value="{{marker.name}}" 
-                *ngFor="let marker of plan.markers"
-            >
-                {{ marker.name }}
-            </mat-button-toggle>
+            <h2>Range Activities</h2>
+            <div class="button-group">   
+                <mat-button-toggle 
+                    value="{{marker.name}}" 
+                    *ngFor="let marker of plan.markers"
+                    [ngClass]="{'hidden': marker.dataType !== 'range'}"
+                    class="material-button"
+                >
+                    {{ marker.name }}
+                </mat-button-toggle>
+            </div>    
+
+            <h2>Yes or No Activities</h2>
+            <div class="button-group">   
+                <mat-button-toggle 
+                    value="{{marker.name}}" 
+                    *ngFor="let marker of plan.markers"
+                    [ngClass]="{'hidden': marker.dataType !== 'boolean'}"
+                    class="material-button"
+                >
+                    {{ marker.name }}
+                </mat-button-toggle>
+            </div>    
+
+            <h2>Value Activities</h2>
+            <div class="button-group">   
+                <mat-button-toggle 
+                    value="{{marker.name}}" 
+                    *ngFor="let marker of plan.markers"
+                    [ngClass]="{'hidden': marker.dataType !== 'scalar'}"
+                    class="material-button"
+                >
+                    {{ marker.name }}
+                </mat-button-toggle>
+            </div>    
 
         </mat-button-toggle-group>
     </mat-card> 
