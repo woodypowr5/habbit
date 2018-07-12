@@ -62,7 +62,14 @@
       Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
     </div>
     <div class="average" *ngIf="marker.dataType === 'boolean'">
-      Average entry: {{ results.performance.boolean.average }} (1 = Yes, 0 = No)
+      Average entry: {{ results.performance.boolean.average }} 
+      <span class="tooltip-container">
+        <app-tooltip 
+          [displayText]="tooltipText.booleanVariability"
+          [id]="tooltipBooleanVariability"
+          [type]="'description'"
+        ></app-tooltip>
+      </span>
     </div>
    
     <div class="std-deviation" >
@@ -118,13 +125,7 @@
         (select)="onSelect($event)"
       >
       </ngx-charts-bar-vertical>
-      <span class="tooltip-container">
-        <app-tooltip 
-          [displayText]="tooltipText.cdfGraph"
-          [id]="tooltipPdf"
-          [type]="'description'"
-        ></app-tooltip>
-      </span>
+     
     </div>
   </mat-card>
 </div>

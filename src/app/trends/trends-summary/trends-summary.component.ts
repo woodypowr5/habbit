@@ -37,20 +37,24 @@ export class TrendsSummaryComponent implements OnInit {
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    this.visibleSeries = [this.plan.markers[0]];
-    this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
-    this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
-    this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
-    this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
+    if (this.plan) {
+      this.seriesState = [this.plan.markers[0].name];
+      this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
+      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
+      this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
+      this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
+    }
   }
 
   seriesVisibilityChanged(event): void {
-    this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
-    this.visibleSeries = this.computeVisibleSeries(this.seriesState);
-    this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
+    this.recomputeData();
   }
 
   trendTypeChanged(event): void {
+    this.recomputeData();
+  }
+
+  recomputeData() {
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.visibleSeries = this.computeVisibleSeries(this.seriesState);
     this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);

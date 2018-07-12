@@ -43,7 +43,8 @@ export const TooltipText = {
                     + ' are very close to the average. A high standard deviation means that the numbers are spread out.',
             cdfGraph: 'This display shows the past likelyhood (from your history) that the entry for that day will have'
                     + ' been a certain value. However, like the stock market, be aware that past result do not garuntee'
-                    + ' future results'
+                    + ' future results',
+            booleanVariability: '1 = Yes, 0 = No'
         }
     }
 };
