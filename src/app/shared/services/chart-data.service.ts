@@ -241,5 +241,26 @@ export class ChartDataService {
     return dataObject;
   }
 
+  computeHeatmapSeries(includeMarkers: Marker[], records: Record[], plan: Plan): any {
+    const heatmapSeries = [];
+    this.dataSortingService.sortObjectsByKey(records, 'date').map( record => {
+    const measurementsForDate = [];
+      includeMarkers.map(marker => {
+        record.measurements.map(measurement => {
+          if (measurement.markerName === marker.name) {
+            measurementsForDate.push({
+              name: marker.name,
+              value: measurement.value
+            });
+          }
+        });
+      });
+      heatmapSeries.push({
+        name: record.date,
+        series: measurementsForDate
+      });
+    });
+    return heatmapSeries;
+  }
 }
 

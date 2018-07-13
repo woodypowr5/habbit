@@ -24,15 +24,17 @@ export class TrendsSummaryComponent implements OnInit {
     movingAverage: [],
     globalAverage: []
   };
-  private chartType = 'line';
-  private filteredSeriesData: any[] = [];
+  private filteredSeriesData: any = {
+    range: [],
+    boolean: []
+  };
   private selectedTrendType = 'raw';
   private seriesState: string[] = [];
   private visibleSeries: Marker[] = [];
   private activeDatatype = 'range';
   private tooltipText = TooltipText.trends.summary;
   private displayText: any;
-  private chartOptions = ChartOptions.trends.summary.range;
+  private chartOptions = ChartOptions.trends.summary;
   private curve: any = Constants.chartCurveFunctions.summary.raw;
 
   constructor(private chartDataService: ChartDataService) {}
@@ -43,7 +45,11 @@ export class TrendsSummaryComponent implements OnInit {
       this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
       this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
       this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
-      this.filteredSeriesData = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
+      if (this.activeDatatype === 'range') {
+        this.filteredSeriesData.range = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
+      } else if (this.activeDatatype === 'boolean') {
+        this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries([this.plan.markers[0]], this.records, this.plan);
+      }
     }
   }
 
@@ -68,7 +74,11 @@ export class TrendsSummaryComponent implements OnInit {
   recomputeData() {
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.visibleSeries = this.computeVisibleSeries(this.seriesState);
-    this.filteredSeriesData = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
+    if (this.activeDatatype === 'range') {
+      this.filteredSeriesData.range = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
+    }  else if (this.activeDatatype === 'boolean') {
+      this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries(this.visibleSeries, this.records, this.plan);
+    }
   }
 
   computeVisibleSeries(seriesState: string[]): Marker[] {

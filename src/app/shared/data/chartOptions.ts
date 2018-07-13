@@ -92,9 +92,9 @@ export const ChartOptions = {
                 showYAxis: true,
                 gradient: false,
                 showLegend: true,
-                showXAxisLabel: true,
+                showXAxisLabel: false,
                 xAxisLabel: 'Date',
-                showYAxisLabel: true,
+                showYAxisLabel: false,
                 yAxisLabel: 'Logged Value',
                 colorScheme: Constants.chartColorScheme,
             }

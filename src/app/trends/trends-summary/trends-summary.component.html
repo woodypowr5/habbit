@@ -1,28 +1,39 @@
-<mat-card class="chart-parent-container" *ngIf="chartType === 'line'">
+<mat-card class="chart-parent-container" *ngIf="activeDatatype === 'range'">
     <div class="chart-container">
         <ngx-charts-line-chart
-            [scheme]="chartOptions.colorScheme"
-            [results]="filteredSeriesData"
-            [gradient]="chartOptions.gradient"
-            [xAxis]="chartOptions.showXAxis"
-            [yAxis]="chartOptions.showYAxis"
-            [yScaleMin]="chartOptions.yScaleMin"
-            [yScaleMax]="chartOptions.yScaleMax"
-            [legend]="chartOptions.showLegend"
-            [showXAxisLabel]="chartOptions.showXAxisLabel"
-            [showYAxisLabel]="chartOptions.showYAxisLabel"
-            [xAxisLabel]="chartOptions.xAxisLabel"
-            [yAxisLabel]="chartOptions.yAxisLabel"
-            [timeline]="chartOptions.timeline"
+            [scheme]="chartOptions.range.colorScheme"
+            [results]="filteredSeriesData.range"
+            [gradient]="chartOptions.range.gradient"
+            [xAxis]="chartOptions.range.showXAxis"
+            [yAxis]="chartOptions.range.showYAxis"
+            [yScaleMin]="chartOptions.range.yScaleMin"
+            [yScaleMax]="chartOptions.range.yScaleMax"
+            [legend]="chartOptions.range.showLegend"
+            [showXAxisLabel]="chartOptions.range.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.range.showYAxisLabel"
+            [xAxisLabel]="chartOptions.range.xAxisLabel"
+            [yAxisLabel]="chartOptions.range.yAxisLabel"
+            [timeline]="chartOptions.range.timeline"
             [curve]="curve"
             (select)="onSelect($event)">
         </ngx-charts-line-chart>
     </div>
 </mat-card>    
 
-<mat-card class="chart-parent-container" *ngIf="chartType === 'heatmap'">
+<mat-card class="chart-parent-container" *ngIf="activeDatatype === 'boolean'">
     <div class="chart-container">
-        
+        <ngx-charts-heat-map
+            [results]="filteredSeriesData.boolean"
+            [gradient]="chartOptions.boolean.gradient"
+            [xAxis]="chartOptions.boolean.showXAxis"
+            [yAxis]="chartOptions.boolean.showYAxis"
+            [legend]="chartOptions.boolean.showLegend"
+            [showXAxisLabel]="chartOptions.boolean.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.boolean.showYAxisLabel"
+            [xAxisLabel]="chartOptions.boolean.xAxisLabel"
+            [yAxisLabel]="chartOptions.boolean.yAxisLabel"
+            (select)="onSelect($event)">
+        </ngx-charts-heat-map>
     </div>
 </mat-card>   
 
