@@ -294,7 +294,7 @@
         {
             "name": "Money Spent",
             "id":    "1",
-            "dataType": "layers",
+            "dataType": "scalar",
             "iconName":"local_atm",
             "unit": "dollar",
             "category": "Money / Finance"
@@ -330,7 +330,7 @@
             "category": "Productivity"
         },
         {
-            "name": "Practiced Instrument/SportActivity?",
+            "name": "Practiced Instrument / SportActivity?",
             "id":    "3",
             "dataType": "boolean",
             "iconName":"queue_music",
@@ -464,7 +464,7 @@
             "category": "Spirituality"
         },
         {
-            "name": "Went to Church/Spiritual Service?",
+            "name": "Went to Church / Spiritual Service?",
             "id":    "3",
             "dataType": "boolean",
             "iconName":"filter_vintage",
