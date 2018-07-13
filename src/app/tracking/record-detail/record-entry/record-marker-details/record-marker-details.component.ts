@@ -1,3 +1,4 @@
+import { PopoverText } from './../../../../shared/data/popoverText';
 import { ChartDataService } from './../../../../shared/services/chart-data.service';
 import { Constants } from '../../../../shared/data/constants';
 import { ChartOptions } from './../../../../shared/data/chartOptions';
@@ -27,6 +28,7 @@ export class RecordMarkerDetailsComponent implements OnInit {
   private standardDeviation: number;
   private range: number;
   private tooltipText = TooltipText.tracking.markerDetails;
+  private popoverText = PopoverText.tracking.markerDetails;
   private chartOptions = ChartOptions;
   private results: any = {
     daysWithMeasurements: [],

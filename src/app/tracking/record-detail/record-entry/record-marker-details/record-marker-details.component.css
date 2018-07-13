@@ -31,6 +31,10 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 }
 .marker-details-summary-details{
     height: 300px;
+    position: relative;
+}
+.performance-popover{
+    width: 80%;
 }
 .marker-detail-text{
     height: 50px;
