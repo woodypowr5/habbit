@@ -11,13 +11,17 @@ import { TrendsDailyComponent } from './trends-daily/trends-daily.component';
 import { TrendsLinkedComponent } from './trends-linked/trends-linked.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
+import { AllActivitiesComponent } from './trendsLinked/all-activities/all-activities.component';
+import { ActivityDetailsComponent } from './trends-linked/activity-details/activity-details.component';
 
 @NgModule({
     declarations: [
         TrendsComponent,
         TrendsSummaryComponent,
         TrendsDailyComponent,
-        TrendsLinkedComponent
+        TrendsLinkedComponent,
+        AllActivitiesComponent,
+        ActivityDetailsComponent
     ],
     imports: [
         SharedModule,

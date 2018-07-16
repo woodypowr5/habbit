@@ -1,109 +1,14 @@
-<mat-card class="chart-parent-container">
-  <!-- <div class="chart-container"> -->
-      <ngx-charts-bubble-chart
-        [results]="filteredSeriesData"
-        [scheme]="chartOptions.colorScheme"
-        [xAxis]="chartOptions.showXAxis"
-        [yAxis]="chartOptions.showYAxis"
-        [legend]="chartOptions.showLegend"
-        [showXAxisLabel]="chartOptions.showXAxisLabel"
-        [showYAxisLabel]="chartOptions.showYAxisLabel"
-        [xAxisLabel]="chartOptions.xAxisLabel"
-        [yAxisLabel]="chartOptions.yAxisLabel"
-        [xScaleMin]="chartOptions.xScaleMin"
-        [xScaleMax]="chartOptions.xScaleMax"
-        [yScaleMin]="chartOptions.yScaleMin"
-        [yScaleMax]="chartOptions.yScaleMax"
-        [autoScale]="chartOptions.autoScale"
-        [minRadius]="chartOptions.minRadius"
-        [maxRadius]="chartOptions.maxRadius"
-        [showGridLines]="chartOptions.showGridLines"
-        (select)="onSelect($event)">
-      </ngx-charts-bubble-chart>
-  <!-- </div> -->
-</mat-card>    
-
-<mat-card
-  class="chart-controls-container"
-  fxLayout
-  fxLayoutAlign="space-between"
-  fxLayoutGap="20px"
-  >
-    <mat-card 
-        class="series-visibility"
-    >
-        <mat-card-title>Compare: </mat-card-title> 
-        <div 
-            class="select-series-container"
-            fxLayout
-            fxLayoutGap="40px"
+<mat-tab-group>
+    <mat-tab label="All Activities">
+        <app-all-activities
         >
-            
-            <mat-select 
-                [(ngModel)]="visibleSeries[0]"
-                (selectionChange)="seriesVisibilityChanged($event)"
-            >
-                <mat-option 
-                    *ngFor="let marker of plan.markers"    
-                    value="{{ marker.name }}"
-                    [disabled]="isDisabled(0, marker.name)"
-                >
-                    {{ marker.name }}
-                </mat-option>
-            </mat-select>
-    
-            <span class="select-series-spacer">   
-                - with -
-            </span>    
-    
-            <mat-select 
-                [(ngModel)]="visibleSeries[1]"
-                (selectionChange)="seriesVisibilityChanged($event)"
-            >
-                <mat-option 
-                    *ngFor="let marker of plan.markers" 
-                    value="{{ marker.name }}"
-                    [disabled]="isDisabled(1, marker.name)"
-                >
-                    {{ marker.name }}
-                </mat-option>
-            </mat-select>
-        </div>
-    </mat-card> 
-    <mat-card class="trend-type">
-        <mat-card-title>Trend Type:</mat-card-title>
-        <mat-button-toggle-group 
-            [(ngModel)]="selectedTrendType"
-            value="raw" 
-            (change)="trendTypeChanged($event)"
+        </app-all-activities>
+    </mat-tab>
+    <mat-tab label="Details">
+        <app-activity-details
+            [plan]="plan"
+            [records]="records"
         >
-            <mat-button-toggle value="simpleComparison">
-                Simple Comparison
-                <app-tooltip 
-                    [displayText]="tooltipText.chartTypeButtons.simpleComparison"
-                    [id]="tooltipSimpleComparison"
-                    [type]="'description'"
-                ></app-tooltip>
-            </mat-button-toggle>
-            
-            <mat-button-toggle value="correlationProfile">
-                Correlation Profile
-                <app-tooltip 
-                    [displayText]="tooltipText.chartTypeButtons.correlationProfile"
-                    [id]="tooltipCorrelationProfile"
-                    [type]="'description'"
-                ></app-tooltip>
-            </mat-button-toggle>
-            
-            <mat-button-toggle value="bayesianAnalysis">
-                Bayesian Anaylsis
-                <app-tooltip 
-                    [displayText]="tooltipText.chartTypeButtons.bayesianAnalysis"
-                    [id]="tooltipBayesianAnalysis"
-                    [type]="'description'"
-                ></app-tooltip>
-            </mat-button-toggle>
-
-      </mat-button-toggle-group>
-  </mat-card> 
-</mat-card> 
+        </app-activity-details>
+    </mat-tab>
+  </mat-tab-group>
