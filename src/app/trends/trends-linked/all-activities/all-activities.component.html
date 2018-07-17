@@ -23,16 +23,11 @@ This activity, {{ activeMarker.name }}, relates to your other activities in the 
     *ngFor="let otherMarker of otherMarkers; let i = index"  
   >
     <mat-card-title>{{ otherMarker.name }}</mat-card-title>
-    <mat-card-content>
+    <mat-card-content class="percent-correlation">
     {{ (correlationCoefficients[i] * 100).toFixed(0) }}%
     </mat-card-content>
 
-    <mat-card
-      *ngIf="correlationDescriptions.strengths"
-    >
-      {{ otherMarker.name }} is {{ correlationDescriptions.strengths[i] }} related to {{ activeMarker.name }}
-    </mat-card>
-    
+   
     <div class="chart-wrapper">
       <ngx-charts-pie-chart
         *ngIf="correlationCoefficients[i] >= 0"
@@ -54,5 +49,12 @@ This activity, {{ activeMarker.name }}, relates to your other activities in the 
         (select)="onSelect($event)">
       </ngx-charts-pie-chart>
     </div>
+
+    <mat-card
+    *ngIf="correlationDescriptions.strengths"
+  >
+    <i>{{ otherMarker.name }}</i> is <span class="strength">{{ correlationDescriptions.strengths[i] }}</span> related to {{ activeMarker.name }}
+  </mat-card>
+  
   </mat-card>
 </mat-card>  
