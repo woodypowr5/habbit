@@ -5,5 +5,13 @@ export const PopoverText = {
             streaks: 'There is not enough data for this feature. Please create more daily entries to see this content',
             performance: 'There is not enough data for this feature. Please create more daily entries to see this content'
         }
+    },
+    trends: {
+        summary: {
+
+        },
+        linked: {
+            allMarkers: 'There is not enough data for this feature. Please create more daily entries to see this content'
+        }
     }
 };

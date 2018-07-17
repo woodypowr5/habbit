@@ -1,7 +1,7 @@
 <span class="go-to-text">Select Activity:  </span>
 <mat-select 
   [(value)]="activeMarker"
-  placeholder="tets"
+  placeholder="{{ activeMarker.name }}"
 >
   <mat-option 
   (click)="setActiveMarker(marker)"
@@ -12,7 +12,7 @@
   </mat-option>
 </mat-select>
 <br>
-This activity, {{ activeMarker.name }}, relates to your other activities in the followiong ways: 
+<h1>The activity {{ activeMarker.name }} relates to your other activities in the following ways: </h1>
 <mat-card
   class="correlation-markers-container"
   fxLayout
@@ -23,12 +23,12 @@ This activity, {{ activeMarker.name }}, relates to your other activities in the 
     *ngFor="let otherMarker of otherMarkers; let i = index"  
   >
     <mat-card-title>{{ otherMarker.name }}</mat-card-title>
-    <mat-card-content class="percent-correlation">
+    <mat-card-content class="percent-correlation"  *ngIf="correlationCoefficients[i]">
     {{ (correlationCoefficients[i] * 100).toFixed(0) }}%
     </mat-card-content>
 
    
-    <div class="chart-wrapper">
+    <div class="chart-wrapper" *ngIf="correlationCoefficients[i]">
       <ngx-charts-pie-chart
         *ngIf="correlationCoefficients[i] >= 0"
         [results]="[{name: '', value: correlationCoefficients[i]}, {name: 'not', value: 1 - correlationCoefficients[i]}]"
@@ -51,10 +51,17 @@ This activity, {{ activeMarker.name }}, relates to your other activities in the 
     </div>
 
     <mat-card
-    *ngIf="correlationDescriptions.strengths"
-  >
-    <i>{{ otherMarker.name }}</i> is <span class="strength">{{ correlationDescriptions.strengths[i] }}</span> related to {{ activeMarker.name }}
-  </mat-card>
-  
+      *ngIf="correlationCoefficients[i]"
+    >
+      <i>{{ otherMarker.name }}</i> is <span class="strength">{{ correlationDescriptions.strengths[i] }}</span> related to {{ activeMarker.name }}
+    </mat-card>
+    
+    <app-popover
+      *ngIf="!correlationCoefficients[i]"
+      [displayText]="popoverText"
+    >
+
+    </app-popover>
+
   </mat-card>
 </mat-card>  

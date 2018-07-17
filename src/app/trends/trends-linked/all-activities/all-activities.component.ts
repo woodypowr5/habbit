@@ -1,3 +1,4 @@
+import { PopoverText } from './../../../shared/data/popoverText';
 import { ChartOptions } from './../../../shared/data/chartOptions';
 import { ChartDataService } from './../../../shared/services/chart-data.service';
 import { Marker } from './../../../shared/types/marker.model';
@@ -16,6 +17,7 @@ export class AllActivitiesComponent implements OnInit {
   private activeMarker: Marker;
   private correlationCoefficients: number[] = [];
   private chartOptions = ChartOptions.trends.linkedAllMarkers;
+  private popoverText = PopoverText.trends.linked.allMarkers;
   private correlationDescriptions = {
     strengths: [],
     polarities: []
