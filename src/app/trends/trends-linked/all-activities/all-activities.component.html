@@ -1,12 +1,22 @@
 <!-- select a marker -->
 
+<mat-select [(value)]="activeMarker">
+  <mat-option 
+  (click)="setActiveMarker(marker)"
+  [value]="category"
+  *ngFor="let marker of plan.markers; let i = index;"
+  >
+    {{ marker.name }}
+  </mat-option>
+</mat-select>
+
 This Activity: {{ activeMarker.name }}
 <br>
 relates to your other activities in the followiong ways: 
 
 <mat-card
-  *ngFor="let otherMarker of otherMarkers"  
+  *ngFor="let otherMarker of otherMarkers; let i = index"  
 >
   name: {{ otherMarker.name }}
-  R: {{ getCorrelationCoefficient(otherMarker) }}
+  R: {{ correlationCoefficients[i] }}
 </mat-card>

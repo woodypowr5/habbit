@@ -13,6 +13,7 @@ export class AllActivitiesComponent implements OnInit {
   @Input() plan: Plan;
   @Input() records: Record[];
   private activeMarker: Marker;
+  private correlationCoefficients: number[] = [];
 
   constructor(private chartDataService: ChartDataService) { }
 
@@ -24,10 +25,14 @@ export class AllActivitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activeMarker = this.plan.markers[0];
+    this.setActiveMarker(this.plan.markers[0]);
   }
 
-  getCorrelationCoefficient(otherMarker: Marker) {
-    return this.chartDataService.computeLinearCorrelation(this.records, [this.activeMarker, otherMarker]);
+  setActiveMarker(marker: Marker) {
+    this.correlationCoefficients = [];
+    this.activeMarker = marker;
+    this.otherMarkers.map(otherMarker => {
+      this.correlationCoefficients.push(this.chartDataService.computeLinearCorrelation(this.records, [this.activeMarker, otherMarker]));
+    });
   }
 }
