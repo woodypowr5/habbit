@@ -1,10 +1,11 @@
+import { MeasurementService } from './measurement.service';
+import { Measurement } from './../types/measurement.model';
 import { History } from './../types/history.model';
 import { Plan } from './../../plan/plan.model';
 import { DataSortingService } from './data-sorting-service';
 import { Marker } from '../types/marker.model';
 import { DateService } from '../services/date.service';
 import { Datapoint } from '../types/datapoint.model';
-import { Measurement } from '../types/measurement.model';
 import { Record } from '../types/record.model';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -15,7 +16,11 @@ import * as jerzy from 'jerzy';
 @Injectable()
 export class ChartDataService {
 
-  constructor(private dateService: DateService, private dataSortingService: DataSortingService) { }
+  constructor(
+    private dateService: DateService,
+    private dataSortingService: DataSortingService,
+    private MmasurementService: MeasurementService
+  ) { }
 
   formatToDatapoints(records: Record[], includeMarkers: [string, string]): any {
     const datapoints: Datapoint[] = [];
@@ -209,7 +214,7 @@ export class ChartDataService {
   computeBooleanBarData(markerName: string, history: History): any {
     let yesMeasurements = 0;
     let totalMeasurements = 0;
-    let dataObject = {
+    const dataObject = {
       seriesData: [],
       average: 0,
       stdDeviation: 0
@@ -261,6 +266,31 @@ export class ChartDataService {
       });
     });
     return heatmapSeries;
+  }
+
+  computeLinearCorrelation(records: Record[], includeMarkers: Marker[]): number {
+    const vector1: number[] = [];
+    const vector2: number[] = [];
+    for (let i = 0; i < records.length; i++) {
+      const record = records[i];
+      let foundMeasurement1: Measurement;
+      let foundMeasurement2: Measurement;
+      for (let j = 0; j < record.measurements.length; j++) {
+        const measurement = record.measurements[j];
+        const equivalentMeasurement = this.MmasurementService.setEquivalentMeasurementValue(measurement);
+        if (equivalentMeasurement.markerName === includeMarkers[0].name) {
+          foundMeasurement1 = equivalentMeasurement;
+        }
+        if (equivalentMeasurement.markerName === includeMarkers[1].name) {
+          foundMeasurement2 = equivalentMeasurement;
+        }
+      }
+      if (foundMeasurement1 && foundMeasurement2) {
+        vector1.push(foundMeasurement1.value);
+        vector2.push(foundMeasurement2.value);
+      }
+    }
+    return jStat.corrcoeff(vector1, vector2);
   }
 }
 

@@ -1,8 +1,5 @@
+import { AllActivitiesComponent } from './trends-linked/all-activities/all-activities.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { StoreModule } from '@ngrx/store';
 import { TrendsComponent } from './trends.component';
 import { TrendsRoutingModule } from './trends-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -10,8 +7,6 @@ import { TrendsSummaryComponent } from './trends-summary/trends-summary.componen
 import { TrendsDailyComponent } from './trends-daily/trends-daily.component';
 import { TrendsLinkedComponent } from './trends-linked/trends-linked.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { TooltipComponent } from '../shared/components/tooltip/tooltip.component';
-import { AllActivitiesComponent } from './trendsLinked/all-activities/all-activities.component';
 import { ActivityDetailsComponent } from './trends-linked/activity-details/activity-details.component';
 
 @NgModule({
