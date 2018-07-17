@@ -1,6 +1,8 @@
-<!-- select a marker -->
-
-<mat-select [(value)]="activeMarker">
+<span class="go-to-text">Select Activity:  </span>
+<mat-select 
+  [(value)]="activeMarker"
+  placeholder="tets"
+>
   <mat-option 
   (click)="setActiveMarker(marker)"
   [value]="category"
@@ -9,14 +11,48 @@
     {{ marker.name }}
   </mat-option>
 </mat-select>
-
-This Activity: {{ activeMarker.name }}
 <br>
-relates to your other activities in the followiong ways: 
-
+This activity, {{ activeMarker.name }}, relates to your other activities in the followiong ways: 
 <mat-card
-  *ngFor="let otherMarker of otherMarkers; let i = index"  
+  class="correlation-markers-container"
+  fxLayout
+  fxLayoutAlign="space-around"
 >
-  name: {{ otherMarker.name }}
-  R: {{ correlationCoefficients[i] }}
-</mat-card>
+  <mat-card
+    class="correlation-marker-card"
+    *ngFor="let otherMarker of otherMarkers; let i = index"  
+  >
+    <mat-card-title>{{ otherMarker.name }}</mat-card-title>
+    <mat-card-content>
+    {{ (correlationCoefficients[i] * 100).toFixed(0) }}%
+    </mat-card-content>
+
+    <mat-card
+      *ngIf="correlationDescriptions.strengths"
+    >
+      {{ otherMarker.name }} is {{ correlationDescriptions.strengths[i] }} related to {{ activeMarker.name }}
+    </mat-card>
+    
+    <div class="chart-wrapper">
+      <ngx-charts-pie-chart
+        *ngIf="correlationCoefficients[i] >= 0"
+        [results]="[{name: '', value: correlationCoefficients[i]}, {name: 'not', value: 1 - correlationCoefficients[i]}]"
+        [scheme]="chartOptions.positive.scheme"
+        [view]="chartOptions.positive.viewDoughnut"
+        [doughnut]="true"
+        [tooltipDisabled]="chartOptions.positive.tooltipDisabled"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-chart>
+
+      <ngx-charts-pie-chart
+        *ngIf="correlationCoefficients[i] < 0"
+        [results]="[{name: '', value: 1 + correlationCoefficients[i]}, {name: 'not', value: correlationCoefficients[i] * -1}]"
+        [scheme]="chartOptions.negative.scheme"
+        [view]="chartOptions.negative.viewDoughnut"
+        [doughnut]="chartOptions.negative.doughnut"
+        [tooltipDisabled]="chartOptions.negative.tooltipDisabled"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-chart>
+    </div>
+  </mat-card>
+</mat-card>  

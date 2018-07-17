@@ -1,3 +1,4 @@
+import { ChartOptions } from './../../../shared/data/chartOptions';
 import { ChartDataService } from './../../../shared/services/chart-data.service';
 import { Marker } from './../../../shared/types/marker.model';
 import { Plan } from './../../../plan/plan.model';
@@ -14,7 +15,11 @@ export class AllActivitiesComponent implements OnInit {
   @Input() records: Record[];
   private activeMarker: Marker;
   private correlationCoefficients: number[] = [];
-
+  private chartOptions = ChartOptions.trends.linkedAllMarkers;
+  private correlationDescriptions = {
+    strengths: [],
+    polarities: []
+  };
   constructor(private chartDataService: ChartDataService) { }
 
   public get otherMarkers(): Marker[] {
@@ -30,9 +35,37 @@ export class AllActivitiesComponent implements OnInit {
 
   setActiveMarker(marker: Marker) {
     this.correlationCoefficients = [];
+    this.correlationDescriptions = {
+      strengths: [],
+      polarities: []
+    };
     this.activeMarker = marker;
     this.otherMarkers.map(otherMarker => {
-      this.correlationCoefficients.push(this.chartDataService.computeLinearCorrelation(this.records, [this.activeMarker, otherMarker]));
+      const nextCorrelationCoefficient = this.chartDataService.computeLinearCorrelation(this.records, [this.activeMarker, otherMarker]);
+      this.correlationCoefficients.push(nextCorrelationCoefficient);
+      this.correlationDescriptions.strengths.push(this.getStrengthEnumeration(nextCorrelationCoefficient));
     });
+  }
+
+  getStrengthEnumeration(correlationCoefficient: number) {
+    console.log(Math.abs(correlationCoefficient));
+    if (Math.abs(correlationCoefficient) > 0.67) {
+      return 'strongly';
+    } else if (Math.abs(correlationCoefficient) > 0.33) {
+      return 'moderately';
+    } else if (Math.abs(correlationCoefficient) > 0.20) {
+      return 'weakly';
+    } else {
+      return 'not significantly';
+    }
+  }
+
+  getResults(correlationCoefficient: number): any {
+    if (typeof correlationCoefficient === 'number') {
+      return [{
+        name: 'strength of relationship',
+        value: correlationCoefficient
+      }];
+    }
   }
 }

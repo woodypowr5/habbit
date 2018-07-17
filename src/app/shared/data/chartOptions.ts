@@ -71,6 +71,26 @@ export const ChartOptions = {
             minRadius: 6,
             maxRadius: 10
         },
+        linkedAllMarkers: {
+            positive : {
+                scheme: Constants.chartColorScheme.streaks,
+                units: null,
+                angleSpan: 240,
+                startAngle: 360,
+                viewDoughnut: [160, 160],
+                doughnut: true,
+                tooltipDisabled: true
+            },
+            negative: {
+                scheme: Constants.chartColorScheme.streaksReverse,
+                units: null,
+                angleSpan: 240,
+                startAngle: 360,
+                viewDoughnut: [160, 160],
+                doughnut: true,
+                tooltipDisabled: true
+            }
+        },
         summary: {
             range: {
                 showXAxis: true,

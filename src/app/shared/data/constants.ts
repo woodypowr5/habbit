@@ -11,8 +11,10 @@ export const Constants = {
             domain: ['#89BF29', '#CCC']
         },
         streaks:  {
-            // domain: ['#89BF29', '#37B7D2']
             domain: ['#89BF29', '#CCC']
+        },
+        streaksReverse:  {
+            domain: ['#CCC', 'red']
         },
         trendsLineGraph: {
             domain: ['#89BF29', '#CCC']

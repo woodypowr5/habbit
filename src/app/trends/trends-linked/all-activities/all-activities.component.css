@@ -1,0 +1,23 @@
+mat-select{
+    width: 150px;
+    height: 25px;
+    margin: 30px 10px 20px 30px;
+    border: 1px solid #AAA;
+    padding: 5px;
+    padding-top: 8px;
+}
+
+.go-to-text{
+    margin-left: 20px;
+}
+.chart-wrapper{
+    width: 200px;
+    height: 200px;
+}
+.correlation-marker-card{
+    width: 25%;
+    margin-bottom: 20px;
+}
+.correlation-markers-container{
+    flex-wrap: wrap;
+}
