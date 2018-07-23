@@ -1,7 +1,7 @@
-import { Record } from './../../shared/types/record.model';
-import { CalculationService } from './../../shared/services/calculation.service';
+import { Record } from '../../shared/types/record.model';
+import { CalculationService } from '../../shared/services/calculation.service';
 import { DateService } from '../../shared/services/date.service';
-import { EmptyRecord } from './../emptyRecord.class';
+import { EmptyRecord } from '../emptyRecord.class';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 import { Constants } from '../../shared/data/constants';

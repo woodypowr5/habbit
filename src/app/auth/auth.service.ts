@@ -1,4 +1,4 @@
-import { PlanService } from './../shared/services/plan.service';
+import { PlanService } from '../shared/services/plan.service';
 import { UserData } from './userData.model';
 
 import { Injectable } from '@angular/core';

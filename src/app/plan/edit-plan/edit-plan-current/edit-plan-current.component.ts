@@ -1,6 +1,5 @@
-import { MarkerService } from './../../../shared/services/marker.service';
+import { Plan } from '../../plan.model';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-plan-current',
@@ -8,7 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./edit-plan-current.component.css']
 })
 export class EditPlanCurrentComponent implements OnInit {
-  @Input() myPlan;
+  @Input() myPlan: Plan;
 
   constructor() { }
 

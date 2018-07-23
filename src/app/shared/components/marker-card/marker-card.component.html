@@ -15,7 +15,7 @@
     fxLayout="column"  
     fxLayoutGap="20px"
   >
-    <div class="action-container">
+    <div class="action-container" *ngIf="myPlan">
       <button 
       class="edit-marker-button add-marker"
         [disabled]="isInPlan" 
@@ -27,5 +27,4 @@
       </button>
     </div>
   </mat-card-actions>
-  <mat-progress-bar *ngIf="isLoading === true" mode="indeterminate"></mat-progress-bar>
 </mat-card>

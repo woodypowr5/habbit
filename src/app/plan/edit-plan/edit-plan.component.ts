@@ -1,8 +1,8 @@
-import { MarkerService } from './../../shared/services/marker.service';
-import { Marker } from './../../shared/types/marker.model';
+import { MarkerService } from '../../shared/services/marker.service';
+import { Marker } from '../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Plan } from './../plan.model';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { Plan } from '../plan.model';
 
 @Component({
   selector: 'app-edit-plan',
@@ -10,16 +10,16 @@ import { Plan } from './../plan.model';
   styleUrls: ['./edit-plan.component.css']
 })
 export class EditPlanComponent implements OnInit, OnChanges {
+  @Input() availableMarkers: Marker[] = [];
+  @Input() myPlan: Plan;
+  @Input() markerAddedToPlan: Marker;
+  @Input() markerRemovedFromPlan: Marker;
+  @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
+  @Output() markerRemovedFromPlanParent = new EventEmitter<Marker>();
   private selectedMarkers: Marker[] = [];
   private inactiveMarkers: Marker[] = [];
   private markerCategories: string[] = [];
-  categorySelectForm = new FormControl();
-  @Input() availableMarkers: Marker[] = [];
-  @Input() myPlan: Plan;
-  @Input() markerAddedToPlan;
-  @Input() markerRemovedFromPlan;
-  @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
-  @Output() markerRemovedFromPlanParent = new EventEmitter<Marker>();
+  private categorySelectForm = new FormControl();
 
   constructor(private markerService: MarkerService, private formBuilder: FormBuilder) {}
 
@@ -54,7 +54,7 @@ export class EditPlanComponent implements OnInit, OnChanges {
     return inactiveMarkers.filter(marker => marker.category === category);
   }
 
-  scrollTo(elementId): void {
+  scrollTo(elementId: string): void {
     const element: Element = document.getElementById(elementId);
     element.scrollIntoView();
   }

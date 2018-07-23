@@ -1,4 +1,4 @@
-import { Marker } from './../shared/types/marker.model';
+import { Marker } from '../shared/types/marker.model';
 
 export class Plan {
     name: string;

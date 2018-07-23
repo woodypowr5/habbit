@@ -11,7 +11,7 @@ export const PopoverText = {
 
         },
         linked: {
-            allMarkers: 'There is not enough data for this feature. Please create more daily entries to see this content'
+            allMarkers: 'There are not enough entries to make a meaningful prediction about the relationship between these activities'
         }
     }
 };

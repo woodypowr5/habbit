@@ -1,5 +1,5 @@
-import { Plan } from './../../plan/plan.model';
-import { Record } from './../../shared/types/record.model';
+import { Plan } from '../../plan/plan.model';
+import { Record } from '../../shared/types/record.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

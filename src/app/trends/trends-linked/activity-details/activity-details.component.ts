@@ -1,9 +1,9 @@
-import { Marker } from './../../../shared/types/marker.model';
-import { Record } from './../../../shared/types/record.model';
-import { Plan } from './../../../plan/plan.model';
-import { TooltipText } from './../../../shared/data/tooltipText';
-import { ChartOptions } from './../../../shared/data/chartOptions';
-import { ChartDataService } from './../../../shared/services/chart-data.service';
+import { Marker } from '../../../shared/types/marker.model';
+import { Record } from '../../../shared/types/record.model';
+import { Plan } from '../../../plan/plan.model';
+import { TooltipText } from '../../../shared/data/tooltipText';
+import { ChartOptions } from '../../../shared/data/chartOptions';
+import { ChartDataService } from '../../../shared/services/chart-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

@@ -32,3 +32,9 @@ mat-select{
 i{
     font-size: 1.3em;
 }
+.marker-card{
+    margin-right: 20px;
+}
+.marker-card-container{
+    padding-bottom: 0px;
+}

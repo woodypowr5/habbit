@@ -1,7 +1,7 @@
-import { Record } from './../../../shared/types/record.model';
-import { TrackingDay } from './../../../shared/types/trackingDay.model';
-import { EmptyRecord } from './../../emptyRecord.class';
-import { AdjustedDatePipe } from './../adjustedDate.pipe';
+import { Record } from '../../../shared/types/record.model';
+import { TrackingDay } from '../../../shared/types/trackingDay.model';
+import { EmptyRecord } from '../../emptyRecord.class';
+import { AdjustedDatePipe } from '../adjustedDate.pipe';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

@@ -1,5 +1,5 @@
-import { DateService } from '../services/date.service';
-import { History } from './../types/history.model';
+import { DateService } from './date.service';
+import { History } from '../types/history.model';
 import { DataSortingService } from './data-sorting-service';
 import { Injectable } from '@angular/core';
 

@@ -1,10 +1,10 @@
-import { ChartOptions } from './../../shared/data/chartOptions';
-import { Marker } from './../../shared/types/marker.model';
-import { TooltipText } from './../../shared/data/tooltipText';
+import { ChartOptions } from '../../shared/data/chartOptions';
+import { Marker } from '../../shared/types/marker.model';
+import { TooltipText } from '../../shared/data/tooltipText';
 import { Constants } from '../../shared/data/constants';
-import { Plan } from './../../plan/plan.model';
-import { Datapoint } from './../../shared/types/datapoint.model';
-import { Record } from './../../shared/types/record.model';
+import { Plan } from '../../plan/plan.model';
+import { Datapoint } from '../../shared/types/datapoint.model';
+import { Record } from '../../shared/types/record.model';
 import { ChartDataService } from '../../shared/services/chart-data.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';

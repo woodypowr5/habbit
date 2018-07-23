@@ -1,4 +1,4 @@
-import { CalendarDayPipe } from './../shared/pipes/calendarDay.pipe';
+import { CalendarDayPipe } from '../shared/pipes/calendarDay.pipe';
 import { AdjustedDatePipe } from './records/adjustedDate.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

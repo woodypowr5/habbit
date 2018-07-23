@@ -9,6 +9,7 @@ import { DateService } from './services/date.service';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { HttpModule } from '@angular/http';
 import { PopoverComponent } from './components/popover/popover.component';
+import { MarkerCardComponent } from './components/marker-card/marker-card.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PopoverComponent } from './components/popover/popover.component';
   ],
   declarations: [
     TooltipComponent,
-    PopoverComponent
+    PopoverComponent,
+    MarkerCardComponent
   ],
   providers: [
     DateService
@@ -34,7 +36,8 @@ import { PopoverComponent } from './components/popover/popover.component';
     MaterialModule,
     FlexLayoutModule,
     TooltipComponent,
-    PopoverComponent
+    PopoverComponent,
+    MarkerCardComponent
   ]
 })
 export class SharedModule {}

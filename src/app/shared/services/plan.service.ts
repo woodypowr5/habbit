@@ -1,5 +1,5 @@
-import { Plan } from './../../plan/plan.model';
-import { Marker } from './../types/marker.model';
+import { Plan } from '../../plan/plan.model';
+import { Marker } from '../types/marker.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/subscription';

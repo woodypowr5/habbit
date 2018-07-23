@@ -1,11 +1,10 @@
-import { Record } from './../shared/types/record.model';
-import { History } from './../shared/types/history.model';
+import { Record } from '../shared/types/record.model';
+import { History } from '../shared/types/history.model';
 import { DateService } from '../shared/services/date.service';
 import { EmptyRecord } from './emptyRecord.class';
-import { RecordsComponent } from './records/records.component';
-import { PlanService } from './../shared/services/plan.service';
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { Observable, Subscription, Subject } from 'rxjs';
+import { PlanService } from '../shared/services/plan.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription, Subject } from 'rxjs';
 import { TrackingService } from '../shared/services/tracking.service';
 import * as moment from 'moment';
 import { Plan } from '../plan/plan.model';
@@ -59,7 +58,7 @@ export class TrackingComponent implements OnInit, OnDestroy {
   queryRecordsByDate(records: Record[], date: moment.Moment): Record {
       const record = new EmptyRecord;
       const foundRecord = records.filter(currentRecord => {
-        if (this.dateService.isSameDate(currentRecord.date, date)) {
+        if (this.dateService.isSameDate(currentRecord.date, date.toDate())) {
             return currentRecord;
         }
       });

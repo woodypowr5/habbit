@@ -1,16 +1,29 @@
-<span class="go-to-text">Select Activity:  </span>
-<mat-select 
-  [(value)]="activeMarker"
-  placeholder="{{ activeMarker.name }}"
+<mat-card 
+  class="marker-card-container"
+  fxLayout 
 >
-  <mat-option 
-  (click)="setActiveMarker(marker)"
-  [value]="category"
-  *ngFor="let marker of plan.markers; let i = index;"
+  <app-marker-card
+    class="marker-card"
+    [marker]="marker"
+    fxFlex="200px" 
+    fxFlex.xs="100%"
+    *ngFor="let marker of plan.markers; let i = index;"
+    fxLayoutGap="20px"
   >
-    {{ marker.name }}
-  </mat-option>
-</mat-select>
+  </app-marker-card>
+  <!-- <mat-select 
+    [(value)]="activeMarker"
+    placeholder="{{ activeMarker.name }}"
+  >
+    <mat-option 
+    (click)="setActiveMarker(marker)"
+    [value]="category"
+    *ngFor="let marker of plan.markers; let i = index;"
+    >
+      {{ marker.name }}
+    </mat-option>
+  </mat-select> -->
+</mat-card>
 <br>
 <h1>The activity {{ activeMarker.name }} relates to your other activities in the following ways: </h1>
 <mat-card

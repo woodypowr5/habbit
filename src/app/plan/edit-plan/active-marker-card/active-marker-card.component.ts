@@ -1,35 +1,26 @@
-import { Marker } from './../../../shared/types/marker.model';
-import { UIService } from './../../../shared/ui.service';
+import { Marker } from '../../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MatDialog, MatDialogRef} from '@angular/material';
 import { ActiveMarkerSettingsComponent } from './active-marker-settings/active-marker-settings.component';
-import { Plan } from './../../plan.model';
+import { Plan } from '../../plan.model';
 
 @Component({
   selector: 'app-active-marker-card',
   templateUrl: './active-marker-card.component.html',
   styleUrls: ['./active-marker-card.component.css']
 })
-export class ActiveMarkerCardComponent implements OnInit, OnChanges {
+export class ActiveMarkerCardComponent implements OnInit {
   @Input() marker: Marker;
   @Input() myPlan: Plan;
   @Input() isInPlan: boolean;
   @Output() markerRemovedFromPlan = new EventEmitter<Marker>();
-  isLoading: boolean;
   dialogRef: MatDialogRef<ActiveMarkerSettingsComponent>;
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.isLoading = false;
-  }
-
-  ngOnChanges(): void {
-    this.isLoading = this.marker.isLoading;
-  }
+  ngOnInit(): void { }
 
   removeMarkerFromPlan(marker): void {
-    this.isLoading = true;
     this.markerRemovedFromPlan.emit(marker);
   }
 

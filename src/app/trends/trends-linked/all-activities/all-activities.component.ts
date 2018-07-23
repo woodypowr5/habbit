@@ -1,8 +1,8 @@
-import { PopoverText } from './../../../shared/data/popoverText';
-import { ChartOptions } from './../../../shared/data/chartOptions';
-import { ChartDataService } from './../../../shared/services/chart-data.service';
-import { Marker } from './../../../shared/types/marker.model';
-import { Plan } from './../../../plan/plan.model';
+import { PopoverText } from '../../../shared/data/popoverText';
+import { ChartOptions } from '../../../shared/data/chartOptions';
+import { ChartDataService } from '../../../shared/services/chart-data.service';
+import { Marker } from '../../../shared/types/marker.model';
+import { Plan } from '../../../plan/plan.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Record } from '../../../shared/types/record.model';
 
@@ -50,7 +50,6 @@ export class AllActivitiesComponent implements OnInit {
   }
 
   getStrengthEnumeration(correlationCoefficient: number) {
-    console.log(Math.abs(correlationCoefficient));
     if (Math.abs(correlationCoefficient) > 0.67) {
       return 'strongly';
     } else if (Math.abs(correlationCoefficient) > 0.33) {

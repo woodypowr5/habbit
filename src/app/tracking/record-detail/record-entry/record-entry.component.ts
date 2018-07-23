@@ -1,6 +1,6 @@
-import { Measurement } from './../../../shared/types/measurement.model';
-import { Record } from './../../../shared/types/record.model';
-import { Plan } from './../../../plan/plan.model';
+import { Measurement } from '../../../shared/types/measurement.model';
+import { Record } from '../../../shared/types/record.model';
+import { Plan } from '../../../plan/plan.model';
 import { map } from 'rxjs/operators';
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { Marker } from '../../../shared/types/marker.model';

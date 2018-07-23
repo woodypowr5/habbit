@@ -1,5 +1,4 @@
 import { Marker } from '../types/marker.model';
-import { Observable } from 'rxjs/observable';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subscription } from 'rxjs/subscription';
@@ -19,7 +18,7 @@ export class MarkerService {
     this.fetchAvailableMarkers();
   }
 
-  fetchAvailableMarkers() {
+  fetchAvailableMarkers(): void {
     this.markerSubscriptions.push(
       this.db
         .collection('availableMarkers')
@@ -38,7 +37,7 @@ export class MarkerService {
     );
   }
 
-  cancelSubscriptions() {
+  cancelSubscriptions(): void {
     this.markerSubscriptions.forEach(sub => sub.unsubscribe());
     this.markerCategoriesSubscriptions.forEach(sub => sub.unsubscribe());
   }

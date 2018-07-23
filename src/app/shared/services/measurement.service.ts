@@ -1,4 +1,4 @@
-import { Measurement } from './../types/measurement.model';
+import { Measurement } from '../types/measurement.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({

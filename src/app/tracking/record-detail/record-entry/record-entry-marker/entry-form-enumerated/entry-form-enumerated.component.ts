@@ -1,4 +1,4 @@
-import { Marker } from './../../../../../shared/types/marker.model';
+import { Marker } from '../../../../../shared/types/marker.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

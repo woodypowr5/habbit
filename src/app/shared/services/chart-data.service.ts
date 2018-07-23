@@ -1,15 +1,13 @@
 import { MeasurementService } from './measurement.service';
-import { Measurement } from './../types/measurement.model';
-import { History } from './../types/history.model';
-import { Plan } from './../../plan/plan.model';
+import { Measurement } from '../types/measurement.model';
+import { History } from '../types/history.model';
+import { Plan } from '../../plan/plan.model';
 import { DataSortingService } from './data-sorting-service';
 import { Marker } from '../types/marker.model';
-import { DateService } from '../services/date.service';
+import { DateService } from './date.service';
 import { Datapoint } from '../types/datapoint.model';
 import { Record } from '../types/record.model';
-import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { raw } from 'body-parser';
 import * as jStat from 'jStat';
 import * as jerzy from 'jerzy';
 
@@ -93,7 +91,7 @@ export class ChartDataService {
     return filteredSeriesData;
   }
 
-  computeMovingAverage(rawData: any) {
+  computeMovingAverage(rawData: any): any {
     const seriesData: any = [];
     rawData.map(series => {
       seriesData.push({
@@ -104,7 +102,7 @@ export class ChartDataService {
     return seriesData;
   }
 
-  computeGlobalAverage(rawData: any) {
+  computeGlobalAverage(rawData: any): any {
     const seriesData: any = [];
     rawData.map(series => {
       seriesData.push({

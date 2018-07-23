@@ -1,14 +1,13 @@
-import { Constants } from './../data/constants';
+import { Constants } from '../data/constants';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { nextTick } from 'q';
 
 @Injectable()
 export class DateService {
 
   constructor() { }
 
-  isSameDate(date1, date2) {
+  isSameDate(date1: Date, date2: Date) {
     return (moment(date1).date() === moment(date2).date())
         && (moment(date1).month() === moment(date2).month())
         && (moment(date1).year() === moment(date2).year());
@@ -19,12 +18,16 @@ export class DateService {
     return Math.ceil(Math.abs((date1.getTime() - date2.getTime()) / (oneDay))) + 1;
   }
 
-  getRelativeDay(date: Date, offset: number) {
+  getRelativeDay(date: Date, offset: number): Date {
     if (offset > 0) {
       return moment(date).add(offset, 'd').toDate();
     } else {
       return moment(date).subtract(offset * -1, 'd').toDate();
     }
+  }
+
+  getNextDay(date: Date): Date {
+    return this.getRelativeDay(date, 1);
   }
 
   getFirstOfMonth(month: string, year: number): Date {

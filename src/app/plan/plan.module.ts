@@ -3,7 +3,6 @@ import { PlanComponent } from './plan.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlanRoutingModule } from './plan-routing.module';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
-import { EditMarkerCardComponent } from './edit-plan/edit-marker-card/edit-marker-card.component';
 import { EditPlanCurrentComponent } from './edit-plan/edit-plan-current/edit-plan-current.component';
 import { ActiveMarkerCardComponent } from './edit-plan/active-marker-card/active-marker-card.component';
 import { ActiveMarkerSettingsComponent } from './edit-plan/active-marker-card/active-marker-settings/active-marker-settings.component';
@@ -12,7 +11,6 @@ import { ActiveMarkerSettingsComponent } from './edit-plan/active-marker-card/ac
   declarations: [
     PlanComponent,
     EditPlanComponent,
-    EditMarkerCardComponent,
     EditPlanCurrentComponent,
     ActiveMarkerCardComponent,
     ActiveMarkerSettingsComponent

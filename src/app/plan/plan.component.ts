@@ -1,8 +1,6 @@
-import { Marker } from './../shared/types/marker.model';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
-import { Subscriber, Subscription } from 'rxjs';
+import { Marker } from '../shared/types/marker.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MarkerService } from '../shared/services/marker.service';
 import { PlanService } from '../shared/services/plan.service';
 import { Plan } from './plan.model';
@@ -13,14 +11,15 @@ import { Plan } from './plan.model';
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
+  @Input() markerAddedToPlanParent: Marker;
+  @Input() markerRemovedFromPlanParent: Marker;
   private myPlan: Plan = {
     name: '',
     markers: []
   };
   private availableMarkers: Marker[] = [];
   private availableMarkerSubscription: Subscription;
-  @Input() markerAddedToPlanParent;
-  @Input() markerRemovedFromPlanParent;
+
 
   constructor(
     private markerService: MarkerService,

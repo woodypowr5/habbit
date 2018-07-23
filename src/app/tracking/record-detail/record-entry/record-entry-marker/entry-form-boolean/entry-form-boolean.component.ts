@@ -1,5 +1,5 @@
-import { Measurement } from './../../../../../shared/types/measurement.model';
-import { Marker } from './../../../../../shared/types/marker.model';
+import { Measurement } from '../../../../../shared/types/measurement.model';
+import { Marker } from '../../../../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

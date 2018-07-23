@@ -1,8 +1,8 @@
-import { UserData } from './../../auth/userData.model';
+import { UserData } from '../../auth/userData.model';
 import { Measurement } from '../types/measurement.model';
 import { Record } from '../types/record.model';
 import { History } from '../types/history.model';
-import { DateService } from '../services/date.service';
+import { DateService } from './date.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subscription, Observable, BehaviorSubject } from 'rxjs';
