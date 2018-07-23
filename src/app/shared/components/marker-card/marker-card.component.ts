@@ -11,14 +11,16 @@ export class MarkerCardComponent implements OnInit {
   @Input() marker: Marker;
   @Input() myPlan: Plan;
   @Input() isInPlan: boolean;
-  @Output() markerAddedToPlan = new EventEmitter<Marker>();
+  @Input() active: boolean;
+  @Input() hoverable: boolean;
   @Output() markerRemovedFromPlan = new EventEmitter<Marker>();
+  @Output() markerClicked: EventEmitter<Marker> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() { }
 
-  addMarkerToPlan(marker: Marker): void {
-    this.markerAddedToPlan.emit(marker);
+  markerCardClicked(event) {
+    this.markerClicked.emit(event);
   }
 }

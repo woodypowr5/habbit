@@ -52,7 +52,7 @@
           [marker]="marker"
           [myPlan]="myPlan"
           [isInPlan]="isInPlan(marker)"
-          (markerAddedToPlan)="addMarkerToPlan($event)"
+          (markerClicked)="addMarkerToPlan($event)"
           (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
           *ngFor="let marker of getMarkersForCategory(inactiveMarkers, category)" 
           fxFlex="200px" 

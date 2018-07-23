@@ -9,23 +9,16 @@
     fxFlex.xs="100%"
     *ngFor="let marker of plan.markers; let i = index;"
     fxLayoutGap="20px"
+    (markerClicked)="setActiveMarker($event)"
+    (click)="markerCardClicked($event)"
+    [active]="marker.name === activeMarker.name"
+    [hoverable]="true"
   >
   </app-marker-card>
-  <!-- <mat-select 
-    [(value)]="activeMarker"
-    placeholder="{{ activeMarker.name }}"
-  >
-    <mat-option 
-    (click)="setActiveMarker(marker)"
-    [value]="category"
-    *ngFor="let marker of plan.markers; let i = index;"
-    >
-      {{ marker.name }}
-    </mat-option>
-  </mat-select> -->
 </mat-card>
-<br>
-<h1>The activity {{ activeMarker.name }} relates to your other activities in the following ways: </h1>
+
+<!-- <br>
+<h1>The activity {{ activeMarker.name }} relates to your other activities in the following ways: </h1> -->
 <mat-card
   class="correlation-markers-container"
   fxLayout

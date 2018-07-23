@@ -22,3 +22,10 @@ mat-card-title{
 .available-marker-card{
     justify-content: space-between;
 }
+.hoverable:hover{
+    cursor: pointer;
+    outline: 3px solid #DDD;
+}
+.active{
+   background-color: #EEE;
+}

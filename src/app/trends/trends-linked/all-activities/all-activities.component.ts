@@ -3,7 +3,7 @@ import { ChartOptions } from '../../../shared/data/chartOptions';
 import { ChartDataService } from '../../../shared/services/chart-data.service';
 import { Marker } from '../../../shared/types/marker.model';
 import { Plan } from '../../../plan/plan.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Record } from '../../../shared/types/record.model';
 
 @Component({

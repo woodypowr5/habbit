@@ -3,6 +3,9 @@
   fxLayout="column"
   fxLayoutAlign="space-between"
   *ngIf="!isInPlan"
+  (click)="markerCardClicked(marker)"
+  [ngClass]="{'active' : active === true, 'hoverable' : hoverable === true}"
+  
 >
   <mat-card-title fxLayoutAlign="center">{{ marker.name }}</mat-card-title>
   
@@ -21,7 +24,6 @@
         [disabled]="isInPlan" 
         type="button"
         mat-raised-button
-        (click)="addMarkerToPlan(marker)"
       >
         Add to My Plan
       </button>

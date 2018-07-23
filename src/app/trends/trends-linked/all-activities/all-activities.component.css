@@ -37,4 +37,8 @@ i{
 }
 .marker-card-container{
     padding-bottom: 0px;
+    flex-wrap: wrap;
+}
+.active .available-marker-card{
+    background-color: #CCC;
 }
