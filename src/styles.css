@@ -11,3 +11,18 @@ body {
 .line{
   stroke-width: 3px !important;
 }
+
+
+.subheader{
+  margin-left: auto;
+  margin-bottom: 40px;
+  margin-top: 70px;
+  margin-right: auto;
+  font-size: 1.5em;
+  color: #666;
+  width: 500px;
+  text-align: center;
+  border-bottom: 2px solid #EEE;
+  line-height: 1.7em;
+
+}

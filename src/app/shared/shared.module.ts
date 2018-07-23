@@ -10,6 +10,7 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { HttpModule } from '@angular/http';
 import { PopoverComponent } from './components/popover/popover.component';
 import { MarkerCardComponent } from './components/marker-card/marker-card.component';
+import { SubheaderComponent } from './components/subheader/subheader.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MarkerCardComponent } from './components/marker-card/marker-card.compon
   declarations: [
     TooltipComponent,
     PopoverComponent,
-    MarkerCardComponent
+    MarkerCardComponent,
+    SubheaderComponent
   ],
   providers: [
     DateService
@@ -37,7 +39,8 @@ import { MarkerCardComponent } from './components/marker-card/marker-card.compon
     FlexLayoutModule,
     TooltipComponent,
     PopoverComponent,
-    MarkerCardComponent
+    MarkerCardComponent,
+    SubheaderComponent
   ]
 })
 export class SharedModule {}
