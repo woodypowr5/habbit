@@ -9,11 +9,15 @@ export class MeasurementService {
   constructor() { }
 
   setEquivalentMeasurementValue(measurement: Measurement) {
+    const alteredMeasurement: Measurement = {
+      markerName: measurement.markerName,
+      value: measurement.value
+    };
     if (measurement.value === 'Yes') {
-      measurement.value = 1;
+      alteredMeasurement.value = 1;
     } else if (measurement.value === 'No') {
-      measurement.value = 0;
+      alteredMeasurement.value = 0;
     }
-    return measurement;
+    return alteredMeasurement;
   }
 }

@@ -26,11 +26,11 @@
                 </mat-panel-description>
 
                 <mat-panel-description 
-                    *ngIf = "measurements[i] && marker.dataType === 'boolean'"
+                    *ngIf = "measurements[i] && marker.dataType === 'boolean' || measurements[i] && marker.dataType === 'scalar'"
                 >
                     {{ measurements[i].value }}
                 </mat-panel-description>
-                
+
             </mat-expansion-panel-header>
             <app-record-entry-marker
                 [marker]="marker"

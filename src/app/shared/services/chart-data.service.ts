@@ -17,7 +17,7 @@ export class ChartDataService {
   constructor(
     private dateService: DateService,
     private dataSortingService: DataSortingService,
-    private MmasurementService: MeasurementService
+    private measurementService: MeasurementService
   ) { }
 
   formatToDatapoints(records: Record[], includeMarkers: [string, string]): any {
@@ -202,7 +202,7 @@ export class ChartDataService {
     for (let i = marker.min; i <= marker.max; i = i + marker.delta) {
       eCDF.push({
         name:  String(i),
-        value: v.ecdf(i) - prevBinProbability
+        value: (v.ecdf(i) - prevBinProbability) * 100
       });
       prevBinProbability = v.ecdf(i);
     }
@@ -275,7 +275,7 @@ export class ChartDataService {
       let foundMeasurement2: Measurement;
       for (let j = 0; j < record.measurements.length; j++) {
         const measurement = record.measurements[j];
-        const equivalentMeasurement = this.MmasurementService.setEquivalentMeasurementValue(measurement);
+        const equivalentMeasurement = this.measurementService.setEquivalentMeasurementValue(measurement);
         if (equivalentMeasurement.markerName === includeMarkers[0].name) {
           foundMeasurement1 = equivalentMeasurement;
         }

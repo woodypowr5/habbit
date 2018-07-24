@@ -1,0 +1,11 @@
+<form>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter a number" value="" name="value" [(ngModel)]="currentValue">
+  </mat-form-field>
+</form>  
+<button 
+  mat-raised-button
+  (click)="save(currentValue)"
+>
+  Save
+</button>

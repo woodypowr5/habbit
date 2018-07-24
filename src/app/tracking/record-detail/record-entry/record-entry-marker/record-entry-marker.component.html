@@ -1,18 +1,17 @@
 <mat-card>
   <mat-card-title></mat-card-title>
-{{ measurement |json }}
   <app-entry-form-boolean 
     *ngIf="marker.dataType === 'boolean'"
     [marker]="marker"
     (saveMeasurement)="saveNewMeasurement($event)"
-  >
-  </app-entry-form-boolean>
-
-  <app-entry-form-enumerated 
-    *ngIf="marker.dataType === 'enumerated'"
+  ></app-entry-form-boolean>
+ 
+  <app-entry-form-scalar 
+    *ngIf="marker.dataType === 'scalar'"
     [marker]="marker"
+    (saveMeasurement)="saveNewMeasurement($event)"
   >
-  </app-entry-form-enumerated>
+  </app-entry-form-scalar>
 
   <app-entry-form-range 
     *ngIf="marker.dataType === 'range'"

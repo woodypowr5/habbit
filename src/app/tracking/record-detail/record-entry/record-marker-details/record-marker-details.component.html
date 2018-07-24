@@ -69,18 +69,8 @@
       <div class="average" *ngIf="marker.dataType === 'range'">
         Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
       </div>
-      <div class="average" *ngIf="marker.dataType === 'boolean'">
-        Average entry: {{ results.performance.boolean.average }} 
-        <span class="tooltip-container">
-          <app-tooltip 
-            [displayText]="tooltipText.booleanVariability"
-            [id]="tooltipBooleanVariability"
-            [type]="'description'"
-          ></app-tooltip>
-        </span>
-      </div>
     
-      <div class="std-deviation" >
+      <div class="std-deviation" *ngIf="marker.dataType !== 'boolean'">
         Variablity: {{ standardDeviation.toFixed(2) }}
         <span class="tooltip-container">
           <app-tooltip 
