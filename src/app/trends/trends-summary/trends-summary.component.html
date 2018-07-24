@@ -43,6 +43,7 @@
     fxLayoutAlign="space-between"
     fxLayoutGap="20px"
     >
+    {{ seriesState | json }}
     <mat-card class="series-visibility">
 
         <mat-card-title class="series-visibility-label">Visible Data:</mat-card-title>
@@ -60,6 +61,7 @@
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'range'}"
                     class="material-button"
+                    (click)="checkForNewDatatype(marker)"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
@@ -72,6 +74,7 @@
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'boolean'}"
                     class="material-button"
+                    (click)="checkForNewDatatype(marker)"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
@@ -84,6 +87,7 @@
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'scalar'}"
                     class="material-button"
+                    (click)="checkForNewDatatype(marker)"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
