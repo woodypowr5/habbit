@@ -42,7 +42,6 @@ export class RecordsComponent implements OnInit {
   }
 
   setActiveDate(date): void {
-    console.log(date)
     this.activeDate = new Date(date + ', ' + new Date().getFullYear());
     this.setNewActiveDate.emit(this.activeDate);
   }

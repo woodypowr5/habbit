@@ -11,38 +11,30 @@ import { Constants } from '../../../shared/data/constants';
 export class CalendarComponent implements OnInit {
   @Input() activeDate: Date;
   @Output() newActiveDate: EventEmitter<Date> = new EventEmitter();
+  private Constants = Constants;
 
   constructor(private dateService: DateService) { }
 
-  get nextMonth(): string {
-    const date = this.dateService.getNextMonth(this.activeDate.getFullYear(), this.activeDate.getMonth());
-    return '' + Constants.months[date.getMonth()] +  ' ' + date.getFullYear();
+  get previousMonth(): Date {
+    return moment(this.activeDate).subtract(1, 'M').toDate();
   }
 
-  get currentMonth(): string {
-    return '' + Constants.months[this.activeDate.getMonth()] + ' ' + this.activeDate.getFullYear();
-  }
-
-  get previousMonth(): string {
-    const date = this.dateService.getPreviousMonth(this.activeDate.getFullYear(), this.activeDate.getMonth());
-    return '' + Constants.months[date.getMonth()] + ' ' + date.getFullYear();
+  get nextMonth(): Date {
+    return moment(this.activeDate).add(1, 'M').toDate();
   }
 
   ngOnInit() {}
 
   newMonthSelected(date: Date): void {
+    date.setDate(1);
     this.newActiveDate.emit(date);
   }
 
-  getDateForNextMonth() {
-    const date = this.dateService.getNextMonth(this.activeDate.getFullYear(), this.activeDate.getMonth());
-    date.setDate(1);
-    return date;
+  getDateForNextMonth(): Date {
+    return this.nextMonth;
   }
 
-  getDateForPreviousMonth() {
-    const date = this.dateService.getPreviousMonth(this.activeDate.getFullYear(), this.activeDate.getMonth());
-    date.setDate(1);
-    return date;
+  getDateForPreviousMonth(): Date {
+    return this.previousMonth;
   }
 }

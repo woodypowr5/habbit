@@ -4,7 +4,7 @@
 >
   <mat-card class="marker-details-measurements-taken" fxLayout="column">
     <mat-card-title class="subtitle">
-      Entries <span class="subtitle-subtext"> for {{ marker.name }}</span>
+      Streaks <span class="subtitle-subtext"> for {{ marker.name }}</span>
       <app-tooltip 
           [displayText]="tooltipText.entries"
           [id]="tooltipMovingAverage"
@@ -52,7 +52,7 @@
   <mat-card class="marker-details-summary-details">
     
     <mat-card-title class="subtitle">
-      Scores
+      Entries
       <app-popover 
         *ngIf="history.records.length < 4"
         classa="performance-popover"

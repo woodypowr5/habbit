@@ -2,18 +2,18 @@
 <button mat-button
   (click)="newMonthSelected(getDateForPreviousMonth())"
 >
-<span class="arrow left">&#9664;</span> {{ previousMonth }}
+<span class="arrow left">&#9664;</span> {{ Constants.months[previousMonth.getMonth()] }}, {{ previousMonth.getFullYear() }}
 </button>  
 
 <button mat-button
   disabled
 >
-  {{ currentMonth }}
+  {{ Constants.months[activeDate.getMonth()] }}, {{ activeDate.getFullYear() }}
 </button>  
 
 <button mat-button
   (click)="newMonthSelected(getDateForNextMonth())"
 >
-  {{ nextMonth }} <span class="arrow right">&#9658;</span>
+  {{ Constants.months[nextMonth.getMonth()] }} , {{ nextMonth.getFullYear() }} <span class="arrow right">&#9658;</span>
 </button>  
  

@@ -39,29 +39,4 @@ export class DateService {
     return newDate;
   }
 
-  getNextMonth(year: number, currentMonth: number): Date {
-    const newDate  = new Date;
-    if (currentMonth === 10) {
-      newDate.setMonth(0);
-      newDate.setFullYear(year + 1);
-    } else {
-      newDate.setMonth(currentMonth + 2);
-      newDate.setFullYear(year);
-    }
-    newDate.setDate(0);
-    return newDate;
-  }
-
-  getPreviousMonth(year: number, currentMonth: number): Date {
-    const newDate  = new Date;
-    if (currentMonth === 0) {
-      newDate.setMonth(12);
-      newDate.setFullYear(year);
-    } else {
-      newDate.setMonth(currentMonth);
-      newDate.setFullYear(year);
-    }
-    newDate.setDate(0);
-    return newDate;
-  }
 }
