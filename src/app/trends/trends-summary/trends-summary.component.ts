@@ -58,7 +58,6 @@ export class TrendsSummaryComponent implements OnInit {
       this.plan.markers.map(marker => {
         if (marker.name ===  markerName) {
           if (marker.dataType !== this.activeDatatype) {
-            // this.seriesState = [marker.name];
             this.activeDatatype = marker.dataType;
           }
         }

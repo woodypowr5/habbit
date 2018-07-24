@@ -45,9 +45,9 @@ export class RecordDetailComponent implements OnInit {
     } else if (newRecord.measurements.length === 0) {
       newRecord.measurements.push(measurement);
     } else {
-        const newMeasurements = newRecord.measurements.filter(currentMeasurement => {
-          return currentMeasurement.markerName !== measurement.markerName;
-        });
+        const newMeasurements = newRecord.measurements.filter(currentMeasurement => 
+          currentMeasurement.markerName !== measurement.markerName
+        );
         newMeasurements.push(measurement);
         newRecord.measurements = newMeasurements;
     }

@@ -59,6 +59,13 @@ export class TrackingService {
   }
 
   addRecordtoHistory(record: Record): void {
+    for (let i = 0; i < this.history.records.length; i++) {
+      const currentRecord =  this.history.records[i];
+      if (this.dateService.isSameDate(record.date, currentRecord.date)) {
+        console.log('TrackingService: Error: Duplicate Record');
+        return;
+      }
+    }
     const historyRef = this.db.collection('histories')
       .doc(this.userId)
       .collection('records');
