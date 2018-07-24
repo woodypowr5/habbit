@@ -1,6 +1,6 @@
 <mat-radio-group [(ngModel)]="currentValue">
-  <mat-radio-button value="{{ marker.value1Name }}">{{ marker.value1Name }}</mat-radio-button>
-  <mat-radio-button value="{{ marker.value2Name }}">{{ marker.value2Name }}</mat-radio-button>
+  <mat-radio-button value="{{ marker.value1Name }}">{{ toBoolean(marker.value1Name) }}</mat-radio-button>
+  <mat-radio-button value="{{ marker.value2Name }}">{{ toBoolean(marker.value2Name) }}</mat-radio-button>
 </mat-radio-group>
 
 <button 

@@ -30,4 +30,8 @@ export class EntryFormBooleanComponent implements OnInit {
   clear(): void {
     this.currentValue = undefined;
   }
+
+  toBoolean(value: number): boolean {
+    return value === 1 ? true : false;
+  }
 }
