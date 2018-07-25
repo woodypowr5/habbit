@@ -36,7 +36,6 @@ export class AuthService {
         this.store.dispatch(new Auth.SetAuthenticated());
         this.router.navigate(['/plan']);
       } else {
-        // this.trackingService.cancelSubscriptions();
         this.store.dispatch(new Auth.SetUnauthenticated());
         this.router.navigate(['/login']);
       }
@@ -48,9 +47,7 @@ export class AuthService {
     this.afAuth.auth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        console.log(result);
         this.planService.createPlan(result.user.uid);
-        // this.hydrateDependentServices(result);
         this.store.dispatch(new UI.StopLoading());
       })
       .catch(error => {
@@ -64,7 +61,6 @@ export class AuthService {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
-        // this.hydrateDependentServices(result);
         this.store.dispatch(new UI.StopLoading());
       })
       .catch(error => {

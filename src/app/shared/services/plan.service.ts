@@ -52,7 +52,6 @@ export class PlanService {
   }
 
   createPlan(userId: string): void {
-    console.log(userId)
     this.db.collection('plans').doc(userId).set({markers: []});
   }
 }

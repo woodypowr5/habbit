@@ -44,7 +44,7 @@
       class="marker-category"
       id="{{i}}"
     >
-      <h1>{{ category }}</h1> 
+      <h1 class="category-header">{{ category }}</h1> 
       <div 
         class="marker-container" 
         fxLayout 
@@ -57,8 +57,6 @@
           (markerClicked)="addMarkerToPlan($event)"
           (markerRemovedFromPlan)="removeMarkerFromPlan($event)"
           *ngFor="let marker of getMarkersForCategory(inactiveMarkers, category)" 
-          fxFlex="200px" 
-          fxFlex.xs="100%"
         >
         </app-marker-card>
       </div>  

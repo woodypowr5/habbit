@@ -1,8 +1,16 @@
 
 .available-marker-card{
     height: 300px;
+    width: 200px;
     margin-bottom: 20px;
 }
+@media screen and (max-width: 1000px) {
+    .available-marker-card{
+         width: 150px;
+         height: 220px;
+     }
+
+ }
 .edit-marker-button{
     width: 100%;
 }
@@ -17,8 +25,37 @@
 }
 mat-card-title{
     height: 60px;
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
+@media screen and (max-width: 1000px) {
+    mat-card{
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .mat-card-title{
+        font-size: 1.2em;
+     }  
+}
+@media screen and (max-width: 800px) {
+    mat-card{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .mat-card-title{
+        font-size: 1.1em;
+     }  
+}
+@media screen and (max-width: 650px) {
+    mat-card{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .mat-card-title{
+        font-size: 1.0em;
+     }  
+}
+
+
 .available-marker-card{
     justify-content: space-between;
 }

@@ -5,6 +5,16 @@
     -webkit-transition: width 0.5s; /* For Safari 3.1 to 6.0 */
     transition: width 0.5s;
 }
+@media screen and (max-width: 1000px) {
+   .active-marker-card{
+        width: 150px;
+        height: 220px;
+    }
+}
+
+.edit-marker-button{
+    width: 100%;
+}
 .marker-icon{
    height: 50px;
    width: 50px;
@@ -12,7 +22,7 @@
    margin: 0 auto;
 } 
 .mat-card-actions{
-    margin-left: 0px;
+    margin: 10px auto 0 auto;
 }
 mat-card-title{
     height: 60px;
@@ -29,4 +39,32 @@ mat-card-content{
 
 .edit-settings{
     width: 300px;
+}
+@media screen and (max-width: 1000px) {
+    mat-card{
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    mat-card-title{
+        text-align: center;
+        font-size: 1.2em;
+     }  
+}
+@media screen and (max-width: 800px) {
+    mat-card{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    mat-card-title{
+        font-size: 1.1em;
+     }  
+}
+@media screen and (max-width: 650px) {
+    mat-card{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    mat-card-title{
+        font-size: 1.0em;
+     }  
 }
