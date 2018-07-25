@@ -1,5 +1,4 @@
 export class Marker {
-    id: string;
     name: string;
     dataType: string;
     category: string;

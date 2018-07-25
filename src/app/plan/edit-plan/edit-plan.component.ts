@@ -12,6 +12,7 @@ import { Plan } from '../plan.model';
 export class EditPlanComponent implements OnInit, OnChanges {
   @Input() availableMarkers: Marker[] = [];
   @Input() myPlan: Plan;
+
   @Input() markerAddedToPlan: Marker;
   @Input() markerRemovedFromPlan: Marker;
   @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
@@ -34,11 +35,13 @@ export class EditPlanComponent implements OnInit, OnChanges {
   }
 
   isInPlan(marker: Marker): boolean {
-    for (let index = 0; index < this.myPlan.markers.length; index++) {
-      if (this.myPlan.markers[index].name === marker.name) {
-        return true;
+    // if (this.myPlan !== null) {
+      for (let index = 0; index < this.myPlan.markers.length; index++) {
+        if (this.myPlan.markers[index].name === marker.name) {
+          return true;
+        }
       }
-    }
+    // }
     return false;
   }
 

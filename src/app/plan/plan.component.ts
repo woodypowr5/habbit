@@ -33,7 +33,9 @@ export class PlanComponent implements OnInit {
 
   fetchMyPlan(): void {
     this.planService.planChanged.subscribe(
-      plan => this.myPlan = plan
+      plan => {
+        this.myPlan = plan;
+      }
     );
   }
 

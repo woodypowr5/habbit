@@ -166,7 +166,6 @@ export class ChartDataService {
 
   computeProbabilityDistribution(marker: Marker, history: History): any {
     const markerAdapter: Marker = {
-      id: '',
       name: marker.name,
       dataType: '',
       isLoading: false,

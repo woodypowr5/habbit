@@ -17,31 +17,18 @@ export class PlanService {
   };
   planChanged = new BehaviorSubject<Plan>(null);
   private planSubscriptions: Subscription[] = [];
+  private stuff: Observable<any> = new Observable();
 
   constructor(private db: AngularFirestore) {}
 
   fetchPlanByUserId(userId: string): void {
     this.userId = userId;
-    this.planSubscriptions.push(
-      this.db
-        .collection('plans')
-        .valueChanges()
-        .map(docArray => {
-          return docArray;
-        })
-        .subscribe(
-          (plan: Plan[]) => {
-            if (plan.length > 0) {
-              this.plan = plan[0];
-              if (!plan[0].markers) {
-                this.plan.markers = [];
-              }
-            }
-            this.planChanged.next(plan[0]);
-          },
-          error => {}
-        )
-    );
+    const historyRef = this.db.collection('plans').doc(userId);
+    this.stuff = historyRef.valueChanges();
+    this.stuff.subscribe(data => {
+      this.plan.markers = data.markers;
+      this.planChanged.next(this.plan);
+    });
   }
 
   addMarkerToPlan(marker: Marker): void {
@@ -55,12 +42,17 @@ export class PlanService {
   }
 
   updatePlan() {
-    const planRef = this.db.collection('plans').doc(this.userId);
-    planRef.update(this.plan);
-    this.planChanged.next(this.plan);
+    const path = `plans/${this.userId}`;
+    const userDocument = this.db.doc<any>(path);
+    userDocument.update(this.plan);
   }
 
   cancelSubscriptions(): void {
     this.planSubscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  createPlan(userId: string): void {
+    console.log(userId)
+    this.db.collection('plans').doc(userId).set({markers: []});
   }
 }
