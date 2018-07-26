@@ -10,17 +10,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./record.component.css']
 })
 export class RecordComponent implements OnInit {
-  @Input() isRecord;
-  @Input() record;
-  @Input() index;
-  @Input() date;
+  @Input() record: Record;
+  @Input() index: number;
+  @Input() date: Date;
   @Output() newActiveRecord: EventEmitter<TrackingDay> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
 
-  setActiveDate(record: Record, index: number, date: Date): void {
+  setActiveDate(record: Record, date: Date): void {
     const today: TrackingDay = {
       id: record.id,
       date: date,

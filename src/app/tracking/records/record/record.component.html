@@ -2,7 +2,7 @@
   class="day"
   fxLayout="column"
   fxLayoutAlign="space-between"
-  (click)="setActiveDate(record, index, date)"
+  (click)="setActiveDate(record, date)"
   [ngClass]=
   "{'today' : index === 3, 
   'prev-day' : index === 2,
@@ -12,7 +12,7 @@
   'next-next-day' : index === 5,
   'next-next-next-day': index === 6}"
 > 
-  <h3>{{ date }}</h3>
+  <h3>{{ date | calendarDay:date }}</h3>
   <mat-card
     class="record record-exists"
     fxLayout

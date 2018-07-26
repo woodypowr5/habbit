@@ -10,6 +10,6 @@ export class AdjustedDatePipe implements PipeTransform {
       return '';
     }
     value = moment(value).add(index - 3, 'days');
-    return value.format('DD MMM');
+    return value;
   }
 }

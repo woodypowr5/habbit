@@ -41,25 +41,21 @@ export class RecordsComponent implements OnInit {
     this.activeRecordIndex = index;
   }
 
-  setActiveDate(date): void {
-    const newActiveDate = new Date();
-    newActiveDate.setFullYear(new Date().getFullYear());
-    newActiveDate.setMonth(date.getMonth());
-    newActiveDate.setDate(date.getDate());
-    this.activeDate = newActiveDate;
+  setActiveDate(date: Date): void {
+    this.activeDate = date;
     this.setNewActiveDate.emit(this.activeDate);
   }
 
-  getDateByIndex(index): moment.Moment {
+  getDateByIndex(index: number): moment.Moment {
     return moment(this.activeDate).add(index - this.calculationService.getMedianIndexFromLength(this.numVisibleRecords), 'days');
   }
 
-  getRecordForDate(date): Record {
+  getRecordForDate(date: Date): Record {
     const dateWithYear = moment(new Date(date + ', ' + new Date().getFullYear()));
     return this.queryRecordsByDate(dateWithYear);
   }
 
-  getRecordForIndex(index): Record {
+  getRecordForIndex(index: number): Record {
     const date = moment(this.activeDate).add(index - this.calculationService.getMedianIndexFromLength(this.numVisibleRecords), 'days');
     return this.queryRecordsByDate(date);
   }
