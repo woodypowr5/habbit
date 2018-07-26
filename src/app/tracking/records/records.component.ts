@@ -31,7 +31,8 @@ export class RecordsComponent implements OnInit {
   }
 
   setActiveRecord(event, index): void {
-    this.setActiveDate(event.date);
+    const properDate = moment(event.date).toDate();
+    this.setActiveDate(properDate);
     const newActiveRecord = this.getRecordForDate(event.date);
     if (newActiveRecord) {
       this.setNewActiveRecord.emit(newActiveRecord);

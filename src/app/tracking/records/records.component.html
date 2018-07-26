@@ -3,6 +3,7 @@
   fxLayout
   fxLayoutAlign="space-between"
 >
+activeDate: {{ activeDate }}
   <app-calendar
    [activeDate]="activeDate"
    (newActiveDate)="setActiveDate($event)"
