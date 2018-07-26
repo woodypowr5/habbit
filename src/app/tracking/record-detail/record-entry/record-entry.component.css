@@ -37,3 +37,23 @@ app-record-marker-details{
 .selected{
     background-color: #F6F6F6;
 }
+@media screen and (max-width: 1000px) {
+    .record-entry-container{
+        flex-direction: column !important;
+    }
+    mat-accordion{
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .mat-expansion-panel-header-title{
+        font-size: 1.3em !important;
+    }
+}    
+@media screen and (max-width: 550px) {
+    .mat-expansion-panel-header-title{
+        font-size: 1.15em !important;
+    }
+}    

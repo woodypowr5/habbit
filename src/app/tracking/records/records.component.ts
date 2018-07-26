@@ -42,7 +42,11 @@ export class RecordsComponent implements OnInit {
   }
 
   setActiveDate(date): void {
-    this.activeDate = new Date(date + ', ' + new Date().getFullYear());
+    const newActiveDate = new Date();
+    newActiveDate.setFullYear(new Date().getFullYear());
+    newActiveDate.setMonth(date.getMonth());
+    newActiveDate.setDate(date.getDate());
+    this.activeDate = newActiveDate;
     this.setNewActiveDate.emit(this.activeDate);
   }
 

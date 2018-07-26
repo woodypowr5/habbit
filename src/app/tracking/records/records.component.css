@@ -45,5 +45,16 @@ app-calendar{
     app-record:nth-of-type(6){
         display: none;
     }
+    app-calendar{
+        width: 450px;
+        margin-left: -225px;
+    }
 
 }
+
+@media (max-width: 550px) {
+    app-calendar{
+        width: 420px;
+        margin-left: -210px;
+    }
+}    

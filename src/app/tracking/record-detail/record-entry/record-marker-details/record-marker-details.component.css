@@ -68,3 +68,23 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 .chart-legend{
     display: none;
 }
+.subheader{
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .subtitle-subtext{
+        display: none;
+    }
+    .subheader{
+        display: block;
+        margin-top: 60px !important;
+    }
+    
+} 
+@media screen and (max-width: 500px) {
+    .marker-detail-text{
+        font-size: 0.8em;
+    }
+
+}    

@@ -18,3 +18,18 @@ button{
 .arrow.right{
     right: 5px;
 }
+@media screen and (max-width: 700px) {
+    button{
+        font-size: 1.1em;
+        width: 150px;
+    }
+}    
+@media screen and (max-width: 550px) {
+    button{
+        font-size: 1.1em;
+        width: 140px;
+    }
+    .arrow{
+        display: none;
+    }
+}     
