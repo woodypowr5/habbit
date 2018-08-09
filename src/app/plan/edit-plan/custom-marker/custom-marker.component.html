@@ -3,14 +3,11 @@
  <h2>Enter the name of your activity</h2>
   <mat-form-field>
     <input matInput placeholder="Activity Name" formControlName="name">
-    <span
-      *ngIf="!customForm.get('name').valid && customForm.get('name').touched"
-    >
-      <span *ngIf="customForm.get('name').errors['taken'] === true">An activity with this name already exists</span>
-      <span *ngIf="customForm.get('name').errors['required'] === true">Please enter a name</span>
-      
-    </span>
   </mat-form-field> 
+   <span class="custom-error-container" *ngIf="!customForm.get('name').valid && customForm.get('name').touched">
+    <span *ngIf="customForm.get('name').errors['taken'] === true">An activity with this name already exists</span>
+    <span *ngIf="customForm.get('name').errors['required'] === true">Please enter a name</span>
+  </span>
 
   <h2>What type of value is used to record your activity?</h2>
   <div class="datatype-buttons" fxLayout fxLayoutAlign="space-between" fxLayoutGap="20px">
@@ -27,8 +24,8 @@
     </mat-card>
   </div>
 
-  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'scalar' || activeDatatype === 'range'">
-    <h2>What type of units does your activity use? (i.e. "mile" or "calorie", etc)</h2>
+  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'scalar'">
+    <h2>What type of unit does your activity use? (i.e. "mile" or "calorie", etc)</h2>
     <mat-form-field>
       <input matInput formControlName="unit">
     </mat-form-field> 
@@ -47,13 +44,13 @@
 
   <h2>Here's how your activity will look:</h2>
   <app-example-marker
-    [datatype]="datatype"
+    [datatype]="activeDatatype"
     [minLabel]="customForm.get('minLabel').value"
     [maxLabel]="customForm.get('maxLabel').value"
     [unit]="customForm.get('unit').value"
     [name]="customForm.get('name').value"
   ></app-example-marker>
 
-  <button mat-raised-button>Create</button>
+  <button class="create-activity-button" mat-raised-button [disabled]="customForm.valid === false">Create Activity!</button>
 
 </form>

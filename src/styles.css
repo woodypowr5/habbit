@@ -26,8 +26,10 @@ body {
   text-align: center;
   border-bottom: 2px solid #EEE;
   line-height: 1.7em;
-  
+}
 
+.mat-dialog-container{
+  height: unset !important;
 }
 
 @media screen and (max-width: 800px) {

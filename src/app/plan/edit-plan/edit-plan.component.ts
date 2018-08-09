@@ -5,6 +5,7 @@ import { Marker } from '../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Plan } from '../plan.model';
+import { Overlay } from '../../../../node_modules/@angular/cdk/overlay';
 
 @Component({
   selector: 'app-edit-plan',
@@ -24,7 +25,7 @@ export class EditPlanComponent implements OnInit, OnChanges {
   private markerCategories: string[] = [];
   private categorySelectForm = new FormControl();
 
-  constructor(private markerService: MarkerService, private formBuilder: FormBuilder, public dialog: MatDialog) {}
+  constructor(private markerService: MarkerService, private formBuilder: FormBuilder, public dialog: MatDialog, private overlay: Overlay) {}
 
   ngOnInit() {
     this.markerService.markerCategoriesChanged.subscribe(categories => {
@@ -69,7 +70,8 @@ export class EditPlanComponent implements OnInit, OnChanges {
       data: {
         availableMarkers: this.availableMarkers,
         myPlan: this.myPlan
-      }
+      },
+      scrollStrategy: this.overlay.scrollStrategies.noop()
     });
   }
 }

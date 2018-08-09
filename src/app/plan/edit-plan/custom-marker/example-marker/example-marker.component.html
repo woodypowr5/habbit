@@ -1,5 +1,64 @@
-datatype {{datatype}}
-minLabel {{minLabel}}
-maxLabel {{maxLabel}}
-unit  {{unit}}
-name {{name}}
+<mat-accordion  class="record-details-markers">
+        <mat-expansion-panel 
+            multi="false"
+            expanded
+        > 
+            <mat-expansion-panel-header
+            >
+                <mat-panel-title>
+                    {{ name }}
+                    <div class="spacer"></div>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+           <mat-card>
+            <mat-card-title></mat-card-title>
+            <app-entry-form-boolean 
+              *ngIf="datatype === 'boolean'"
+              [marker]="{
+                name: datatype,
+                dataType: boolean,
+                category: null,
+                iconName: null,
+                isLoading: false,
+                value1Name: 'No',
+                value2Name: 'Yes'
+              }"
+            ></app-entry-form-boolean>
+          
+            <app-entry-form-scalar 
+              *ngIf="datatype === 'scalar'"
+              [marker]="{
+                name: datatype,
+                dataType: scalar,
+                category: null,
+                iconName: null,
+                isLoading: false,
+                unit: unit
+              }"
+              
+            >
+            </app-entry-form-scalar>
+
+            <app-entry-form-range 
+              *ngIf="datatype === 'range'"
+              [marker]="{
+                name: datatype,
+                dataType: range,
+                category: null,
+                iconName: null,
+                isLoading: false,
+                minLabel: minLabel,
+                maxLabel: maxLabel,
+                min: 0,
+                max: 10,
+                delta: 1
+              }"
+              [initialValue] = "0"
+            >
+            </app-entry-form-range>
+          </mat-card>
+
+        </mat-expansion-panel>
+    </mat-accordion>

@@ -1,0 +1,59 @@
+.record-details-markers {
+    width: 60%;
+}
+mat-expansion-panel-header{
+    height: 80px !important;
+}
+mat-panel-title{
+    color: #444;
+    height: 57px;
+    bottom: 14px;
+    font-size: 24px;
+    position: relative;
+    width: 300px;
+    flex-grow: 0;
+    line-height: 88px;
+}
+.spacer{
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    height: 80px;
+    width: 3px;
+    border-right: 2px dashed #AAA;
+}
+mat-panel-description{
+    font-size: 24px;
+    padding-left: 30px;
+    padding-top: 11px;
+}
+mat-card{
+    /* min-height: 300px; */
+    padding: 50px;
+}
+app-record-marker-details{
+    flex-grow: 2;
+}
+.selected{
+    background-color: #F6F6F6;
+}
+@media screen and (max-width: 1000px) {
+    .record-entry-container{
+        flex-direction: column !important;
+    }
+    mat-accordion{
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .mat-expansion-panel-header-title{
+        font-size: 1.3em !important;
+    }
+}    
+@media screen and (max-width: 550px) {
+    .mat-expansion-panel-header-title{
+        font-size: 1.15em !important;
+    }
+}    

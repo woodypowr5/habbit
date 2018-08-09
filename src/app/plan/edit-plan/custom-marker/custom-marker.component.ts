@@ -33,8 +33,6 @@ export class CustomMarkerComponent implements OnInit {
     }
 
   ngOnInit() {
-
-   
   }
 
   setActiveDatatype(datatype: string): void {
@@ -47,13 +45,14 @@ export class CustomMarkerComponent implements OnInit {
       dataType: this.activeDatatype,
       category: null,
       iconName: null,
+      min: 1,
+      max: 10,
       isLoading: false,
       minLabel: this.customForm.get('minLabel').value,
       maxLabel: this.customForm.get('maxLabel').value,
-      delta: 0.1
+      delta: 1
     };
     this.planService.addMarkerToPlan(newMarker);
-
   }
 
   nameTaken(controls: FormControl): {[s: string]: boolean} {

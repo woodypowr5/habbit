@@ -1,11 +1,15 @@
 <form>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Enter a number" value="" name="value" [(ngModel)]="currentValue">
-  </mat-form-field>
+    <input matInput placeholder="Enter a number" value="7" name="value" [(ngModel)]="currentValue">
+  </mat-form-field> 
+  <span *ngIf="marker.unit && marker.unit !== null">
+    <span class="marker-unit">{{ marker.unit }}</span>
+    <span *ngIf="currentValue > 1">s</span>
+  </span>
 </form>  
 <button 
   mat-raised-button
-  (click)="save(currentValue)"
+  (click)="save(currentValue)" 
 >
   Save
 </button>

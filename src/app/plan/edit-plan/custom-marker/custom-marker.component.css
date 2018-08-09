@@ -4,3 +4,16 @@
 .ng-invalid{
     border: 2px solid red;
 } */
+h2{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.custom-error-container{
+    color: red;
+    display: block
+}
+
+.create-activity-button{
+    margin-top: 40px; 
+    padding: 10px;
+}
