@@ -38,5 +38,4 @@ export class DateService {
     newDate.setDate(0);
     return newDate;
   }
-
 }

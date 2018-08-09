@@ -1,0 +1,57 @@
+<h1>Create a Custom Activity</h1>
+<form [formGroup]="customForm" (ngSubmit)="onSubmit()"> 
+ <h2>Enter the name of your activity</h2>
+  <mat-form-field>
+    <input matInput placeholder="Activity Name" formControlName="name">
+    <span
+      *ngIf="!customForm.get('name').valid && customForm.get('name').touched"
+    >
+      An activity with this name already exists
+    </span>
+  </mat-form-field> 
+
+  <h2>What type of value is used to record your activity?</h2>
+  <div class="datatype-buttons" fxLayout fxLayoutAlign="space-between" fxLayoutGap="20px">
+    <mat-card (click)="setActiveDatatype('scalar')">
+      <mat-card-title>A Regular Number</mat-card-title>
+    </mat-card>
+
+     <mat-card (click)="setActiveDatatype('range')">
+      <mat-card-title>A range (0 - 10)</mat-card-title>
+    </mat-card>
+
+     <mat-card (click)="setActiveDatatype('boolean')">
+      <mat-card-title>Yes or No value</mat-card-title>
+    </mat-card>
+  </div>
+
+  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'scalar' || activeDatatype === 'range'">
+    <h2>What type of units does your activity use? (i.e. "mile" or "calorie", etc)</h2>
+    <mat-form-field>
+      <input matInput formControlName="unit">
+    </mat-form-field> 
+  </div>
+
+  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'range'">
+    <h2>Choose a label for the minimum of the range?</h2>
+    <mat-form-field>
+      <input matInput formControlName="minLabel" >
+    </mat-form-field>
+    <h2>Choose a label for the maximum of the range?</h2>
+    <mat-form-field>
+      <input matInput formControlName="maxLabel">
+    </mat-form-field> 
+  </div>
+
+  <h2>Here's how your activity will look:</h2>
+  <app-example-marker
+    [datatype]="datatype"
+    [minLabel]="customForm.get('minLabel').value"
+    [maxLabel]="customForm.get('maxLabel').value"
+    [unit]="customForm.get('unit').value"
+    [name]="customForm.get('name').value"
+  ></app-example-marker>
+
+  <button mat-raised-button>Create</button>
+
+</form>

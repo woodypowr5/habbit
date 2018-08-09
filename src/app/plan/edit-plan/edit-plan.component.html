@@ -21,8 +21,6 @@
     </app-active-marker-card>
   </mat-card>
 
-  
-
   <h1 class="subheader" *ngIf="myPlan.markers.length > 0">Add more activities to track. Select from the list below to add to your plan:</h1>
  
   <mat-card
@@ -38,6 +36,13 @@
           {{ category }}
         </mat-option>
     </mat-select>
+
+  <button 
+    mat-raised-button
+     (click)="openDialog()"
+  >
+    Add Custom Activity
+  </button>
 
     <div
       *ngFor="let category of markerCategories; let i = index;"

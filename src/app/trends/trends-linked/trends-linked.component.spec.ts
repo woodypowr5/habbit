@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrendsLinkedComponent } from './trends-linked.component';
+// import { TrendsLinkedComponent } from './trends-linked.component';
 
-describe('TrendsLinkedComponent', () => {
-  let component: TrendsLinkedComponent;
-  let fixture: ComponentFixture<TrendsLinkedComponent>;
+// describe('TrendsLinkedComponent', () => {
+//   let component: TrendsLinkedComponent;
+//   let fixture: ComponentFixture<TrendsLinkedComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TrendsLinkedComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ TrendsLinkedComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TrendsLinkedComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(TrendsLinkedComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

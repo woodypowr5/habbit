@@ -1,3 +1,5 @@
+import { CustomMarkerComponent } from './custom-marker/custom-marker.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { MarkerService } from '../../shared/services/marker.service';
 import { Marker } from '../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
@@ -12,17 +14,17 @@ import { Plan } from '../plan.model';
 export class EditPlanComponent implements OnInit, OnChanges {
   @Input() availableMarkers: Marker[] = [];
   @Input() myPlan: Plan;
-
   @Input() markerAddedToPlan: Marker;
   @Input() markerRemovedFromPlan: Marker;
   @Output() markerAddedToPlanParent = new EventEmitter<Marker>();
   @Output() markerRemovedFromPlanParent = new EventEmitter<Marker>();
+  dialogRef: MatDialogRef<CustomMarkerComponent>;
   private selectedMarkers: Marker[] = [];
   private inactiveMarkers: Marker[] = [];
   private markerCategories: string[] = [];
   private categorySelectForm = new FormControl();
 
-  constructor(private markerService: MarkerService, private formBuilder: FormBuilder) {}
+  constructor(private markerService: MarkerService, private formBuilder: FormBuilder, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.markerService.markerCategoriesChanged.subscribe(categories => {
@@ -60,5 +62,14 @@ export class EditPlanComponent implements OnInit, OnChanges {
   scrollTo(elementId: string): void {
     const element: Element = document.getElementById(elementId);
     element.scrollIntoView();
+  }
+
+  openDialog(): void {
+    this.dialogRef = this.dialog.open(CustomMarkerComponent, {
+      data: {
+        availableMarkers: this.availableMarkers,
+        myPlan: this.myPlan
+      }
+    });
   }
 }
