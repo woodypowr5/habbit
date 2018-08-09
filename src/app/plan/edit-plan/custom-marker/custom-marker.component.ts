@@ -3,7 +3,7 @@ import { Plan } from './../../plan.model';
 import { PlanService } from './../../../shared/services/plan.service';
 import { Marker } from './../../../shared/types/marker.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-custom-marker',
@@ -12,7 +12,8 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 })
 export class CustomMarkerComponent implements OnInit {
   @Input() plan: Plan;
-  private activeDatatype: string = null;
+  @Output() closeDialog: EventEmitter<null> = new EventEmitter();
+  private activeDatatype = 'scalar';
   private minLabel: string;
   private maxLabel: string;
   private unit: string;
@@ -53,6 +54,7 @@ export class CustomMarkerComponent implements OnInit {
       delta: 1
     };
     this.planService.addMarkerToPlan(newMarker);
+    this.closeDialog.emit();
   }
 
   nameTaken(controls: FormControl): {[s: string]: boolean} {

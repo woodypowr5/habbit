@@ -33,9 +33,6 @@ import { CalendarComponent } from './records/calendar/calendar.component';
     CalendarDayPipe,
     RecordEntryComponent,
     RecordEntryMarkerComponent,
-    EntryFormRangeComponent,
-    EntryFormScalarComponent,
-    EntryFormBooleanComponent,
     RecordMarkerDetailsComponent,
     CalendarComponent
   ],

@@ -1,6 +1,3 @@
-import { EntryFormScalarComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-scalar/entry-form-scalar.component';
-import { EntryFormRangeComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-range/entry-form-range.component';
-import { EntryFormBooleanComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
 import { NgModule } from '@angular/core';
 import { PlanComponent } from './plan.component';
 import { SharedModule } from '../shared/shared.module';
@@ -20,10 +17,7 @@ import { ExampleMarkerComponent } from './edit-plan/custom-marker/example-marker
     ActiveMarkerCardComponent,
     ActiveMarkerSettingsComponent,
     CustomMarkerComponent,
-    ExampleMarkerComponent,
-    EntryFormBooleanComponent,
-    EntryFormRangeComponent,
-    EntryFormScalarComponent
+    ExampleMarkerComponent
   ],
   imports: [
     SharedModule,

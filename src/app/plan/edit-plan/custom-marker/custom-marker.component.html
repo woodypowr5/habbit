@@ -1,56 +1,59 @@
-<h1>Create a Custom Activity</h1>
-<form [formGroup]="customForm" (ngSubmit)="onSubmit()"> 
- <h2>Enter the name of your activity</h2>
-  <mat-form-field>
-    <input matInput placeholder="Activity Name" formControlName="name">
-  </mat-form-field> 
-   <span class="custom-error-container" *ngIf="!customForm.get('name').valid && customForm.get('name').touched">
-    <span *ngIf="customForm.get('name').errors['taken'] === true">An activity with this name already exists</span>
-    <span *ngIf="customForm.get('name').errors['required'] === true">Please enter a name</span>
-  </span>
-
-  <h2>What type of value is used to record your activity?</h2>
-  <div class="datatype-buttons" fxLayout fxLayoutAlign="space-between" fxLayoutGap="20px">
-    <mat-card (click)="setActiveDatatype('scalar')">
-      <mat-card-title>A Regular Number</mat-card-title>
-    </mat-card>
-
-     <mat-card (click)="setActiveDatatype('range')">
-      <mat-card-title>A range (0 - 10)</mat-card-title>
-    </mat-card>
-
-     <mat-card (click)="setActiveDatatype('boolean')">
-      <mat-card-title>Yes or No value</mat-card-title>
-    </mat-card>
-  </div>
-
-  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'scalar'">
-    <h2>What type of unit does your activity use? (i.e. "mile" or "calorie", etc)</h2>
+<mat-card>
+  <mat-card-title class="custom-activity-title">Create a Custom Activity</mat-card-title>
+  <form [formGroup]="customForm" (ngSubmit)="onSubmit()"> 
+  <h2>Enter the name of your activity</h2>
     <mat-form-field>
-      <input matInput formControlName="unit">
+      <input matInput placeholder="Activity Name" formControlName="name">
     </mat-form-field> 
-  </div>
+    <span class="custom-error-container" *ngIf="!customForm.get('name').valid && customForm.get('name').touched">
+      <span *ngIf="customForm.get('name').errors['taken'] === true">An activity with this name already exists</span>
+      <span *ngIf="customForm.get('name').errors['required'] === true">Please enter a name</span>
+    </span>
 
-  <div class="datatype-specific-controls" *ngIf="activeDatatype === 'range'">
-    <h2>Choose a label for the minimum of the range?</h2>
-    <mat-form-field>
-      <input matInput formControlName="minLabel" >
-    </mat-form-field>
-    <h2>Choose a label for the maximum of the range?</h2>
-    <mat-form-field>
-      <input matInput formControlName="maxLabel">
-    </mat-form-field> 
-  </div>
+    <h2>What type of value is used to record your activity?</h2>
+    <div class="datatype-buttons" fxLayout fxLayoutAlign="space-between" fxLayoutGap="20px">
+      <mat-card class="datatype-button" (click)="setActiveDatatype('scalar')" [ngClass]="{ 'active': activeDatatype === 'scalar'}">
+        <mat-card-title class="datatype-button-title">A Number</mat-card-title>
+      </mat-card>
 
-  <h2>Here's how your activity will look:</h2>
-  <app-example-marker
-    [datatype]="activeDatatype"
-    [minLabel]="customForm.get('minLabel').value"
-    [maxLabel]="customForm.get('maxLabel').value"
-    [unit]="customForm.get('unit').value"
-    [name]="customForm.get('name').value"
-  ></app-example-marker>
+      <mat-card class="datatype-button" (click)="setActiveDatatype('range')" [ngClass]="{ 'active': activeDatatype === 'range'}">
+        <mat-card-title class="datatype-button-title">A range (0 - 10)</mat-card-title>
+      </mat-card>
 
-  <button class="create-activity-button" mat-raised-button [disabled]="customForm.valid === false">Create Activity!</button>
+      <mat-card class="datatype-button" (click)="setActiveDatatype('boolean')" [ngClass]="{ 'active': activeDatatype === 'boolean'}">
+        <mat-card-title class="datatype-button-title">Yes or No</mat-card-title>
+      </mat-card>
+    </div>
 
-</form>
+    <div class="datatype-specific-controls" *ngIf="activeDatatype === 'scalar'">
+      <h2>What type of unit does your activity use? (i.e. "mile" or "calorie", etc)</h2>
+      <mat-form-field>
+        <input matInput formControlName="unit">
+      </mat-form-field> 
+    </div>
+
+    <div class="datatype-specific-controls" *ngIf="activeDatatype === 'range'">
+      <h2>Choose a label for the minimum of the range?</h2>
+      <mat-form-field>
+        <input matInput formControlName="minLabel" >
+      </mat-form-field>
+      <h2>Choose a label for the maximum of the range?</h2>
+      <mat-form-field>
+        <input matInput formControlName="maxLabel">
+      </mat-form-field> 
+    </div>
+
+    <h2>Here's how your activity will look (click to open):</h2>
+    <app-example-marker
+      [datatype]="activeDatatype"
+      [minLabel]="customForm.get('minLabel').value"
+      [maxLabel]="customForm.get('maxLabel').value"
+      [unit]="customForm.get('unit').value"
+      [name]="customForm.get('name').value"
+    ></app-example-marker>
+
+    <button class="create-activity-button" mat-raised-button [disabled]="customForm.valid === false">Create Activity!</button>
+    <button class="create-activity-button" mat-raised-button mat-dialog-close>Cancel</button>
+
+  </form>
+</mat-card>

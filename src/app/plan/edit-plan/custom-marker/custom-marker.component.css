@@ -17,3 +17,17 @@ h2{
     margin-top: 40px; 
     padding: 10px;
 }
+.custom-activity-title{
+    text-align: center;
+}
+.datatype-button-title{
+    font-size: 1.5em;
+}
+.datatype-button:hover{
+    cursor: pointer;
+    background-color: #E7E7E7;
+}
+
+.datatype-button.active{
+    background-color: #EEE;
+}

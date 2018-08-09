@@ -73,5 +73,12 @@ export class EditPlanComponent implements OnInit, OnChanges {
       },
       scrollStrategy: this.overlay.scrollStrategies.noop()
     });
+
+    const sub = this.dialogRef.componentInstance.closeDialog.subscribe(() => {
+      this.dialog.closeAll();
+    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   // unsubscribe onAdd
+    // });
   }
 }
