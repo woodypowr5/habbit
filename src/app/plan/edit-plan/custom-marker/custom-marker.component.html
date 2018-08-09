@@ -6,7 +6,9 @@
     <span
       *ngIf="!customForm.get('name').valid && customForm.get('name').touched"
     >
-      An activity with this name already exists
+      <span *ngIf="customForm.get('name').errors['taken'] === true">An activity with this name already exists</span>
+      <span *ngIf="customForm.get('name').errors['required'] === true">Please enter a name</span>
+      
     </span>
   </mat-form-field> 
 

@@ -60,9 +60,7 @@ export class CustomMarkerComponent implements OnInit {
     if (controls.value !== null && controls.value !== '') {
       for (let i = 0; i < this.data.myPlan.markers.length; i++) {
         const marker = this.data.myPlan.markers[i];
-        console.log(marker.name)
-        console.log(controls.value)
-        if (marker.name === controls.value) {
+        if (marker.name.toLowerCase() === controls.value.toLowerCase()) {
           return {'taken': true};
         }
       }
