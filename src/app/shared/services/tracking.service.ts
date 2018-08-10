@@ -1,3 +1,4 @@
+import { Marker } from './../types/marker.model';
 import { UserData } from '../../auth/userData.model';
 import { Measurement } from '../types/measurement.model';
 import { Record } from '../types/record.model';
@@ -59,6 +60,7 @@ export class TrackingService {
   }
 
   addRecordtoHistory(record: Record): void {
+    console.log(record)
     for (let i = 0; i < this.history.records.length; i++) {
       const currentRecord =  this.history.records[i];
       if (this.dateService.isSameDate(record.date, currentRecord.date)) {
@@ -98,4 +100,20 @@ export class TrackingService {
     recordRef.delete();
   }
 
+  deleteAllMarkerMeasurements(marker: Marker) {
+    let newRecord;
+    this.history.records.map(record => {
+      record.measurements.map((currentMeasurement, index) => {
+        if (marker.name === currentMeasurement.markerName ) {
+          record.measurements.splice(index, 1);
+        }
+        newRecord = record;
+      });
+      if (newRecord && newRecord.measurements.length < 1) {
+        this.deleteRecord(newRecord);
+      } else {
+        this.updateRecord(newRecord);
+      }
+    });
+  }
 }

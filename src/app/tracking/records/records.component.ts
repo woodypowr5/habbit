@@ -52,7 +52,7 @@ export class RecordsComponent implements OnInit {
   }
 
   getRecordForDate(date: Date): Record {
-    const dateWithYear = moment(new Date(date + ', ' + new Date().getFullYear()));
+    const dateWithYear = moment(new Date(date));
     return this.queryRecordsByDate(dateWithYear);
   }
 
@@ -62,16 +62,16 @@ export class RecordsComponent implements OnInit {
   }
 
   queryRecordsByDate(date): Record {
-    const record = new EmptyRecord;
-    const foundRecord = this.records.filter(currentRecord => {
+    let record: Record = {
+      id: null,
+      date: null,
+      measurements: []
+    };
+    const foundRecord = this.records.map(currentRecord => {
       if (this.dateService.isSameDate(currentRecord.date, date)) {
-          return currentRecord;
+          record = currentRecord;
       }
     });
-    if (foundRecord.length > 0) {
-      return foundRecord[0];
-    }
-
     return record;
   }
 

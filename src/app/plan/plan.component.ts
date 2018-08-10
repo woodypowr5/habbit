@@ -1,3 +1,4 @@
+import { TrackingService } from './../shared/services/tracking.service';
 import { Marker } from '../shared/types/marker.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -22,6 +23,7 @@ export class PlanComponent implements OnInit {
 
 
   constructor(
+    private trackingService: TrackingService,
     private markerService: MarkerService,
     private planService: PlanService
   ) {}
@@ -54,6 +56,6 @@ export class PlanComponent implements OnInit {
 
   removeMarkerFromPlan(marker): void {
     this.planService.removeMarkerFromPlan(marker);
+    this.trackingService.deleteAllMarkerMeasurements(marker);
   }
-
 }

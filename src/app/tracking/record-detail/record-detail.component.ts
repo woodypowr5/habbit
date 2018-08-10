@@ -15,7 +15,7 @@ import { EmptyRecord } from '../emptyRecord.class';
   styleUrls: ['./record-detail.component.css']
 })
 export class RecordDetailComponent implements OnInit {
-  @Input() record: Record = new EmptyRecord;
+  @Input() record: Record;
   @Input() myPlan: Plan = new EmptyPlan;
   @Input() activeDate: Date;
   @Input() history: History;
@@ -32,24 +32,20 @@ export class RecordDetailComponent implements OnInit {
   }
 
   addOrModifyMeasurement(measurement: Measurement) { // this needs to be refactored
-    let newRecord: Record = this.record;
+    const newRecord: Record = this.record;
     if (measurement.value === undefined) {
-      this.deleteMeasurement(newRecord, measurement.markerName);
-    } else if (newRecord.date === null) {
-      newRecord = {
-        id: null,
-        date: this.activeDate,
-        measurements: [measurement]
-      };
-      return this.createRecord(newRecord);
+      this.deleteMeasurement(this.record, measurement.markerName);
     } else if (newRecord.measurements.length === 0) {
       newRecord.measurements.push(measurement);
     } else {
-        const newMeasurements = newRecord.measurements.filter(currentMeasurement => 
-          currentMeasurement.markerName !== measurement.markerName
-        );
-        newMeasurements.push(measurement);
-        newRecord.measurements = newMeasurements;
+      const newMeasurements = newRecord.measurements.filter(currentMeasurement =>
+        currentMeasurement.markerName !== measurement.markerName
+      );
+      newMeasurements.push(measurement);
+      newRecord.measurements = newMeasurements;
+    }
+    if (newRecord.id === null) {
+      return this.createRecord(newRecord);
     }
     return this.updateRecord(newRecord);
   }
