@@ -1,3 +1,4 @@
+import { Marker } from './../../../../shared/types/marker.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -17,4 +18,17 @@ export class ExampleMarkerComponent implements OnInit {
   ngOnInit() {
   }
 
+  createMarker(datatype: string): Marker {
+    if (datatype === 'boolean') {
+      return {
+          name: datatype,
+          dataType: 'boolean',
+          category: null,
+          iconName: null,
+          isLoading: false,
+          value1Name: 'No',
+          value2Name: 'Yes'
+      };
+    }
+  }
 }

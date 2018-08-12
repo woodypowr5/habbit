@@ -43,8 +43,9 @@
       </mat-form-field> 
     </div>
 
-    <h2>Here's how your activity will look (click to open):</h2>
+    <h2 *ngIf="customForm.get('name').valid">Here's how your activity will look (click to open):</h2>
     <app-example-marker
+      *ngIf="customForm.get('name').valid"
       [datatype]="activeDatatype"
       [minLabel]="customForm.get('minLabel').value"
       [maxLabel]="customForm.get('maxLabel').value"

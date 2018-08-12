@@ -51,7 +51,9 @@ export class CustomMarkerComponent implements OnInit {
       isLoading: false,
       minLabel: this.customForm.get('minLabel').value,
       maxLabel: this.customForm.get('maxLabel').value,
-      delta: 1
+      delta: 1,
+      value1Name: 'Yes',
+      value2Name: 'No'
     };
     this.planService.addMarkerToPlan(newMarker);
     this.closeDialog.emit();

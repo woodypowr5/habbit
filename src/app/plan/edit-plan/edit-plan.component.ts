@@ -77,8 +77,5 @@ export class EditPlanComponent implements OnInit, OnChanges {
     const sub = this.dialogRef.componentInstance.closeDialog.subscribe(() => {
       this.dialog.closeAll();
     });
-    // dialogRef.afterClosed().subscribe(() => {
-    //   // unsubscribe onAdd
-    // });
   }
 }

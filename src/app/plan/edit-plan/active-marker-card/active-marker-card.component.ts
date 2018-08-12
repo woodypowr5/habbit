@@ -1,8 +1,9 @@
-import { Marker } from '../../../shared/types/marker.model';
+import { Marker } from './../../../shared/types/marker.model';
+import { ConfirmRemovalComponent } from './confirm-removal/confirm-removal.component';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef} from '@angular/material';
-import { ActiveMarkerSettingsComponent } from './active-marker-settings/active-marker-settings.component';
 import { Plan } from '../../plan.model';
+import { Overlay } from '../../../../../node_modules/@angular/cdk/overlay';
 
 @Component({
   selector: 'app-active-marker-card',
@@ -14,9 +15,9 @@ export class ActiveMarkerCardComponent implements OnInit {
   @Input() myPlan: Plan;
   @Input() isInPlan: boolean;
   @Output() markerRemovedFromPlan = new EventEmitter<Marker>();
-  dialogRef: MatDialogRef<ActiveMarkerSettingsComponent>;
-
-  constructor(public dialog: MatDialog) {}
+  dialogRef: MatDialogRef<ConfirmRemovalComponent>;
+  
+  constructor(public dialog: MatDialog, private overlay: Overlay) {}
 
   ngOnInit(): void { }
 
@@ -24,12 +25,15 @@ export class ActiveMarkerCardComponent implements OnInit {
     this.markerRemovedFromPlan.emit(marker);
   }
 
-  openDialog(): void {
-    this.dialogRef = this.dialog.open(ActiveMarkerSettingsComponent, {
+  openDialog(marker: Marker): void {
+    this.dialogRef = this.dialog.open(ConfirmRemovalComponent, {
       data: {
-        marker: this.marker,
-        myPlan: this.myPlan
-      }
+        marker: marker
+      },
+      scrollStrategy: this.overlay.scrollStrategies.noop()});
+    const sub = this.dialogRef.componentInstance.closeDialog.subscribe((thisMarker: Marker) => {
+      this.removeMarkerFromPlan(marker);
+      this.dialog.closeAll();
     });
   }
 }

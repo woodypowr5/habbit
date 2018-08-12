@@ -8,6 +8,7 @@
 }
 .series-visibility, .trend-type{
     width: 50%;
+    overflow: hidden;
 }
 .series-visibility h2, .trend-type h2{
     font-size: 1.2em;
@@ -37,3 +38,58 @@
 .visible-series-button-group{
     padding-bottom: 20px;
 }
+
+@media screen and (max-width: 1000px) {
+    .chart-parent-container{
+        margin: 0 !important;
+        padding: 5px !important;   
+    }
+    .chart-controls-container{
+        width: 100%;
+        margin: 0px !important;
+        display: flex !important;
+        overflow: hidden !important;
+        flex-direction: column !important;
+    }
+    .series-visibility, .trend-type{
+        width: unset !important;
+        margin: 0px !important;
+    }
+    .series-visibility{
+        padding: 0px !important;
+    }
+    .series-visibility-label{
+        margin-left: 20px;
+    }
+    .button-group{
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+    mat-card-title{
+        text-align: center !important;
+        margin-bottom: 30px;
+    }
+    .trend-type-button-group{
+        flex-wrap: wrap;
+        border: none;
+        box-shadow: none;
+    }
+    .trend-type-button{
+    
+        height:50px;
+        line-height: 50px;
+        margin-right: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    }
+    .chart-legend{
+        display: none !important;
+    }
+    
+}    
+
+ .button-group{
+    display: flex;
+    flex-wrap: wrap;
+}    
+

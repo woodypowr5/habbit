@@ -95,13 +95,14 @@
         </mat-button-toggle-group>
     </mat-card> 
     <mat-card class="trend-type">
-        <mat-card-title class="series-visibility-label">Trend Type:</mat-card-title>
+        <mat-card-title class="trend-type-label">Trend Type:</mat-card-title>
         <mat-button-toggle-group 
+            class="trend-type-button-group"
             [(ngModel)]="selectedTrendType"
             value="raw" 
             (change)="trendTypeChanged($event)"
         >
-            <mat-button-toggle value="raw">
+            <mat-button-toggle class="trend-type-button" value="raw">
                 Raw Measurements
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.rawMeasurements"
@@ -110,7 +111,7 @@
                 ></app-tooltip>
             </mat-button-toggle>
             
-            <mat-button-toggle value="movingAverage">
+            <mat-button-toggle class="trend-type-button" value="movingAverage">
                 Moving Average
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.movingAverage"
@@ -119,7 +120,7 @@
                 ></app-tooltip>
             </mat-button-toggle>
             
-            <mat-button-toggle value="globalAverage">
+            <mat-button-toggle class="trend-type-button" value="globalAverage">
                 Global Average
                 <app-tooltip 
                     [displayText]="tooltipText.trendTypeButtons.globalAverage"

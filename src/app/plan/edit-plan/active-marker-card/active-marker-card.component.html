@@ -5,7 +5,6 @@
   *ngIf="isInPlan"
 >
   <mat-card-title fxLayoutAlign="center">{{ marker.name }}</mat-card-title>
-  <!-- <mat-card-content fxLayoutAlign="center"></mat-card-content> -->
   
   <mat-icon class="marker-icon">
     {{ marker.iconName }}
@@ -22,24 +21,14 @@
         [disabled]="!isInPlan"
         type="button" 
         mat-raised-button
-        (click)="removeMarkerFromPlan(marker)"
+        (click)="openDialog(marker)"
+        
       >
         Remove
       </button>
-      <!-- <button 
-      class="settings-button"
-        type="button"
-        mat-icon-button
-        (click)="openDialog()"
-      >
-        <mat-icon class="settings-icon">
-          settings
-        </mat-icon>
-      </button> -->
   </mat-card-actions>
   
   <mat-card-content *ngIf="isExpanded === true">5
     Stuff Here
   </mat-card-content>
-  <!-- <mat-progress-bar *ngIf="isLoading === true" mode="indeterminate"></mat-progress-bar> -->
 </mat-card>
