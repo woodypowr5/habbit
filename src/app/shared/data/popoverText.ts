@@ -1,9 +1,9 @@
 export const PopoverText = {
     tracking: {
         markerDetails: {
-            entries: 'There is not enough data for this feature. Please create more daily entries to see this content',
-            streaks: 'There is not enough data for this feature. Please create more daily entries to see this content',
-            performance: 'There is not enough data for this feature. Please create more daily entries to see this content'
+            entries: 'There are not enough entries to use this feature yet, but it will be available after you\'ve created entries for at least 4 days!',
+            streaks: 'There are not enough entries to use this feature yet, but it will be available after you\'ve created entries for at least 4 days!',
+            performance: 'There are not enough entries to use this feature yet, but it will be available after you\'ve created entries for at least 4 days!'
         }
     },
     trends: {
@@ -11,7 +11,7 @@ export const PopoverText = {
 
         },
         linked: {
-            allMarkers: 'There are not enough entries to make a meaningful prediction about the relationship between these activities'
+            allMarkers: 'There are not enough entries to make a meaningful prediction about the relationship between these activities yet. Please create at least 4 entries and come back to this page'
         }
     }
 };

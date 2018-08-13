@@ -13,6 +13,7 @@
   [value]="initialValue"
   [step]="getStepPercentage(marker.min, marker.max, marker.delta)"
   [(ngModel)]="sliderValue"
+  [displayWith]="formatLabel"
   thumbLabel
 >
 </mat-slider>

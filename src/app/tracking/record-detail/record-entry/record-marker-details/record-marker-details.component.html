@@ -55,18 +55,19 @@
     
     <mat-card-title class="subtitle">
       Entries
-      <app-popover 
-        *ngIf="history.records.length < 4"
-        classa="performance-popover"
-        [displayText]="popoverText.performance"
-      >
+    </mat-card-title>
+    <app-popover 
+      *ngIf="history.records.length < 4"
+      classa="performance-popover"
+      [displayText]="popoverText.performance"
+    >
     </app-popover>
     <app-tooltip 
-          [displayText]="tooltipText.performance"
-          [id]="tooltipMovingAverage"
-          [type]="'description'"
-      ></app-tooltip>
-    </mat-card-title>
+      [displayText]="tooltipText.performance"
+      [id]="tooltipMovingAverage"
+      [type]="'description'"
+    ></app-tooltip>
+    
     <span class="content-container" *ngIf="history.records.length > 3">
       <div class="average" *ngIf="marker.dataType === 'range'">
         Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>

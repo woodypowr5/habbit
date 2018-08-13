@@ -46,8 +46,17 @@
     height: 20px;
     line-height: 20px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    background-color: rgba(137, 191, 41, 0.12);
+    background-color: rgba(137, 191, 41, 0.1);
     border: 1px solid rgba(137, 191, 41, 0.7);
+}
+h2{
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+.mat-button-toggle{
+    margin: 5px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+ 
 }
 
 @media screen and (max-width: 1000px) {
@@ -86,7 +95,6 @@
         box-shadow: none;
     }
     .trend-type-button{
-    
         height:50px;
         line-height: 50px;
         margin-right: 10px;
