@@ -16,7 +16,7 @@ export class ActiveMarkerCardComponent implements OnInit {
   @Input() isInPlan: boolean;
   @Output() markerRemovedFromPlan = new EventEmitter<Marker>();
   dialogRef: MatDialogRef<ConfirmRemovalComponent>;
-  
+
   constructor(public dialog: MatDialog, private overlay: Overlay) {}
 
   ngOnInit(): void { }

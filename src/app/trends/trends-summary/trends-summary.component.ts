@@ -1,3 +1,4 @@
+
 import { ChartOptions } from '../../shared/data/chartOptions';
 import { Marker } from '../../shared/types/marker.model';
 import { TooltipText } from '../../shared/data/tooltipText';
@@ -6,10 +7,11 @@ import { Plan } from '../../plan/plan.model';
 import { Datapoint } from '../../shared/types/datapoint.model';
 import { Record } from '../../shared/types/record.model';
 import { ChartDataService } from '../../shared/services/chart-data.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/typings/overlay-directives';
+import { LifecycleHooks } from '../../../../node_modules/@angular/compiler/src/lifecycle_reflector';
 
 @Component({
   selector: 'app-trends-summary',
@@ -29,7 +31,12 @@ export class TrendsSummaryComponent implements OnInit {
     boolean: []
   };
   private selectedTrendType = 'raw';
-  private seriesState: string[] = [];
+  // private seriesState: string[] = [];
+  private seriesState = {
+    boolean: [],
+    scalar: [],
+    range: []
+  };
   private visibleSeries: Marker[] = [];
   private activeDatatype = 'range';
   private tooltipText = TooltipText.trends.summary;
@@ -41,7 +48,7 @@ export class TrendsSummaryComponent implements OnInit {
 
   ngOnInit() {
     if (this.plan) {
-      this.seriesState = [this.plan.markers[0].name];
+      this.seriesState.range = [this.plan.markers[0].name];
       this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
       this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
       this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
@@ -66,9 +73,18 @@ export class TrendsSummaryComponent implements OnInit {
     this.recomputeData();
   }
 
-  checkForNewDatatype(marker: Marker): void {
-    if (this.activeDatatype !== marker.dataType) {
-      this.seriesState = [];
+  checkForNewDatatype(dataType: string): void {
+    const newSeriesState = this.seriesState;
+    if (this.activeDatatype !== dataType) {
+      if (dataType !== 'range') {
+        newSeriesState.range = [];
+      }
+      if (dataType !== 'boolean') {
+        newSeriesState.boolean = [];
+      }
+      if (dataType !== 'scalar') {
+        newSeriesState.scalar = [];
+      }
     }
   }
 
@@ -79,6 +95,7 @@ export class TrendsSummaryComponent implements OnInit {
   recomputeData() {
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.visibleSeries = this.computeVisibleSeries(this.seriesState);
+    console.log(this.activeDatatype);
     if (this.activeDatatype === 'range') {
       this.filteredSeriesData.range = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
     }  else if (this.activeDatatype === 'boolean') {
@@ -86,9 +103,15 @@ export class TrendsSummaryComponent implements OnInit {
     }
   }
 
-  computeVisibleSeries(seriesState: string[]): Marker[] {
+  computeVisibleSeries(seriesState: any): Marker[] {
     const visibleSeries: Marker[] = [];
-    seriesState.map(seriesName => {
+    seriesState.range.map(seriesName => {
+      visibleSeries.push(this.getMarkerFromPlan(seriesName));
+    });
+    seriesState.boolean.map(seriesName => {
+      visibleSeries.push(this.getMarkerFromPlan(seriesName));
+    });
+    seriesState.scalar.map(seriesName => {
       visibleSeries.push(this.getMarkerFromPlan(seriesName));
     });
     return visibleSeries;
@@ -101,5 +124,21 @@ export class TrendsSummaryComponent implements OnInit {
       }
     }
     return null;
+  }
+
+  showAll(datatype: string): void {
+    this.activeDatatype = datatype;
+    const newSeriesState = {
+      range: [],
+      boolean: [],
+      scalar: []
+    };
+    this.plan.markers.map(marker => {
+      if (marker.dataType === datatype) {
+        newSeriesState[datatype].push(marker.name);
+      }
+    });
+    this.seriesState = newSeriesState;
+    this.recomputeData();
   }
 }

@@ -10,7 +10,11 @@
          height: 220px;
      }
 
- }
+}
+.action-container{
+    position: absolute;
+    bottom: 30px;
+}
 .edit-marker-button{
     width: 100%;
 }
@@ -26,6 +30,7 @@
 mat-card-title{
     height: 60px;
     font-size: 1.3em;
+    text-align: center;
 }
 @media screen and (max-width: 1000px) {
     mat-card{

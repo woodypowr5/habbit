@@ -44,55 +44,63 @@
     fxLayoutGap="20px"
     >
     <mat-card class="series-visibility">
-
         <mat-card-title class="series-visibility-label">Visible Data:</mat-card-title>
-        <mat-button-toggle-group 
-            [(ngModel)]="seriesState"
-            multiple 
-            fxLayout="column"
-            (change)="seriesVisibilityChanged($event)"
-            class="visible-series-button-group"
-        >
             <h2>Range Activities</h2>
-            <div class="button-group">   
+            <button mat-raised-button class="show-all" (click)="showAll('range')">Show All</button>
+            <mat-button-toggle-group 
+                [(ngModel)]="seriesState.range" 
+                (change)="seriesVisibilityChanged($event)"
+                multiple 
+                class="button-group"
+            >   
                 <mat-button-toggle 
                     value="{{marker.name}}" 
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'range'}"
                     class="material-button"
-                    (click)="checkForNewDatatype(marker)"
+                    (click)="checkForNewDatatype('range')"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
-            </div>    
+            </mat-button-toggle-group>    
 
             <h2>Yes or No Activities</h2>
-            <div class="button-group">   
+            <button mat-raised-button class="show-all" (click)="showAll('boolean')">Show All</button>
+            <mat-button-toggle-group 
+                [(ngModel)]="seriesState.boolean" 
+                (change)="seriesVisibilityChanged($event)" 
+                multiple 
+                class="button-group"
+            >   
                 <mat-button-toggle 
                     value="{{marker.name}}" 
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'boolean'}"
                     class="material-button"
-                    (click)="checkForNewDatatype(marker)"
+                    (click)="checkForNewDatatype('boolean')"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
-            </div>    
+            </mat-button-toggle-group>    
 
             <h2>Value Activities</h2>
-            <div class="button-group">   
+            <button mat-raised-button class="show-all" (click)="showAll('scalar')">Show All</button>
+            <mat-button-toggle-group 
+                [(ngModel)]="seriesState.scalar" 
+                (change)="seriesVisibilityChanged($event)"
+                multiple 
+                class="button-group"
+            >   
                 <mat-button-toggle 
                     value="{{marker.name}}" 
                     *ngFor="let marker of plan.markers"
                     [ngClass]="{'hidden': marker.dataType !== 'scalar'}"
                     class="material-button"
-                    (click)="checkForNewDatatype(marker)"
+                    (click)="checkForNewDatatype('scalar')"
                 >
                     {{ marker.name }}
                 </mat-button-toggle>
-            </div>    
-
-        </mat-button-toggle-group>
+            </mat-button-toggle-group>    
     </mat-card> 
     <mat-card class="trend-type">
         <mat-card-title class="trend-type-label">Trend Type:</mat-card-title>

@@ -21,11 +21,15 @@
    font-size: 50px;
    margin: 0 auto;
 } 
-.mat-card-actions{
-    margin: 10px auto 0 auto;
+
+.action-container{
+    position: absolute;
+    bottom: 50px;
+    left: 71px;
 }
 mat-card-title{
-    height: 60px;
+    height: 45px;
+    text-align: center;
     font-size: 1.4em;
 }
 .available-marker-card{
