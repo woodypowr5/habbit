@@ -1,4 +1,4 @@
-import { Measurement } from './../../../../../shared/types/measurement.model';
+import { Measurement } from '../../../../../shared/types/measurement.model';
 import { Marker } from '../../../../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -26,6 +26,9 @@ export class EntryFormScalarComponent implements OnInit {
     } else {
       console.log("not a number");
     }
-    
+  }
+
+  clear(): void {
+    this.currentValue = undefined;
   }
 }

@@ -22,7 +22,7 @@
 
 <mat-card class="chart-parent-container" *ngIf="activeDatatype === 'boolean'">
     <div class="chart-container">
-        <ngx-charts-heat-map
+        <!-- <ngx-charts-heat-map
             [results]="filteredSeriesData.boolean"
             [gradient]="chartOptions.boolean.gradient"
             [xAxis]="chartOptions.boolean.showXAxis"
@@ -33,7 +33,8 @@
             [xAxisLabel]="chartOptions.boolean.xAxisLabel"
             [yAxisLabel]="chartOptions.boolean.yAxisLabel"
             (select)="onSelect($event)">
-        </ngx-charts-heat-map>
+        </ngx-charts-heat-map>-->
+        <app-heatmap></app-heatmap>
     </div>
 </mat-card>   
 

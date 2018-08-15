@@ -8,6 +8,7 @@ import { TrendsDailyComponent } from './trends-daily/trends-daily.component';
 import { TrendsLinkedComponent } from './trends-linked/trends-linked.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ActivityDetailsComponent } from './trends-linked/activity-details/activity-details.component';
+import { HeatmapComponent } from './trends-summary/heatmap/heatmap.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { ActivityDetailsComponent } from './trends-linked/activity-details/activ
         TrendsDailyComponent,
         TrendsLinkedComponent,
         AllActivitiesComponent,
-        ActivityDetailsComponent
+        ActivityDetailsComponent,
+        HeatmapComponent
     ],
     imports: [
         SharedModule,

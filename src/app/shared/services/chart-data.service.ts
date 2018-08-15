@@ -159,9 +159,27 @@ export class ChartDataService {
   computeScatterSeries(records: Record[], includeMarkers: [string, string]): any {
     const datapoints: Datapoint[] = this.formatToDatapoints(records, includeMarkers);
     return [{
-      name: 'stuff',
+      name: '',
       series: datapoints
     }];
+  }
+
+  computeBarDistribution(marker: Marker, history: History) {
+    const distrbution: number[] = [];
+    const markerAdapter: Marker = {
+      name: marker.name,
+      dataType: '',
+      isLoading: false,
+      category: '',
+      iconName: ''
+    };
+    const planAdapter: Plan = {
+      name: '',
+      markers: [
+        markerAdapter
+      ]
+    };
+    const rawData = this.computeRawData(history.records, planAdapter);
   }
 
   computeProbabilityDistribution(marker: Marker, history: History): any {
@@ -181,7 +199,7 @@ export class ChartDataService {
     const rawData = this.computeRawData(history.records, planAdapter);
     const vectorData = this.createVectorFromSeries(rawData[0].series);
     return [{
-      name : 'test',
+      name : '',
       series: this.computeEPDF(vectorData, marker)
     }];
   }

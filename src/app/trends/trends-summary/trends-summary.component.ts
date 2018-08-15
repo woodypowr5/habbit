@@ -1,3 +1,5 @@
+import { Series } from '../../shared/types/series.model';
+import { DataSortingService } from '../../shared/services/data-sorting-service';
 
 import { ChartOptions } from '../../shared/data/chartOptions';
 import { Marker } from '../../shared/types/marker.model';
@@ -11,7 +13,7 @@ import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/typings/overlay-directives';
-import { LifecycleHooks } from '../../../../node_modules/@angular/compiler/src/lifecycle_reflector';
+import { LifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 
 @Component({
   selector: 'app-trends-summary',
@@ -43,11 +45,17 @@ export class TrendsSummaryComponent implements OnInit {
   private displayText: any;
   private chartOptions = ChartOptions.trends.summary;
   private curve: any = Constants.chartCurveFunctions.summary.raw;
+  private chartData: {
+    lineData: Series[]
+  } = {
+    lineData: []
+  };
+  private includeEmptyDays = false;
 
   constructor(private chartDataService: ChartDataService) {}
 
   ngOnInit() {
-    if (this.plan) {
+   if (this.plan) {
       this.seriesState.range = [this.plan.markers[0].name];
       this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
       this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
@@ -95,7 +103,6 @@ export class TrendsSummaryComponent implements OnInit {
   recomputeData() {
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.visibleSeries = this.computeVisibleSeries(this.seriesState);
-    console.log(this.activeDatatype);
     if (this.activeDatatype === 'range') {
       this.filteredSeriesData.range = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
     }  else if (this.activeDatatype === 'boolean') {
