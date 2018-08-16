@@ -1,6 +1,7 @@
-import { EntryFormBooleanComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
-import { EntryFormScalarComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-scalar/entry-form-scalar.component';
-import { EntryFormRangeComponent } from './../tracking/record-detail/record-entry/record-entry-marker/entry-form-range/entry-form-range.component';
+import { CalendarDayPipe } from './pipes/calendarDay.pipe';
+import { EntryFormBooleanComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
+import { EntryFormScalarComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-scalar/entry-form-scalar.component';
+import { EntryFormRangeComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-range/entry-form-range.component';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,7 +32,8 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
     SubheaderComponent,
     EntryFormRangeComponent,
     EntryFormScalarComponent,
-    EntryFormBooleanComponent
+    EntryFormBooleanComponent,
+    CalendarDayPipe
   ],
   providers: [
     DateService
@@ -49,7 +51,8 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
     SubheaderComponent,
     EntryFormRangeComponent,
     EntryFormScalarComponent,
-    EntryFormBooleanComponent
+    EntryFormBooleanComponent,
+    CalendarDayPipe
   ]
 })
 export class SharedModule {}

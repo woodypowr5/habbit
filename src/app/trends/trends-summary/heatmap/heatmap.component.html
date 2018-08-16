@@ -1,3 +1,38 @@
-<p>
-  heatmap works!
-</p>
+<div class="presentation-area" #presentationArea>
+
+  <div
+    class="heatmap-row heatmap-date-row"
+    [ngStyle]="{ 'height': dimensions.dateRowHeight + 'px'}"
+  >
+    <div class="heatmap-cell empty" [ngStyle]="{ 'flex-basis': dimensions.nameCellWidth + 'px'}">
+    </div>
+    <div 
+      class="heatmap-cell date" 
+      [ngStyle]="{'flex-basis': dimensions.cellWidth + 'px'}"
+      *ngFor="let date of seriesData.date | slice: 0:numDaysVisible"
+    >
+      <div class="date-text">
+      {{ date | calendarDay}}
+      </div>
+    </div>
+  </div>
+
+  <div 
+    *ngFor="let marker of seriesData.markers; let i = index" 
+    class="heatmap-row" 
+    (window:resize)="onResize($event)"
+    [ngStyle]="{ 'height': dimensions.rowHeight + 'px'}"
+  >
+    <div class="heatmap-cell name" [ngStyle]="{ 'flex-basis': dimensions.nameCellWidth + 'px'}">
+      {{ marker.name }}
+    </div>
+    <div 
+      *ngFor="let measurement of marker.measurements | slice: 0:numDaysVisible" 
+      class="heatmap-cell value" 
+      [ngClass]="{ 'yes-day': measurement === 'Yes', 'no-day': measurement === 'No' }"
+      [ngStyle]="{ 'flex-basis': dimensions.cellWidth + 'px'}"
+    >
+      {{ measurement | json }}
+    </div>
+  </div>
+</div>  

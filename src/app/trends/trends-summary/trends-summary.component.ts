@@ -1,6 +1,4 @@
-import { Series } from '../../shared/types/series.model';
 import { DataSortingService } from '../../shared/services/data-sorting-service';
-
 import { ChartOptions } from '../../shared/data/chartOptions';
 import { Marker } from '../../shared/types/marker.model';
 import { TooltipText } from '../../shared/data/tooltipText';
@@ -23,6 +21,7 @@ import { LifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 export class TrendsSummaryComponent implements OnInit {
   @Input() records: Record[];
   @Input() plan: Plan;
+
   private seriesData: any = {
     raw: [],
     movingAverage: [],
@@ -45,11 +44,6 @@ export class TrendsSummaryComponent implements OnInit {
   private displayText: any;
   private chartOptions = ChartOptions.trends.summary;
   private curve: any = Constants.chartCurveFunctions.summary.raw;
-  private chartData: {
-    lineData: Series[]
-  } = {
-    lineData: []
-  };
   private includeEmptyDays = false;
 
   constructor(private chartDataService: ChartDataService) {}

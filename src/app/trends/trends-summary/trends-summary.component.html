@@ -34,7 +34,11 @@
             [yAxisLabel]="chartOptions.boolean.yAxisLabel"
             (select)="onSelect($event)">
         </ngx-charts-heat-map>-->
-        <app-heatmap></app-heatmap>
+        <app-heatmap
+            [data]="filteredSeriesData.boolean"
+            [plan]="plan"
+            [seriesState]="seriesState.boolean"
+        ></app-heatmap>
     </div>
 </mat-card>   
 
