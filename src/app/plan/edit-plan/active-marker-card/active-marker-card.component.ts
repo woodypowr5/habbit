@@ -1,9 +1,9 @@
-import { Marker } from './../../../shared/types/marker.model';
+import { Marker } from '../../../shared/types/marker.model';
 import { ConfirmRemovalComponent } from './confirm-removal/confirm-removal.component';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog, MatDialogRef} from '@angular/material';
 import { Plan } from '../../plan.model';
-import { Overlay } from '../../../../../node_modules/@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-active-marker-card',

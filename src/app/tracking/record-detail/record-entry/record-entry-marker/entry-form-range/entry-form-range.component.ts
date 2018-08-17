@@ -37,7 +37,7 @@ export class EntryFormRangeComponent implements OnInit {
     this.sliderValue = undefined;
   }
 
-  formatLabel(value: number | null) {   
+  formatLabel(value: number | null) {
     const newVal = Math.ceil(value / 10);
     if (newVal === 0) {
       return 1;

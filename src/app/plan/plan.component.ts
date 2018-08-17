@@ -1,4 +1,4 @@
-import { TrackingService } from './../shared/services/tracking.service';
+import { TrackingService } from '../shared/services/tracking.service';
 import { Marker } from '../shared/types/marker.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';

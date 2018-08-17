@@ -1,6 +1,5 @@
 import { EntryFormBooleanComponent } from './record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
 import { EntryFormScalarComponent } from './record-detail/record-entry/record-entry-marker/entry-form-scalar/entry-form-scalar.component';
-import { CalendarDayPipe } from '../shared/pipes/calendarDay.pipe';
 import { AdjustedDatePipe } from './records/adjustedDate.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,7 +29,6 @@ import { CalendarComponent } from './records/calendar/calendar.component';
     RecordComponent,
     RecordDetailComponent,
     AdjustedDatePipe,
-    CalendarDayPipe,
     RecordEntryComponent,
     RecordEntryMarkerComponent,
     RecordMarkerDetailsComponent,
@@ -42,8 +40,7 @@ import { CalendarComponent } from './records/calendar/calendar.component';
     NgxChartsModule,
   ],
   providers: [
-    AdjustedDatePipe,
-    CalendarDayPipe
+    AdjustedDatePipe
   ]
 })
 export class TrackingModule {}

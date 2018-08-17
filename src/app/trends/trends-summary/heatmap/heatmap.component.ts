@@ -1,6 +1,6 @@
 import { Plan } from './../../../plan/plan.model';
 import { DateService } from './../../../shared/services/date.service';
-import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-heatmap',
@@ -8,11 +8,17 @@ import { Component, OnInit, Input, HostListener, ViewChild, ElementRef, AfterVie
   styleUrls: ['./heatmap.component.css']
 })
 export class HeatmapComponent implements OnInit {
+  @ViewChild('presentationArea')presentationArea: ElementRef;
   @Input() data: any;
   @Input() plan: Plan;
   @Input() seriesState: string[];
-  prunedData: any;
+  private prunedData: any;
   private seriesData: any = {};
+  private numDaysVisible = 20;
+  private activeDate: Date = new Date();
+  private prevArrowAvailable = false;
+  private nextArrowAvailable = false;
+  private currentDateIndex;
   private dimensions = {
     containerWidth: null,
     containerHeight: null,
@@ -22,10 +28,6 @@ export class HeatmapComponent implements OnInit {
     dateRowHeight: null,
     nameCellWidth: null
   };
-  private numDaysVisible = 20;
-  private activeDate: Date = new Date();
-
-  @ViewChild('presentationArea')presentationArea: ElementRef;
 
   constructor(private dateService: DateService) { }
 
@@ -35,6 +37,7 @@ export class HeatmapComponent implements OnInit {
   }
 
   addMissingDays(data: any): any {
+ 
     const completeData = {
       date: [],
       markers: []
@@ -55,7 +58,7 @@ export class HeatmapComponent implements OnInit {
     const today = new Date();
     let currentDate = firstDate;
     let dateIndex = 0;
-    while (currentDate < today) {
+    while (currentDate <= this.dateService.getNextDay(today)) {
       completeData.date.push(currentDate);
       filteredPlanMarkers.map((marker, index) => {
         const foundMeasurement = this.findMeasurement(data, marker.name, currentDate);
@@ -90,9 +93,7 @@ export class HeatmapComponent implements OnInit {
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;
     }
-    if (this.seriesData.date.length > this.numDaysVisible) {
-      this.pruneData();
-    }
+    this.prunedData = this.pruneData(this.activeDate, this.seriesState);
     this.dimensions.nameCellWidth = 240.0;
     this.dimensions.dateRowHeight = 100.0;
     const remainderX = this.dimensions.containerWidth - this.dimensions.nameCellWidth;
@@ -101,7 +102,41 @@ export class HeatmapComponent implements OnInit {
     this.dimensions.cellWidth = Math.floor(remainderX / this.numDaysVisible);
   }
 
-  pruneData() {
+  pruneData(activeDate: Date, seriesState: string[]) {
+    const prunedData = this.seriesData;
+    if (this.seriesData.date.length <= this.numDaysVisible) {
+      return this.seriesData;
+    }
+    this.seriesData.date.map((date, index) => {
+      if (this.dateService.isSameDate(this.activeDate, date)) {
+        this.currentDateIndex = index;
+      }
+    });
+    let sliceStart = this.currentDateIndex - this.numDaysVisible + 1;
+    if (sliceStart < 0) {
+      sliceStart = 0;
+    }
+    // prunedData.date = prunedData.date.slice(sliceStart, sliceStart + this.numDaysVisible);
+    // for (let i = 0; i < prunedData.markers.length; i++) {
+    //   prunedData.markers[i].measurements = prunedData.markers[i].measurements.slice(sliceStart, sliceStart + this.numDaysVisible);
+    // }
+    return prunedData;
+  }
 
+  nextPage() {
+
+  }
+
+  prevPage() {
+    // console.log(this.acti)
+    // let activeDateIndex: number;
+    // if (this.currentDateIndex - this.numDaysVisible > 0) {
+    //   activeDateIndex = this.currentDateIndex - this.numDaysVisible;
+    // } else {
+    //   activeDateIndex = 0;
+    // }
+    // // console.log(activeDateIndex);
+    // this.activeDate = this.seriesData.date[activeDateIndex - 1];
+    // console.log(this.activeDate)
   }
 }

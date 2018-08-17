@@ -1,5 +1,11 @@
-<div class="presentation-area" #presentationArea>
 
+<div class="presentation-area" #presentationArea>
+<!--<div class="prev-arrow" (click)="prevPage()" *ngIf="currentDateIndex > 0">
+    Prev
+  </div>
+  <div class="next-arrow" (click)="nextPages()" *ngIf="currentDateIndex + numDaysVisible < seriesData.date.length">
+    Next
+  </div>-->
   <div
     class="heatmap-row heatmap-date-row"
     [ngStyle]="{ 'height': dimensions.dateRowHeight + 'px'}"
@@ -9,7 +15,7 @@
     <div 
       class="heatmap-cell date" 
       [ngStyle]="{'flex-basis': dimensions.cellWidth + 'px'}"
-      *ngFor="let date of seriesData.date | slice: 0:numDaysVisible"
+      *ngFor="let date of prunedData.date | slice: 0:numDaysVisible"
     >
       <div class="date-text">
       {{ date | calendarDay}}
@@ -18,7 +24,7 @@
   </div>
 
   <div 
-    *ngFor="let marker of seriesData.markers; let i = index" 
+    *ngFor="let marker of prunedData.markers; let i = index"
     class="heatmap-row" 
     (window:resize)="onResize($event)"
     [ngStyle]="{ 'height': dimensions.rowHeight + 'px'}"

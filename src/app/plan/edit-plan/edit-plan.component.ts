@@ -5,7 +5,7 @@ import { Marker } from '../../shared/types/marker.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Plan } from '../plan.model';
-import { Overlay } from '../../../../node_modules/@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-edit-plan',

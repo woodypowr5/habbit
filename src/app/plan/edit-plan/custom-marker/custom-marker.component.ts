@@ -1,7 +1,7 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Plan } from './../../plan.model';
-import { PlanService } from './../../../shared/services/plan.service';
-import { Marker } from './../../../shared/types/marker.model';
+import { Plan } from '../../plan.model';
+import { PlanService } from '../../../shared/services/plan.service';
+import { Marker } from '../../../shared/types/marker.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 

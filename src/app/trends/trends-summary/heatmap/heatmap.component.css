@@ -5,8 +5,8 @@
     flex-grow: 0;
     border-left: 1px dashed #CCC;
     border-right: 1px dashed #CCC;
-    border-top: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
     height: 100%;
     overflow: hidden;
     flex-shrink: 0;
