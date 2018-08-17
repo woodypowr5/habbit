@@ -16,6 +16,7 @@ export class HeatmapComponent implements OnInit {
   private seriesData: any = {};
   private numDaysVisible = 20;
   private activeDate: Date = new Date();
+  private activeDateIndex: number;
   private prevArrowAvailable = false;
   private nextArrowAvailable = false;
   private currentDateIndex;
@@ -33,11 +34,11 @@ export class HeatmapComponent implements OnInit {
 
   ngOnInit() {
     this.seriesData = this.addMissingDays(this.data);
+    this.activeDateIndex = this.seriesData.date.length - this.numDaysVisible;
     this.calculateDimensions();
   }
 
   addMissingDays(data: any): any {
- 
     const completeData = {
       date: [],
       markers: []
@@ -93,7 +94,7 @@ export class HeatmapComponent implements OnInit {
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;
     }
-    this.prunedData = this.pruneData(this.activeDate, this.seriesState);
+    // this.prunedData = this.pruneData(this.activeDate, this.seriesState);
     this.dimensions.nameCellWidth = 240.0;
     this.dimensions.dateRowHeight = 100.0;
     const remainderX = this.dimensions.containerWidth - this.dimensions.nameCellWidth;
@@ -102,41 +103,40 @@ export class HeatmapComponent implements OnInit {
     this.dimensions.cellWidth = Math.floor(remainderX / this.numDaysVisible);
   }
 
-  pruneData(activeDate: Date, seriesState: string[]) {
-    const prunedData = this.seriesData;
-    if (this.seriesData.date.length <= this.numDaysVisible) {
-      return this.seriesData;
-    }
-    this.seriesData.date.map((date, index) => {
-      if (this.dateService.isSameDate(this.activeDate, date)) {
-        this.currentDateIndex = index;
-      }
-    });
-    let sliceStart = this.currentDateIndex - this.numDaysVisible + 1;
-    if (sliceStart < 0) {
-      sliceStart = 0;
-    }
-    // prunedData.date = prunedData.date.slice(sliceStart, sliceStart + this.numDaysVisible);
-    // for (let i = 0; i < prunedData.markers.length; i++) {
-    //   prunedData.markers[i].measurements = prunedData.markers[i].measurements.slice(sliceStart, sliceStart + this.numDaysVisible);
-    // }
-    return prunedData;
-  }
+  // pruneData(activeDate: Date, seriesState: string[]) {
+  // // console.log(this.seriesData)
+  //   const prunedData = this.seriesData;
+  //   if (this.seriesData.date.length <= this.numDaysVisible) {
+  //     return this.seriesData;
+  //   }
+  //   prunedData.date.map((date, index) => {
+  //     if (this.dateService.isSameDate(this.activeDate, date)) {
+  //       this.currentDateIndex = index;
+  //     }
+  //   });
+  //   let sliceStart = this.currentDateIndex - this.numDaysVisible + 1;
+  //   if (sliceStart < 0) {
+  //     sliceStart = 0;
+  //   }
+  //   prunedData.date = prunedData.date.slice(sliceStart, sliceStart + this.numDaysVisible);
+  //   for (let i = 0; i < prunedData.markers.length; i++) {
+  //     prunedData.markers[i].measurements = prunedData.markers[i].measurements.slice(sliceStart, sliceStart + this.numDaysVisible);
+  //   }
+  //   return prunedData;
+  // }
 
   nextPage() {
 
   }
 
   prevPage() {
-    // console.log(this.acti)
-    // let activeDateIndex: number;
-    // if (this.currentDateIndex - this.numDaysVisible > 0) {
-    //   activeDateIndex = this.currentDateIndex - this.numDaysVisible;
-    // } else {
-    //   activeDateIndex = 0;
-    // }
-    // // console.log(activeDateIndex);
-    // this.activeDate = this.seriesData.date[activeDateIndex - 1];
-    // console.log(this.activeDate)
+    if (this.currentDateIndex - this.numDaysVisible > 0) {
+      this.activeDateIndex = this.activeDateIndex - (this.activeDateIndex - this.numDaysVisible);
+    } else {
+      this.activeDateIndex = 0;
+    }
+    // console.log(activeDateIndex);
+    this.activeDate = this.seriesData.date[this.activeDateIndex];
+    // this.prunedData = this.pruneData(this.activeDate, this.seriesState);
   }
 }
