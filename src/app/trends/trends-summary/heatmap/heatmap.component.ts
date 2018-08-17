@@ -89,7 +89,7 @@ export class HeatmapComponent implements OnInit {
   calculateDimensions(): void {
     this.numDaysVisible = 20;
     this.dimensions.containerWidth = this.presentationArea.nativeElement.offsetWidth - 20; // padding
-    this.dimensions.containerHeight = this.presentationArea.nativeElement.offsetHeight;
+    this.dimensions.containerHeight = this.presentationArea.nativeElement.offsetHeight - 30;
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;
     }
@@ -97,7 +97,7 @@ export class HeatmapComponent implements OnInit {
     this.dimensions.dateRowHeight = 100.0;
     const remainderX = this.dimensions.containerWidth - this.dimensions.nameCellWidth;
     const remainderY = this.dimensions.containerHeight - this.dimensions.dateRowHeight;
-    this.dimensions.rowHeight = Math.floor(remainderY / this.plan.markers.length);
+    this.dimensions.rowHeight = Math.floor(remainderY / this.seriesState.length);
     this.dimensions.cellWidth = Math.floor(remainderX / this.numDaysVisible);
   }
 

@@ -30,6 +30,7 @@
 }
 .heatmap-cell.empty{
     border: none;
+    position: relative;
 }
 .date-text{
     position: absolute; 
@@ -41,8 +42,35 @@
     height: 100%;
 }
 .yes-day{
-    background-color: green;
+    background-image: url('/assets/images/greenX.png');
+    background-size: 40px 40px;
+
+    background-position: center center;
+    background-repeat: no-repeat;   
 }
 .no-day{
-    background-color: red;
+    background-image: url('/assets/images/redX.png');
+    background-size: 40px 40px;
+
+    background-position: center center;
+    background-repeat: no-repeat;   
+}
+.prev-arrow{
+    position: absolute;
+    left: 50px;
+    z-index: 1000;
+    top: 32px;
+    font-size: 1.2em;
+}
+.next-arrow{
+    position: absolute;
+    right: 65px;
+    z-index: 1000;
+    top: 35px;
+}
+.prev-arrow.transparent, .next-arrow.transparent{
+    opacity: 0.3
+}
+.next-arrow:hover, .prev-arrow:hover{
+    cursor: pointer;
 }
