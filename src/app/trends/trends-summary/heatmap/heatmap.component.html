@@ -3,7 +3,7 @@
   <div class="prev-arrow" (click)="prevPage()" *ngIf="activeDateIndex > 0">
     Prev
   </div>
-  <div class="next-arrow" (click)="nextPages()" *ngIf="activeDateIndex + numDaysVisible < seriesData.date.length">
+  <div class="next-arrow" (click)="nextPage()" *ngIf="activeDateIndex + numDaysVisible < seriesData.date.length">
     Next
   </div>
   <div
