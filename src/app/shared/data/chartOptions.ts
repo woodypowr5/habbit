@@ -35,6 +35,8 @@ export const ChartOptions = {
             xAxisLabel: 'Logged Entry',
             yScaleMin: 0,
             yScaleMax: 1,
+            xScaleMin: 0,
+            xScaleMax: 10,
             showYAxisLabel: true,
             yAxisLabel: 'Probability',
             timeline: false,

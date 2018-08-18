@@ -54,7 +54,7 @@
   <mat-card class="marker-details-summary-details">
     
     <mat-card-title class="subtitle">
-      Entries
+      Entries <span class="subtitle-subtext"> for {{ marker.name }}</span>
     </mat-card-title>
     <app-popover 
       *ngIf="history.records.length < 4"
@@ -68,13 +68,13 @@
       [type]="'description'"
     ></app-tooltip>
     
-    <span class="content-container" *ngIf="history.records.length > 3">
+    <span class="content-container bottom" *ngIf="history.records.length > 3">
       <div class="average" *ngIf="marker.dataType === 'range'">
         Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
       </div>
     
       <div class="std-deviation" *ngIf="marker.dataType !== 'boolean'">
-        Variablity: {{ standardDeviation.toFixed(2) }}
+        Variablity: {{ standardDeviation.toFixed(2) }} / 5
         <span class="tooltip-container">
           <app-tooltip 
           [displayText]="tooltipText.stdDeviation"
@@ -84,32 +84,50 @@
         </span>
       </div>
 
-      <div class="pdf-graph-wrapper"  *ngIf="marker.dataType === 'range'">
-        <ngx-charts-line-chart
-          [results]="results.performance.range"
-          [scheme]="chartOptions.performance.range.colorScheme"
-          [gradient]="chartOptions.performance.range.gradient"
-          [xAxis]="chartOptions.performance.range.showXAxis"
-          [yAxis]="chartOptions.performance.range.showYAxis"
-          [yScaleMin]="chartOptions.performance.range.yScaleMin"
-          [legend]="chartOptions.performance.range.showLegend"
-          [showXAxisLabel]="chartOptions.performance.range.showXAxisLabel"
-          [showYAxisLabel]="chartOptions.performance.range.showYAxisLabel"
-          [xAxisLabel]="chartOptions.performance.range.xAxisLabel"
-          [yAxisLabel]="chartOptions.performance.range.yAxisLabel"
-          [autoScale]="chartOptions.performance.range.autoScale"
-          [timeline]="chartOptions.performance.range.timeline"
-          [curve]="chartOptions.performance.range.curve"
-        >
-        </ngx-charts-line-chart>
-        <span class="tooltip-container">
-          <app-tooltip 
-            [displayText]="tooltipText.cdfGraph"
-            [id]="tooltipPdf"
-            [type]="'description'"
-          ></app-tooltip>
-        </span>
-      </div>
+      <mat-tab-group class="pdf-graph-wrapper bottom" *ngIf="marker.dataType === 'range'">
+        <mat-tab class="mat-tab-summary" label="Summary">
+          <ngx-charts-bar-vertical
+            [results]="results.performance.bar"
+            [scheme]="chartOptions.performance.boolean.colorScheme"
+            [gradient]="chartOptions.performance.boolean.gradient"
+            [xAxis]="chartOptions.performance.boolean.showXAxis"
+            [yAxis]="chartOptions.performance.boolean.showYAxis"
+            [legend]="chartOptions.performance.boolean.showLegend"
+            [showXAxisLabel]="chartOptions.performance.boolean.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.performance.boolean.showYAxisLabel"
+            [xAxisLabel]="chartOptions.performance.boolean.xAxisLabel"
+            [yAxisLabel]="chartOptions.performance.boolean.yAxisLabel"
+            (select)="onSelect($event)"
+          >
+        </ngx-charts-bar-vertical>
+        </mat-tab>
+        <mat-tab class="mat-tab-probabilities" label="Probabilties">
+          <ngx-charts-line-chart
+            [results]="results.performance.range"
+            [scheme]="chartOptions.performance.range.colorScheme"
+            [gradient]="chartOptions.performance.range.gradient"
+            [xAxis]="chartOptions.performance.range.showXAxis"
+            [yAxis]="chartOptions.performance.range.showYAxis"
+            [yScaleMin]="chartOptions.performance.range.yScaleMin"
+            [legend]="chartOptions.performance.range.showLegend"
+            [showXAxisLabel]="chartOptions.performance.range.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.performance.range.showYAxisLabel"
+            [xAxisLabel]="chartOptions.performance.range.xAxisLabel"
+            [yAxisLabel]="chartOptions.performance.range.yAxisLabel"
+            [autoScale]="chartOptions.performance.range.autoScale"
+            [timeline]="chartOptions.performance.range.timeline"
+            [curve]="chartOptions.performance.range.curve"
+          >
+          </ngx-charts-line-chart>
+          <span class="tooltip-container">
+            <app-tooltip 
+              [displayText]="tooltipText.cdfGraph"
+              [id]="tooltipPdf"
+              [type]="'description'"
+            ></app-tooltip>
+          </span>
+        </mat-tab>
+      </mat-tab-group>
 
       <div class="pdf-graph-wrapper"  *ngIf="marker.dataType === 'boolean'">
         <ngx-charts-bar-vertical

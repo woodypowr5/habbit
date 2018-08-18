@@ -76,6 +76,19 @@ export class MarkerDetailService {
 
     computeCurrentStreak(markerName: string, history: History): number {
         const dateSortedRecords = this.dataSortingService.sortObjectsByKey(history.records, 'date').reverse();
+        // console.log(dateSortedRecords);
+        // let found = false;
+        // if (this.dateService.isSameDate(new Date(), dateSortedRecords[0].date)) {
+        //     dateSortedRecords[0].measurements.map(measurement => {
+        //         if (measurement.markerName === markerName) {
+        //             found = true;
+        //         }
+        //     });
+        //     if (found === false) {
+        //         dateSortedRecords.shift();
+        //     }
+        // }    
+
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {
             const record = dateSortedRecords[i];

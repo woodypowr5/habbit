@@ -40,6 +40,7 @@ export class RecordMarkerDetailsComponent implements OnInit {
       boolean: null,
       range: null,
       scalar: null,
+      bar: null
     }
   };
 
@@ -87,8 +88,8 @@ export class RecordMarkerDetailsComponent implements OnInit {
         this.results.performance.boolean = this.chartDataService.computeBooleanBarData(this.marker.name, this.history);
       } else if (marker.dataType === 'range') {
         this.results.performance.range = this.chartDataService.computeProbabilityDistribution(this.marker, this.history);
+        this.results.performance.bar = this.chartDataService.computeRangeBarData(this.marker, this.history);
       } else if (marker.dataType === 'scalar') {}
-      // move to markerDetailService
       this.standardDeviation = this.markerDetailService.computeStandardDeviation(this.marker.name, this.history, this.averageEntryValue);
     }
 

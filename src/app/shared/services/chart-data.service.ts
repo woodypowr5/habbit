@@ -274,6 +274,26 @@ export class ChartDataService {
     return dataObject;
   }
 
+  computeRangeBarData(marker: Marker, history: History) {
+    const seriesData: any = [];
+    const distribution = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    history.records.map(record => {
+      record.measurements.map(measurement => {
+        if (measurement.markerName === marker.name) {
+          distribution[measurement.value]++;
+        }
+      });
+    });
+    distribution.map((value, index) => {
+      seriesData.push({
+        name: index,
+        value: value
+      });
+    });
+    return seriesData;
+  }
+
   computeHeatmapSeries(includeMarkers: Marker[], records: Record[], plan: Plan): any {
     const heatmapSeries = [];
     this.dataSortingService.sortObjectsByKey(records, 'date').map( record => {

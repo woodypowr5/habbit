@@ -7,6 +7,10 @@ h1.active-date{
 app-record-entry, app-no-record{
     min-height: 400px;
 }
+.bottom-section{
+    border: none !important;
+    box-shadow: none !important;
+}
 
 @media screen and (max-width: 600px) {
     mat-card{
