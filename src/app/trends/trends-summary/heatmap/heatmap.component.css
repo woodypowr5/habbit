@@ -21,6 +21,8 @@
     overflow: hidden;
 }
 .heatmap-cell.date{
+    border-left: 1px dashed #FFF;
+    border-right: 1px dashed #FFF;
     border-top: none;
     position: relative;
     display: flex;
@@ -43,14 +45,14 @@
 }
 .yes-day{
     background-image: url('/assets/images/greenX.png');
-    background-size: 40px 40px;
+    background-size: 30px 30px;
 
     background-position: center center;
     background-repeat: no-repeat;   
 }
 .no-day{
     background-image: url('/assets/images/redX.png');
-    background-size: 40px 40px;
+    background-size: 30px 30px;
 
     background-position: center center;
     background-repeat: no-repeat;   
@@ -73,4 +75,7 @@
 }
 .next-arrow:hover, .prev-arrow:hover{
     cursor: pointer;
+}
+.marker-name{
+    margin-right: 10px;
 }

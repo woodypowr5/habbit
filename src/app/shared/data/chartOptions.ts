@@ -112,11 +112,15 @@ export const ChartOptions = {
                 showYAxis: true,
                 gradient: false,
                 showLegend: true,
+                yScaleMin: 0,
+                yScaleMax: 1,
                 showXAxisLabel: false,
                 xAxisLabel: 'Date',
                 showYAxisLabel: false,
-                yAxisLabel: 'Logged Value',
+                yAxisLabel: 'Logged Value (0 = false, 1 = true)',
+                timeline: true,
                 colorScheme: Constants.chartColorScheme,
+                curve: Constants.chartCurveFunctions.summary.raw
             }
         }
     }

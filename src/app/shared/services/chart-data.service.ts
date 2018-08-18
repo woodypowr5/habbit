@@ -91,6 +91,19 @@ export class ChartDataService {
     return filteredSeriesData;
   }
 
+  transformBooleanData(seriesData: any) {
+    seriesData.map(series => {
+      series.series.map(measurement =>  {
+        if (measurement.value === 'Yes') {
+          measurement.value = 1;
+        } else if (measurement.value === 'No') {
+          measurement.value = 0;
+        }
+      });
+    });
+    return seriesData;
+  }
+
   computeMovingAverage(rawData: any): any {
     const seriesData: any = [];
     rawData.map(series => {
@@ -262,6 +275,7 @@ export class ChartDataService {
   }
 
   computeHeatmapSeries(includeMarkers: Marker[], records: Record[], plan: Plan): any {
+    console.log(includeMarkers)
     const heatmapSeries = [];
     this.dataSortingService.sortObjectsByKey(records, 'date').map( record => {
     const measurementsForDate = [];

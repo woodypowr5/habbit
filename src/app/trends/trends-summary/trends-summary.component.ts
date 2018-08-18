@@ -52,12 +52,33 @@ export class TrendsSummaryComponent implements OnInit {
    if (this.plan) {
       this.seriesState.range = [this.plan.markers[0].name];
       this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
-      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(this.seriesData.raw);
-      this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(this.seriesData.raw);
+      const dataCopy = this.chartDataService.transformBooleanData(this.seriesData.raw);
+      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(dataCopy);
+      this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(dataCopy);
       if (this.activeDatatype === 'range') {
         this.filteredSeriesData.range = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
       } else if (this.activeDatatype === 'boolean') {
         this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries([this.plan.markers[0]], this.records, this.plan);
+      }
+    }
+  }
+
+  recomputeData() {
+    this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
+    this.visibleSeries = this.computeVisibleSeries(this.seriesState);
+    if (this.activeDatatype === 'range') {
+      this.filteredSeriesData.range = this.chartDataService.filterDataBySeries(
+        this.visibleSeries,
+        this.seriesData[this.selectedTrendType]
+      );
+    }  else if (this.activeDatatype === 'boolean') {
+      if (this.selectedTrendType === 'raw') {
+        this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries(this.visibleSeries, this.records, this.plan);
+      } else if (this.selectedTrendType === 'movingAverage' || this.selectedTrendType === 'globalAverage') {
+        this.filteredSeriesData.boolean = this.chartDataService.filterDataBySeries(
+          this.visibleSeries,
+          this.seriesData[this.selectedTrendType]
+        );
       }
     }
   }
@@ -92,16 +113,6 @@ export class TrendsSummaryComponent implements OnInit {
 
   trendTypeChanged(event): void {
     this.recomputeData();
-  }
-
-  recomputeData() {
-    this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
-    this.visibleSeries = this.computeVisibleSeries(this.seriesState);
-    if (this.activeDatatype === 'range') {
-      this.filteredSeriesData.range = this.chartDataService.filterDataBySeries(this.visibleSeries, this.seriesData[this.selectedTrendType]);
-    }  else if (this.activeDatatype === 'boolean') {
-      this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries(this.visibleSeries, this.records, this.plan);
-    }
   }
 
   computeVisibleSeries(seriesState: any): Marker[] {

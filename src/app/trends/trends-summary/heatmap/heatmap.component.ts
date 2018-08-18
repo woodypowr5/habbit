@@ -88,7 +88,7 @@ export class HeatmapComponent implements OnInit {
 
   calculateDimensions(): void {
     this.numDaysVisible = 20;
-    this.dimensions.containerWidth = this.presentationArea.nativeElement.offsetWidth - 20; // padding
+    this.dimensions.containerWidth = this.presentationArea.nativeElement.offsetWidth - 25; // padding
     this.dimensions.containerHeight = this.presentationArea.nativeElement.offsetHeight - 30;
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;

@@ -21,24 +21,31 @@
 </mat-card>    
 
 <mat-card class="chart-parent-container" *ngIf="activeDatatype === 'boolean'">
-    <div class="chart-container">
-        <!-- <ngx-charts-heat-map
-            [results]="filteredSeriesData.boolean"
-            [gradient]="chartOptions.boolean.gradient"
-            [xAxis]="chartOptions.boolean.showXAxis"
-            [yAxis]="chartOptions.boolean.showYAxis"
-            [legend]="chartOptions.boolean.showLegend"
-            [showXAxisLabel]="chartOptions.boolean.showXAxisLabel"
-            [showYAxisLabel]="chartOptions.boolean.showYAxisLabel"
-            [xAxisLabel]="chartOptions.boolean.xAxisLabel"
-            [yAxisLabel]="chartOptions.boolean.yAxisLabel"
-            (select)="onSelect($event)">
-        </ngx-charts-heat-map>-->
+    <div class="chart-container" *ngIf="selectedTrendType === 'raw'">
         <app-heatmap
             [data]="filteredSeriesData.boolean"
             [plan]="plan"
             [seriesState]="seriesState.boolean"
         ></app-heatmap>
+    </div>
+     <div class="chart-container" *ngIf="selectedTrendType === 'movingAverage' || selectedTrendType === 'globalAverage'">
+        <ngx-charts-line-chart
+            [scheme]="chartOptions.boolean.colorScheme"
+            [results]="filteredSeriesData.boolean"
+            [gradient]="chartOptions.boolean.gradient"
+            [xAxis]="chartOptions.boolean.showXAxis"
+            [yAxis]="chartOptions.boolean.showYAxis"
+            [yScaleMin]="chartOptions.boolean.yScaleMin"
+            [yScaleMax]="chartOptions.boolean.yScaleMax"
+            [legend]="chartOptions.boolean.showLegend"
+            [showXAxisLabel]="chartOptions.boolean.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.boolean.showYAxisLabel"
+            [xAxisLabel]="chartOptions.boolean.xAxisLabel"
+            [yAxisLabel]="chartOptions.boolean.yAxisLabel"
+            [timeline]="chartOptions.boolean.timeline"
+            [curve]="curve"
+            (select)="onSelect($event)">
+        </ngx-charts-line-chart>
     </div>
 </mat-card>   
 
