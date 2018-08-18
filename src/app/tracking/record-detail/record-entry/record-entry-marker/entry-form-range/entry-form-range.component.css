@@ -10,11 +10,20 @@ mat-slider{
 }
 .slider-label{
     position: absolute;
-    top: -5px;
+    top: -15px;
 }
 .slider-label.min{
     left: 0px;
 }
 .slider-label.max{
     right: 0px;
+}
+mat-button-toggle-group{
+    display: block !important;
+}
+.button-group{
+    margin-top: 20px;
+}
+.button-group button{
+    margin-right: 15px;
 }

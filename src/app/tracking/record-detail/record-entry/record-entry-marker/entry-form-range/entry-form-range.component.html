@@ -17,11 +17,12 @@
   thumbLabel
 >
 </mat-slider>
+<div class="button-group">
+  <button mat-raised-button (click)="save()">
+    Save
+  </button>
 
-<button mat-raised-button (click)="save()">
-  Save
-</button>
-
-<button mat-raised-button (click)="clear(slider)">
-  Clear
-</button>
+  <button mat-raised-button (click)="clear(slider)">
+    Clear
+  </button>
+</div>
