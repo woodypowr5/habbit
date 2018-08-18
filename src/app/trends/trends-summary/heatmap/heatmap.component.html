@@ -1,3 +1,5 @@
+{{ dimensions | json }}
+
 <div class="presentation-area" #presentationArea>
   <div
     class="heatmap-row heatmap-date-row"
@@ -28,6 +30,7 @@
     class="heatmap-row" 
     (window:resize)="onResize($event)"
     [ngStyle]="{ 'height': dimensions.rowHeight + 'px'}"
+    [ngClass]="{ 'hidden': seriesState.indexOf(marker.name) === -1}"
   >
     <div class="heatmap-cell name" [ngStyle]="{ 'flex-basis': dimensions.nameCellWidth + 'px'}">
       {{ marker.name }}

@@ -1,13 +1,13 @@
 import { Plan } from './../../../plan/plan.model';
 import { DateService } from './../../../shared/services/date.service';
-import { Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-heatmap',
   templateUrl: './heatmap.component.html',
   styleUrls: ['./heatmap.component.css']
 })
-export class HeatmapComponent implements OnInit {
+export class HeatmapComponent implements OnInit, OnChanges {
   @ViewChild('presentationArea')presentationArea: ElementRef;
   @Input() data: any;
   @Input() plan: Plan;
@@ -34,6 +34,11 @@ export class HeatmapComponent implements OnInit {
   ngOnInit() {
     this.seriesData = this.addMissingDays(this.data);
     this.activeDateIndex = this.seriesData.date.length - this.numDaysVisible;
+    this.calculateDimensions();
+  }
+
+  ngOnChanges() {
+    this.seriesData = this.addMissingDays(this.data);
     this.calculateDimensions();
   }
 
@@ -93,7 +98,7 @@ export class HeatmapComponent implements OnInit {
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;
     }
-    this.dimensions.nameCellWidth = 240.0;
+    this.dimensions.nameCellWidth = 260.0;
     this.dimensions.dateRowHeight = 100.0;
     const remainderX = this.dimensions.containerWidth - this.dimensions.nameCellWidth;
     const remainderY = this.dimensions.containerHeight - this.dimensions.dateRowHeight;
