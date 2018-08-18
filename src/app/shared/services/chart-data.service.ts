@@ -275,7 +275,6 @@ export class ChartDataService {
   }
 
   computeHeatmapSeries(includeMarkers: Marker[], records: Record[], plan: Plan): any {
-    console.log(includeMarkers)
     const heatmapSeries = [];
     this.dataSortingService.sortObjectsByKey(records, 'date').map( record => {
     const measurementsForDate = [];

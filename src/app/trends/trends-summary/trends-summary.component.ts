@@ -153,4 +153,21 @@ export class TrendsSummaryComponent implements OnInit {
     this.seriesState = newSeriesState;
     this.recomputeData();
   }
+
+  hideAll(datatype: string): void {
+    this.activeDatatype = datatype;
+    const newSeriesState = {
+      range: [],
+      boolean: [],
+      scalar: []
+    };
+    this.plan.markers.map(marker => {
+      if (marker.dataType === datatype) {
+        newSeriesState[datatype].push(marker.name);
+      }
+    });
+    newSeriesState[datatype] = [];
+    this.seriesState = newSeriesState;
+    this.recomputeData();
+  }
 }

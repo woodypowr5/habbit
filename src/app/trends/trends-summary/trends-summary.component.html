@@ -59,6 +59,7 @@
         <mat-card-title class="series-visibility-label">Visible Data:</mat-card-title>
             <h2>Range Activities</h2>
             <button mat-raised-button class="show-all" (click)="showAll('range')">Show All</button>
+            <button mat-raised-button class="show-all" (click)="hideAll('range')">Hide All</button>
             <mat-button-toggle-group 
                 [(ngModel)]="seriesState.range" 
                 (change)="seriesVisibilityChanged($event)"
@@ -78,6 +79,7 @@
 
             <h2>Yes or No Activities</h2>
             <button mat-raised-button class="show-all" (click)="showAll('boolean')">Show All</button>
+            <button mat-raised-button class="show-all" (click)="hideAll('boolean')">Hide All</button>
             <mat-button-toggle-group 
                 [(ngModel)]="seriesState.boolean" 
                 (change)="seriesVisibilityChanged($event)" 
@@ -97,6 +99,7 @@
 
             <h2>Value Activities</h2>
             <button mat-raised-button class="show-all" (click)="showAll('scalar')">Show All</button>
+            <button mat-raised-button class="show-all" (click)="hideAll('scalar')">Hide All</button>
             <mat-button-toggle-group 
                 [(ngModel)]="seriesState.scalar" 
                 (change)="seriesVisibilityChanged($event)"
