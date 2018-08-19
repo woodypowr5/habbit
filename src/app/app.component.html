@@ -5,6 +5,9 @@
   <mat-sidenav-content>
     <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
     <main>
+      <div class="loading-container" *ngIf="showLoadingIndicator">
+        <mat-spinner></mat-spinner>
+      </div>
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
