@@ -69,7 +69,7 @@
     ></app-tooltip>
     
     <span class="content-container bottom" *ngIf="history.records.length > 3">
-      <div class="average" *ngIf="marker.dataType === 'range'">
+      <!--> <div class="average" *ngIf="marker.dataType === 'range'">
         Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
       </div>
     
@@ -82,6 +82,53 @@
           [type]="'description'"
         ></app-tooltip>
         </span>
+      </div> -->
+
+      <div class="marker-detail-wrapper" fxLayout fxLayoutAlign="flex-start"  *ngIf="marker.dataType === 'range'">
+        <div class="marker-graph-wrapper">
+          <div class="marker-detail-text entries">
+              <div class="average">
+                Average entry: {{ averageEntryValue.toFixed(2) }} <span *ngIf="marker.max"> / {{ marker.max }} </span>
+             </div>
+          </div>
+          
+          <ngx-charts-gauge
+            [results]="results.performance.average"
+            [view]="chartOptions.streaks.viewGauge"
+            [legend]= "false"
+            [min]="0"
+            [max]="10"
+            [bigSegments]="1"
+            [smallSegments]="0"
+            [startAngle]="270"
+            [angleSpan]="180"
+            [showAxis]="false"
+            (select)="onSelect($event)"
+          >
+          </ngx-charts-gauge>
+        </div>
+
+        <div class="marker-graph-wrapper">
+            <div class="marker-detail-text streaks">
+              <div class="std-deviation" *ngIf="marker.dataType !== 'boolean'">
+                Variablity: {{ standardDeviation.toFixed(2) }} / 5
+              </div>  
+            </div>
+            <ngx-charts-gauge
+              [results]="results.performance.variability"
+              [view]="chartOptions.streaks.viewGauge"
+              [legend]= "false"
+              [min]="0"
+              [max]="5"
+              [bigSegments]="1"
+              [smallSegments]="0"
+              [startAngle]="270"
+              [angleSpan]="180"
+              [showAxis]="false"
+              (select)="onSelect($event)"
+            >
+            </ngx-charts-gauge>
+        </div>
       </div>
 
       <mat-tab-group class="pdf-graph-wrapper bottom" *ngIf="marker.dataType === 'range'">

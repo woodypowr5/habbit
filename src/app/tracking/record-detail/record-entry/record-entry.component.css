@@ -33,6 +33,7 @@ mat-card{
 }
 app-record-marker-details{
     flex-grow: 2;
+    max-width: 50%;
 }
 .selected{
     background-color: #F6F6F6;
@@ -44,6 +45,9 @@ app-record-marker-details{
     mat-accordion{
         width: 100% !important;
         margin-bottom: 20px !important;
+    }
+    app-record-marker-details{
+        max-width: 100%;
     }
 }
 

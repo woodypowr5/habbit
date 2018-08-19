@@ -40,7 +40,9 @@ export class RecordMarkerDetailsComponent implements OnInit {
       boolean: null,
       range: null,
       scalar: null,
-      bar: null
+      bar: null,
+      average: null,
+      variability: null
     }
   };
 
@@ -91,7 +93,18 @@ export class RecordMarkerDetailsComponent implements OnInit {
         this.results.performance.bar = this.chartDataService.computeRangeBarData(this.marker, this.history);
       } else if (marker.dataType === 'scalar') {}
       this.standardDeviation = this.markerDetailService.computeStandardDeviation(this.marker.name, this.history, this.averageEntryValue);
-    }
+      this.results.performance.average = [
+        {
+          name: 'Average',
+          value: this.averageEntryValue
+        }
+      ];
+      this.results.performance.variability = [
+        {
+          name: 'Variability',
+          value: this.standardDeviation
+        }
+      ];
 
     // for chart display
     this.results.daysWithMeasurements = [

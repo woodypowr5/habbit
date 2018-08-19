@@ -54,6 +54,19 @@ export const ChartOptions = {
             showYAxisLabel: true,
             yAxisLabel: 'Total',
             colorScheme: Constants.chartColorScheme,
+        },
+        average: {
+          legend: false,
+          min: 0,
+          max: 10,
+          bigSegments: 0,
+          smallSegments: 0,
+          startAngle: 240,
+          angleSpan: 240,
+          showAxis: false
+        },
+        variability: {
+
         }
     },
     trends: {
