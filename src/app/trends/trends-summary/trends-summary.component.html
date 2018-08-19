@@ -35,8 +35,6 @@
             [gradient]="chartOptions.boolean.gradient"
             [xAxis]="chartOptions.boolean.showXAxis"
             [yAxis]="chartOptions.boolean.showYAxis"
-            [yScaleMin]="chartOptions.boolean.yScaleMin"
-            [yScaleMax]="chartOptions.boolean.yScaleMax"
             [legend]="chartOptions.boolean.showLegend"
             [showXAxisLabel]="chartOptions.boolean.showXAxisLabel"
             [showYAxisLabel]="chartOptions.boolean.showYAxisLabel"
@@ -48,6 +46,28 @@
         </ngx-charts-line-chart>
     </div>
 </mat-card>   
+
+<mat-card class="chart-parent-container" *ngIf="activeDatatype === 'scalar'">
+    <div class="chart-container">
+        <ngx-charts-line-chart
+            [scheme]="chartOptions.scalar.colorScheme"
+            [results]="filteredSeriesData.scalar"
+            [gradient]="chartOptions.scalar.gradient"
+            [xAxis]="chartOptions.scalar.showXAxis"
+            [yAxis]="chartOptions.scalar.showYAxis"
+            [yScaleMin]="chartOptions.scalar.yScaleMin"
+            [yScaleMax]="chartOptions.scalar.yScaleMax"
+            [legend]="chartOptions.scalar.showLegend"
+            [showXAxisLabel]="chartOptions.scalar.showXAxisLabel"
+            [showYAxisLabel]="chartOptions.scalar.showYAxisLabel"
+            [xAxisLabel]="chartOptions.scalar.xAxisLabel"
+            [yAxisLabel]="chartOptions.scalar.yAxisLabel"
+            [timeline]="chartOptions.scalar.timeline"
+            [curve]="curve"
+            (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+    </div>
+</mat-card>    
 
 <mat-card 
     class="chart-controls-container"

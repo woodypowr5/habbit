@@ -143,7 +143,20 @@ export const ChartOptions = {
                 timeline: true,
                 colorScheme: Constants.chartColorScheme,
                 curve: Constants.chartCurveFunctions.summary.raw
-            }
+            },
+            scalar: {
+                showXAxis: true,
+                showYAxis: true,
+                gradient: false,
+                showLegend: true,
+                showXAxisLabel: true,
+                xAxisLabel: 'Date',
+                showYAxisLabel: true,
+                yAxisLabel: 'Logged Value',
+                timeline: true,
+                colorScheme: Constants.chartColorScheme,
+                curve: Constants.chartCurveFunctions.summary.raw
+            },
         }
     }
 };
