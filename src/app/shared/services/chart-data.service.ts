@@ -127,24 +127,24 @@ export class ChartDataService {
   }
 
   computeSeriesMovingAverage(seriesData: any, relevantPeriod: number): any {
-    seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name');
+    seriesData = this.dataSortingService.sortObjectsByKey(seriesData, 'name').reverse();
     const newSeriesData = [];
     seriesData.map(((dataPoint, index) => {
       let relevantSeries;
-      if (index - relevantPeriod >= 0) {
-        relevantSeries = seriesData.slice(index - relevantPeriod, index);
-      } else {
-        relevantSeries = seriesData.slice(0, index);
+      if (index + relevantPeriod <= seriesData.length) {
+        relevantSeries = seriesData.slice(index, index + 3);
       }
-      const relevantValues = [];
-      relevantSeries.map(relevantDataPoint => {
-        relevantValues.push(relevantDataPoint.value);
-      });
-      if (relevantValues.length > 0) {
-        newSeriesData.push({
-          name: dataPoint.name,
-          value: jStat.mean(relevantValues)
+      if (relevantSeries) {
+        const relevantValues = [];
+        relevantSeries.map(relevantDataPoint => {
+          relevantValues.push(relevantDataPoint.value);
         });
+        if (relevantValues.length > 0) {
+          newSeriesData.push({
+            name: dataPoint.name,
+            value: jStat.mean(relevantValues)
+          });
+        }
       }
     }));
     return newSeriesData;

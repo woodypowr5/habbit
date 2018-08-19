@@ -13,10 +13,10 @@
         <a (click)="setActiveRoute('login')" [ngClass]="{'active': activeRoute === 'login'}" routerLink="/login">Login</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a (click)="setActiveRoute('tracking')" [ngClass]="{'active': activeRoute === 'tracking'}" routerLink="/tracking">Today</a>
+        <a (click)="setActiveRoute('plan')" [ngClass]="{'active': activeRoute === 'plan'}" routerLink="/plan">Plan</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a (click)="setActiveRoute('plan')" [ngClass]="{'active': activeRoute === 'plan'}" routerLink="/plan">Plan</a>
+        <a (click)="setActiveRoute('tracking')" [ngClass]="{'active': activeRoute === 'tracking'}" routerLink="/tracking">Today</a>
       </li>
       <li  *ngIf="isAuth$ | async">
         <a (click)="setActiveRoute('trends')" [ngClass]="{'active': activeRoute === 'trends'}" routerLink="/trends" >Trends</a>
