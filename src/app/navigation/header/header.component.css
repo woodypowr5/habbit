@@ -28,8 +28,31 @@ a:active {
   background-color: white;
   height: 100px;
   border-bottom: 5px solid #CDCDCD;
+  position: relative;
 }
 .logo img{
   height: 60px;
   margin: 30px 30px 25px 10px;
 }
+.menu {
+  position: absolute;
+  right: 40px;
+  
+}
+.menu{
+  display: none;
+}
+.menu mat-icon{
+  font-size: 46px;
+}
+.active{
+  color: #AAA;
+}
+@media screen and (max-width: 750px) {
+  .menu{
+    display: inline-block;
+  }
+  .navlinks-container{
+    display: none !important;
+  }
+}  

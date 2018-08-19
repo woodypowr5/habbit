@@ -95,14 +95,13 @@
           <ngx-charts-gauge
             [results]="results.performance.average"
             [view]="chartOptions.streaks.viewGauge"
-            [legend]= "false"
-            [min]="0"
-            [max]="10"
-            [bigSegments]="1"
-            [smallSegments]="0"
-            [startAngle]="270"
-            [angleSpan]="180"
-            [showAxis]="false"
+            [legend]= "chartOptions.performance.average.legend"
+            [min]="chartOptions.performance.average.min"
+            [max]="chartOptions.performance.average.max"
+            [bigSegments]="chartOptions.performance.average.bigSegments"
+            [smallSegments]="chartOptions.performance.average.smallSegments"
+        
+            [showAxis]="chartOptions.performance.average.showAxis"
             (select)="onSelect($event)"
           >
           </ngx-charts-gauge>
@@ -117,14 +116,13 @@
             <ngx-charts-gauge
               [results]="results.performance.variability"
               [view]="chartOptions.streaks.viewGauge"
-              [legend]= "false"
-              [min]="0"
-              [max]="5"
-              [bigSegments]="1"
-              [smallSegments]="0"
-              [startAngle]="270"
-              [angleSpan]="180"
-              [showAxis]="false"
+              [legend]= "chartOptions.performance.variability.legend"
+              [min]="chartOptions.performance.variability.min"
+              [max]="chartOptions.performance.variability.max"
+              [bigSegments]="chartOptions.performance.variability.bigSegments"
+              [smallSegments]="chartOptions.performance.variability.smallSegments"
+         
+              [showAxis]="chartOptions.performance.variability.showAxis"
               (select)="onSelect($event)"
             >
             </ngx-charts-gauge>

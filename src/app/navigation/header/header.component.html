@@ -1,34 +1,34 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
   <div>
     <a class="logo" routerLink="/">
       <img src="assets/images/Untitled.png" alt="">
     </a>
   </div>
-  <div class="navlinks-container" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+  <div class="navlinks-container" fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li *ngIf="!(isAuth$ | async)">
-        <a routerLink="/signup">Signup</a>
+        <a click)="setActiveRoute('signup')" routerLink="/signup" [ngClass]="{'active': activeRoute === 'signup'}">Signup</a>
       </li>
       <li *ngIf="!(isAuth$ | async)">
-        <a routerLink="/login">Login</a>
+        <a (click)="setActiveRoute('login')" [ngClass]="{'active': activeRoute === 'login'}" routerLink="/login">Login</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a routerLink="/plan">Plan</a>
+        <a (click)="setActiveRoute('tracking')" [ngClass]="{'active': activeRoute === 'tracking'}" routerLink="/tracking">Today</a>
       </li>
       <li *ngIf="isAuth$ | async">
-        <a routerLink="/tracking">Today</a>
+        <a (click)="setActiveRoute('plan')" [ngClass]="{'active': activeRoute === 'plan'}" routerLink="/plan">Plan</a>
       </li>
-      <li *ngIf="isAuth$ | async">
-        <a routerLink="/trends">Trends</a>
+      <li  *ngIf="isAuth$ | async">
+        <a (click)="setActiveRoute('trends')" [ngClass]="{'active': activeRoute === 'trends'}" routerLink="/trends" >Trends</a>
       </li>
       <li *ngIf="isAuth$ | async">
         <a style="cursor: pointer" (click)="onLogout()">Logout</a>
       </li>
     </ul>
+  </div>
+  <div class="menu">
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
 </mat-toolbar>

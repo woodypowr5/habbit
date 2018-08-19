@@ -24,7 +24,7 @@ export class EntryFormScalarComponent implements OnInit {
       };
       this.saveMeasurement.emit(newMeasurement);
     } else {
-      console.log("not a number");
+      console.log('not a number');
     }
   }
 

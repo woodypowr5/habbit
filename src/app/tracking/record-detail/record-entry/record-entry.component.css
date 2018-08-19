@@ -60,4 +60,10 @@ app-record-marker-details{
     .mat-expansion-panel-header-title{
         font-size: 1.15em !important;
     }
+    mat-panel-title{
+        width: 250px !important;
+    }
+    mat-panel-description{
+        font-size: 20px !important;
+    }
 }    

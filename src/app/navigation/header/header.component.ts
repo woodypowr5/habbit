@@ -13,6 +13,7 @@ import { AuthService } from '../../auth/auth.service';
 export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth$: Observable<boolean>;
+  private activeRoute = 'plan';
 
   constructor(private store: Store<fromRoot.State>, private authService: AuthService) { }
 
@@ -26,5 +27,9 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  setActiveRoute(route: string) {
+    this.activeRoute = route;
   }
 }

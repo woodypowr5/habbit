@@ -87,7 +87,7 @@ export class MarkerDetailService {
         //     if (found === false) {
         //         dateSortedRecords.shift();
         //     }
-        // }    
+        // }
 
         let streak = 0;
         for (let i = 0; i < dateSortedRecords.length; i++) {

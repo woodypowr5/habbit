@@ -20,16 +20,16 @@ button{
 }
 @media screen and (max-width: 700px) {
     button{
-        font-size: 1.1em;
+        font-size: 0.8em;
         width: 150px;
     }
 }    
 @media screen and (max-width: 550px) {
     button{
-        font-size: 1.1em;
-        width: 140px;
+        font-size: 0.8em;
+        width: 33%;
     }
     .arrow{
-        display: none;
+        /* display: none; */
     }
 }     

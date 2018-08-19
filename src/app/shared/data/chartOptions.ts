@@ -66,7 +66,14 @@ export const ChartOptions = {
           showAxis: false
         },
         variability: {
-
+            legend: false,
+            min: 0,
+            max: 5,
+            bigSegments: 0,
+            smallSegments: 0,
+            startAngle: 240,
+            angleSpan: 240,
+            showAxis: false
         }
     },
     trends: {
