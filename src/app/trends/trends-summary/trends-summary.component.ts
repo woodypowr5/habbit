@@ -21,6 +21,8 @@ import { LifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 export class TrendsSummaryComponent implements OnInit {
   @Input() records: Record[];
   @Input() plan: Plan;
+  private movingAveragePeriod = Constants.movingAveragePeriod;
+  private showAdvanced = false;
 
   private seriesData: any = {
     raw: [],
@@ -55,7 +57,7 @@ export class TrendsSummaryComponent implements OnInit {
       this.seriesData.raw = this.chartDataService.computeRawData(this.records, this.plan);
       this.seriesData.scalar = this.seriesData.raw;
       const dataCopy = this.chartDataService.transformBooleanData(this.seriesData.raw);
-      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(dataCopy);
+      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(dataCopy, this.movingAveragePeriod);
       this.seriesData.globalAverage = this.chartDataService.computeGlobalAverage(dataCopy);
       if (this.activeDatatype === 'range') {
         this.filteredSeriesData.range = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.raw);
@@ -71,6 +73,8 @@ export class TrendsSummaryComponent implements OnInit {
   recomputeData() {
     this.curve = Constants.chartCurveFunctions.summary[this.selectedTrendType];
     this.visibleSeries = this.computeVisibleSeries(this.seriesState);
+    const dataCopy = this.chartDataService.transformBooleanData(this.seriesData.raw);
+      this.seriesData.movingAverage = this.chartDataService.computeMovingAverage(dataCopy, this.movingAveragePeriod);
     if (this.activeDatatype === 'range' || this.activeDatatype === 'scalar') {
       this.filteredSeriesData[this.activeDatatype] = this.chartDataService.filterDataBySeries(
         this.visibleSeries,
@@ -174,5 +178,22 @@ export class TrendsSummaryComponent implements OnInit {
     newSeriesState[datatype] = [];
     this.seriesState = newSeriesState;
     this.recomputeData();
+  }
+
+  increasePeriod(): void {
+    this.movingAveragePeriod++;
+    this.recomputeData();
+  }
+
+  decreasePeriod(): void {
+    this.movingAveragePeriod--;
+    if (this.movingAveragePeriod < 1) {
+      this.movingAveragePeriod = 1;
+    }
+    this.recomputeData();
+  }
+
+  toggleShowAdvanced() {
+    this.showAdvanced = !this.showAdvanced;
   }
 }

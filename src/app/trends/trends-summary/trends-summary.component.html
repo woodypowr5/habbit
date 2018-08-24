@@ -173,5 +173,14 @@
             </mat-button-toggle>
 
         </mat-button-toggle-group>
+        <div class="advanced-controls" *ngIf="selectedTrendType === 'movingAverage'">
+            <button mat-raised-button class="show-advanced" (click)="toggleShowAdvanced()">Advanced</button>
+            <div class="moving-average" *ngIf="showAdvanced === true && selectedTrendType === 'movingAverage'">
+                <h3>Smoothing Factor</h3>
+                <button mat-raised-button class="show-all" (click)="decreasePeriod()">-</button>
+                {{ movingAveragePeriod }}
+                <button mat-raised-button class="show-all" (click)="increasePeriod()">+</button>
+            </div>
+        </div>
     </mat-card> 
 </mat-card> 

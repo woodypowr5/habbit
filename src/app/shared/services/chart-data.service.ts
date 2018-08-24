@@ -104,12 +104,12 @@ export class ChartDataService {
     return seriesData;
   }
 
-  computeMovingAverage(rawData: any): any {
+  computeMovingAverage(rawData: any, period: number): any {
     const seriesData: any = [];
     rawData.map(series => {
       seriesData.push({
         name:  series.name,
-        series: this.computeSeriesMovingAverage(series.series, 3)
+        series: this.computeSeriesMovingAverage(series.series, period)
       });
     });
     return seriesData;
