@@ -62,6 +62,9 @@ ngx-charts-pie-chart, ngx-charts-gauge{
     right: -20px;
     position: relative;
 }
+.pdf-graph-wrapper{
+    display: flex;
+}
 .pdf-graph-wrapper.bottom{
     width: 100% !important;
 }

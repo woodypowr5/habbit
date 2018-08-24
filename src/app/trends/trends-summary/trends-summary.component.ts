@@ -65,7 +65,6 @@ export class TrendsSummaryComponent implements OnInit {
         this.filteredSeriesData.boolean = this.chartDataService.computeHeatmapSeries([this.plan.markers[0]], this.records, this.plan);
       } else if (this.activeDatatype === 'scalar') {
         this.filteredSeriesData.scalar = this.chartDataService.filterDataBySeries([this.plan.markers[0]], this.seriesData.scalar);
-        console.log(this.seriesData.scalar)
       }
     }
   }
