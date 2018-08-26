@@ -100,7 +100,7 @@
             [max]="chartOptions.performance.average.max"
             [bigSegments]="chartOptions.performance.average.bigSegments"
             [smallSegments]="chartOptions.performance.average.smallSegments"
-        
+            [scheme]="chartOptions.performance.average.colorScheme"
             [showAxis]="chartOptions.performance.average.showAxis"
             (select)="onSelect($event)"
           >
@@ -121,7 +121,7 @@
               [max]="chartOptions.performance.variability.max"
               [bigSegments]="chartOptions.performance.variability.bigSegments"
               [smallSegments]="chartOptions.performance.variability.smallSegments"
-         
+              [scheme]="chartOptions.performance.variability.colorScheme"
               [showAxis]="chartOptions.performance.variability.showAxis"
               (select)="onSelect($event)"
             >

@@ -10,7 +10,7 @@ export const ChartOptions = {
         showXAxisLabel: false,
         showYAxisLabel: false,
         doughnut: true,
-        arcWidth: 0.25
+        arcWidth: 0.15
     },
     streaks: {
         scheme: Constants.chartColorScheme.streaks,
@@ -40,7 +40,7 @@ export const ChartOptions = {
             showYAxisLabel: true,
             yAxisLabel: 'Probability',
             timeline: false,
-            colorScheme: Constants.chartColorScheme,
+            colorScheme: Constants.chartColorScheme.streaks,
             autoScale: true,
             curve: Constants.chartCurveFunctions.markerDetails
         },
@@ -53,7 +53,7 @@ export const ChartOptions = {
             xAxisLabel: 'Logged Entry',
             showYAxisLabel: true,
             yAxisLabel: 'Total',
-            colorScheme: Constants.chartColorScheme,
+            colorScheme: Constants.chartColorScheme.streaks,
         },
         average: {
           legend: false,
@@ -63,7 +63,8 @@ export const ChartOptions = {
           smallSegments: 0,
           startAngle: 240,
           angleSpan: 240,
-          showAxis: false
+          showAxis: false,
+          colorScheme: Constants.chartColorScheme.streaks,
         },
         variability: {
             legend: false,
@@ -73,7 +74,8 @@ export const ChartOptions = {
             smallSegments: 0,
             startAngle: 240,
             angleSpan: 240,
-            showAxis: false
+            showAxis: false,
+            colorScheme: Constants.chartColorScheme.streaks,
         }
     },
     trends: {

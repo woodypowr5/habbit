@@ -8,6 +8,11 @@
     flex-wrap: wrap;
     padding-bottom: 0px;
 }
+.marker-container.active-markers{
+    box-shadow: none !important;
+    border-top: 5px solid rgba(137, 191, 41, 0.35);
+    border-bottom: 5px solid rgba(137, 191, 41, 0.35);
+}
 .action-container{
     width: 100%;
 }
