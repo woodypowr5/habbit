@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-
 import { AuthService } from '../auth.service';
 import { UIService } from '../../shared/ui.service';
 import * as fromRoot from '../../app.reducer';
@@ -16,6 +15,7 @@ import * as fromRoot from '../../app.reducer';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading$: Observable<boolean>;
+  captcha: any;
 
   constructor(
     private authService: AuthService,
@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]
       }),
-      password: new FormControl('', { validators: [Validators.required] })
+      password: new FormControl('', { validators: [Validators.required] }),
+      captcha: new FormControl('', { validators: [Validators.required] })
     });
+    console.log(this.loginForm)
   }
 
   onSubmit() {

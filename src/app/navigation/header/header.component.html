@@ -7,7 +7,7 @@
   <div class="navlinks-container" fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li *ngIf="!(isAuth$ | async)">
-        <a click)="setActiveRoute('signup')" routerLink="/signup" [ngClass]="{'active': activeRoute === 'signup'}">Signup</a>
+        <a (click)="setActiveRoute('signup')" routerLink="/signup" [ngClass]="{'active': activeRoute === 'signup'}">Signup</a>
       </li>
       <li *ngIf="!(isAuth$ | async)">
         <a (click)="setActiveRoute('login')" [ngClass]="{'active': activeRoute === 'login'}" routerLink="/login">Login</a>

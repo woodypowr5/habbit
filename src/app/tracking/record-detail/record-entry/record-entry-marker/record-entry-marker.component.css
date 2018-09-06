@@ -1,0 +1,16 @@
+.scroll-to-details{
+    display: none;
+}
+@media screen and (max-width: 1000px) {
+    .scroll-to-details{
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        font-size: 0.9em;
+        color: #AAA;
+    }
+    .scroll-to-details:hover{
+        cursor: pointer;
+    }    
+}    

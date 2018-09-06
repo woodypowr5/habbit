@@ -43,7 +43,7 @@ a:active {
   display: none;
 }
 .menu mat-icon{
-  font-size: 46px;
+  font-size: 32px;
 }
 .active{
   color: #AAA;

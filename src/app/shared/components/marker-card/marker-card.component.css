@@ -11,6 +11,12 @@
      }
 
 }
+@media screen and (max-width: 500px) {
+    .available-marker-card{
+        width: 115px;
+        height: 200px;
+    }
+}    
 .action-container{
     position: absolute;
     bottom: 30px;

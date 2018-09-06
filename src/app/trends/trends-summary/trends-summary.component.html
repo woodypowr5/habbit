@@ -28,7 +28,7 @@
             [seriesState]="seriesState.boolean"
         ></app-heatmap>
     </div>
-     <div class="chart-container" *ngIf="selectedTrendType === 'movingAverage' || selectedTrendType === 'globalAverage'">
+    <div class="chart-container" *ngIf="selectedTrendType === 'movingAverage' || selectedTrendType === 'globalAverage'">
         <ngx-charts-line-chart
             [scheme]="chartOptions.boolean.colorScheme"
             [results]="filteredSeriesData.boolean"

@@ -82,3 +82,21 @@
 .hidden{
     display: none;
 }
+@media screen and (max-width: 650px) {
+    .heatmap-cell.name{
+        font-size: 0.8em;
+        flex-basis: 220px !important;
+    }
+    .heatmap-cell.empty{
+        flex-basis: 220px !important;
+    }
+}    
+@media screen and (max-width: 500px) {
+    .heatmap-cell.name{
+        font-size: 0.8em;
+        flex-basis: 180px !important;
+    }
+    .heatmap-cell.empty{
+        flex-basis: 180px !important;
+    }
+}    

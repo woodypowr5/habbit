@@ -23,11 +23,11 @@
       <mat-hint>Please enter your password.</mat-hint>
       <mat-error>Missing password.</mat-error>
     </mat-form-field>
+    <re-captcha formControlName="captcha" siteKey="6LfP7m4UAAAAABDiv1H9Q7ZCagBjwU5QnVD1clBd"></re-captcha>
     <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
     <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
   </form>
 </section>
-
 <!-- <ol>
   <li>Add an email and password field (with Material Components of course)</li>
   <li>Add validation (email => required and email, password => required)</li>

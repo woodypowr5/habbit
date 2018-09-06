@@ -76,6 +76,7 @@ export class TrackingComponent implements OnInit, OnDestroy {
   }
 
   setActiveRecord(record: Record): void {
+    console.log(record)
     if (record) {
       this.activeRecord = record;
       if (record.date === null) {

@@ -95,10 +95,14 @@ export class HeatmapComponent implements OnInit, OnChanges {
     this.numDaysVisible = 20;
     this.dimensions.containerWidth = this.presentationArea.nativeElement.offsetWidth - 25; // padding
     this.dimensions.containerHeight = this.presentationArea.nativeElement.offsetHeight - 30;
+    this.dimensions.nameCellWidth = 260.0;
     if (this.dimensions.containerWidth < 800 ) {
       this.numDaysVisible = 10;
     }
-    this.dimensions.nameCellWidth = 260.0;
+    if (this.dimensions.containerWidth < 650 ) {
+      this.numDaysVisible = 5;
+      this.dimensions.nameCellWidth = 180.0;
+    }
     this.dimensions.dateRowHeight = 100.0;
     const remainderX = this.dimensions.containerWidth - this.dimensions.nameCellWidth;
     const remainderY = this.dimensions.containerHeight - this.dimensions.dateRowHeight;

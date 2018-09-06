@@ -20,6 +20,7 @@
   padding: 20px 40px;
   font-family: 'Roboto Slab';
 }
+
 .content1 .right{
   width: 40%;
   height: 500px;
@@ -49,3 +50,16 @@ mat-icon{
 .content-wrapper{
   margin-left: 70px;
 }
+@media (max-width: 1000px) {
+  .content1{
+    flex-direction: column !important;
+    height: unset !important;
+  }
+  .content1 .right, .content1 .left{
+    width: 100%;
+  }  
+  .content1 .left{
+    height: unset;
+    padding: 40px 20px 20px 20px;
+  }
+}  

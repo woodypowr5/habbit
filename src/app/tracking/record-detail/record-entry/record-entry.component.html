@@ -31,7 +31,6 @@
                 >
                     {{ measurements[i].value }}
                 </mat-panel-description>
-
             </mat-expansion-panel-header>
             <app-record-entry-marker
                 [marker]="marker"
@@ -43,6 +42,7 @@
     </mat-accordion>
     
     <app-record-marker-details
+        id="record-marker-details"
         [activeMarker]="activeMarker"    
     >
     </app-record-marker-details>

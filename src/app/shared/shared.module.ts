@@ -15,6 +15,8 @@ import { HttpModule } from '@angular/http';
 import { PopoverComponent } from './components/popover/popover.component';
 import { MarkerCardComponent } from './components/marker-card/marker-card.component';
 import { SubheaderComponent } from './components/subheader/subheader.component';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
   declarations: [
     TooltipComponent,
@@ -52,7 +56,9 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
     EntryFormRangeComponent,
     EntryFormScalarComponent,
     EntryFormBooleanComponent,
-    CalendarDayPipe
+    CalendarDayPipe,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ]
 })
 export class SharedModule {}

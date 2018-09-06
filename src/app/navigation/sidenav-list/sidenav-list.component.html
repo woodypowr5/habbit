@@ -19,10 +19,10 @@
     <mat-icon>trending_up</mat-icon>
     <span class="nav-caption">My Trends</span>
   </a>
-  <mat-list-item>
+  <a mat-list-item>
     <button mat-icon-button (click)="onLogout()" *ngIf="isAuth$ | async">
       <mat-icon>eject</mat-icon>
-      <span class="nav-caption">Logout</span>
+      <span class="nav-caption">Log Out</span>
     </button>
-  </mat-list-item>
+  </a>
 </mat-nav-list>

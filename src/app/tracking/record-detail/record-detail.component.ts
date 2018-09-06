@@ -6,7 +6,7 @@ import { TrackingService } from '../../shared/services/tracking.service';
 import { EmptyPlan } from '../../plan/emptyPlan.class';
 import { DateService } from '../../shared/services/date.service';
 import { Plan } from '../../plan/plan.model';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { EmptyRecord } from '../emptyRecord.class';
 
 @Component({
@@ -20,6 +20,7 @@ export class RecordDetailComponent implements OnInit {
   @Input() activeDate: Date;
   @Input() history: History;
   @Input() activeDateChanged: Subject<void>;
+  @Output() setNewActiveRecord: EventEmitter<Record> = new EventEmitter();
 
   private recordEntryActive = false;
 
@@ -66,14 +67,17 @@ export class RecordDetailComponent implements OnInit {
 
   deleteRecord(record: Record): void {
     this.trackingService.deleteRecord(record);
+    this.setNewActiveRecord.emit(this.record);
   }
 
   updateRecord(record: Record): void {
     this.trackingService.updateRecord(record);
+    this.setNewActiveRecord.emit(this.record);
   }
 
   createRecord(record: Record): void {
     this.trackingService.addRecordtoHistory(record);
+    this.setNewActiveRecord.emit(this.record);
   }
 
 }

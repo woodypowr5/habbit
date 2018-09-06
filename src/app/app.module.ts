@@ -29,6 +29,7 @@ import { reducers } from './app.reducer';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { RecordsComponent } from './tracking/records/records.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

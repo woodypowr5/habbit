@@ -36,4 +36,9 @@ export class RecordEntryMarkerComponent implements OnInit {
     }
     this.saveMeasurement.emit(measurement);
   }
+
+  scrollTo(elementId: string): void {
+    const element: Element = document.getElementById(elementId);
+    element.scrollIntoView();
+  }
 }

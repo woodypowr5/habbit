@@ -11,10 +11,17 @@
         height: 220px;
     }
 }
+@media screen and (max-width: 500px) {
+    .active-marker-card{
+        width: 115px;
+        height: 200px;
+    }
+}    
 
 .edit-marker-button{
     width: 100%;
 }
+    
 .marker-icon{
    height: 50px;
    width: 50px;
