@@ -67,17 +67,14 @@ export class RecordDetailComponent implements OnInit {
 
   deleteRecord(record: Record): void {
     this.trackingService.deleteRecord(record);
-    this.setNewActiveRecord.emit(this.record);
   }
 
   updateRecord(record: Record): void {
     this.trackingService.updateRecord(record);
-    this.setNewActiveRecord.emit(this.record);
   }
 
   createRecord(record: Record): void {
     this.trackingService.addRecordtoHistory(record);
-    this.setNewActiveRecord.emit(this.record);
   }
 
 }

@@ -39,6 +39,10 @@ app-record-marker-details{
     background-color: #F6F6F6;
 }
 @media screen and (max-width: 1000px) {
+    mat-panel-description{
+        font-size: 18px;
+        padding-left: 0px;
+    }
     .record-entry-container{
         flex-direction: column !important;
     }
@@ -49,11 +53,17 @@ app-record-marker-details{
     app-record-marker-details{
         max-width: 100%;
     }
+    mat-expansion-panel{
+        font-size: 12px !important;
+    }
 }
 
 @media screen and (max-width: 700px) {
     .mat-expansion-panel-header-title{
         font-size: 1.3em !important;
+    }
+    mat-panel-description{
+        font-size: 14px;
     }
 }    
 @media screen and (max-width: 550px) {
@@ -62,8 +72,5 @@ app-record-marker-details{
     }
     mat-panel-title{
         width: 250px !important;
-    }
-    mat-panel-description{
-        font-size: 20px !important;
     }
 }    

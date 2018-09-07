@@ -1,3 +1,4 @@
+import { DateService } from './../../../shared/services/date.service';
 import { Record } from '../../../shared/types/record.model';
 import { TrackingDay } from '../../../shared/types/trackingDay.model';
 import { EmptyRecord } from '../../emptyRecord.class';
@@ -15,7 +16,7 @@ export class RecordComponent implements OnInit {
   @Input() date: Date;
   @Output() newActiveRecord: EventEmitter<TrackingDay> = new EventEmitter();
 
-  constructor() { }
+  constructor(private dateService: DateService) { }
 
   ngOnInit() {}
 
@@ -36,5 +37,9 @@ export class RecordComponent implements OnInit {
       return (this.record.measurements.length > 0);
     }
     return false;
+  }
+
+  isCurrentDay(date: Date) {
+    return this.dateService.isSameDate(date, new Date());
   }
 }

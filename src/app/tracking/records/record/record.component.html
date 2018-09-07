@@ -10,7 +10,8 @@
   'prev-prev-prev-day' : index === 0,
   'next-day' : index === 4,
   'next-next-day' : index === 5,
-  'next-next-next-day': index === 6}"
+  'next-next-next-day': index === 6,
+  'current-day': isCurrentDay(date)}"
 > 
   <h3>{{ date | calendarDay:date }}</h3>
   <mat-card

@@ -60,7 +60,6 @@ export class TrackingService {
   }
 
   addRecordtoHistory(record: Record): void {
-    console.log(record)
     for (let i = 0; i < this.history.records.length; i++) {
       const currentRecord =  this.history.records[i];
       if (this.dateService.isSameDate(record.date, currentRecord.date)) {

@@ -40,7 +40,7 @@ export class TrackingComponent implements OnInit, OnDestroy {
     this.activeDate = new Date();
     this.historySubscription = this.trackingService.historyChanged.subscribe(history => {
       this.history = history;
-      this.activeRecord = this.getRecordForDate(this.history.records, this.activeDate);
+      this.setActiveRecord(this.history.records.filter(record => this.dateService.isSameDate(record.date, this.activeDate))[0]);
     });
     this.planService.planChanged.subscribe(plan =>
        this.myPlan = plan
@@ -76,7 +76,6 @@ export class TrackingComponent implements OnInit, OnDestroy {
   }
 
   setActiveRecord(record: Record): void {
-    console.log(record)
     if (record) {
       this.activeRecord = record;
       if (record.date === null) {

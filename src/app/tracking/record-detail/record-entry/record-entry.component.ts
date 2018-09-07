@@ -37,7 +37,6 @@ export class RecordEntryComponent implements OnInit {
 
   getMeasurementsForMarkers(): Measurement[] {
     const measurements: Measurement[] = [];
-    console.log(this.record.measurements)
     for (let i = 0; i < this.myPlan.markers.length; i++) {
       this.record.measurements.filter(currentMeasurement => {
         if (currentMeasurement.markerName === this.myPlan.markers[i].name) {
@@ -45,7 +44,6 @@ export class RecordEntryComponent implements OnInit {
         }
       });
     }
-    console.log(measurements)
     return measurements;
   }
 

@@ -31,3 +31,23 @@ h2{
 .datatype-button.active{
     background-color: #EEE;
 }
+
+@media screen and (max-width: 700px) {
+    mat-card{
+        padding: 10px !important;
+    }
+    mat-card-title{
+        font-size: 24px !important;
+    }
+    h2{
+        font-size: 1em !important;
+    }        
+    mat-card mat-card-title{
+        font-size: 0.9em !important;
+    }
+}    
+@media screen and (max-width: 500px) {
+    mat-card mat-card-title{
+        font-size: 0.7em !important;
+    }
+}    

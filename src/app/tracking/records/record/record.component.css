@@ -117,7 +117,9 @@ h3{
     background-size: 60px 60px; 
     opacity: 0.55; 
 }
-
+.current-day{
+    border: 3px solid rgba(137, 191, 41, 0.35);
+}
 @media (max-width: 800px) {
     .record{
         height: 120px;

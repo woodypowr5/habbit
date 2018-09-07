@@ -67,7 +67,7 @@ export class RecordsComponent implements OnInit {
       date: null,
       measurements: []
     };
-    const foundRecord = this.records.map(currentRecord => {
+    this.records.map(currentRecord => {
       if (this.dateService.isSameDate(currentRecord.date, date)) {
           record = currentRecord;
       }
