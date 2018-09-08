@@ -71,7 +71,17 @@ mat-card-content{
     }
     mat-card-title{
         font-size: 1.1em;
-     }  
+    }  
+    .action-container{
+        width: 70px;
+    }
+    .mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child{
+        margin-left: 6px !important;
+    }
+    /* mat-card-actions{
+        width: 80% !important;
+        margin-left: 10% !important;
+    } */
 }
 @media screen and (max-width: 650px) {
     mat-card{

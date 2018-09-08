@@ -1,0 +1,32 @@
+<div class="graph-container">
+  <div 
+    class="graph-legend"
+  >
+    <div 
+      class="correlation-legend" 
+      *ngFor="let correlation of correlations; let i = index;"
+      [ngStyle]="{'height': constants.correlationEntryHeight + 'px'}"
+    >
+      {{ correlation.marker.name }}
+    </div>
+  </div>  
+  <div 
+    id="correlation-graph" 
+    class="correlation-graph"
+    [ngStyle]="{'height': getGraphHeight() + 'px'}"
+  >
+    <div 
+      class="correlation" 
+      *ngFor="let correlation of correlations; let i = index;"
+      [ngStyle]="{'width': math.abs(correlation.coefficient * 100) + '%', 'top': constants.correlationEntryHeight * i + 'px', 'height': constants.correlationEntryHeight - 5 + 'px', 'left': getLeftPosition(correlation) + '%'}"
+    >
+    </div>
+    <div
+      class="guideline"
+      *ngFor="let enumeration of constants.correlationStrengthEnumerations"
+      [ngStyle]="{'left': enumeration.value * 100 + '%'}"
+    >
+      <div class="strength-label">{{ enumeration.label }}</div>
+    </div> 
+  </div>
+</div>

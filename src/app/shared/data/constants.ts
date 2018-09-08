@@ -31,5 +31,32 @@ export const Constants = {
     },
     tooltipTypes: ['description', 'details'],
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    movingAveragePeriod: 3
+    movingAveragePeriod: 3,
+    correlationEntryHeight: 75,
+    correlationStrengthEnumerations: [
+        {
+            label: 'strongly related',
+            value: -0.6
+        },
+        {
+            label: 'moderately related',
+            value: -0.45
+        },
+        {
+            label: 'weakly related',
+            value: -0.3
+        },
+        {
+            label: 'strongly related',
+            value: 0.6
+        },
+        {
+            label: 'moderately related',
+            value: 0.45
+        },
+        {
+            label: 'weakly related',
+            value: 0.3
+        }
+    ]
 };

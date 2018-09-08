@@ -1,0 +1,36 @@
+.graph-container{   
+
+    display: flex;
+
+}
+.correlation-graph{
+    width: 50%;
+    margin-left: 300px;
+    position: relative;
+    height: 50px;
+}
+.correlation{
+    position: absolute;
+    background-color: #555;
+    left: 0px;
+}
+.correlation-legend{
+    width: 400px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+.guideline{
+    position: absolute;
+    border-left: 1px dashed #AAA;
+    height: 100%;
+}
+.strength-label{
+    transform: rotate(90deg);
+    padding-top: 105%;
+    padding-left: 100px;
+    width: 300px;
+    color: #AAA;
+    font-size: 0.8em;
+
+}

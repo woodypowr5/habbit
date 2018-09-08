@@ -1,3 +1,4 @@
+import { Correlation } from './../../../shared/types/correlation';
 import { PopoverText } from '../../../shared/data/popoverText';
 import { ChartOptions } from '../../../shared/data/chartOptions';
 import { ChartDataService } from '../../../shared/services/chart-data.service';
@@ -18,10 +19,7 @@ export class AllActivitiesComponent implements OnInit {
   private correlationCoefficients: number[] = [];
   private chartOptions = ChartOptions.trends.linkedAllMarkers;
   private popoverText = PopoverText.trends.linked.allMarkers;
-  private correlationDescriptions = {
-    strengths: [],
-    polarities: []
-  };
+  private correlations: Correlation[];
   constructor(private chartDataService: ChartDataService) { }
 
   public get otherMarkers(): Marker[] {
@@ -37,36 +35,15 @@ export class AllActivitiesComponent implements OnInit {
 
   setActiveMarker(marker: Marker) {
     this.correlationCoefficients = [];
-    this.correlationDescriptions = {
-      strengths: [],
-      polarities: []
-    };
+    this.correlations = [];
     this.activeMarker = marker;
     this.otherMarkers.map(otherMarker => {
       const nextCorrelationCoefficient = this.chartDataService.computeLinearCorrelation(this.records, [this.activeMarker, otherMarker]);
       this.correlationCoefficients.push(nextCorrelationCoefficient);
-      this.correlationDescriptions.strengths.push(this.getStrengthEnumeration(nextCorrelationCoefficient));
+      this.correlations.push({
+        marker: otherMarker,
+        coefficient: nextCorrelationCoefficient
+      });
     });
-  }
-
-  getStrengthEnumeration(correlationCoefficient: number) {
-    if (Math.abs(correlationCoefficient) > 0.67) {
-      return 'strongly';
-    } else if (Math.abs(correlationCoefficient) > 0.33) {
-      return 'moderately';
-    } else if (Math.abs(correlationCoefficient) > 0.20) {
-      return 'weakly';
-    } else {
-      return 'not significantly';
-    }
-  }
-
-  getResults(correlationCoefficient: number): any {
-    if (typeof correlationCoefficient === 'number') {
-      return [{
-        name: 'strength of relationship',
-        value: correlationCoefficient
-      }];
-    }
   }
 }

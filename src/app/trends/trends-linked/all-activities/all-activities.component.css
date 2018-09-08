@@ -1,3 +1,10 @@
+.parent-container{
+    display: flex;
+    min-height: 1000px;
+}
+.select-marker{
+    width: 500px;
+}
 mat-select{
     width: 150px;
     height: 25px;
@@ -6,39 +13,18 @@ mat-select{
     padding: 5px;
     padding-top: 8px;
 }
-
-.go-to-text{
-    margin-left: 20px;
+.correlation-details{
+    flex-grow: 2;
 }
-.chart-wrapper{
-    width: 200px;
-    height: 200px;
-    display: inline-block;
+.select-marker, .correlation-details{
+    margin: 20px;
+    padding-top: 80px;
 }
-.correlation-marker-card{
-    width: 25%;
-    margin-bottom: 20px;
-}
-.correlation-markers-container{
-    flex-wrap: wrap;
-}
-.strength{
-    font-weight: bold;
-    font-size: 1.2em;
-}
-.percent-correlation{
-    font-size: 1.5em;
-}
-i{
-    font-size: 1.3em;
-}
-.marker-card{
-    margin-right: 20px;
-}
-.marker-card-container{
-    padding-bottom: 0px;
-    flex-wrap: wrap;
-}
-.active .available-marker-card{
-    background-color: #CCC;
-}
+@media screen and (max-width: 1000px) {
+    .parent-container{
+        flex-direction: column;
+    }    
+    .select-marker, .correlation-details{
+        width: 100%; 
+    }
+}    
