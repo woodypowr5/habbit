@@ -15,10 +15,11 @@ mat-select{
 }
 .correlation-details{
     flex-grow: 2;
+    margin-left: 0px !important;
 }
 .select-marker, .correlation-details{
     margin: 20px;
-    padding-top: 80px;
+    padding-top: 75px;
 }
 @media screen and (max-width: 1000px) {
     .parent-container{

@@ -17,8 +17,16 @@
   >
     <div 
       class="correlation" 
+      matTooltip="{{ correlation.marker.name }}"
       *ngFor="let correlation of correlations; let i = index;"
-      [ngStyle]="{'width': math.abs(correlation.coefficient * 100) + '%', 'top': constants.correlationEntryHeight * i + 'px', 'height': constants.correlationEntryHeight - 5 + 'px', 'left': getLeftPosition(correlation) + '%'}"
+      (click)="setActiveCorrelationrMarker(correlation)"
+      [ngStyle]="{
+        'width': math.abs(correlation.coefficient * 100) + '%', 
+        'top': constants.correlationEntryHeight * i + 'px', 
+        'height': constants.correlationEntryHeight - 5 + 'px', 
+        'left': getLeftPosition(correlation) + '%', 
+        'background-color': getCorrelationColor(correlation)
+      }"
     >
     </div>
     <div

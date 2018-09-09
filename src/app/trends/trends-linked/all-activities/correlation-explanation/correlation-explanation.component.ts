@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Correlation } from './../../../../shared/types/correlation';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-correlation-explanation',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./correlation-explanation.component.css']
 })
 export class CorrelationExplanationComponent implements OnInit {
-
+  @Input() correlation: Correlation;
+  
   constructor() { }
 
   ngOnInit() {

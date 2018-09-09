@@ -36,27 +36,27 @@ export const Constants = {
     correlationStrengthEnumerations: [
         {
             label: 'strongly related',
-            value: -0.6
+            value: -0.67
         },
         {
             label: 'moderately related',
-            value: -0.45
+            value: -0.5
         },
         {
             label: 'weakly related',
-            value: -0.3
+            value: -0.33
         },
         {
             label: 'strongly related',
-            value: 0.6
+            value: 0.67
         },
         {
             label: 'moderately related',
-            value: 0.45
+            value: 0.50
         },
         {
             label: 'weakly related',
-            value: 0.3
+            value: 0.33
         }
     ]
 };

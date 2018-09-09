@@ -20,6 +20,7 @@ export class AllActivitiesComponent implements OnInit {
   private chartOptions = ChartOptions.trends.linkedAllMarkers;
   private popoverText = PopoverText.trends.linked.allMarkers;
   private correlations: Correlation[];
+  private activeCorrelation: Correlation = null;
   constructor(private chartDataService: ChartDataService) { }
 
   public get otherMarkers(): Marker[] {
@@ -45,5 +46,10 @@ export class AllActivitiesComponent implements OnInit {
         coefficient: nextCorrelationCoefficient
       });
     });
+  }
+  
+  setActiveCorrelation(correlation: Correlation) {
+    console.log(correlation)
+    this.activeCorrelation = correlation;
   }
 }

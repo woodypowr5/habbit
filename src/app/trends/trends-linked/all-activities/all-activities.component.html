@@ -10,14 +10,14 @@
           {{ marker.name }}
         </mat-option>
     </mat-select>
+    <app-correlation-explanation
+      [correlation]="activeCorrelation"
+    ></app-correlation-explanation>
   </mat-card>
-
   <mat-card class="correlation-details">
     <app-correlation-graph
       [correlations]="correlations"
+      (newActiveCorrelation)="setActiveCorrelation($event)"
     ></app-correlation-graph>
-    <app-correlation-explanation
-  
-    ></app-correlation-explanation>
   </mat-card>
 </div> 

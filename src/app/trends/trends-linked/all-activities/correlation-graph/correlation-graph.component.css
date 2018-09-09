@@ -4,15 +4,16 @@
 
 }
 .correlation-graph{
-    width: 50%;
-    margin-left: 300px;
+    width: 400px;
+    margin-left: 400px;
     position: relative;
     height: 50px;
 }
 .correlation{
     position: absolute;
-    background-color: #555;
     left: 0px;
+    transition: width 0.5s;
+    z-index: 20;
 }
 .correlation-legend{
     width: 400px;

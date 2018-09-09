@@ -30,5 +30,4 @@ export class TooltipComponent implements OnInit {
       this.iconCategory = this.type;
     }
   }
-
 }
