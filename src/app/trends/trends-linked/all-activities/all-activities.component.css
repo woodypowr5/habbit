@@ -1,6 +1,7 @@
 .parent-container{
     display: flex;
     min-height: 1000px;
+    overflow: hidden;
 }
 .select-marker{
     width: 500px;
@@ -38,5 +39,7 @@ mat-select{
     .select-marker, .correlation-details{
         width: 100%; 
         margin: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }    

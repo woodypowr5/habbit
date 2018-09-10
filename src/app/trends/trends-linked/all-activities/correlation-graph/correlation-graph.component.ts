@@ -4,6 +4,7 @@ import { Constants } from './../../../../shared/data/constants';
 import { Correlation } from './../../../../shared/types/correlation';
 import { Marker } from './../../../../shared/types/marker.model';
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-correlation-graph',
@@ -19,7 +20,7 @@ export class CorrelationGraphComponent implements OnInit {
   private math = Math;
   private graphRef = ElementRef;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private overlay: Overlay) { }
 
   ngOnInit() {}
 
@@ -60,7 +61,7 @@ export class CorrelationGraphComponent implements OnInit {
       data: {
         correlation: this.activeCorrelation
       },
-      // scrollStrategy: this.overlay.scrollStrategies.noop()
+      scrollStrategy: this.overlay.scrollStrategies.noop()
     });
   }
 }

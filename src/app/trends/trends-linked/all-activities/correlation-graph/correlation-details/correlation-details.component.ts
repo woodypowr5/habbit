@@ -1,3 +1,4 @@
+import { Correlation } from './../../../../../shared/types/correlation';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -7,13 +8,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./correlation-details.component.css']
 })
 export class CorrelationDetailsComponent implements OnInit {
-  private data: any;
+  private correlation: Correlation;
 
   constructor(
     private dialogRef: MatDialogRef<CorrelationDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.data = data;
+    this.correlation = data;
   }
 
   ngOnInit() {
