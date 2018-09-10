@@ -23,15 +23,16 @@ export class CustomMarkerComponent implements OnInit {
   constructor(
     private planService: PlanService,
     private dialogRef: MatDialogRef<CustomMarkerComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {
-      this.data = data;
-      this.customForm = new FormGroup({
-        'name': new FormControl(null, [Validators.required, this.nameTaken.bind(this)]),
-        'minLabel': new FormControl(null),
-        'maxLabel': new FormControl(null),
-        'unit': new FormControl(null)
-      });
-    }
+    @Inject(MAT_DIALOG_DATA) data
+  ) {
+    this.data = data;
+    this.customForm = new FormGroup({
+      'name': new FormControl(null, [Validators.required, this.nameTaken.bind(this)]),
+      'minLabel': new FormControl(null),
+      'maxLabel': new FormControl(null),
+      'unit': new FormControl(null)
+    });
+  }
 
   ngOnInit() {
   }

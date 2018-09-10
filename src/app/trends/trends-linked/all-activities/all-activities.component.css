@@ -12,6 +12,8 @@ mat-select{
     border: 1px solid #AAA;
     padding: 5px;
     padding-top: 8px;
+    margin: 0 auto !important;
+    display: flex !important;
 }
 .correlation-details{
     flex-grow: 2;
@@ -21,11 +23,20 @@ mat-select{
     margin: 20px;
     padding-top: 75px;
 }
-@media screen and (max-width: 1000px) {
+.subheader{
+    width: unset !important;  /* for the stupid subheader width set to 500px by angularMaterial */
+}
+@media screen and (max-width: 1400px) {
+    .select-marker{
+        width: 350px;
+    }
+}    
+@media screen and (max-width: 1100px) {
     .parent-container{
         flex-direction: column;
     }    
     .select-marker, .correlation-details{
         width: 100%; 
+        margin: 0px;
     }
 }    

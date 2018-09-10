@@ -1,3 +1,5 @@
+import { CorrelationDetailsComponent } from './correlation-details/correlation-details.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Constants } from './../../../../shared/data/constants';
 import { Correlation } from './../../../../shared/types/correlation';
 import { Marker } from './../../../../shared/types/marker.model';
@@ -10,16 +12,16 @@ import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@ang
 })
 export class CorrelationGraphComponent implements OnInit {
   @Input() correlations: Correlation[];
+  private activeCorrelation: Correlation =  null;
   @Output() newActiveCorrelation: EventEmitter<Correlation> = new EventEmitter(null);
+  dialogRef: MatDialogRef<CorrelationDetailsComponent>;
   private constants = Constants;
- 
   private math = Math;
   private graphRef = ElementRef;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getCorrelation(marker: Marker): any {
     this.correlations.map(correlation => {
@@ -49,6 +51,16 @@ export class CorrelationGraphComponent implements OnInit {
   }
 
   setActiveCorrelationrMarker(correlation: Correlation): void {
+    this.activeCorrelation = correlation;
     this.newActiveCorrelation.emit(correlation);
+  }
+
+  openDialog(): void {
+    this.dialogRef = this.dialog.open(CorrelationDetailsComponent, {
+      data: {
+        correlation: this.activeCorrelation
+      },
+      // scrollStrategy: this.overlay.scrollStrategies.noop()
+    });
   }
 }

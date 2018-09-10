@@ -10,7 +10,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ActivityDetailsComponent } from './trends-linked/activity-details/activity-details.component';
 import { HeatmapComponent } from './trends-summary/heatmap/heatmap.component';
 import { CorrelationGraphComponent } from './trends-linked/all-activities/correlation-graph/correlation-graph.component';
-import { CorrelationExplanationComponent } from './trends-linked/all-activities/correlation-explanation/correlation-explanation.component';
+import { CorrelationDetailsComponent } from './trends-linked/all-activities/correlation-graph/correlation-details/correlation-details.component';
 
 @NgModule({
     declarations: [
@@ -22,13 +22,14 @@ import { CorrelationExplanationComponent } from './trends-linked/all-activities/
         ActivityDetailsComponent,
         HeatmapComponent,
         CorrelationGraphComponent,
-        CorrelationExplanationComponent
+        CorrelationDetailsComponent
     ],
     imports: [
         SharedModule,
         NgxChartsModule,
         TrendsRoutingModule
     ],
-    providers: []
+    providers: [],
+    entryComponents: [CorrelationDetailsComponent]
 })
 export class TrendsModule {}

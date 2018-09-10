@@ -1,6 +1,6 @@
 <div class="parent-container">
   <mat-card class="select-marker">
-    <h1 class="subheader" *ngIf="plan.markers.length > 0">Select an activity from your plan:</h1>
+    <h1 class="subheader" *ngIf="plan.markers.length > 0">Select an activity:</h1>
     <mat-select [(value)]="activeMarker">
         <mat-option 
           *ngFor="let marker of plan.markers; let i = index;"
@@ -10,9 +10,6 @@
           {{ marker.name }}
         </mat-option>
     </mat-select>
-    <app-correlation-explanation
-      [correlation]="activeCorrelation"
-    ></app-correlation-explanation>
   </mat-card>
   <mat-card class="correlation-details">
     <app-correlation-graph

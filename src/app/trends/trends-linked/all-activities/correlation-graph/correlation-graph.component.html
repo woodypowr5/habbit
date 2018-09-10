@@ -19,7 +19,7 @@
       class="correlation" 
       matTooltip="{{ correlation.marker.name }}"
       *ngFor="let correlation of correlations; let i = index;"
-      (click)="setActiveCorrelationrMarker(correlation)"
+      (click)="setActiveCorrelationrMarker(correlation); openDialog()"
       [ngStyle]="{
         'width': math.abs(correlation.coefficient * 100) + '%', 
         'top': constants.correlationEntryHeight * i + 'px', 

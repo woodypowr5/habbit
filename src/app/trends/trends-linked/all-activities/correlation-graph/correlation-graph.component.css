@@ -1,11 +1,9 @@
 .graph-container{   
-
     display: flex;
-
 }
 .correlation-graph{
     width: 400px;
-    margin-left: 400px;
+    margin-left: 500px;
     position: relative;
     height: 50px;
 }
@@ -33,5 +31,91 @@
     width: 300px;
     color: #AAA;
     font-size: 0.8em;
+}
+@media screen and (max-width: 1850px) {
+    .correlation-graph{
+        margin-left: 400px;
+    }    
+}
+@media screen and (max-width: 1700px) {
+    .correlation-legend{
+        width: 300px;
+    }
+}    
+
+@media screen and (max-width: 1600px) {
+    .correlation-graph{
+        margin-left: 350px;
+    }    
+    .correlation-legend{
+        width: 270px;
+        font-size: 1.0em;
+    }
+}    
+
+@media screen and (max-width: 1500px) {
+    .correlation-graph{
+        margin-left: 250px;
+        padding: 20px;
+    }    
+    .correlation-legend{
+        width: 220px;
+        font-size: 1.0em;
+    }
+}    
+@media screen and (max-width: 1100px) {
+    .correlation-graph{
+        width: 400px;
+        margin-left: 400px;
+    }
+}   
+@media screen and (max-width: 950px) {
+    .correlation-graph{
+        margin-left: 300px;
+    }    
+    .correlation-legend{
+        width: 270px;
+        font-size: 1.0em;
+    }
+}   
+@media screen and (max-width: 800px) {
+    .correlation-graph{
+        margin-left: 300px;
+    } 
+    .correlation-legend{
+        width: 220px;
+        font-size: 0.9em;
+    }
+}    
+@media screen and (max-width: 700px) {
+    .correlation-graph{
+        margin-left: 200px;
+    }
+}    
+@media screen and (max-width: 650px) {
+    .correlation-graph{
+        margin-left: 200px;
+    }
+    .correlation-legend{
+        width: 150px;
+        font-size: 0.8em;
+    }
+}    
+@media screen and (max-width: 550px) {
+    .correlation-graph{
+        margin-left: 150px;
+    }
+}   
+
+@media screen and (max-width: 450px) {
+    .correlation-graph{
+        margin-left: 150px;
+    }
+    .correlation-legend{
+        width: 100px;
+        font-size: 0.8em;
+    }
+}    
+@media screen and (max-width: 420px) {
 
 }
