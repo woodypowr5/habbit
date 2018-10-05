@@ -28,6 +28,7 @@ import { AuthModule } from './auth/auth.module';
 import { reducers } from './app.reducer';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { RecordsComponent } from './tracking/records/records.component';
+import { UICarouselModule } from 'ui-carousel';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { RecordsComponent } from './tracking/records/records.component';
     AppComponent,
     WelcomeComponent,
     HeaderComponent,
-    SidenavListComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +49,7 @@ import { RecordsComponent } from './tracking/records/records.component';
     AngularFirestoreModule,
     HttpModule,
     AngularFireDatabaseModule,
+    UICarouselModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [

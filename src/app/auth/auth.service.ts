@@ -37,7 +37,7 @@ export class AuthService {
         this.router.navigate(['/plan']);
       } else {
         this.store.dispatch(new Auth.SetUnauthenticated());
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       }
     });
   }

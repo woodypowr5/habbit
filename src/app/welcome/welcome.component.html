@@ -1,4 +1,10 @@
-<section class="hero"></section>
+<section class="hero">
+  <ui-carousel [infinite]="true" [fade]="true" [speed]="1000" >
+      <ui-carousel-item *ngFor="let item of ['hello', 'there']">
+          {{ item }}
+      </ui-carousel-item>
+  </ui-carousel>
+</section>
 
 <section class="content1" fxLayout>
   <div class="left" fxLayout="column" fxLayoutAlign="space-around">

@@ -83,14 +83,7 @@ ngx-charts-pie-chart, ngx-charts-gauge{
 .marker-details-measurements-taken, .marker-details-summary-details{
     background-color: #FAFAFA;
 }
-.mat-tab-probabilities {
-    /* height: 200px !important; */
-}
-mat-tab-group{
-    /* width: 100%; */
-    /* height: 350px !important; */
-}
-mat-tab-body{
+.probabilities-chart{
     margin-top: 30px !important;
 }
 @media screen and (max-width: 1000px) {

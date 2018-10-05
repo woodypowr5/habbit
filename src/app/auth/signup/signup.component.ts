@@ -13,7 +13,6 @@ import * as fromRoot from '../../app.reducer';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  maxDate;
   isLoading$: Observable<boolean>;
 
   constructor(
@@ -24,8 +23,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
-    this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   onSubmit(form: NgForm) {

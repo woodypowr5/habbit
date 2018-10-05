@@ -148,6 +148,7 @@
         </mat-tab>
         <mat-tab class="mat-tab-probabilities" label="Probabilties">
           <ngx-charts-line-chart
+            class="probabilities-chart"
             [results]="results.performance.range"
             [scheme]="chartOptions.performance.range.colorScheme"
             [gradient]="chartOptions.performance.range.gradient"
