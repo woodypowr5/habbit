@@ -1,3 +1,4 @@
+
 import { CalendarDayPipe } from './pipes/calendarDay.pipe';
 import { EntryFormBooleanComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
 import { EntryFormScalarComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-scalar/entry-form-scalar.component';
@@ -17,6 +18,7 @@ import { MarkerCardComponent } from './components/marker-card/marker-card.compon
 import { SubheaderComponent } from './components/subheader/subheader.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,8 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     EntryFormRangeComponent,
     EntryFormScalarComponent,
     EntryFormBooleanComponent,
-    CalendarDayPipe
+    CalendarDayPipe,
+    FooterComponent
   ],
   providers: [
     DateService
@@ -58,7 +61,8 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
     EntryFormBooleanComponent,
     CalendarDayPipe,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    FooterComponent
   ]
 })
 export class SharedModule {}

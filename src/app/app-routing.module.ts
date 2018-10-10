@@ -1,11 +1,12 @@
+import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { WelcomeComponent } from './welcome/welcome.component';
+
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'tracking', loadChildren: './tracking/tracking.module#TrackingModule', canLoad: [AuthGuard] },
   { path: 'plan', loadChildren: './plan/plan.module#PlanModule', canLoad: [AuthGuard] },
   { path: 'trends', loadChildren: './trends/trends.module#TrendsModule', canLoad: [AuthGuard] }

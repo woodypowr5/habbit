@@ -1,0 +1,27 @@
+.hero-section{
+    height: 1200px;
+    position: relative;
+    /* border-bottom: 5px solid #CDCDCD; */
+}
+    @media screen and (max-width: 1000px) {
+        .hero-section{
+            height: 900px;
+        }
+    } 
+    @media screen and (max-width: 700px) {
+        .hero-section{
+            height: 700px;
+        }
+    }   
+    @media screen and (max-width: 500px) {
+        .hero-section{
+            height: 600px;
+        }
+    }    
+.details-section{
+    min-height: 800px;
+}
+app-home-carousel{
+    height: 100%;
+    position: relative;
+}

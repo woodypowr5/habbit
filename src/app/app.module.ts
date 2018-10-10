@@ -1,3 +1,4 @@
+import { PagesModule } from './pages/pages.module';
 import { MarkerService } from './shared/services/marker.service';
 import { MarkerDetailService } from './shared/services/markerDetail.service';
 import { CalculationService } from './shared/services/calculation.service';
@@ -13,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -29,12 +29,12 @@ import { reducers } from './app.reducer';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { RecordsComponent } from './tracking/records/records.component';
 import { UICarouselModule } from 'ui-carousel';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     HeaderComponent,
     SidenavListComponent
   ],
@@ -46,10 +46,12 @@ import { UICarouselModule } from 'ui-carousel';
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
+    PagesModule,
     AngularFirestoreModule,
     HttpModule,
     AngularFireDatabaseModule,
     UICarouselModule,
+    SharedModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [
