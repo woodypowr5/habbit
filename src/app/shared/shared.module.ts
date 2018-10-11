@@ -19,6 +19,7 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MaterialModule,
     FlexLayoutModule,
     RecaptchaModule.forRoot(),
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    RouterModule
   ],
   declarations: [
     TooltipComponent,

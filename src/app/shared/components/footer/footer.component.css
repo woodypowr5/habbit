@@ -1,3 +1,4 @@
+
 .footer-content-wrapper{
     height: 310px;
     padding-top: 50px;
@@ -16,7 +17,7 @@
     font-family: 'Roboto';
     font-weight: bold;
 }
-.footer-group a{
+.footer-group span{
     margin-bottom: 20px;
 }
 .footer-group a:hover{
@@ -35,13 +36,16 @@
     opacity: 0.7;
     cursor: pointer;
 }
-
+span:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
 
 @media screen and (max-width: 1000px) {
     .footer-group h3{
         font-size: 16px;
     }
-    .footer-group a{
+    .footer-group span{
         font-size: 13px;
     }
     .footer-content-wrapper{
@@ -67,7 +71,7 @@
         margin-bottom: 25px;
         font-size: 20px;
     }
-    .footer-group a{
+    .footer-group span{
         font-size: 18px;
         margin-bottom: 18px;
     }

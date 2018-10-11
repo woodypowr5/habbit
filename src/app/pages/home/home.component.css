@@ -147,6 +147,10 @@
         .details-section-2 .bottom .right{
             /* height: 400px; */
         }
+        .details-section-2 .top, .details-section-2 .bottom{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
     }    
     @media screen and (max-width: 575px) {
         .details-section-2 .top .left{
