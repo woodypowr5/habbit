@@ -1,30 +1,30 @@
 
-<div class="hero1 hero" *ngIf="slideNum === 0">
+<div class="hero1 hero" *ngIf="slideNum === 1">
   <div class="image" [@simpleFadeAnimation]="'in'">
     <h1>All of your reminders in one place? Check.</h1>
   </div>
   <div class="content"></div>
 </div>
-<div class="hero2 hero" *ngIf="slideNum === 1">
+<div class="hero2 hero" *ngIf="slideNum === 0">
   <div class="image" [@simpleFadeAnimation]="'in'">
-    <h1>Recordkeeping made simple</h1>
+    <h1>Personal tracking made simple</h1>
   </div>
   <div class="content"></div>
 </div>
 <div class="hero3 hero" *ngIf="slideNum === 2">
   <div class="image" [@simpleFadeAnimation]="'in'"></div>
   <div class="content">
-    <div class="content-module">
+    <div class="content-module module1">
       <mat-icon>bubble_chart</mat-icon>
       <h2>See Your Habit Patterns in Visual Form</h2>
-      <p>Nothing brings data about your life into vivid detail as well as a good visualization tool. </p>
+      <p>Nothing brings data about your life into vivid detail as well as an interactive visualization tool. </p>
     </div>  
-    <div class="content-module">
+    <div class="content-module module2">
       <mat-icon>timeline</mat-icon>
      <h2>Manipulate and Tranform Your Data</h2>
      <p>Several graph modes allow observation of long term trends in your data, including an adjustable moving average (if you're into that sort of thing)</p>
     </div>
-    <div class="content-module">
+    <div class="content-module module3">
     <mat-icon>sort</mat-icon>
      <h2>Isolate Behavior Patterns</h2>
      <p>Control the time pariod over hich data is displayed and choose which activitie to display concurrently</p>

@@ -21,7 +21,7 @@ export class HomeCarouselComponent implements OnInit, OnDestroy {
   @Input() speed: number;
   private slideNum = 0;
   private numSlides = 3;
-  private intervalTime = 6500;
+  private intervalTime = 7500;
   private timer: any;
   constructor() { }
 
@@ -42,7 +42,7 @@ export class HomeCarouselComponent implements OnInit, OnDestroy {
 
   nextSlide(): void {
     this.slideNum++;
-    if (this.slideNum > 3) {
+    if (this.slideNum > 2) {
       this.slideNum = 0;
     }
   }

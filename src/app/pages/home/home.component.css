@@ -15,12 +15,147 @@
     }   
     @media screen and (max-width: 500px) {
         .hero-section{
-            height: 600px;
+            height: 685px;
         }
     }    
 .details-section{
-    min-height: 800px;
+    height: 300px;
+    background-color: #fafafa;
 }
+.details-section blockquote{
+    font-size: 26px;
+    text-align: center;
+    color: #666;
+    font-family: 'Raleway';
+    font-style: italic;
+    display: flex;
+    align-content: center;
+}
+.details-section p, .details-section h2, .details-section-2 p, .details-section-2 h2{
+    font-family: 'Raleway';
+}
+.details-section p, .details-section-2 p{
+    color: #999;
+}
+.details-section h2, .details-section-2 h2{
+    color: #555;
+}
+.details-section-2{
+    
+}
+    .details-section-2 h2{
+        font-size: 24px;
+    }
+    .details-section-2 p{
+        font-size: 20px;
+        line-height: 30px;
+    } 
+    .details-section-2 .top{
+        height: 600px;
+        display: flex;
+        padding: 100px 50px;
+        background-color: white;
+    }
+    .details-section-2 .bottom{
+        height: 700px;
+        display: flex;
+        background-color: #fafafa;
+        padding: 100px 50px;
+    }
+        .details-section-2 .content-module{
+            margin-bottom: 30px;   
+        }
+        .details-section-2 .top .left{
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            background-image: url('/assets/images/correlations.png');
+            background-size: cover;
+            background-repeat: no-repeat;   
+        }
+        .details-section-2 .top .right{
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            padding-left: 63px;
+        }  
+        .details-section-2 .bottom .left{
+            display: inline-block;
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            padding-right: 63px;
+        }   
+        .details-section-2 .bottom .right{
+            display: inline-block;
+            width: 40%;
+            height: 100%;
+            background-image: url('/assets/images/markerDetails.png');
+            background-size: cover;
+            background-repeat: no-repeat;   
+        }
+            @media screen and (max-width: 1400px) {
+                .details-section-2 .bottom .left, .details-section-2 .bottom .right{
+                    width: 50%;
+                }
+            }   
+    @media screen and (max-width: 1300px) {
+        .details-section-2 .top, .details-section-2 .bottom{
+            flex-direction: column;
+            padding: 140px 50px 45px 50px;
+        }
+        .details-section-2 .top .left,
+        .details-section-2 .top .right,
+        .details-section-2 .bottom .left,
+        .details-section-2 .bottom .right{
+            width: 100%;
+        }
+        .details-section-2 .top, .details-section-2 .bottom{
+            height: unset;
+        }
+        .details-section-2 .top .left{
+            height: 600px;
+            margin-bottom: 80px;
+        }
+        .details-section-2 .top .right{
+            padding-left: 0px;
+            text-align: center;
+        }
+        .details-section-2 .bottom .left{
+            order: 2;
+            padding-left: 0px;
+            text-align: center;
+        }
+        .details-section-2 .bottom .right{
+            order: 1;
+            height: 900px;
+            margin-bottom: 80px;
+        }
+        .content-module{
+            margin-bottom: 80px !important;
+        }
+    }    
+    @media screen and (max-width: 650px) {
+        .details-section-2 .top .left{
+            height: 400px;
+        }
+        .details-section-2 .bottom .right{
+            /* height: 400px; */
+        }
+    }    
+    @media screen and (max-width: 575px) {
+        .details-section-2 .top .left{
+            height: 300px;
+        }
+        .details-section-2 .bottom .right{
+            height: 400px;
+        }
+    }    
 app-home-carousel{
     height: 100%;
     position: relative;
