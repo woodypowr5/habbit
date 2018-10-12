@@ -17,6 +17,8 @@ import * as Auth from './auth.actions';
 
 @Injectable()
 export class AuthService {
+  public loggedInUserId: string;
+
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
@@ -32,6 +34,7 @@ export class AuthService {
         const userData: UserData = {
           userId: user.uid
         };
+        this.loggedInUserId = userData.userId;
         this.hydrateDependentServices(userData);
         this.store.dispatch(new Auth.SetAuthenticated());
         this.router.navigate(['/']);
