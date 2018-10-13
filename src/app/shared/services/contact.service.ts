@@ -12,11 +12,13 @@ export class ContactService {
             <div>From: ${data.name}</div>
             <div>Email: ${data.email}</div>
             <div>Date: ${data.date}</div>
+            <div>UserId: ${data.userId}</div>
             <div>Message: ${data.message}</div>
         `;
 
         this.db.collection('messages').add({
-            userId: data.userId,
+            subject: data.subject,
+            mailbox: data.mailbox,
             html: html
         });
     }

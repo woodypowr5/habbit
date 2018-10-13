@@ -2,9 +2,9 @@ import { ContactService } from './../../shared/services/contact.service';
 import { ContactEmail } from '../../shared/types/contactEmail';
 import { AuthService } from './../../auth/auth.service';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -14,9 +14,10 @@ import { Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   private form: FormGroup;
+  private mailboxes = ['Report a Problem', 'Technical Support', 'General Questions', 'Account/Billing'];
+  private mailbox: string;
 
   constructor(
-    private fb: FormBuilder,
     private authService: AuthService,
     private contactService: ContactService
   ) {
@@ -26,16 +27,16 @@ export class ContactComponent implements OnInit {
   ngOnInit() {}
 
   createForm() {
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      message: ['', Validators.required],
+    this.form = new FormGroup({
+      'name': new FormControl(null, []),
+      'subject': new FormControl(null, [Validators.required]),
+      'mailbox': new FormControl(null, [Validators.required]),
+      'message': new FormControl(null, [Validators.required])
     });
   }
   onSubmit() {
-    const {name, email, message} = this.form.value;
+    const {name, subject, mailbox, message} = this.form.value;
     const date: string = Date().toString();
-    const mailbox = 'Test';
 
     let userId;
     if (this.authService.loggedInUserId !== undefined) {
@@ -47,7 +48,7 @@ export class ContactComponent implements OnInit {
     if (this.authService.loggedInUserEmail !== undefined) {
       userEmail = this.authService.loggedInUserEmail;
     } else {
-      userEmail =  email;
+      userEmail =  'Guest';
     }
 
     const newMessage: ContactEmail = {
@@ -56,7 +57,8 @@ export class ContactComponent implements OnInit {
       mailbox: mailbox,
       message: message,
       date: date,
-      userId: userId
+      userId: userId,
+      subject: subject
     };
 
     this.contactService.sendMessage(newMessage);

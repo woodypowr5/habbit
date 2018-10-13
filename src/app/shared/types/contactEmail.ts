@@ -5,4 +5,5 @@ export class ContactEmail {
     message: string;
     date: string;
     userId: string;
+    subject: string;
 }

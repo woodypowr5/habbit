@@ -7,12 +7,11 @@ const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailP
 exports.sendTestMessage = functions.firestore
   .document(`messages/{messageId}`)
   .onCreate(snap => {
-    console.log(snap.data());
-    let userId = snap.data().userId;
+    let subject = snap.data().subject;
     let html = snap.data().html;
     let mailOptions = {
         to: 'company@habbit.info',
-        subject: 'Test: ' + userId,
+        subject: snap.data().mailbox + ': ' + subject,
         html: html
     };
     return mailTransport.sendMail(mailOptions).then(() => {

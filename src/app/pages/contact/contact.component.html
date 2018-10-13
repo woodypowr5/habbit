@@ -1,7 +1,29 @@
-<h1>Information Request</h1>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="text" placeholder="Name" formControlName="name">
-  <input type="text" placeholder="Email" formControlName="email">
-  <textarea placeholder="Message" formControlName="message">
-  </textarea>
-  <button type="submit" [disabled]="form.invalid">Submit</button></form>
+<mat-card class="contact-form">
+  <mat-card-title class="custom-activity-title">Send Us a Message!</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()"> 
+    <mat-form-field>
+      <input matInput type="text" placeholder="Name" formControlName="name">
+    </mat-form-field> 
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Subject" formControlName="subject">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [(ngModel)]="mailbox" formControlName="mailbox" placeholder="Choose a category">
+        <mat-option 
+          [value]="mailbox"
+          *ngFor="let mailbox of mailboxes"
+        >
+          {{ mailbox }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> 
+    
+    <mat-form-field>
+        <textarea matInput placeholder="Message" formControlName="message"></textarea>
+    </mat-form-field> 
+    <button mat-raised-button type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+</mat-card>
+
