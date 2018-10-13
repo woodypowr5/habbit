@@ -18,6 +18,7 @@ import * as Auth from './auth.actions';
 @Injectable()
 export class AuthService {
   public loggedInUserId: string;
+  public loggedInUserEmail: string;
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class AuthService {
           userId: user.uid
         };
         this.loggedInUserId = userData.userId;
+        this.loggedInUserEmail = user.email;
         this.hydrateDependentServices(userData);
         this.store.dispatch(new Auth.SetAuthenticated());
         this.router.navigate(['/']);

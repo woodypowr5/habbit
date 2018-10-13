@@ -1,8 +1,11 @@
+import { ContactService } from './../../shared/services/contact.service';
+import { ContactEmail } from '../../shared/types/contactEmail';
 import { AuthService } from './../../auth/auth.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +15,11 @@ import { Validators } from '@angular/forms';
 export class ContactComponent implements OnInit {
   private form: FormGroup;
 
-  constructor(private fb: FormBuilder, private db: AngularFirestore, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private contactService: ContactService
+  ) {
     this.createForm();
   }
 
@@ -27,22 +34,32 @@ export class ContactComponent implements OnInit {
   }
   onSubmit() {
     const {name, email, message} = this.form.value;
-    const date = Date();
-    const html = `
-      <div>From: ${name}</div>
-      <div>Email: ${email}</div>
-      <div>Date: ${date}</div>
-      <div>Message: ${message}</div>
-    `;
-    console.log(html);
+    const date: string = Date().toString();
+    const mailbox = 'Test';
+
     let userId;
     if (this.authService.loggedInUserId !== undefined) {
       userId = this.authService.loggedInUserId;
     } else {
       userId = 'Guest';
     }
-    const formRequest = { name, email, message, date, html, userId };
-    this.db.collection('messages').add(formRequest);
+    let userEmail;
+    if (this.authService.loggedInUserEmail !== undefined) {
+      userEmail = this.authService.loggedInUserEmail;
+    } else {
+      userEmail =  email;
+    }
+
+    const newMessage: ContactEmail = {
+      name: name,
+      email: userEmail,
+      mailbox: mailbox,
+      message: message,
+      date: date,
+      userId: userId
+    };
+
+    this.contactService.sendMessage(newMessage);
     this.form.reset();
   }
 }

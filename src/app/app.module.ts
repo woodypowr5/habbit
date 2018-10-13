@@ -30,6 +30,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/dat
 import { RecordsComponent } from './tracking/records/records.component';
 import { UICarouselModule } from 'ui-carousel';
 import { SharedModule } from './shared/shared.module';
+import { ContactService } from './shared/services/contact.service';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     AuthService,
+    ContactService,
     TrackingService,
     MarkerService,
     PlanService,
