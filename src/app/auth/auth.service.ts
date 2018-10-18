@@ -1,5 +1,6 @@
+import { AngularFirestore } from 'angularfire2/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { PlanService } from '../shared/services/plan.service';
-import { UserData } from './userData.model';
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,11 +15,12 @@ import { UIService } from '../shared/ui.service';
 import * as fromRoot from '../app.reducer';
 import * as UI from '../shared/ui.actions';
 import * as Auth from './auth.actions';
+import { UserData } from './userData.model';
 
 @Injectable()
 export class AuthService {
-  public loggedInUserId: string;
-  public loggedInUserEmail: string;
+  private loggedInUser: UserData;
+  public loggedInUserChanged: BehaviorSubject<UserData> = new BehaviorSubject(null);
 
   constructor(
     private router: Router,
@@ -26,17 +28,22 @@ export class AuthService {
     private trackingService: TrackingService,
     private planService: PlanService,
     private uiService: UIService,
-    private store: Store<fromRoot.State>
-  ) {}
+    private store: Store<fromRoot.State>,
+    private db: AngularFirestore
+  ) {
+    this.loggedInUserChanged.subscribe(userData => {
+      this.loggedInUser = userData;
+    });
+  }
 
-  initAuthListener() {
+  initAuthListener(): void {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         const userData: UserData = {
-          userId: user.uid
+          userId: user.uid,
+          email: user.email
         };
-        this.loggedInUserId = userData.userId;
-        this.loggedInUserEmail = user.email;
+        this.loggedInUserChanged.next(userData);
         this.hydrateDependentServices(userData);
         this.store.dispatch(new Auth.SetAuthenticated());
         this.router.navigate(['/']);
@@ -47,13 +54,14 @@ export class AuthService {
     });
   }
 
-  registerUser(authData: AuthData) {
+  registerUser(authData: AuthData): void {
     this.store.dispatch(new UI.StartLoading());
     this.afAuth.auth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.planService.createPlan(result.user.uid);
         this.store.dispatch(new UI.StopLoading());
+        this.createSubscriptionTables();
       })
       .catch(error => {
         this.store.dispatch(new UI.StopLoading());
@@ -61,7 +69,7 @@ export class AuthService {
       });
   }
 
-  login(authData: AuthData) {
+  login(authData: AuthData): void {
     this.store.dispatch(new UI.StartLoading());
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
@@ -74,12 +82,20 @@ export class AuthService {
       });
   }
 
-  hydrateDependentServices(data) {
+  createSubscriptionTables(): void {
+    this.db.collection('customers').doc(this.loggedInUser.userId).set({
+      token: null,
+      customerId: null,
+      subscription: null
+    });
+  }
+
+  hydrateDependentServices(data): void {
     this.planService.fetchPlanByUserId(data.userId);
     this.trackingService.fetchHistoryByUserId(data.userId);
   }
 
-  logout() {
+  logout(): void {
     this.afAuth.auth.signOut();
   }
 }

@@ -1,3 +1,4 @@
+import { PaymentsService } from './shared/services/payments.service';
 import { PagesModule } from './pages/pages.module';
 import { MarkerService } from './shared/services/marker.service';
 import { MarkerDetailService } from './shared/services/markerDetail.service';
@@ -32,7 +33,6 @@ import { UICarouselModule } from 'ui-carousel';
 import { SharedModule } from './shared/shared.module';
 import { ContactService } from './shared/services/contact.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +57,7 @@ import { ContactService } from './shared/services/contact.service';
   ],
   providers: [
     AuthService,
+    PaymentsService,
     ContactService,
     TrackingService,
     MarkerService,

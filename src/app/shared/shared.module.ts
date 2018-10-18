@@ -1,3 +1,4 @@
+import { MakePaymentComponent } from './components/make-payment/make-payment.component';
 
 import { CalendarDayPipe } from './pipes/calendarDay.pipe';
 import { EntryFormBooleanComponent } from '../tracking/record-detail/record-entry/record-entry-marker/entry-form-boolean/entry-form-boolean.component';
@@ -31,9 +32,10 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
+    MakePaymentComponent,
     TooltipComponent,
     PopoverComponent,
     MarkerCardComponent,
@@ -42,12 +44,13 @@ import { RouterModule } from '@angular/router';
     EntryFormScalarComponent,
     EntryFormBooleanComponent,
     CalendarDayPipe,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [
     DateService
   ],
   exports: [
+    MakePaymentComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

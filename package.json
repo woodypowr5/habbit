@@ -27,6 +27,7 @@
     "@ngrx/store": "^6.0.1",
     "@swimlane/ngx-charts": "^8.1.0",
     "@types/es6-shim": "^0.31.37",
+    "@types/stripe": "^6.0.1",
     "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
     "d3-shape": "^1.2.0",
@@ -40,6 +41,7 @@
     "ng-recaptcha": "^3.0.5",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.1",
+    "stripe": "^6.12.1",
     "ui-carousel": "^0.2.0",
     "zone.js": "^0.8.26"
   },

@@ -12,5 +12,11 @@ export const environment = {
     projectId: 'habbitapp',
     storageBucket: 'habbitapp.appspot.com',
     messagingSenderId: '601664610822'
+  },
+  stripeKey: 'pk_test_Ik4gkj6gcBC1DkDkgz0NdnId',
+  stripeProduct: 'prod_DnArKOitOGmJkz',
+  stripePlans: {
+    monthly: 'plan_DnAsVDFeJRWlRm',
+    annual: 'plan_DnAsX5dFauBCg8'
   }
 };

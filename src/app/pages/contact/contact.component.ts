@@ -1,3 +1,4 @@
+import { UserData } from './../../auth/userData.model';
 import { ContactService } from './../../shared/services/contact.service';
 import { ContactEmail } from '../../shared/types/contactEmail';
 import { AuthService } from './../../auth/auth.service';
@@ -16,6 +17,7 @@ export class ContactComponent implements OnInit {
   private form: FormGroup;
   private mailboxes = ['Report a Problem', 'Technical Support', 'General Questions', 'Account/Billing'];
   private mailbox: string;
+  private userData: UserData;
 
   constructor(
     private authService: AuthService,
@@ -24,7 +26,11 @@ export class ContactComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.loggedInUserChanged.subscribe(userData => {
+      this.userData = userData;
+    });
+  }
 
   createForm() {
     this.form = new FormGroup({
@@ -39,14 +45,14 @@ export class ContactComponent implements OnInit {
     const date: string = Date().toString();
 
     let userId;
-    if (this.authService.loggedInUserId !== undefined) {
-      userId = this.authService.loggedInUserId;
+    if (this.userData.userId !== undefined) {
+      userId = this.userData.userId;
     } else {
       userId = 'Guest';
     }
     let userEmail;
-    if (this.authService.loggedInUserEmail !== undefined) {
-      userEmail = this.authService.loggedInUserEmail;
+    if (this.userData.email !== undefined) {
+      userEmail = this.userData.email;
     } else {
       userEmail =  'Guest';
     }
