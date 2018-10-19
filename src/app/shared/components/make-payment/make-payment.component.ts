@@ -23,8 +23,8 @@ export class MakePaymentComponent implements OnInit {
       key: environment.stripeKey,
       image: 'https://goo.gl/EJJYq8',
       locale: 'auto',
-      token: token => {
-        this.paymentsService.processPayment(token);
+      source: source => {
+        this.paymentsService.processPayment(source);
       }
     });
   }
@@ -36,7 +36,7 @@ export class MakePaymentComponent implements OnInit {
     });
   }
 
-  // Is there a way to get the subscription status from the front end? 
+  // Is there a way to get the subscription status from the front end?
 
   // handler: any;
   // amount = 1;

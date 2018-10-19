@@ -23,6 +23,12 @@ firebase.initializeApp({
 // Initialize Cloud Firestore through Firebase
 const db = firebase.firestore();
 
+const stripeProduct = 'prod_DnArKOitOGmJkz';
+const stripePlans = {
+    monthly: 'plan_DnAsVDFeJRWlRm',
+    annual: 'plan_DnAsX5dFauBCg8'
+};
+
 exports.sendTestMessage = functions.firestore
   .document(`messages/{messageId}`)
   .onCreate(snap => {
@@ -49,10 +55,59 @@ exports.createStripeCustomer = functions.auth.user().onCreate(user => {
         const customerId = customer.id;
         // const store = admin.firestore('habbitApp');
         db.collection('customers').doc(user.uid).set({
-             customerId: customerId,
-        }, {merge: true});
+            token: null,
+            customerId: customerId,
+            subscription: null,
+            userId: user.uid 
+        });
     });     
 });
+
+exports.createSubscription = functions.firestore.document('/customers/{userId}')
+    .onUpdate((change, context) => {
+        if (change.before.data().source !== change.after.data().source) {
+            const newValue = change.after.data();
+            const customer = {
+                id: newValue.customerId,
+                source: newValue.source,
+                subscription: newValue.subscription,
+                userId: newValue.userId
+            };
+            console.log("NEW SOURCE");   
+            console.log('newValue:');
+            console.log(newValue);    
+
+            stripe.customers.createSource(customer.id, {
+                source: customer.source.id
+            }, function(err, source) {
+                return stripe.subscriptions.create({
+                    customer: customer.id,
+                    items: [
+                        {
+                            plan: stripePlans.monthly
+                        }
+                    ] 
+                })
+                .then(sub => {
+                    console.log(context);
+                    console.log("YEHAAW");
+                    db.collection('customers').doc(user.uid).set({
+                        source: source,
+                        customerId: customer.id,
+                        subscription: 'active',
+                        userId: customer.userId
+                    });
+                })
+                .catch(error => console.log(error))
+            });
+        } else {
+            console.log("no difference");
+            console.log("BEFORE:");
+            console.log(change.before.data().source);
+            console.log("AfTER:");
+            console.log(change.after.data().source);
+        }
+    });
 
 // firebase functions:config:set gmail.email="company@habbit.com" gmail.password="QHfo27$&@"
 exports.stripeCharge =  functions.firestore
@@ -66,44 +121,5 @@ exports.stripeCharge =  functions.firestore
                     console.log("subscriptions");
                     console.log(subscriptions);
               });
-
-
         }
     );
-// functions.firestore
-// .document(`/payments/{userId}`)
-// .onUpdate(snap => {
-//     console.log(snap);
-// });
-    // functions.database
-    // .ref('/payments/{userId}/{paymentId}')
-    // .onWrite(event => {
-    //     console.log("HELLO");
-    //     const payment = event.data.val();
-    //     const userId = event.params.userId;
-    //     const paymentId = event.params.paymentId; 
-    // // checks if payment exists or if it has already been charged
-    // if (!payment || payment.charge) return;
-    // return admin.database()
-    //     .ref(`/users/${userId}`)
-    //     .once('value')
-    //     .then(snapshot => {
-    //         return snapshot.val();
-    //     })
-    //     .then(customer => {
-    //         const amount = payment.amount;
-    //         const idempotency_key = paymentId;  // prevent duplicate charges
-    //         const source = payment.token.id;
-    //         const currency = 'usd';
-    //         const charge = {amount, currency, source};
-    //         console.log(stripe);
-    //         return stripe.charges.create(charge, { idempotency_key });
-    //     })
-    //     .then(charge => {
-    //         admin.database()
-    //                 .ref(`/payments/${userId}/${paymentId}/charge`)
-    //                 .set(charge)
-    //         }
-    //     )
-    // }
-// );
