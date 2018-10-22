@@ -1,0 +1,7 @@
+<div class="subscription-status-indicator" *ngIf="userData && userData !== null">
+  <span *ngIf="customer && customer.subscription === 'active'">Pro version</span>
+  <span *ngIf="customer && customer.subscription !== 'active'">
+    Free Version
+    <button mat-raised-button>Upgrade</button>
+  </span>
+</div>

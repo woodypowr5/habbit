@@ -1,3 +1,4 @@
+import { SubscriptionService } from './../shared/services/subscription.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { PlanService } from '../shared/services/plan.service';
@@ -74,6 +75,12 @@ export class AuthService {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
+        const newUser: UserData = {
+          userId: result.user.uid,
+          email: result.user.email
+        };
+        this.loggedInUserChanged.next(newUser);
+        this.hydrateDependentServices(newUser);
         this.store.dispatch(new UI.StopLoading());
       })
       .catch(error => {
@@ -97,5 +104,6 @@ export class AuthService {
 
   logout(): void {
     this.afAuth.auth.signOut();
+    this.loggedInUserChanged.next(null);
   }
 }

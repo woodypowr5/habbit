@@ -1,5 +1,5 @@
 import { environment } from './../../../../environments/environment';
-import { PaymentsService } from './../../services/payments.service';
+import { SubscriptionService } from './../../services/subscription.service';
 import { Component, OnInit, HostListener } from '@angular/core';
 import * as Stripe from 'stripe';
 
@@ -12,7 +12,7 @@ import * as Stripe from 'stripe';
 export class MakePaymentComponent implements OnInit {
   handler: any;
 
-  constructor(public paymentsService: PaymentsService) { }
+  constructor(public subscriptionService: SubscriptionService) { }
 
   ngOnInit() {
     this.configHandler();
@@ -24,7 +24,7 @@ export class MakePaymentComponent implements OnInit {
       image: 'https://goo.gl/EJJYq8',
       locale: 'auto',
       source: source => {
-        this.paymentsService.processPayment(source);
+        this.subscriptionService.processPayment(source);
       }
     });
   }

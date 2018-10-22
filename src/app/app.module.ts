@@ -1,4 +1,4 @@
-import { PaymentsService } from './shared/services/payments.service';
+import { SubscriptionService } from './shared/services/subscription.service';
 import { PagesModule } from './pages/pages.module';
 import { MarkerService } from './shared/services/marker.service';
 import { MarkerDetailService } from './shared/services/markerDetail.service';
@@ -57,7 +57,7 @@ import { ContactService } from './shared/services/contact.service';
   ],
   providers: [
     AuthService,
-    PaymentsService,
+    SubscriptionService,
     ContactService,
     TrackingService,
     MarkerService,

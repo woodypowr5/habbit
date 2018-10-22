@@ -21,6 +21,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { SubscriptionStatusComponent } from './components/subscription-status/subscription-status.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { RouterModule } from '@angular/router';
     EntryFormBooleanComponent,
     CalendarDayPipe,
     FooterComponent,
+    SubscriptionStatusComponent,
   ],
   providers: [
     DateService
@@ -64,6 +66,7 @@ import { RouterModule } from '@angular/router';
     EntryFormRangeComponent,
     EntryFormScalarComponent,
     EntryFormBooleanComponent,
+    SubscriptionStatusComponent,
     CalendarDayPipe,
     RecaptchaModule,
     RecaptchaFormsModule,
