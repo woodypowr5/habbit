@@ -11,7 +11,7 @@
       <mat-error>Has to be at least 6 characters long.</mat-error>
     </mat-form-field>
     <mat-checkbox ngModel name="agree" required color="primary">Agree to Terms and Conditions.</mat-checkbox>
-    <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    <button class="submit-button" *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
   </form>
 </section>

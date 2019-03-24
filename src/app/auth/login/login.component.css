@@ -5,3 +5,7 @@ form{
 mat-form-field {
   width: 300px;
 }
+
+.submit-button{
+  margin-top: 30px;
+}

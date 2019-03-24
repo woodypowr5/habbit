@@ -3,7 +3,7 @@
     position: relative;
 }
 .hero .image h1{
-    font-size: 3.4em;
+    font-size: 2.2em;
     font-family: 'Roboto Slab';
     position: absolute;
     line-height: 1.5em;
@@ -197,13 +197,16 @@
         
   .hero1 .image h1{
     color: #EEE;
+    
     right: 8%;
     width: 900px;
     top: 70px;
+    font-weight: 100;
   }
     @media screen and (max-width: 1600px) {
         .hero1 .image h1{
-            font-size: 3em;
+            /* font-size: 3em; */
+            font-size: 2.2em;
         }    
     }  
     @media screen and (max-width: 1145px) {
@@ -215,21 +218,17 @@
            top: -10px;
            left: 0px;
            background-color: rgba(255, 255, 255, 0.05);
-           border-top: 5px solid rgba(155, 155, 155, 0.5);
-           border-bottom: 5px solid rgba(200, 200, 200, 0.5);
-           border-left: none;
-           border-right: none;
-           border-radius: 0px;
+       
         }
    }    
    @media screen and (max-width: 900px) {
        .hero1 .image h1{
-           font-size: 3em;
+        font-size: 2.2em;
        }
    }   
    @media screen and (max-width: 700px) {
        .hero1 .image h1{
-           font-size: 2.4em;
+        font-size: 2.2em;
        }
    }  
    @media screen and (max-width: 500px) {
@@ -241,12 +240,14 @@
   .hero2 .image h1{
     color: white;
     left: 100px;
-    top: 50px;
+    top: 70px;
     width: 600px;
-    background-color: rgba(255, 255, 255, 0.10);
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    padding: 35px;
-    border-radius: 12px;
+   
+    font-weight: 100;
+    /* background-color: rgba(255, 255, 255, 0.10); */
+    /* border: 3px solid rgba(255, 255, 255, 0.8); */
+    padding: 20px;
+    /* border-radius: 12px; */
   }
     @media screen and (max-width: 2000px) {
         .hero2 .image h1{
@@ -257,34 +258,36 @@
         .hero2 .image h1{
             left: 75px;
             width: 375px;
-            font-size: 3.5em;
+            font-size: 2.2em;
             /* padding: 30px; */
         }    
     }  
     @media screen and (max-width: 1145px) {
          .hero2 .image h1{
-            color: #444;
+            color: #888;
             width: 100%;
             text-align: center;
             padding: 40px 0px;
             top: -15px;
             left: 0px;
             background-color: rgba(255, 255, 255, 0.10);
-            border-top: 5px solid rgba(155, 155, 155, 0.5);
+            /* border-top: 5px solid rgba(155, 155, 155, 0.5);
             border-bottom: 5px solid rgba(255, 255, 255, 0.5);
             border-left: none;
             border-right: none;
-            border-radius: 0px;
+            border-radius: 0px; */
          }
     }    
     @media screen and (max-width: 900px) {
         .hero2 .image h1{
-            font-size: 3em;
+            /* font-size: 3em; */
+            font-size: 2.2em;
+            font-weight: 100;
         }
     }   
     @media screen and (max-width: 700px) {
         .hero2 .image h1{
-            font-size: 2.4em;
+     
             border: none;
             background-color: rgba(0, 0, 0, 0);
         }
